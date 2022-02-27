@@ -1,5 +1,9 @@
 module.exports = {
   reactStrictMode: true,
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en'
+  },
   webpack: (config) => {
     // config.experiments = { topLevelAwait: true };
     // config.resolve.fallback = {
@@ -13,6 +17,6 @@ module.exports = {
     //   constants: false,
     //   os: false,
     // };
-    return config;
-  },
+    return config
+  }
 }

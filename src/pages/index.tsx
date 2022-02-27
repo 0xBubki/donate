@@ -3,8 +3,20 @@ import {Heading, Text, VStack} from '@chakra-ui/layout'
 import type {NextPage} from 'next'
 import Head from 'next/head'
 import Root from "../components/Root";
+import { useTranslation } from '../utils/use-translation';
+
+const localisation = {
+    en: {
+      title: 'Donate your yield to help'
+    },
+    fr: {
+      title: 'Donnez votre rendement'
+    }
+  }
 
 const Home: NextPage = () => {
+    const translate = useTranslation(localisation)
+
     return (
         <div>
             <Head>
@@ -14,7 +26,7 @@ const Home: NextPage = () => {
             </Head>
             <Root>
                 <VStack spacing={4} mt={250}>
-                    <Heading color='#fff' style={{fontWeight: 'bold', fontSize: 48}}>Donate your yield to help {' '}
+                    <Heading color='#fff' style={{fontWeight: 'bold', fontSize: 48}}>{translate('title')} {' '}
                         <span style={{color: '#FFD500'}}>Ukraine</span>
                     </Heading>
                     <Text color="#fff" style={{fontWeight: 'bold', fontSize: '96px'}}>₴1,234,567.00</Text>
