@@ -20,11 +20,25 @@ export const NavItem: FC<LinkProps> = ({ children, ...props }) => {
 
 export const NavDrawerItem: FC<LinkProps> = ({ children, ...props }) => {
   return (
-    <Link href={props.href} {...props} style={{ color: '#fff' }}>
+    <Link
+      href={props.href}
+      {...props}
+      style={{
+        color: '#fff',
+        textDecoration: 'none',
+        outline: 'none',
+        boxShadow: 'none'
+      }}
+    >
       <Text
         color="#fff"
-        fontSize={24}
+        fontSize={20}
         py={4}
+        px={4}
+        _hover={{
+          backgroundColor: 'rgba(255, 255, 255, 0.2)'
+        }}
+        style={{ borderRadius: 25 }}
         fontWeight={600}
         display="block"
         width="auto"

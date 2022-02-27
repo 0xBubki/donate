@@ -116,7 +116,7 @@ export const Header = () => {
           <Drawer placement={'left'} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent>
-              <DrawerBody background="#005BBB">
+              <DrawerBody background="#005BBB" px={2}>
                 {navItems.map((navItem, index) => (
                   <NavDrawerItem key={index} href={navItem.href}>
                     {navItem.text}
