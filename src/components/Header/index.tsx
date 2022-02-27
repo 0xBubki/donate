@@ -14,6 +14,7 @@ import { NavItem } from './NavItem'
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const navItems = [
+    { text: 'Leaderboard', href: '/leaderboard' },
     { text: 'Stake', href: '/stake' },
     { text: 'Donate', href: '/donate' },
     { text: 'Explore NFTs', href: '/explore' },
