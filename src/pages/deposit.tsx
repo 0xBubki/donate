@@ -9,7 +9,8 @@ import {
   TabList,
   Tab,
   MenuList,
-  MenuItem
+  MenuItem,
+  Menu
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import { LoginIcon } from '@heroicons/react/outline'
@@ -159,8 +160,12 @@ const BoxDepositBox = () => (
 )
 
 const AssetMenu = () => (
-  <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-  </MenuList>
+  <Menu>
+    {({ isOpen }) => (
+      <MenuList>
+        <MenuItem>Download</MenuItem>
+        <MenuItem>Create a Copy</MenuItem>
+      </MenuList>
+    )}
+  </Menu>
 )
