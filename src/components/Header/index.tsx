@@ -5,7 +5,8 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
-  useDisclosure
+  useDisclosure,
+  Link
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -34,7 +35,7 @@ export const Header = () => {
     { text: 'Leaderboard', href: '/leaderboard' },
     { text: 'Stake', href: '/stake' },
     { text: 'Donate', href: '/donate' },
-    { text: 'Explore NFTs', href: '/explore' },
+    { text: 'Mint', href: '/mint' },
     { text: 'About', href: '/about' }
   ]
 
@@ -49,7 +50,7 @@ export const Header = () => {
         >
           <HStack justifyContent={['space-between']} w={'full'}>
             <Box fontWeight="bold" fontSize={[30, 40, 40, 50]} marginX="1rem">
-              🇺🇦
+              <Link href="/">🇺🇦</Link>
             </Box>
 
             <HStack>
