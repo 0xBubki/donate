@@ -1,4 +1,4 @@
-import { Contract, Wallet, ethers, utils, BigNumber } from 'ethers'
+import { Contract, Wallet, ethers, BigNumber } from 'ethers'
 import { TransactionReceipt } from '@ethersproject/providers'
 
 import Erc20Abi from './abis/Erc20Abi.json'
