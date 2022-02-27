@@ -27,45 +27,62 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex direction="column" alignItems="center">
-        <Heading
-          color="#fff"
-          fontWeight="bold"
-          fontSize="48"
-          textAlign="center"
-        >
-          {translate('title')} <span color="#FFD500">Ukraine</span>
-        </Heading>
-
-        <Flex alignItems="center" gap={5}>
-          <Image height={65} src="/eth.svg" alt="ETH Logo" />
-          <Text
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        width="100vw"
+        height="100%"
+      >
+        <Flex direction="column" alignItems="center">
+          <Heading
             color="#fff"
             fontWeight="bold"
-            fontSize="96px"
+            fontSize="48"
             textAlign="center"
           >
-            123.4
-          </Text>
-        </Flex>
+            {translate('title')} <span color="#FFD500">Ukraine</span>
+          </Heading>
 
-        <Flex direction="column" alignItems="center">
-          <Button
-            backgroundColor="#FFD500"
-            style={{ borderRadius: 25, height: 58, width: 251, marginTop: 50 }}
-            display="flex"
-            alignItems="center"
-            gap={2}
-          >
-            <Text>Donate Now</Text>
-            <ArrowRightIcon className="h-5 w-5" />
-          </Button>
-          <Button
-            backgroundColor="#fff"
-            style={{ borderRadius: 25, height: 58, width: 251, marginTop: 20 }}
-          >
-            Explore NFTs
-          </Button>
+          <Flex alignItems="center" gap={5}>
+            <Image height={65} src="/eth.svg" alt="ETH Logo" />
+            <Text
+              color="#fff"
+              fontWeight="bold"
+              fontSize="96px"
+              textAlign="center"
+            >
+              123.4
+            </Text>
+          </Flex>
+
+          <Flex direction="column" alignItems="center">
+            <Button
+              backgroundColor="#FFD500"
+              style={{
+                borderRadius: 25,
+                height: 58,
+                width: 251,
+                marginTop: 50
+              }}
+              display="flex"
+              alignItems="center"
+              gap={2}
+            >
+              <Text>Donate Now</Text>
+              <ArrowRightIcon className="h-5 w-5" />
+            </Button>
+            <Button
+              backgroundColor="#fff"
+              style={{
+                borderRadius: 25,
+                height: 58,
+                width: 251,
+                marginTop: 20
+              }}
+            >
+              Explore NFTs
+            </Button>
+          </Flex>
         </Flex>
       </Flex>
     </Root>
