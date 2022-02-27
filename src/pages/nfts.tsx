@@ -1,4 +1,4 @@
-import { Flex, Spacer, Text, Box } from "@chakra-ui/react"
+import { Flex, Spacer, Text, Box, Button } from "@chakra-ui/react"
 import { Divider } from "@chakra-ui/react"
 import Link from "next/link"
 
@@ -34,15 +34,15 @@ const NFTsNavBar = () => {
         <Flex direction="column" width="80%" color="white">
 
             <Flex width="60%" justifyContent="space-between">
-                <Button title="Collection" number={321} />
-                <Button title="Artists" number={122}/>
-                <Button title="Recent" number={123}/>
+                <NavBarButton title="Collection" number={321} />
+                <NavBarButton title="Artists" number={122}/>
+                <NavBarButton title="Recent" number={123}/>
             </Flex>
         </Flex>
     )
 }
 
-const Button = ({title, number}: {title: string, number: number}) => {
+const NavBarButton = ({title, number}: {title: string, number: number}) => {
     return (
         <Link href={title}>
             <Flex direction="row" fontSize="3vh" flexBasis="25%" _hover={{ cursor: "pointer" }}>
@@ -71,6 +71,9 @@ const NFTDisplay = () => {
             <Text>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dicta odio quos culpa modi ad excepturi minus ipsam. Optio rem quam corrupti consectetur, illum assumenda ea nesciunt ipsum. Obcaecati, modi.
             </Text>
+            <Button colorScheme='yellow' size='md'>
+                Check Collection
+            </Button>
         </Box>
         <Box>
             
