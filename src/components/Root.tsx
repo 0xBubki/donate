@@ -1,15 +1,26 @@
-import React, {  ReactNode } from 'react'
-import { Box } from '@chakra-ui/layout';
-import Header from './Header';
+import { FC } from 'react'
+import { Box, Flex } from '@chakra-ui/layout'
+import Header from './Header'
 
-const Root = ({ children } : { children: ReactNode }) => {
+const Root: FC = ({ children }) => {
   return (
-    <Box backgroundColor="#005BBB" minHeight="100vh" display="flex" flexDirection={"column"}>
-      <Header/>
-      <Box width="100%" height="100%" flexGrow={1} display="flex" alignContent="center" alignItems="center" justifyContent="center">
-      {children}
-      </Box>
-    </Box>
+    <Flex
+      position="absolute"
+      direction="column"
+      height="100%"
+      width="100%"
+      backgroundColor="#005BBB"
+    >
+      <Header />
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        width="100%"
+        height="100%"
+      >
+        {children}
+      </Flex>
+    </Flex>
   )
 }
 

@@ -30,7 +30,13 @@ const FaqSection = () => (
   </Accordion>
 )
 
-const FaqItem = ({ question, answer }: { question: string, answer: string }) => {
+const FaqItem = ({
+  question,
+  answer
+}: {
+  question: string
+  answer: string
+}) => {
   return (
     <AccordionItem>
       <AccordionButton>
