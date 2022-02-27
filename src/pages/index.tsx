@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         <Flex direction="column" alignItems="center">
           <Button
             backgroundColor="#FFD500"
-            style={{ borderRadius: 25, height: 58, width: 194, marginTop: 50 }}
+            style={{ borderRadius: 25, height: 58, width: 251, marginTop: 50 }}
             display="flex"
             alignItems="center"
             gap={2}
