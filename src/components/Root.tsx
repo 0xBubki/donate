@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {  ReactNode } from 'react'
 import { Box } from '@chakra-ui/layout';
-import Header from '../components/Header';
+import Header from './Header';
 
-const Root = ({ children }) => {
+const Root = ({ children } : { children: ReactNode }) => {
   return (
     <Box backgroundColor="#005BBB" minHeight="100vh" display="flex" flexDirection={"column"}>
       <Header/>
@@ -14,10 +14,3 @@ const Root = ({ children }) => {
 }
 
 export default Root
-
-const Footer = () => {
-
-  return(
-    <h1>I'm the footer</h1>
-  )
-}

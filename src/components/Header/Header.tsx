@@ -2,7 +2,7 @@ import { Box, Flex, HStack, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/button';
 import { formatEther } from 'ethers/lib/utils';
 import Davatar from '@davatar/react';
-import { shorten } from '../..//utils/shorten';
+import { shorten } from '../../utils/shorten';
 import { useWallet } from '../../context/wallet-provider';
 
 const Header = () => {
