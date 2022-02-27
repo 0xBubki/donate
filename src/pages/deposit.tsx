@@ -63,11 +63,7 @@ export default function Deposit() {
         <DetailsBox />
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center">
-        <Text color="white" fontSize="30px" align="left">
-          Your deposits
-        </Text>
-      </Flex>
+      <Flex flexDirection="column" align="center" justify="center"></Flex>
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
           Looking to donate instead?
