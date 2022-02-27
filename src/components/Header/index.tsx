@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Flex, HStack, Text, Stack, Show } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Text, Stack } from '@chakra-ui/layout'
 import Davatar from '@davatar/react'
 import { shorten } from '../../utils/shorten'
 import { useWallet } from '../../context/wallet-provider'
