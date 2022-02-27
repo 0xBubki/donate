@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Box, Flex } from '@chakra-ui/layout'
-import Header from './Header'
+import { Flex } from '@chakra-ui/layout'
+import {Header} from '../Header'
 
 const Root: FC = ({ children }) => {
   return (
