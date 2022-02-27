@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Flex, HStack, Text, Stack } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  useDisclosure
+} from '@chakra-ui/react'
 import Davatar from '@davatar/react'
-import { shorten } from '../../utils/shorten'
-import { useWallet } from '../../context/wallet-provider'
-import { NavButton } from './NavButton'
 import {
   ChevronDownIcon,
   GlobeAltIcon,
@@ -11,16 +15,10 @@ import {
   MenuIcon,
   XIcon
 } from '@heroicons/react/outline'
+import { useWallet } from '../../context/wallet-provider'
+import { shorten } from '../../utils/shorten'
+import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
-import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  useDisclosure
-} from '@chakra-ui/react'
 
 const navItems = [
   { text: 'Stake', href: '/stake' },
@@ -32,6 +30,14 @@ const navItems = [
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const navItems = [
+    { text: 'Leaderboard', href: '/leaderboard' },
+    { text: 'Stake', href: '/stake' },
+    { text: 'Donate', href: '/donate' },
+    { text: 'Explore NFTs', href: '/explore' },
+    { text: 'About', href: '/about' }
+  ]
+
   return (
     <header>
       <Box width="100%">
