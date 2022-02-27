@@ -33,43 +33,120 @@ const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
 export default function Deposit() {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
   return (
-    <Root>
-      <SimpleGrid columns={2} spacing={10}>
-        <Flex
-          width="50vw"
-          flexDirection="column"
-          align="center"
-          justify="center"
-        >
-          <RedeemSwitch />
+    <SimpleGrid
+      columns={{
+        base: 2,
+        lg: 2,
+        md: 1,
+        sm: 1
+      }}
+      spacing={10}
+    >
+      <Flex flexDirection="column" align="center" justify="center">
+        <RedeemSwitch />
+        <DepositBox>
+          <BoxDepositBox />
+          <Button
+            _hover={{ color: 'black', background: 'white' }}
+            backgroundColor="#06927b"
+            color="white"
+            width="455px"
+            height="80px"
+          >
+            <Text fontSize="3xl"> Stake </Text>
+          </Button>
+        </DepositBox>
 
-          <DepositBox>
-            <BoxDepositBox />
-            <Button
-              _hover={{ color: 'black', background: 'white' }}
-              backgroundColor="#06927b"
-              color="white"
-              width="455px"
-              height="80px"
-            >
-              <Text fontSize="3xl"> Stake </Text>
-            </Button>
-          </DepositBox>
+        <YourDeposits />
+      </Flex>
+      <Flex flexDirection="column" align="center" justify="center">
+        <DetailsBox />
+      </Flex>
 
-          <YourDeposits />
-        </Flex>
-        <Flex
-          width="50vw"
-          flexDirection="column"
-          align="center"
-          justify="center"
-        >
-          Hello
-        </Flex>
-      </SimpleGrid>
-    </Root>
+      <Flex flexDirection="column" align="center" justify="center">
+        <Text color="white" fontSize="30px" align="left">
+          Your deposits
+        </Text>
+      </Flex>
+      <Flex flexDirection="column" align="end">
+        <Text color="white" fontSize="30px">
+          Looking to donate instead?
+        </Text>
+
+        <Text color="white" fontSize="30px">
+          <a href="#">link to donate</a>
+        </Text>
+      </Flex>
+    </SimpleGrid>
   )
 }
+
+const DetailsBox = () => (
+  <Flex
+    flexDirection="column"
+    align="left"
+    justify="center"
+    width="100%"
+    flexDirection={{
+      base: 'column'
+    }}
+  >
+    <Flex
+      justify="space-between"
+      gap="18px"
+      marginBottom="60px"
+      flexDirection={{
+        base: 'column',
+        lg: 'row'
+      }}
+    >
+      <Box
+        borderRadius="25px"
+        background="rgba(0, 0, 0, 0.2)"
+        width="100%"
+        padding="20px"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        alignContent="center"
+      >
+        <Text color="white" fontSize="50px">
+          $6.55m
+        </Text>
+        <Text color="white" fontSize="24px">
+          Total Value Donating
+        </Text>
+      </Box>
+      <Box
+        borderRadius="25px"
+        background="rgba(0, 0, 0, 0.2)"
+        width="100%"
+        padding="20px"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        alignContent="center"
+      >
+        <Text color="white" fontSize="50px">
+          $6.55m
+        </Text>
+        <Text color="white" fontSize="24px">
+          Total Value Donating
+        </Text>
+      </Box>
+    </Flex>
+    <Text color="white" fontSize="30px">
+      Get your yield on. Degen for a good cause.
+    </Text>
+    <Text color="white" fontSize="30px">
+      [insert copy in terms of yield to donate passive feeder collecting yields
+      as they are being harvested to funnel into ukraine]
+    </Text>
+    <Text color="white" fontSize="30px">
+      Join the movement: deposit, yield, support!
+    </Text>
+  </Flex>
+)
 
 const RedeemSwitch = () => (
   <Tabs
