@@ -19,7 +19,6 @@ export default Root
 const Footer = () => {
   return(
     <Box width="100vw" display="flex" alignItems="center" justifyContent="center" mb="10px">
-      <h1>Hello this where the footer goes!</h1>
     </Box>
   )
 }
