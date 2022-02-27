@@ -7,9 +7,20 @@ import { NavButton } from './NavButton'
 import {
   ChevronDownIcon,
   GlobeAltIcon,
-  LoginIcon
+  LoginIcon,
+  MenuIcon,
+  XIcon
 } from '@heroicons/react/outline'
-import { NavItem } from './NavItem'
+import { NavDrawerItem, NavItem } from './NavItem'
+import {
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  useDisclosure
+} from '@chakra-ui/react'
 
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
@@ -19,7 +30,7 @@ export const Header = () => {
     { text: 'Explore NFTs', href: '/explore' },
     { text: 'About', href: '/about' }
   ]
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <header>
       <Box width="100%">
@@ -37,7 +48,7 @@ export const Header = () => {
             <HStack>
               <HStack
                 px={[4, 4, 0]}
-                display={['none', 'none', 'flex']}
+                display={['none', 'none', 'flex', 'flex']}
                 justifyContent={[
                   'space-between',
                   'space-between',
@@ -83,26 +94,37 @@ export const Header = () => {
                   </Flex>
                 )}
               </NavButton>
+              <NavButton
+                backgroundColor="transparent"
+                display={['flex', 'flex', 'none']}
+                color="white"
+                _hover={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                }}
+                borderRadius="100%"
+                onClick={onOpen}
+              >
+                {isOpen ? (
+                  <XIcon className="w-5 h-5" />
+                ) : (
+                  <MenuIcon className="w-5 h-5" />
+                )}
+              </NavButton>
             </HStack>
           </HStack>
 
-          <HStack
-            px={[4, 4, 0]}
-            pt={[2, 2, 0, 0]}
-            display={['flex', 'flex', 'none']}
-            justifyContent={[
-              'space-between',
-              'space-between',
-              'flex-start',
-              'flex-start'
-            ]}
-          >
-            {navItems.map((navItem, index) => (
-              <NavItem key={index} href={navItem.href}>
-                {navItem.text}
-              </NavItem>
-            ))}
-          </HStack>
+          <Drawer placement={'left'} onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerBody background="#005BBB">
+                {navItems.map((navItem, index) => (
+                  <NavDrawerItem key={index} href={navItem.href}>
+                    {navItem.text}
+                  </NavDrawerItem>
+                ))}
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
         </Stack>
       </Box>
     </header>

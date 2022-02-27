@@ -17,3 +17,20 @@ export const NavItem: FC<LinkProps> = ({ children, ...props }) => {
     </Link>
   )
 }
+
+export const NavDrawerItem: FC<LinkProps> = ({ children, ...props }) => {
+  return (
+    <Link href={props.href} {...props} style={{ color: '#fff' }}>
+      <Text
+        color="#fff"
+        fontSize={24}
+        py={4}
+        fontWeight={600}
+        display="block"
+        width="auto"
+      >
+        {children}
+      </Text>
+    </Link>
+  )
+}
