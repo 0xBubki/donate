@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text, Spacer, Box } from '@chakra-ui/layout'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Root from '../components/Root'

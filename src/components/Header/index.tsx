@@ -5,7 +5,7 @@ import { formatEther } from 'ethers/lib/utils'
 import Davatar from '@davatar/react'
 import { shorten } from '../../utils/shorten'
 import { useWallet } from '../../context/wallet-provider'
-import { HeaderButton } from "./HeaderButton"
+import { NavButton } from "./NavButton"
 
 export const Header = () => {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
@@ -17,7 +17,7 @@ export const Header = () => {
           🇺🇦
         </Box>
         <div>
-          <HeaderButton>
+          <NavButton>
             <Flex alignItems="center">
               <img
                 src="https://img.icons8.com/material-outlined/50/000000/globe--v2.png"
@@ -31,9 +31,9 @@ export const Header = () => {
                 alt=""
               />
             </Flex>
-          </HeaderButton>
+          </NavButton>
 
-          <HeaderButton
+          <NavButton
             style={{ borderRadius: 25, height: 58, width: 214 }}
             ml="30px"
             onClick={activateBrowserWallet}
@@ -57,7 +57,7 @@ export const Header = () => {
             ) : (
               <Text paddingX={4}>Connect to wallet</Text>
             )}
-          </HeaderButton>
+          </NavButton>
         </div>
       </HStack>
     </Box>

@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
 import { FC } from "react";
 
-export const HeaderButton: FC<ButtonProps> = ({ children, ...props }) => {
+export const NavButton: FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <Button
       backgroundColor="#FFD500"
