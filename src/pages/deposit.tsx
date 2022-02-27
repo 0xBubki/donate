@@ -19,6 +19,7 @@ import { Root } from '../components/Root'
 import { useState } from 'react'
 import { TokenList, schema } from '@uniswap/token-lists'
 import CoinList from '../assets/tokenlist.json'
+import { random } from 'lodash'
 
 const Tokens = CoinList.tokens
 const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
@@ -62,11 +63,7 @@ export default function Deposit() {
         <DetailsBox />
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center">
-        <Text color="white" fontSize="30px" align="left">
-          Your deposits
-        </Text>
-      </Flex>
+      <Flex flexDirection="column" align="center" justify="center"></Flex>
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
           Looking to donate instead?
@@ -298,11 +295,26 @@ const YourDeposits = () => (
       Your Deposits{' '}
     </Text>
 
-    <Flex flexDirection={'column'}>
-      {[1, 2, 3, 4, 5, 6].map((v) => (
-        <GridItem>
-          <h1>yo</h1>
-        </GridItem>
+    <Flex flexDirection={'row'} wrap="wrap" gap={4}>
+      {Object.values(Assets).map((asset: string) => (
+        <Flex
+          backgroundColor="#004B9B"
+          width="160px"
+          height="101px"
+          padding="10px"
+          borderRadius="5px"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="space-evenly"
+        >
+          <Text fontWeight="bold" fontSize="36px" color="white">
+            {(Math.random() * 100).toFixed(2)}
+          </Text>
+          <Text fontSize="16px" color="white">
+            {asset}
+          </Text>
+        </Flex>
       ))}
     </Flex>
   </Box>
