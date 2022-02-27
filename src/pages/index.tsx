@@ -1,5 +1,5 @@
 import {Button} from '@chakra-ui/button'
-import {Heading, Text, VStack} from '@chakra-ui/layout'
+import {Heading, Text, Spacer, Flex} from '@chakra-ui/layout'
 import type {NextPage} from 'next'
 import Head from 'next/head'
 import Root from "../components/Root";
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Root>
-                <VStack spacing={4} mt={250}>
+                <Flex direction={"column"} alignItems="center" >
                     <Heading color='#fff' style={{fontWeight: 'bold', fontSize: 48}}>Donate your yield to help {' '}
                         <span style={{color: '#FFD500'}}>Ukraine</span>
                     </Heading>
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
                             style={{ borderRadius: 25, height: 58, width: 251, marginTop: 20 }}>
                         Explore NFTs
                     </Button>
-                </VStack>
+                </Flex>
             </Root>
         </div>
     )
