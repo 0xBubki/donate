@@ -43,7 +43,7 @@ export default function Deposit() {
               </Flex>
             </Flex>
           ) : (
-            <Text paddingX={4}>Connect to wallet</Text>
+            <Text paddingX={4}>Connect wallet</Text>
           )}
         </Button>
       </HStack>
