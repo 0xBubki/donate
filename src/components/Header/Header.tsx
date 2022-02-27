@@ -2,7 +2,7 @@ import { Box, Flex, HStack, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/button';
 import { formatEther } from 'ethers/lib/utils';
 import Davatar from '@davatar/react';
-import { shorten } from '../..//utils/shorten';
+import { shorten } from '../../utils/shorten';
 import { useWallet } from '../../context/wallet-provider';
 
 const Header = () => {
@@ -44,15 +44,9 @@ const Header = () => {
           >
             {account ? (
               <Flex alignItems="center">
-                <Box>
-                  <Text paddingX={3}>
-                    {parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
-                  </Text>
-                </Box>
                 <Flex
                   alignItems="center"
                   gap={2}
-                  bg="gray.200"
                   paddingY={1}
                   paddingX={2}
                   marginRight={1}
