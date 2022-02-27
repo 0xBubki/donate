@@ -88,8 +88,14 @@ export const Header = () => {
 
           <HStack
             px={[4, 4, 0]}
+            pt={[2, 2, 0, 0]}
             display={['flex', 'flex', 'none']}
-            justifyContent={['space-between', 'flex-start', 'flex-start']}
+            justifyContent={[
+              'space-between',
+              'space-between',
+              'flex-start',
+              'flex-start'
+            ]}
           >
             {navItems.map((navItem, index) => (
               <NavItem key={index} href={navItem.href}>
