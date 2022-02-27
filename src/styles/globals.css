@@ -8,6 +8,8 @@ html, body, #__next, #root, main {
   @apply m-0 p-0 box-border;
   /* Fill screen, flex column, stretch items. */
   @apply min-h-screen flex-col;
+  /* Prevent text from breaking viewport. */
+  word-break: break-word;
 }
 /* purgecss end ignore */
 
