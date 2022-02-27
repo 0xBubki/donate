@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           </Box>
           <Link href="/donate" passHref>
             <Button as="a" size="lg" colorScheme="blue">
-              Donate Your Yeild
+              Donate Your Yield
             </Button>
           </Link>
         </VStack>
