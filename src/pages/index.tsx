@@ -26,22 +26,30 @@ const Home: NextPage = () => {
       </Head>
 
       <Flex direction="column" alignItems="center">
-        <Heading color="#fff" style={{ fontWeight: 'bold', fontSize: 48 }}>
-          {translate('title')} <span style={{ color: '#FFD500' }}>Ukraine</span>
+        <Heading color="#fff" fontWeight="bold" fontSize="48" textAlign="center">
+          {translate('title')}
+          {' '}
+          <span color="#FFD500">Ukraine</span>
         </Heading>
-        <Text color="#fff" fontWeight="bold" fontSize="96px">₴1,234,567.00</Text>
-        <Button
-          backgroundColor="#FFD500"
-          style={{ borderRadius: 25, height: 58, width: 194, marginTop: 50 }}
-        >
-          Donate Now {'>'}
-        </Button>
-        <Button
-          backgroundColor="#fff"
-          style={{ borderRadius: 25, height: 58, width: 251, marginTop: 20 }}
-        >
-          Explore NFTs
-        </Button>
+
+        <Text color="#fff" fontWeight="bold" fontSize="96px" textAlign="center">
+          Ξ123.4
+        </Text>
+
+        <Flex direction="column" alignItems="center">
+          <Button
+            backgroundColor="#FFD500"
+            style={{ borderRadius: 25, height: 58, width: 194, marginTop: 50 }}
+          >
+            Donate Now {'>'}
+          </Button>
+          <Button
+            backgroundColor="#fff"
+            style={{ borderRadius: 25, height: 58, width: 251, marginTop: 20 }}
+          >
+            Explore NFTs
+          </Button>
+        </Flex>
       </Flex>
     </Root>
   )
