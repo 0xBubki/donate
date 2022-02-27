@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.5",
+    "@davatar/react": "^1.9.0",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@ethersproject/units": "^5.5.0",
     "@usedapp/core": "^0.11.0",
     "framer-motion": "^6",
     "next": "12.1.0",
