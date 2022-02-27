@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Root from '../components/Root'
+import { Root } from '../components/Root'
 import { useTranslation } from '../utils/use-translation'
 
 const localisation = {

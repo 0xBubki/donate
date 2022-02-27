@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Flex } from '@chakra-ui/layout'
 import {Header} from '../Header'
 
-const Root: FC = ({ children }) => {
+export const Root: FC = ({ children }) => {
   return (
     <Flex
       position="absolute"
@@ -18,10 +18,10 @@ const Root: FC = ({ children }) => {
         width="100%"
         height="100%"
       >
-        {children}
+        <main>
+          {children}
+        </main>
       </Flex>
     </Flex>
   )
 }
-
-export default Root

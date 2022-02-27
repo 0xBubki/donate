@@ -3,7 +3,7 @@
  * styling, which it likes to do for the #__next selector.
  */
 /* purgecss start ignore */
-html, body, #__next, #root, main {
+html, body, #__next, #root {
   /* Border-box, no padding. */
   @apply m-0 p-0 box-border;
   /* Fill screen, flex column, stretch items. */
@@ -27,4 +27,15 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+main {
+  @apply px-4;
+}
+
+.nav-button {
+  @apply rounded-md;
+
+  height: 56px !important;
+  font-size: 14px !important;
 }
