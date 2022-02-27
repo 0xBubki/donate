@@ -3,7 +3,7 @@ import { TransactionReceipt } from '@ethersproject/providers'
 
 import MintingAbi from './abis/MintingAbi.json'
 
-class ERC20Service {
+class ERC721Service {
   provider: any
   contract: Contract
 
@@ -42,4 +42,4 @@ class ERC20Service {
   }
 }
 
-export { ERC20Service }
+export { ERC721Service }
