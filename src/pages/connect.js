@@ -1,14 +1,11 @@
-import { useLookupAddress } from '@usedapp/core'
 import { Flex, Text, Button, Stack } from '@chakra-ui/react'
-import { useEthers, useEtherBalance } from '@usedapp/core'
 import Davatar from '@davatar/react'
 import { formatEther } from '@ethersproject/units'
+import { useWallet } from '../context/wallet-provider'
 
-const Connect = () => {
+export default function Home() {
   const ConnectWalletButton = () => {
-    const { account, activateBrowserWallet } = useEthers()
-    const ens = useLookupAddress()
-    const etherBalance = useEtherBalance(account) || 0
+    const { account, activateBrowserWallet, ens, etherBalance } = useWallet()
 
     return (
       <Stack spacing={3} align="center">
@@ -45,5 +42,3 @@ const Connect = () => {
     </Flex>
   )
 }
-
-export default Connect
