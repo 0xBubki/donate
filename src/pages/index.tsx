@@ -15,8 +15,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="main">
-        <VStack spacing={4}>
-          <Heading>Donate Your Yeild To Help Ukraine</Heading>
+        <VStack spacing={10}>
+          <Heading>Donate your yield to help Ukraine</Heading>
           <Box padding={4} borderWidth={2} borderRadius={10}>
             <Image
               src="/ukraine-flag.jpeg"
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           </Box>
           <Link href="/donate" passHref>
             <Button as="a" size="lg" colorScheme="blue">
-              Donate Your Yield
+              Donate your yield
             </Button>
           </Link>
         </VStack>
