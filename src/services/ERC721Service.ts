@@ -34,6 +34,51 @@ class ERC721Service {
     return maxMint
   }
 
+  maxSupply = async (): Promise<string> => {
+    const maxSupply = await this.contract.MAX_SUPPLY()
+    return maxSupply
+  }
+
+  ukraineAddress = async (): Promise<string> => {
+    const ukraineAddress = await this.contract.UKRAINE_ETH_ADDRESS()
+    return ukraineAddress
+  }
+
+  balanceOf = async (account: string): Promise<string> => {
+    const balanceOf = await this.contract.balanceOf(account)
+    return balanceOf
+  }
+
+  baseUri = async (): Promise<string> => {
+    const baseUri = await this.contract.baseURI()
+    return baseUri
+  }
+
+  isSaleActive = async (): Promise<boolean> => {
+    const isSaleActive = await this.contract.isSaleActive()
+    return isSaleActive
+  }
+
+  name = async (): Promise<string> => {
+    const name = await this.contract.name()
+    return name
+  }
+
+  ownerOf = async (tokenId: BigNumber): Promise<string> => {
+    const ownerOf = await this.contract.ownerOf(tokenId)
+    return ownerOf
+  }
+
+  tokenUri = async (tokenId: BigNumber): Promise<string> => {
+    const tokenUri = await this.contract.tokenURI(tokenId)
+    return tokenUri
+  }
+
+  totalSupply = async (): Promise<string> => {
+    const totalSupply = await this.contract.totalSupply()
+    return totalSupply
+  }
+
   // WRITE FUNCTIONS
   // ===============
 
