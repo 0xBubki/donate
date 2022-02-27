@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
+import { Image } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Root } from '../components/Root'
@@ -36,9 +37,17 @@ const Home: NextPage = () => {
           {translate('title')} <span color="#FFD500">Ukraine</span>
         </Heading>
 
-        <Text color="#fff" fontWeight="bold" fontSize="96px" textAlign="center">
-          Ξ123.4
-        </Text>
+        <Flex alignItems="center" gap={5}>
+          <Image height={65} src="/eth.svg" alt="ETH Logo" />
+          <Text
+            color="#fff"
+            fontWeight="bold"
+            fontSize="96px"
+            textAlign="center"
+          >
+            123.4
+          </Text>
+        </Flex>
 
         <Flex direction="column" alignItems="center">
           <Button
