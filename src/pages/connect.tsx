@@ -1,7 +1,12 @@
+// Chakra UI
 import { Flex, Text, Button, Stack } from '@chakra-ui/react'
+
+// Web3
 import Davatar from '@davatar/react'
-import { formatEther } from '@ethersproject/units'
 import { useWallet } from '../context/wallet-provider'
+
+// Ethers
+import { formatEther } from '@ethersproject/units'
 
 export default function Home() {
   const ConnectWalletButton = () => {
