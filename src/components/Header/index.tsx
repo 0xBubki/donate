@@ -9,9 +9,16 @@ import {
   GlobeAltIcon,
   LoginIcon
 } from '@heroicons/react/outline'
+import { NavItem } from './NavItem'
 
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
+  const navItems = [
+    { text: 'Stake', href: '/stake' },
+    { text: 'Donate', href: '/donate' },
+    { text: 'Explore NFTs', href: '/explore' },
+    { text: 'About', href: '/about' }
+  ]
 
   return (
     <header>
@@ -22,6 +29,11 @@ export const Header = () => {
           </Box>
 
           <HStack>
+            {navItems.map((navItem, index) => (
+              <NavItem key={index} href={navItem.href}>
+                {navItem.text}
+              </NavItem>
+            ))}
             <NavButton>
               <Flex alignItems="center">
                 <GlobeAltIcon className="h-6 w-6" />
