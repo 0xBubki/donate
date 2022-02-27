@@ -15,7 +15,7 @@ export const Root: FC = ({ children }) => {
       <Flex
         position="absolute"
         direction="column"
-        height="100vh"
+        minHeight="100vh"
         width="100%"
         backgroundColor="#005BBB"
       >
