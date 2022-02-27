@@ -38,7 +38,6 @@ a {
 }
 
 main {
-  @apply px-4;
   display: flex !important;
   justify-content: center;
   align-items: center;
