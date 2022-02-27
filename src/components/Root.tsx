@@ -4,24 +4,22 @@ import Header from './Header'
 
 const Root: FC = ({ children }) => {
   return (
-    <Flex
-      position="absolute"
-      direction="column"
-      height="100%"
-      width="100%"
-      backgroundColor="#005BBB"
-    >
-      <Header />
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        width="100%"
-        height="100%"
-      >
-        {children}
-      </Flex>
-    </Flex>
+    <Box backgroundColor="#005BBB" minHeight="100vh" display="flex" flexDirection={"column"}>
+      <Header/>
+        <Box width="100%" height="100%" flexGrow={1} flexDirection="column" display="flex" justifyContent="space-evenly">
+          {children}
+        </Box>
+      <Footer/>
+    </Box>
   )
 }
 
 export default Root
+
+const Footer = () => {
+  return(
+    <Box width="100vw" display="flex" alignItems="center" justifyContent="center" mb="10px">
+      <h1>Hello this where the footer goes!</h1>
+    </Box>
+  )
+}

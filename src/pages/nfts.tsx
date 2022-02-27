@@ -1,26 +1,29 @@
 import { Flex, Spacer, Text, Box } from "@chakra-ui/react"
 import { Divider } from "@chakra-ui/react"
+import Link from "next/link"
+
 const NFTS = () => {
     return(
-        <Box display="flex" flexDirection="column" alignSelf="flex-start" width="80%">
-            <Box display="flex" alignSelf="flex-start !important" flexGrow={1}  flexDirection="column" width="100%" height="100%">
-                <Text 
-                    color="white"
-                    fontFamily='Montserrat'
-                    fontSize="5vh"
-                >
-                    Explore NFTs
-                </Text>
-                <Spacer/>
+        <>
+        <Box display="flex" alignSelf="center"  flexDirection="column" width="80%">
+            <Text 
+                color="white"
+                fontFamily='Montserrat'
+                fontSize="5vh"
+            >
+                Explore NFTs
+            </Text>
+            <Spacer/>
 
-                <NFTsNavBar/>
-                <Divider size="xl" color="white" />
-            </Box>
-
-            <Box height="50%">
-                <NFTDisplay/>
-            </Box>
+            <NFTsNavBar/>
+            <Spacer/>
+            <Divider size="xl" color="white" />
         </Box>
+
+        <Box height="50vh" width="80%" alignSelf="center" >
+            <NFTDisplay/>
+        </Box>
+        </>
     )
 }
 
@@ -41,14 +44,16 @@ const NFTsNavBar = () => {
 
 const Button = ({title, number}: {title: string, number: number}) => {
     return (
-        <Flex direction="row" fontSize="3vh" flexBasis="25%">
-            <Text pr="3">
-                {title}
-            </Text>
-            <Text opacity={0.6}>
-                {number}
-            </Text>
-        </Flex>
+        <Link href={title}>
+            <Flex direction="row" fontSize="3vh" flexBasis="25%" _hover={{ cursor: "pointer" }}>
+                <Text pr="3">
+                    {title}
+                </Text>
+                <Text opacity={0.6}>
+                    {number}
+                </Text>
+            </Flex>
+        </Link>
     )
 }
 
