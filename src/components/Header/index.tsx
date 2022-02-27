@@ -55,12 +55,9 @@ export const Header = () => {
             <HStack>
               <HStack
                 px={[4, 4, 0]}
-                display={['none', 'none', 'flex', 'flex']}
-                justifyContent={[
-                  'space-between',
-                  'space-between',
-                  'flex-start'
-                ]}
+                display={['none', 'none', 'none', 'flex']}
+                gap={[4, 4, 4, 6]}
+                mr={4}
                 width="auto"
               >
                 {navItems.map((navItem, index) => (
@@ -103,7 +100,7 @@ export const Header = () => {
               </NavButton>
               <NavButton
                 backgroundColor="transparent"
-                display={['flex', 'flex', 'none']}
+                display={['flex', 'flex', 'flex', 'none']}
                 color="white"
                 _hover={{
                   backgroundColor: 'rgba(255, 255, 255, 0.2)'
