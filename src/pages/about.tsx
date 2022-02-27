@@ -8,7 +8,7 @@ import { useTranslation } from '../utils/use-translation'
 // TODO - verify that these are the right keys
 
 const localisation = {
-  en: {
+  sp: {
     headerOne: 'Why you should care',
     paragraphOneA:
       'If you haven’t heard already, Ukraine is under attack by Russia. Help us in doing our part! 💪',
@@ -53,7 +53,7 @@ const localisation = {
     paragraphThree:
       'Przekazujemy cały zysk dla organizacji X. Adres kontraktu: 0x...........'
   },
-  sp: {
+  en: {
     headerOne: 'Por qué debería importarte',
     paragraphOneA:
       'Si aún no lo ha escuchado, Ucrania está siendo atacada por Rusia. ¡Ayúdanos a hacer nuestra parte! 💪',
@@ -84,72 +84,65 @@ const About: NextPage = () => {
   const translate = useTranslation(localisation)
 
   return (
-    <Root>
-      <Head>
-        <title>Donate | Help Ukraine</title>
-        <meta name="description" content="Donate your yield to help Ukraine" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Flex
-        direction="row"
-        width="100vw"
-        height="100%"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box>
-          <Box width="885px">
-            <Heading color="#fff" fontWeight="bold" fontSize="48">
-              {translate('headerOne')}
-            </Heading>
-            <Text
-              color="#fff"
-              fontWeight={400}
-              fontSize="20px"
-              mt="30px"
-              lineHeight="122%"
-            >
-              {translate('paragraphOneA')}
-              <br />
-              <Box mt="30px">{translate('paragraphOneB')}</Box>
-            </Text>
-          </Box>
-          <Box mt="88px" width="742px">
-            <Heading color="#fff" fontWeight="bold" fontSize="48">
-              {translate('headerTwo')}
-            </Heading>
-            <Text
-              color="#fff"
-              fontWeight={400}
-              fontSize="20px"
-              mt="30px"
-              lineHeight="122%"
-            >
-              {translate('paragraphTwoA')}
-              <br />
-              <Box mt="30px">{translate('paragraphTwoB')}</Box>
-            </Text>
-          </Box>
-          <Box mt="88px" width="670px">
-            <Heading color="#fff" fontWeight="bold" fontSize="48">
-              {translate('headerThree')}
-            </Heading>
-            <Text
-              color="#fff"
-              fontWeight={400}
-              fontSize="20px"
-              mt="30px"
-              lineHeight="122%"
-            >
-              {translate('paragraphThree')}
-            </Text>
-          </Box>
+    <Flex
+      direction="row"
+      width="100vw"
+      height="100%"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Box>
+        <Box width="885px">
+          <Heading color="#fff" fontWeight="bold" fontSize="48">
+            {translate('headerOne')}
+          </Heading>
+          <Text
+            color="#fff"
+            fontWeight={400}
+            fontSize="20px"
+            mt="30px"
+            lineHeight="122%"
+          >
+            {translate('paragraphOneA')}
+            <br />
+            <Box mt="30px">{translate('paragraphOneB')}</Box>
+          </Text>
         </Box>
-        <Box>
-          <Image src="/wewantyouryield.png" />
+        <Box mt="88px" width="742px">
+          <Heading color="#fff" fontWeight="bold" fontSize="48">
+            {translate('headerTwo')}
+          </Heading>
+          <Text
+            color="#fff"
+            fontWeight={400}
+            fontSize="20px"
+            mt="30px"
+            lineHeight="122%"
+          >
+            {translate('paragraphTwoA')}
+            <br />
+            <Box mt="30px">{translate('paragraphTwoB')}</Box>
+          </Text>
         </Box>
-      </Flex>
-    </Root>
+        <Box mt="88px" width="670px">
+          <Heading color="#fff" fontWeight="bold" fontSize="48">
+            {translate('headerThree')}
+          </Heading>
+          <Text
+            color="#fff"
+            fontWeight={400}
+            fontSize="20px"
+            mt="30px"
+            lineHeight="122%"
+          >
+            {translate('paragraphThree')}
+          </Text>
+        </Box>
+      </Box>
+      <Box>
+        <Image src="/wewantyouryield.png" />
+      </Box>
+    </Flex>
   )
 }
 
