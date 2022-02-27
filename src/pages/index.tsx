@@ -1,9 +1,9 @@
-import { Button } from "@chakra-ui/button";
-import { Box, Heading, VStack } from "@chakra-ui/layout";
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { Button } from '@chakra-ui/button'
+import { Box, Heading, VStack } from '@chakra-ui/layout'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
         </VStack>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

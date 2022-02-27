@@ -8,7 +8,7 @@ import {
   AccordionPanel,
   Box,
   Text
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 const config = [
   { question: 'foo', answer: 'bar' },
@@ -19,13 +19,13 @@ const config = [
   { question: 'foo', answer: 'bar' },
   { question: 'foo', answer: 'bar' },
   { question: 'foo', answer: 'bar' },
-  { question: 'foo', answer: 'bar' },
+  { question: 'foo', answer: 'bar' }
 ]
 
 const FaqSection = () => (
-  <Accordion style={{width: '80vw'}} defaultIndex={[]} allowMultiple>
+  <Accordion style={{ width: '80vw' }} defaultIndex={[]} allowMultiple>
     {config.map(({ question, answer }, index) => (
-      <FaqItem question={question} answer={answer} key={index}/>
+      <FaqItem question={question} answer={answer} key={index} />
     ))}
   </Accordion>
 )
@@ -35,16 +35,12 @@ const FaqItem = ({ question, answer }) => {
     <AccordionItem>
       <AccordionButton>
         <Box flex="1" textAlign="left">
-          <Text color="white">
-            {question}
-          </Text>
+          <Text color="white">{question}</Text>
         </Box>
-        <AccordionIcon color="white"/>
+        <AccordionIcon color="white" />
       </AccordionButton>
       <AccordionPanel pb={4}>
-        <Text color="white">
-          {answer}
-        </Text>
+        <Text color="white">{answer}</Text>
       </AccordionPanel>
     </AccordionItem>
   )
@@ -60,9 +56,9 @@ const Faq = () => (
     bg="blue.900"
     pt={20}
   >
-    <Text color='white'>FAQs</Text>
+    <Text color="white">FAQs</Text>
     <Flex>
-      <FaqSection/>
+      <FaqSection />
     </Flex>
   </Flex>
 )

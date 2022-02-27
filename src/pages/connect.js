@@ -1,12 +1,12 @@
-import { useLookupAddress } from '@usedapp/core';
-import { Flex, Text, Button, Stack } from '@chakra-ui/react';
-import { useEthers, useEtherBalance } from '@usedapp/core';
+import { useLookupAddress } from '@usedapp/core'
+import { Flex, Text, Button, Stack } from '@chakra-ui/react'
+import { useEthers, useEtherBalance } from '@usedapp/core'
 import Davatar from '@davatar/react'
 import { formatEther } from '@ethersproject/units'
 
 const Connect = () => {
   const ConnectWalletButton = () => {
-    const { account, activateBrowserWallet } = useEthers();
+    const { account, activateBrowserWallet } = useEthers()
     const ens = useLookupAddress()
     const etherBalance = useEtherBalance(account) || 0
 
@@ -19,12 +19,8 @@ const Connect = () => {
               address={account}
               generatedAvatarType="jazzicon"
             />
-            <Text color="white">
-              Hello, {ens || account}!
-            </Text>
-            <Text color="white">
-              You have {formatEther(etherBalance)} ETH
-            </Text>
+            <Text color="white">Hello, {ens || account}!</Text>
+            <Text color="white">You have {formatEther(etherBalance)} ETH</Text>
           </>
         ) : (
           <Button size="lg" onClick={() => activateBrowserWallet()}>
@@ -45,9 +41,9 @@ const Connect = () => {
       bg="blue.900"
       pt={20}
     >
-      <ConnectWalletButton/>
+      <ConnectWalletButton />
     </Flex>
   )
 }
 
-export default Connect;
+export default Connect
