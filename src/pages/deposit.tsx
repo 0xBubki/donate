@@ -3,14 +3,24 @@ import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
 import { formatEther } from 'ethers/lib/utils'
 import { useWallet } from '../context/wallet-provider'
 import { shorten } from '../utils/shorten'
+import {
+  SimpleGrid,
+  Tabs,
+  TabList,
+  Tab,
+  MenuList,
+  MenuItem
+} from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import { LoginIcon } from '@heroicons/react/outline'
+import { Root } from '../components/Root'
 
 export default function Deposit() {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
   return (
-    <Box>
-      <HStack
+    <Root>
+      {/* <Box> */}
+      {/* <HStack
         borderWidth={1}
         shadow="sm"
         justifyContent="space-between"
@@ -51,6 +61,106 @@ export default function Deposit() {
           )}
         </Button>
       </HStack>
-    </Box>
+    </Box> */}
+      <SimpleGrid columns={2} spacing={10}>
+        <Flex
+          width="50vw"
+          flexDirection="column"
+          align="center"
+          justify="center"
+        >
+          <RedeemSwitch />
+
+          <DepositBox>
+            <BoxDepositBox />
+          </DepositBox>
+        </Flex>
+        <Flex
+          width="50vw"
+          flexDirection="column"
+          align="center"
+          justify="center"
+        >
+          Hello
+        </Flex>
+      </SimpleGrid>
+    </Root>
   )
 }
+
+const RedeemSwitch = () => (
+  <Tabs
+    variant="soft-rounded"
+    backgroundColor={'white'}
+    borderRadius="25px"
+    width="524px"
+    marginBottom="20px"
+  >
+    <TabList>
+      <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
+        {' '}
+        Stake{' '}
+      </Tab>
+      <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
+        {' '}
+        Unstake{' '}
+      </Tab>
+    </TabList>
+  </Tabs>
+)
+
+type DepositBoxProps = {
+  children: React.ReactNode
+}
+
+const DepositBox = ({ children }: DepositBoxProps) => (
+  <Box
+    borderRadius="25px"
+    background="rgba(0, 0, 0, 0.2)"
+    width="524px"
+    height="423px"
+    padding="20px"
+    display="flex"
+    flexDirection="column"
+    alignItems={'center'}
+    alignContent="center"
+  >
+    <Box width="100%">
+      <Text color="white" fontSize="48px" float="left">
+        {' '}
+        Stake{' '}
+      </Text>
+    </Box>
+
+    {children}
+  </Box>
+)
+
+const BoxDepositBox = () => (
+  <Box
+    backgroundColor="rgba(255,255,255,0.2)"
+    width="455px"
+    height="140px"
+    borderRadius="20px"
+    display="flex"
+    flexDirection="row"
+    alignItems="center"
+    justifyContent="space-around"
+  >
+    <Box color="white">
+      <Text fontSize="36px">0.05</Text>
+      <Text color="#DADADA"> balance: 0.02</Text>
+    </Box>
+
+    <Box color="white">
+      <AssetMenu />
+    </Box>
+  </Box>
+)
+
+const AssetMenu = () => (
+  <MenuList>
+    <MenuItem>Download</MenuItem>
+    <MenuItem>Create a Copy</MenuItem>
+  </MenuList>
+)
