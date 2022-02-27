@@ -22,14 +22,15 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 
+const navItems = [
+  { text: 'Stake', href: '/stake' },
+  { text: 'Donate', href: '/donate' },
+  { text: 'Explore NFTs', href: '/explore' },
+  { text: 'About', href: '/about' }
+]
+
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
-  const navItems = [
-    { text: 'Stake', href: '/stake' },
-    { text: 'Donate', href: '/donate' },
-    { text: 'Explore NFTs', href: '/explore' },
-    { text: 'About', href: '/about' }
-  ]
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <header>
