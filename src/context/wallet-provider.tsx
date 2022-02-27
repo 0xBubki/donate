@@ -1,6 +1,10 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import { useEtherBalance, useEthers, useLookupAddress } from '@usedapp/core'
 import React from 'react'
+
+// Ethers
+import { BigNumber } from '@ethersproject/bignumber'
+
+// UseDapp
+import { useEtherBalance, useEthers, useLookupAddress } from '@usedapp/core'
 
 type IWalletProviderContext = {
   activateBrowserWallet: () => void
