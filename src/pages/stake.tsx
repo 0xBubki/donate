@@ -30,8 +30,30 @@ const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
   return prev
 }, {})
 
+enum DepositMode {
+  WITHDRAW,
+  DEPOSIT
+}
+
+interface Props {
+  mode: DepositMode
+}
+
 export default function Deposit() {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
+
+  const [stakingMode, setStakingMode] = useState<DepositMode>(
+    DepositMode.DEPOSIT
+  )
+
+  function tabChanged() {
+    if (stakingMode === DepositMode.WITHDRAW) {
+      setStakingMode(DepositMode.DEPOSIT)
+    } else {
+      setStakingMode(DepositMode.WITHDRAW)
+    }
+  }
+
   return (
     <SimpleGrid
       columns={{
@@ -42,25 +64,54 @@ export default function Deposit() {
       }}
       spacing={10}
     >
-      <Flex flexDirection="column" align="center" justify="center">
-        <RedeemSwitch />
-        <DepositBox>
+      <Flex flexDirection="column" align="center" justify="center" width="50vw">
+        <RedeemSwitch onChange={tabChanged} />
+        <DepositBox mode={stakingMode}>
           <BoxDepositBox />
-          <Button
-            _hover={{ color: 'black', background: 'white' }}
-            backgroundColor="#06927b"
-            color="white"
-            width="455px"
-            height="80px"
-          >
-            <Text fontSize="3xl"> Stake </Text>
-          </Button>
+          {stakingMode === DepositMode.DEPOSIT ? (
+            <>
+              <Button
+                _hover={{ color: 'black', background: 'white' }}
+                backgroundColor="#06927b"
+                color="white"
+                width="455px"
+                height="80px"
+              >
+                <Text fontSize="3xl"> Stake </Text>
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                _hover={{ color: 'black', background: 'white' }}
+                backgroundColor="#06927b"
+                color="white"
+                width="455px"
+                height="80px"
+              >
+                <Text fontSize="3xl"> Unstake </Text>
+              </Button>
+
+              <Button
+                _hover={{ color: 'black', background: 'white' }}
+                backgroundColor="#FFF"
+                color="white"
+                width="455px"
+                height="80px"
+              >
+                <Text fontSize="3xl" color="#000">
+                  {' '}
+                  Donate Principal{' '}
+                </Text>
+              </Button>
+            </>
+          )}
         </DepositBox>
 
         <YourDeposits />
       </Flex>
       <Flex flexDirection="column" align="center" justify="center">
-        <DetailsBox />
+        <DetailsBox mode={stakingMode} />
       </Flex>
 
       <Flex flexDirection="column" align="center" justify="center"></Flex>
@@ -77,16 +128,8 @@ export default function Deposit() {
   )
 }
 
-const DetailsBox = () => (
-  <Flex
-    flexDirection="column"
-    align="left"
-    justify="center"
-    width="100%"
-    flexDirection={{
-      base: 'column'
-    }}
-  >
+const DetailsBox = (props: Props) => (
+  <Flex flexDirection="column" align="left" justify="center" width="100%">
     <Flex
       justify="space-between"
       gap="18px"
@@ -132,25 +175,25 @@ const DetailsBox = () => (
       </Box>
     </Flex>
     <Text color="white" fontSize="30px">
-      Get your yield on. Degen for a good cause.
-    </Text>
-    <Text color="white" fontSize="30px">
-      [insert copy in terms of yield to donate passive feeder collecting yields
-      as they are being harvested to funnel into ukraine]
-    </Text>
-    <Text color="white" fontSize="30px">
-      Join the movement: deposit, yield, support!
+      {props.mode === DepositMode.DEPOSIT
+        ? `Get your yield on. Degen for a good cause.\n
+        [insert copy in terms of yield to donate passive feeder collecting yields
+          as they are being harvested to funnel into ukraine]\n
+          Join the movement: deposit, yield, support!
+          `
+        : `Withdraw the exact amount of assets that you deposited`}
     </Text>
   </Flex>
 )
 
-const RedeemSwitch = () => (
+const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
   <Tabs
     variant="soft-rounded"
     backgroundColor={'white'}
     borderRadius="25px"
     width="524px"
     marginBottom="20px"
+    onChange={onChange}
   >
     <TabList>
       <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
@@ -167,9 +210,10 @@ const RedeemSwitch = () => (
 
 type DepositBoxProps = {
   children: React.ReactNode
+  mode: DepositMode
 }
 
-const DepositBox = ({ children }: DepositBoxProps) => (
+const DepositBox = ({ children, mode }: DepositBoxProps) => (
   <Box
     borderRadius="25px"
     background="rgba(0, 0, 0, 0.2)"
@@ -185,7 +229,7 @@ const DepositBox = ({ children }: DepositBoxProps) => (
     <Box width="100%">
       <Text color="white" fontSize="48px" float="left">
         {' '}
-        Stake{' '}
+        {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
       </Text>
     </Box>
 
