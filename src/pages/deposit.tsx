@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/button'
-import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Text, Grid, GridItem } from '@chakra-ui/layout'
 import { formatEther } from 'ethers/lib/utils'
 import { useWallet } from '../context/wallet-provider'
 import { shorten } from '../utils/shorten'
@@ -10,59 +10,29 @@ import {
   Tab,
   MenuList,
   MenuItem,
-  Menu
+  Menu,
+  MenuButton
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
-import { LoginIcon } from '@heroicons/react/outline'
+import { ChevronDownIcon, LoginIcon } from '@heroicons/react/outline'
 import { Root } from '../components/Root'
+import { useState } from 'react'
+import { TokenList, schema } from '@uniswap/token-lists'
+import CoinList from '../assets/tokenlist.json'
+
+const Tokens = CoinList.tokens
+const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
+const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
+  if (assetList.includes(symbol)) {
+    prev[symbol] = logoURI
+  }
+  return prev
+}, {})
 
 export default function Deposit() {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
   return (
     <Root>
-      {/* <Box> */}
-      {/* <HStack
-        borderWidth={1}
-        shadow="sm"
-        justifyContent="space-between"
-        px={10}
-        py={4}
-      >
-        <Box fontWeight="bold" fontSize={34}>
-          uDai
-        </Box>
-        <Button onClick={activateBrowserWallet} padding={0} rounded="md">
-          {account ? (
-            <Flex alignItems="center">
-              <Box>
-                <Text paddingX={3}>
-                  {parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
-                </Text>
-              </Box>
-              <Flex
-                alignItems="center"
-                gap={2}
-                bg="gray.200"
-                paddingY={1}
-                paddingX={2}
-                marginRight={1}
-                rounded="md"
-              >
-                <Box>
-                  <Davatar size={25} address={account} />
-                </Box>
-                <Text>{ens || shorten(account)}</Text>
-              </Flex>
-            </Flex>
-          ) : (
-            <Flex alignItems="center" gap={2}>
-              <Text paddingX={4}>Connect wallet</Text>
-              <LoginIcon className="h-5 w-5" />
-            </Flex>
-          )}
-        </Button>
-      </HStack>
-    </Box> */}
       <SimpleGrid columns={2} spacing={10}>
         <Flex
           width="50vw"
@@ -74,7 +44,18 @@ export default function Deposit() {
 
           <DepositBox>
             <BoxDepositBox />
+            <Button
+              _hover={{ color: 'black', background: 'white' }}
+              backgroundColor="#06927b"
+              color="white"
+              width="455px"
+              height="80px"
+            >
+              <Text fontSize="3xl"> Stake </Text>
+            </Button>
           </DepositBox>
+
+          <YourDeposits />
         </Flex>
         <Flex
           width="50vw"
@@ -123,8 +104,9 @@ const DepositBox = ({ children }: DepositBoxProps) => (
     padding="20px"
     display="flex"
     flexDirection="column"
-    alignItems={'center'}
+    alignItems="center"
     alignContent="center"
+    justifyContent="space-around"
   >
     <Box width="100%">
       <Text color="white" fontSize="48px" float="left">
@@ -159,13 +141,92 @@ const BoxDepositBox = () => (
   </Box>
 )
 
-const AssetMenu = () => (
-  <Menu>
-    {({ isOpen }) => (
-      <MenuList>
-        <MenuItem>Download</MenuItem>
-        <MenuItem>Create a Copy</MenuItem>
-      </MenuList>
-    )}
-  </Menu>
+enum Assets {
+  eth = 'WETH',
+  usdc = 'USDC',
+  usdt = 'USDT',
+  dai = 'DAI',
+  btc = 'WBTC'
+}
+
+const eth_2_assets = {
+  WETH: { text: 'WETH', symbol: './' },
+  USDC: { text: 'USDC', symbol: './' },
+  USDT: { text: 'USDT', symbol: './' },
+  DAI: { text: 'DAI', symbol: './' },
+  WBTC: { text: 'WBTC', symbol: './' }
+}
+
+const AssetMenu = () => {
+  const [selected, select] = useState<Assets>(Assets.eth)
+
+  return (
+    <Menu>
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            _active={{ bg: '5c8abc' }}
+            _hover={{ bg: '#5c8abc' }}
+            _focus={{ bg: '#5c8abc' }}
+            display="flex"
+            justifyContent="space-around"
+            width="150px"
+            alignItems="center"
+            backgroundColor="#5c8abc"
+            isActive={isOpen}
+            as={Button}
+          >
+            <Box
+              width="100%"
+              height="100%"
+              display="flex"
+              justifyContent="space-around"
+              alignContent="center"
+            >
+              <img src={TokenSymbols[selected]} alt={selected} width="20%" />
+
+              {eth_2_assets[selected].text}
+
+              <ChevronDownIcon width="25px" />
+            </Box>
+          </MenuButton>
+
+          <MenuList
+            backgroundColor="#5c8abc"
+            _active={{ bg: '5c8abc' }}
+            _focus={{ bg: '#5c8abc' }}
+          >
+            {Object.values(Assets).map((val) => (
+              <MenuItem
+                _focus={{ bg: '#5c8abc' }}
+                _active={{ bg: '5c8abc' }}
+                _hover={{ bg: '#5c8abc' }}
+                onClick={(_) => select(val)}
+              >
+                {' '}
+                {val}{' '}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </>
+      )}
+    </Menu>
+  )
+}
+
+const YourDeposits = () => (
+  <Box width="524px">
+    <Text fontSize="36px" color="white">
+      {' '}
+      Your Deposits{' '}
+    </Text>
+
+    <Flex flexDirection={'column'}>
+      {[1, 2, 3, 4, 5, 6].map((v) => (
+        <GridItem>
+          <h1>yo</h1>
+        </GridItem>
+      ))}
+    </Flex>
+  </Box>
 )
