@@ -7,6 +7,7 @@ import { useWallet } from '../context/wallet-provider'
 
 // Ethers
 import { formatEther } from '@ethersproject/units'
+import { LoginIcon } from '@heroicons/react/outline'
 
 export default function Home() {
   const ConnectWalletButton = () => {
@@ -25,8 +26,15 @@ export default function Home() {
             <Text color="white">You have {formatEther(etherBalance)} ETH</Text>
           </>
         ) : (
-          <Button size="lg" onClick={() => activateBrowserWallet()}>
-            Connect Wallet
+          <Button
+            size="lg"
+            gap={2}
+            display="flex"
+            alignItems="center"
+            onClick={() => activateBrowserWallet()}
+          >
+            <Text>Connect Wallet</Text>
+            <LoginIcon className="h-5 w-5" />
           </Button>
         )}
       </Stack>

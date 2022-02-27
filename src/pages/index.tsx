@@ -4,6 +4,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Root } from '../components/Root'
 import { useTranslation } from '../utils/use-translation'
+import { ArrowRightIcon } from '@heroicons/react/outline'
 
 const localisation = {
   en: {
@@ -26,10 +27,13 @@ const Home: NextPage = () => {
       </Head>
 
       <Flex direction="column" alignItems="center">
-        <Heading color="#fff" fontWeight="bold" fontSize="48" textAlign="center">
-          {translate('title')}
-          {' '}
-          <span color="#FFD500">Ukraine</span>
+        <Heading
+          color="#fff"
+          fontWeight="bold"
+          fontSize="48"
+          textAlign="center"
+        >
+          {translate('title')} <span color="#FFD500">Ukraine</span>
         </Heading>
 
         <Text color="#fff" fontWeight="bold" fontSize="96px" textAlign="center">
@@ -40,8 +44,12 @@ const Home: NextPage = () => {
           <Button
             backgroundColor="#FFD500"
             style={{ borderRadius: 25, height: 58, width: 194, marginTop: 50 }}
+            display="flex"
+            alignItems="center"
+            gap={2}
           >
-            Donate Now {'>'}
+            <Text>Donate Now</Text>
+            <ArrowRightIcon className="h-5 w-5" />
           </Button>
           <Button
             backgroundColor="#fff"

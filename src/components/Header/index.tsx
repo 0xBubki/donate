@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
-import { Button } from '@chakra-ui/button'
-import { formatEther } from 'ethers/lib/utils'
 import Davatar from '@davatar/react'
 import { shorten } from '../../utils/shorten'
 import { useWallet } from '../../context/wallet-provider'
-import { NavButton } from "./NavButton"
+import { NavButton } from './NavButton'
+import {
+  ChevronDownIcon,
+  GlobeAltIcon,
+  LoginIcon
+} from '@heroicons/react/outline'
 
 export const Header = () => {
-  const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
+  const { activateBrowserWallet, ens, account } = useWallet()
 
   return (
     <header>
@@ -21,24 +24,13 @@ export const Header = () => {
           <HStack>
             <NavButton>
               <Flex alignItems="center">
-                <img
-                  src="https://img.icons8.com/material-outlined/50/000000/globe--v2.png"
-                  style={{ height: 29 }}
-                  alt=""
-                />
+                <GlobeAltIcon className="h-6 w-6" />
                 <Text marginX="8px">EN</Text>
-                <img
-                  src="https://img.icons8.com/ios-glyphs/30/000000/chevron-down.png"
-                  style={{ height: 14, paddingRight: 8 }}
-                  alt=""
-                />
+                <ChevronDownIcon className="h-4 w-4" />
               </Flex>
             </NavButton>
 
-            <NavButton
-              ml="30px"
-              onClick={activateBrowserWallet}
-            >
+            <NavButton ml="30px" onClick={activateBrowserWallet}>
               {account ? (
                 <Flex alignItems="center">
                   <Flex
@@ -56,7 +48,10 @@ export const Header = () => {
                   </Flex>
                 </Flex>
               ) : (
-                <Text paddingX={4}>Connect wallet</Text>
+                <Flex alignItems="center" gap={2} paddingX={4}>
+                  <Text>Connect wallet</Text>
+                  <LoginIcon className="h-5 w-5" />
+                </Flex>
               )}
             </NavButton>
           </HStack>

@@ -1,9 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
  * Ensure the page fills the viewport. Prevent purgecss from removing this
  * styling, which it likes to do for the #__next selector.
  */
 /* purgecss start ignore */
-html, body, #__next, #root {
+html,
+body,
+#__next,
+#root {
   /* Border-box, no padding. */
   @apply m-0 p-0 box-border;
   /* Fill screen, flex column, stretch items. */

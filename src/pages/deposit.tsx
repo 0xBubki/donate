@@ -1,9 +1,10 @@
 import { Button } from '@chakra-ui/button'
-import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
 import { formatEther } from 'ethers/lib/utils'
 import { useWallet } from '../context/wallet-provider'
 import { shorten } from '../utils/shorten'
 import Davatar from '@davatar/react'
+import { LoginIcon } from '@heroicons/react/outline'
 
 export default function Deposit() {
   const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
@@ -43,7 +44,10 @@ export default function Deposit() {
               </Flex>
             </Flex>
           ) : (
-            <Text paddingX={4}>Connect wallet</Text>
+            <Flex alignItems="center" gap={2}>
+              <Text paddingX={4}>Connect wallet</Text>
+              <LoginIcon className="h-5 w-5" />
+            </Flex>
           )}
         </Button>
       </HStack>
