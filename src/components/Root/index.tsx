@@ -7,9 +7,9 @@ export const Root: FC = ({ children }) => {
     <Flex
       position="absolute"
       direction="column"
-      height="100vh"
       width="100%"
       backgroundColor="#005BBB"
+      minHeight="100vh"
     >
       <Header />
       <Flex width="100%" height="100%">
