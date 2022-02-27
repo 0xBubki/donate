@@ -44,15 +44,9 @@ const Header = () => {
           >
             {account ? (
               <Flex alignItems="center">
-                <Box>
-                  <Text paddingX={3}>
-                    {parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
-                  </Text>
-                </Box>
                 <Flex
                   alignItems="center"
                   gap={2}
-                  bg="gray.200"
                   paddingY={1}
                   paddingX={2}
                   marginRight={1}
