@@ -1,14 +1,11 @@
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Root } from '../components/Root'
 import { useTranslation } from '../utils/use-translation'
 
 // TODO - verify that these are the right keys
-
 const localisation = {
-  sp: {
+  en: {
     headerOne: 'Why you should care',
     paragraphOneA:
       'If you haven’t heard already, Ukraine is under attack by Russia. Help us in doing our part! 💪',
@@ -53,7 +50,7 @@ const localisation = {
     paragraphThree:
       'Przekazujemy cały zysk dla organizacji X. Adres kontraktu: 0x...........'
   },
-  en: {
+  sp: {
     headerOne: 'Por qué debería importarte',
     paragraphOneA:
       'Si aún no lo ha escuchado, Ucrania está siendo atacada por Rusia. ¡Ayúdanos a hacer nuestra parte! 💪',
