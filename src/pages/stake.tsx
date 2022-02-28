@@ -331,19 +331,16 @@ const AssetMenu = () => {
 
 const YourDeposits = () => (
   <Box width="524px">
-    <Text fontSize="36px" color="white">
-      {' '}
-      Your Deposits{' '}
+    <Text mt={5} mb={4} fontSize="36px" fontWeight="bold" color="white">
+      Your Deposits
     </Text>
-
     <Flex flexDirection={'row'} wrap="wrap" gap={4}>
       {Object.values(Assets).map((asset: string, index) => (
         <Flex
           backgroundColor="#004B9B"
-          width="160px"
-          height="101px"
-          padding="10px"
-          borderRadius="5px"
+          paddingX="25px"
+          paddingY="15px"
+          borderRadius="25px"
           display="flex"
           flexDirection="column"
           alignItems="center"
