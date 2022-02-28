@@ -17,7 +17,7 @@ export const InputNumber = ({ onChange }: Props) => {
       step: 1,
       defaultValue: 1,
       min: 1,
-      max: 20,
+      max: 100,
       precision: 0,
       focusInputOnChange: false,
       onChange: (stringVal, numVal) => onChange(numVal)

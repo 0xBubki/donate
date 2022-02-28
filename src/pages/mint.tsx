@@ -25,7 +25,7 @@ type MintState = 'inactive' | 'active' | 'finished'
 const MintPage: NextPage = () => {
   const router = useRouter()
   const [mintState, setMintState] = useState<MintState>()
-  const [walletConnected, setWalletConnected] = useState(false)
+  const [walletConnected, setWalletConnected] = useState(true)
   const [mintCount, setMintCount] = useState(1)
   const translate = useTranslation(localisation)
 
@@ -113,7 +113,7 @@ const MintPage: NextPage = () => {
                     >
                       {translate('mintButton')}
                     </Button>
-                    <Text textAlign="center">Max 20 per transaction</Text>
+                    <Text textAlign="center">Max 100 per transaction</Text>
                   </VStack>
                 </VStack>
               )}
@@ -146,6 +146,8 @@ const MintPage: NextPage = () => {
                     href="https://twitter.com/"
                     target="_blank"
                     textColor="black"
+                    fontSize="24px"
+                    p="27px"
                     bg="white"
                     rounded="xl"
                   >
@@ -163,6 +165,8 @@ const MintPage: NextPage = () => {
                     target="_blank"
                     textColor="black"
                     bg="white"
+                    fontSize="24px"
+                    p="27px"
                     rounded="xl"
                     rightIcon={
                       <Image
