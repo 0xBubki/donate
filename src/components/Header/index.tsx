@@ -59,7 +59,7 @@ export const Header = () => {
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
         <HStack justifyContent={['space-between']} w={'full'}>
           <Box ml={['none', '208px']} fontWeight="bold" fontSize={[20, 20, 20]}>
-            <Link href="/">🇺🇦 S33DS</Link>
+            <Link href="/">🇺🇦 BUBKI</Link>
           </Box>
 
           <HStack>

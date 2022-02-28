@@ -66,14 +66,19 @@ const localisation = {
       'Estamos donando todo el rendimiento generado a la organización X. Dirección del contrato: 0x...........'
   },
   fr: {
-    headerOne: '',
-    paragraphOneA: '',
-    paragraphOneB: '',
-    headerTwo: '',
-    paragraphTwoA: '',
-    paragraphTwoB: '',
-    headerThree: '',
-    paragraphThree: ''
+    headerOne: 'Pourquoi vous devriez vous en soucier',
+    paragraphOneA:
+      'Si vous ne l’avez pas déjà entendu, l’Ukraine est attaquée par la Russie. Aidez-nous à faire notre part! 💪',
+    paragraphOneB:
+      'Rejoignez-nous et la communauté crypto pour fournir un soutien humanitaire à l’Ukraine avec l’aide du DeFi.',
+    headerTwo: 'Comment ça fonctionne',
+    paragraphTwoA:
+      'Déléguez vos fonds pour aider à soutenir les Ukrainiens pendant cette rude période.',
+    paragraphTwoB:
+      'Le projet Sunflower vous permet d’investir votre argent dans un pool qui génère des intérêts. Vous conservez toujours le montant exact que vous avez investi et pouvez le récupérer à tout moment. Nous prenons les rendements réalisés en utilisant vos actifs comme garantie pour soutenir les efforts de défense de l’Ukraine.',
+    headerThree: 'Où va l’argent',
+    paragraphThree:
+      'Nous faisons don de tout le rendement généré à l’organisation X. Adresse du contrat: 0x...........'
   }
 }
 
