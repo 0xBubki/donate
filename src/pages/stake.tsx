@@ -290,6 +290,7 @@ const AssetMenu = () => {
             display="flex"
             justifyContent="space-around"
             width="150px"
+            borderRadius="15px"
             alignItems="center"
             backgroundColor="#5c8abc"
             isActive={isOpen}
