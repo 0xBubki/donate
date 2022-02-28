@@ -62,14 +62,14 @@ const Leaderboard: NextPage = () => {
     sort: (
       arg0: (a: { value: number }, b: { value: number }) => number
     ) => SetStateAction<never[]>
-    slice(number: number, number2: number): any
   }) => {
     setLeaders(
       arrayOfTransactions
-        ?.slice(0, 50)
         ?.sort(
           (a: { value: number }, b: { value: number }) => b?.value - a?.value
+          // @ts-ignore
         )
+        .slice(0, 50)
     )
   }
 
