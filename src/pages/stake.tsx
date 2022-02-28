@@ -1,8 +1,6 @@
 import { Button } from '@chakra-ui/button'
-import { Box, Flex, HStack, Text, Grid, GridItem } from '@chakra-ui/layout'
-import { formatEther } from 'ethers/lib/utils'
+import { Box, Flex, Text } from '@chakra-ui/layout'
 import { useWallet } from '../context/wallet-provider'
-import { shorten } from '../utils/shorten'
 import {
   SimpleGrid,
   Tabs,
@@ -13,16 +11,13 @@ import {
   Menu,
   MenuButton
 } from '@chakra-ui/react'
-import Davatar from '@davatar/react'
-import { ChevronDownIcon, LoginIcon } from '@heroicons/react/outline'
-import { Root } from '../components/Root'
+import { ChevronDownIcon } from '@heroicons/react/outline'
 import { useState } from 'react'
-import { TokenList, schema } from '@uniswap/token-lists'
 import CoinList from '../assets/tokenlist.json'
-import { random } from 'lodash'
 
 const Tokens = CoinList.tokens
 const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
+
 const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
   if (assetList.includes(symbol)) {
     prev[symbol] = logoURI
@@ -40,8 +35,6 @@ interface Props {
 }
 
 export default function Deposit() {
-  const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
-
   const [stakingMode, setStakingMode] = useState<DepositMode>(
     DepositMode.DEPOSIT
   )
@@ -114,7 +107,7 @@ export default function Deposit() {
         <DetailsBox mode={stakingMode} />
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center"></Flex>
+      <Flex flexDirection="column" align="center" justify="center" />
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
           Looking to donate instead?
@@ -314,12 +307,13 @@ const AssetMenu = () => {
             _active={{ bg: '5c8abc' }}
             _focus={{ bg: '#5c8abc' }}
           >
-            {Object.values(Assets).map((val) => (
+            {Object.values(Assets).map((val, index) => (
               <MenuItem
                 _focus={{ bg: '#5c8abc' }}
                 _active={{ bg: '5c8abc' }}
                 _hover={{ bg: '#5c8abc' }}
                 onClick={(_) => select(val)}
+                key={index}
               >
                 {' '}
                 {val}{' '}
@@ -340,7 +334,7 @@ const YourDeposits = () => (
     </Text>
 
     <Flex flexDirection={'row'} wrap="wrap" gap={4}>
-      {Object.values(Assets).map((asset: string) => (
+      {Object.values(Assets).map((asset: string, index) => (
         <Flex
           backgroundColor="#004B9B"
           width="160px"
@@ -351,6 +345,7 @@ const YourDeposits = () => (
           flexDirection="column"
           alignItems="center"
           justifyContent="space-evenly"
+          key={index}
         >
           <Text fontWeight="bold" fontSize="36px" color="white">
             {(Math.random() * 100).toFixed(2)}

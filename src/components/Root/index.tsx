@@ -15,15 +15,21 @@ export const Root: FC = ({ children }) => {
       <Flex
         position="absolute"
         direction="column"
+        justifyContent="space-between"
         minHeight="100vh"
         width="100%"
         backgroundColor="#005BBB"
       >
         <Header />
-        <Flex width="100%" height="100%">
+        <Flex width="100%" height="80%">
           <main>{children}</main>
         </Flex>
+        <Footer />
       </Flex>
     </>
   )
+}
+
+const Footer = () => {
+  return <Flex height="10%"></Flex>
 }

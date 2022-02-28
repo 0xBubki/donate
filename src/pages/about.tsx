@@ -1,4 +1,4 @@
-import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
+import { Heading, Flex, Text, Box, Spacer } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
@@ -78,69 +78,79 @@ const localisation = {
 }
 
 const About: NextPage = () => {
-  const translate = useTranslation(localisation)
-
   return (
     <Flex
       direction="row"
-      width="100vw"
-      height="100%"
+      width="80%"
+      height="90%"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="space-between"
     >
-      <Box>
-        <Box width="885px">
-          <Heading color="#fff" fontWeight="bold" fontSize="48">
-            {translate('headerOne')}
-          </Heading>
-          <Text
-            color="#fff"
-            fontWeight={400}
-            fontSize="20px"
-            mt="30px"
-            lineHeight="122%"
-          >
-            {translate('paragraphOneA')}
-            <br />
-            <Box mt="30px">{translate('paragraphOneB')}</Box>
-          </Text>
-        </Box>
-        <Box mt="88px" width="742px">
-          <Heading color="#fff" fontWeight="bold" fontSize="48">
-            {translate('headerTwo')}
-          </Heading>
-          <Text
-            color="#fff"
-            fontWeight={400}
-            fontSize="20px"
-            mt="30px"
-            lineHeight="122%"
-          >
-            {translate('paragraphTwoA')}
-            <br />
-            <Box mt="30px">{translate('paragraphTwoB')}</Box>
-          </Text>
-        </Box>
-        <Box mt="88px" width="670px">
-          <Heading color="#fff" fontWeight="bold" fontSize="48">
-            {translate('headerThree')}
-          </Heading>
-          <Text
-            color="#fff"
-            fontWeight={400}
-            fontSize="20px"
-            mt="30px"
-            lineHeight="122%"
-          >
-            {translate('paragraphThree')}
-          </Text>
-        </Box>
-      </Box>
-      <Box>
-        <Image src="/wewantyouryield.png" />
+      <Flex
+        width="60%"
+        height="100%"
+        direction="column"
+        justifyContent="space-between"
+      >
+        <Paragraph
+          header="headerOne"
+          paragraph1="paragraphOneA"
+          paragraph2="paragraphOneB"
+        />
+
+        <Paragraph
+          header="headerTwo"
+          paragraph1="paragraphTwoA"
+          paragraph2="paragraphTwoB"
+        />
+
+        <Paragraph header="headerThree" paragraph1="paragraphThree" />
+      </Flex>
+      <Box width="40%">
+        <Image src="/wewantyouryield.png" className="your-yield" />
       </Box>
     </Flex>
   )
 }
 
 export default About
+
+const Paragraph = ({
+  header,
+  paragraph1,
+  paragraph2
+}: {
+  header: string
+  paragraph1: string
+  paragraph2?: string
+}) => {
+  const translate = useTranslation(localisation)
+
+  return (
+    <Box
+      height={
+        paragraph2 ? (paragraph2 === 'paragraphOneB' ? '20%' : '40%') : '30%'
+      }
+    >
+      <Heading color="#fff" fontWeight="bold" fontSize="6vh">
+        {translate(header)}
+      </Heading>
+      <Flex
+        direction="column"
+        height={
+          paragraph2 ? (paragraph2 === 'paragraphOneB' ? '40%' : '60%') : 'auto'
+        }
+        justifyContent="space-around"
+      >
+        <Text color="#fff" fontWeight={400} fontSize="2vh">
+          {translate(paragraph1)}
+        </Text>
+        {paragraph2 ? (
+          <Text color="#fff" fontWeight={400} fontSize="2vh">
+            {translate(paragraph2)}
+          </Text>
+        ) : null}
+      </Flex>
+    </Box>
+  )
+}
