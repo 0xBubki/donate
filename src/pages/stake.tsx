@@ -243,7 +243,7 @@ const BoxDepositBox = () => (
   >
     <Box color="white">
       <Text fontSize="36px">0.05</Text>
-      <Text color="#DADADA"> balance: 0.02</Text>
+      <Text color="#DADADA">Balance: 0.02</Text>
     </Box>
 
     <Box color="white">
@@ -293,12 +293,15 @@ const AssetMenu = () => {
               display="flex"
               justifyContent="space-around"
               alignContent="center"
+              alignItems="center"
             >
-              <img src={TokenSymbols[selected]} alt={selected} width="20%" />
-
-              {eth_2_assets[selected].text}
-
-              <ChevronDownIcon width="25px" />
+              <img
+                src={TokenSymbols[selected]}
+                alt={selected}
+                className="h-6 w-6"
+              />
+              <Text>{eth_2_assets[selected].text}</Text>
+              <ChevronDownIcon className="h-5 w-5" />
             </Box>
           </MenuButton>
 
