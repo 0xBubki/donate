@@ -50,14 +50,14 @@ const MintPage: NextPage = () => {
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
               <Image src="/example-nft-2.png" alt="Example NFT" />
               <Flex justifyContent={'space-between'} p="4">
-                <Text textColor="black" fontWeight={'bold'}>
+                <Text textColor="black" fontWeight="semibold">
                   Bubki NFTs
                 </Text>
                 <Flex
                   alignItems="center"
                   gap={2}
                   textColor="black"
-                  fontWeight={'bold'}
+                  fontWeight="semibold"
                 >
                   <Text>0.05</Text>
                   <Image src="/eth.svg" height={5} width={5} />
@@ -111,7 +111,11 @@ const MintPage: NextPage = () => {
                 <VStack spacing={8} align="stretch">
                   <Flex alignItems={'center'} gap="6">
                     <InputNumber onChange={(value) => setMintCount(value)} />
-                    <Text fontSize="24px" fontWeight="bold" whiteSpace="nowrap">
+                    <Text
+                      fontSize="24px"
+                      fontWeight="semibold"
+                      whiteSpace="nowrap"
+                    >
                       {Math.round(mintCount * 0.05 * 100) / 100} ETH
                     </Text>
                   </Flex>
