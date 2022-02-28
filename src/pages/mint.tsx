@@ -53,9 +53,16 @@ const MintPage: NextPage = () => {
                 <Text textColor="black" fontWeight={'bold'}>
                   Bubki NFTs
                 </Text>
-                <Text textColor="black" fontWeight={'bold'}>
-                  0.05 ETH each
-                </Text>
+                <Flex
+                  alignItems="center"
+                  gap={2}
+                  textColor="black"
+                  fontWeight={'bold'}
+                >
+                  <Text>0.05</Text>
+                  <Image src="/eth.svg" height={5} width={5} />
+                  <Text>each</Text>
+                </Flex>
               </Flex>
             </Box>
           </div>
