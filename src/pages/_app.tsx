@@ -4,12 +4,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { DAppProvider } from '@usedapp/core'
 import { WalletProvider } from '../context/wallet-provider'
 import { Page } from '../components/Page'
+import { theme } from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <DAppProvider config={{}}>
       <WalletProvider>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <Page>
             <Component {...pageProps} />
           </Page>

@@ -6,7 +6,7 @@ export const NavItem: FC<LinkProps> = ({ children, ...props }) => {
     <Link href={props.href} {...props} style={{ color: '#fff' }}>
       <Text
         color="#fff"
-        fontSize={[16, 16, 16, 18, 24]}
+        fontSize={[16, 16, 16, 18]}
         fontWeight={600}
         display="block"
         width="auto"
