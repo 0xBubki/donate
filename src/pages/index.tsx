@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
+import Confetti from 'canvas-confetti'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
@@ -13,6 +14,25 @@ const localisation = {
   }
 }
 
+const r = (mi: number, ma: number) => Math.random() * (ma - mi) + mi
+let lastX = 0
+
+const blastConfetti = (evt: MouseEvent, hard: boolean) => {
+  const direction = Math.sign(lastX - evt?.clientX)
+  lastX = evt.clientX
+  const particleCount = hard ? r(122, 245) : r(2, 15)
+  Confetti({
+    particleCount,
+    angle: r(90, 90 + direction * 30),
+    colors: ['#0000FF', '#FFFF00'],
+    spread: r(45, 80),
+    origin: {
+      x: evt.clientX / window.innerWidth,
+      y: evt.clientY / window.innerHeight
+    }
+  })
+}
+
 const Home: NextPage = () => {
   const translate = useTranslation(localisation)
 
@@ -23,6 +43,9 @@ const Home: NextPage = () => {
       width="100vw"
       height={'75vh'}
       mt={['-20vh', '0px']}
+      onClick={(evt: any) => {
+        blastConfetti(evt, false)
+      }}
     >
       <Flex direction="column" alignItems="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
