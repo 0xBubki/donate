@@ -238,14 +238,15 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
 const BoxDepositBox = () => (
   <Box
     backgroundColor="rgba(255,255,255,0.2)"
-    width="455px"
-    height="140px"
+    width="100%"
     borderRadius="25px"
     display="flex"
+    paddingX="25px"
+    paddingY="20px"
     mb="28px"
     flexDirection="row"
     alignItems="center"
-    justifyContent="space-around"
+    justifyContent="space-between"
   >
     <Box color="white">
       <Text fontSize="36px" fontWeight="bold">
