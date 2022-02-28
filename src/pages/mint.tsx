@@ -25,7 +25,7 @@ type MintState = 'inactive' | 'active' | 'finished'
 const MintPage: NextPage = () => {
   const router = useRouter()
   const [mintState, setMintState] = useState<MintState>()
-  const [walletConnected, setWalletConnected] = useState(true)
+  const [walletConnected, setWalletConnected] = useState(false)
   const [mintCount, setMintCount] = useState(1)
   const translate = useTranslation(localisation)
 
@@ -95,7 +95,7 @@ const MintPage: NextPage = () => {
                 <VStack spacing={8} align="stretch">
                   <Flex alignItems={'center'} gap="6">
                     <InputNumber onChange={(value) => setMintCount(value)} />
-                    <Text fontSize="24px" fontWeight="bold">
+                    <Text fontSize="24px" fontWeight="bold" whiteSpace="nowrap">
                       {Math.round(mintCount * 0.05 * 100) / 100} ETH
                     </Text>
                   </Flex>
@@ -127,7 +127,7 @@ const MintPage: NextPage = () => {
                     // @todo - connect wallet
                     onClick={() => alert('Connect Wallet')}
                     fontSize="24px"
-                    py={6}
+                    py="27px"
                     colorScheme="yellow"
                     style={{
                       boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
