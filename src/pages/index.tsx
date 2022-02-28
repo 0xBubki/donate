@@ -78,6 +78,7 @@ const Home: NextPage = () => {
         mr="50px"
       >
         <Image
+          priority
           src="/statue.png"
           alt="Statue"
           layout="fill"
