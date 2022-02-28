@@ -64,7 +64,19 @@ const Home: NextPage = () => {
         >
           Stake
         </Button>
-        <Button mt="2vh" color="black" bg="white" w="180px" borderRadius="25px">
+        <Button
+          mt="2vh"
+          color="black"
+          bg="white"
+          w="180px"
+          borderRadius="25px"
+          _hover={{
+            bg: '#DDD'
+          }}
+          _active={{
+            bg: '#DDD'
+          }}
+        >
           Donate
         </Button>
       </Flex>
