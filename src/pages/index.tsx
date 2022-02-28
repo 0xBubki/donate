@@ -2,10 +2,8 @@ import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Root } from '../components/Root'
 import { useTranslation } from '../utils/use-translation'
-import { ArrowRightIcon } from '@heroicons/react/outline'
+import Link from 'next/link'
 
 const localisation = {
   en: {
@@ -33,7 +31,10 @@ const Home: NextPage = () => {
           fontSize="48"
           textAlign="center"
         >
-          {translate('title')} <span color="#FFD500">Ukraine</span>
+          {translate('title')}{' '}
+          <Text color="#FFD500" display="inline">
+            Ukraine
+          </Text>
         </Heading>
 
         <Flex alignItems="center" gap={5}>
@@ -49,32 +50,35 @@ const Home: NextPage = () => {
         </Flex>
 
         <Flex direction="column" alignItems="center">
-          <Button
-            backgroundColor="#FFD500"
-            style={{
-              borderRadius: 25,
-              height: 58,
-              width: 251,
-              marginTop: 50
-            }}
-            display="flex"
-            alignItems="center"
-            gap={2}
-          >
-            <Text>Donate Now</Text>
-            <ArrowRightIcon className="h-5 w-5" />
-          </Button>
-          <Button
-            backgroundColor="#fff"
-            style={{
-              borderRadius: 25,
-              height: 58,
-              width: 251,
-              marginTop: 20
-            }}
-          >
-            Explore NFTs
-          </Button>
+          <Link href="/stake">
+            <Button
+              backgroundColor="#FFD500"
+              style={{
+                borderRadius: 25,
+                height: 58,
+                width: 251,
+                marginTop: 50
+              }}
+              display="flex"
+              alignItems="center"
+              gap={2}
+            >
+              <Text fontSize="2.8vh">Stake</Text>
+            </Button>
+          </Link>
+          <Link href="/donate">
+            <Button
+              backgroundColor="#fff"
+              style={{
+                borderRadius: 25,
+                height: 58,
+                width: 251,
+                marginTop: 20
+              }}
+            >
+              <Text fontSize="2.8vh">Donate</Text>
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     </Flex>
