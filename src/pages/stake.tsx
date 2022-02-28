@@ -69,8 +69,9 @@ export default function Deposit() {
                 color="white"
                 width="455px"
                 height="80px"
+                borderRadius="25px"
               >
-                <Text fontSize="3xl"> Stake </Text>
+                <Text fontSize="3xl">Stake</Text>
               </Button>
             </>
           ) : (
@@ -82,7 +83,7 @@ export default function Deposit() {
                 width="455px"
                 height="80px"
               >
-                <Text fontSize="3xl"> Unstake </Text>
+                <Text fontSize="3xl">Unstake</Text>
               </Button>
 
               <Button
@@ -210,9 +211,8 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
   <Box
     borderRadius="25px"
     background="rgba(0, 0, 0, 0.2)"
-    width="524px"
-    height="423px"
-    padding="20px"
+    paddingX="35px"
+    paddingY="35px"
     display="flex"
     flexDirection="column"
     alignItems="center"
@@ -220,8 +220,13 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
     justifyContent="space-around"
   >
     <Box width="100%">
-      <Text color="white" fontSize="48px" float="left">
-        {' '}
+      <Text
+        mb="20px"
+        fontWeight="bold"
+        color="white"
+        fontSize="48px"
+        float="left"
+      >
         {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
       </Text>
     </Box>
@@ -235,17 +240,19 @@ const BoxDepositBox = () => (
     backgroundColor="rgba(255,255,255,0.2)"
     width="455px"
     height="140px"
-    borderRadius="20px"
+    borderRadius="25px"
     display="flex"
+    mb="28px"
     flexDirection="row"
     alignItems="center"
     justifyContent="space-around"
   >
     <Box color="white">
-      <Text fontSize="36px">0.05</Text>
+      <Text fontSize="36px" fontWeight="bold">
+        0.05
+      </Text>
       <Text color="#DADADA">Balance: 0.02</Text>
     </Box>
-
     <Box color="white">
       <AssetMenu />
     </Box>
