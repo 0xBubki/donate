@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&family=Nunito:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Poppins&family=Fredoka:wght@500&family=Montserrat:wght@700&family=Nunito:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -60,4 +60,17 @@ a {
 
 .your-yield {
   width: 100%;
+}
+
+.chakra-select {
+  height: 100% !important;
+}
+
+.chakra-select__wrapper {
+  height: 50% !important;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
 }
