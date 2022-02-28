@@ -41,7 +41,7 @@ export const Header = () => {
 
   return (
     <header>
-      <Box width="100%">
+      <Box width="100%" height="100%">
         <Stack
           direction={['column', 'column', 'row']}
           shadow="sm"
