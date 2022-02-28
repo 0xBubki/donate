@@ -23,8 +23,8 @@ import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
 
 const navItems = [
-  { text: 'Stake', href: '/stake' },
   { text: 'Donate', href: '/donate' },
+  { text: 'Stake', href: '/stake' },
   { text: 'Explore NFTs', href: '/explore' },
   { text: 'About', href: '/about' }
 ]
@@ -33,10 +33,10 @@ export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navItems = [
-    { text: 'Leaderboard', href: '/leaderboard' },
     { text: 'Stake', href: '/stake' },
-    { text: 'Donate', href: '/donate' },
     { text: 'Mint', href: '/mint' },
+    { text: 'Donate', href: '/donate' },
+    { text: 'Leaderboard', href: '/leaderboard' },
     { text: 'About', href: '/about' }
   ]
 
