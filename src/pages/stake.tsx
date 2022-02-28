@@ -1,8 +1,6 @@
 import { Button } from '@chakra-ui/button'
-import { Box, Flex, HStack, Text, Grid, GridItem } from '@chakra-ui/layout'
-import { formatEther } from 'ethers/lib/utils'
+import { Box, Flex, Text } from '@chakra-ui/layout'
 import { useWallet } from '../context/wallet-provider'
-import { shorten } from '../utils/shorten'
 import {
   SimpleGrid,
   Tabs,
@@ -13,16 +11,13 @@ import {
   Menu,
   MenuButton
 } from '@chakra-ui/react'
-import Davatar from '@davatar/react'
-import { ChevronDownIcon, LoginIcon } from '@heroicons/react/outline'
-import { Root } from '../components/Root'
+import { ChevronDownIcon } from '@heroicons/react/outline'
 import { useState } from 'react'
-import { TokenList, schema } from '@uniswap/token-lists'
 import CoinList from '../assets/tokenlist.json'
-import { random } from 'lodash'
 
 const Tokens = CoinList.tokens
 const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
+
 const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
   if (assetList.includes(symbol)) {
     prev[symbol] = logoURI
@@ -40,8 +35,6 @@ interface Props {
 }
 
 export default function Deposit() {
-  const { activateBrowserWallet, ens, account, etherBalance } = useWallet()
-
   const [stakingMode, setStakingMode] = useState<DepositMode>(
     DepositMode.DEPOSIT
   )
@@ -76,8 +69,9 @@ export default function Deposit() {
                 color="white"
                 width="455px"
                 height="80px"
+                borderRadius="25px"
               >
-                <Text fontSize="3xl"> Stake </Text>
+                <Text fontSize="3xl">Stake</Text>
               </Button>
             </>
           ) : (
@@ -89,7 +83,7 @@ export default function Deposit() {
                 width="455px"
                 height="80px"
               >
-                <Text fontSize="3xl"> Unstake </Text>
+                <Text fontSize="3xl">Unstake</Text>
               </Button>
 
               <Button
@@ -114,7 +108,7 @@ export default function Deposit() {
         <DetailsBox mode={stakingMode} />
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center"></Flex>
+      <Flex flexDirection="column" align="center" justify="center" />
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
           Looking to donate instead?
@@ -217,9 +211,8 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
   <Box
     borderRadius="25px"
     background="rgba(0, 0, 0, 0.2)"
-    width="524px"
-    height="423px"
-    padding="20px"
+    paddingX="35px"
+    paddingY="35px"
     display="flex"
     flexDirection="column"
     alignItems="center"
@@ -227,8 +220,13 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
     justifyContent="space-around"
   >
     <Box width="100%">
-      <Text color="white" fontSize="48px" float="left">
-        {' '}
+      <Text
+        mb="20px"
+        fontWeight="bold"
+        color="white"
+        fontSize="48px"
+        float="left"
+      >
         {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
       </Text>
     </Box>
@@ -240,19 +238,22 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
 const BoxDepositBox = () => (
   <Box
     backgroundColor="rgba(255,255,255,0.2)"
-    width="455px"
-    height="140px"
-    borderRadius="20px"
+    width="100%"
+    borderRadius="25px"
     display="flex"
+    paddingX="25px"
+    paddingY="20px"
+    mb="28px"
     flexDirection="row"
     alignItems="center"
-    justifyContent="space-around"
+    justifyContent="space-between"
   >
     <Box color="white">
-      <Text fontSize="36px">0.05</Text>
-      <Text color="#DADADA"> balance: 0.02</Text>
+      <Text fontSize="36px" fontWeight="bold">
+        0.05
+      </Text>
+      <Text color="#DADADA">Balance: 0.02</Text>
     </Box>
-
     <Box color="white">
       <AssetMenu />
     </Box>
@@ -289,6 +290,7 @@ const AssetMenu = () => {
             display="flex"
             justifyContent="space-around"
             width="150px"
+            borderRadius="15px"
             alignItems="center"
             backgroundColor="#5c8abc"
             isActive={isOpen}
@@ -300,12 +302,15 @@ const AssetMenu = () => {
               display="flex"
               justifyContent="space-around"
               alignContent="center"
+              alignItems="center"
             >
-              <img src={TokenSymbols[selected]} alt={selected} width="20%" />
-
-              {eth_2_assets[selected].text}
-
-              <ChevronDownIcon width="25px" />
+              <img
+                src={TokenSymbols[selected]}
+                alt={selected}
+                className="h-6 w-6"
+              />
+              <Text>{eth_2_assets[selected].text}</Text>
+              <ChevronDownIcon className="h-5 w-5" />
             </Box>
           </MenuButton>
 
@@ -314,12 +319,13 @@ const AssetMenu = () => {
             _active={{ bg: '5c8abc' }}
             _focus={{ bg: '#5c8abc' }}
           >
-            {Object.values(Assets).map((val) => (
+            {Object.values(Assets).map((val, index) => (
               <MenuItem
                 _focus={{ bg: '#5c8abc' }}
                 _active={{ bg: '5c8abc' }}
                 _hover={{ bg: '#5c8abc' }}
                 onClick={(_) => select(val)}
+                key={index}
               >
                 {' '}
                 {val}{' '}
@@ -334,23 +340,21 @@ const AssetMenu = () => {
 
 const YourDeposits = () => (
   <Box width="524px">
-    <Text fontSize="36px" color="white">
-      {' '}
-      Your Deposits{' '}
+    <Text mt={5} mb={4} fontSize="36px" fontWeight="bold" color="white">
+      Your Deposits
     </Text>
-
     <Flex flexDirection={'row'} wrap="wrap" gap={4}>
-      {Object.values(Assets).map((asset: string) => (
+      {Object.values(Assets).map((asset: string, index) => (
         <Flex
           backgroundColor="#004B9B"
-          width="160px"
-          height="101px"
-          padding="10px"
-          borderRadius="5px"
+          paddingX="25px"
+          paddingY="15px"
+          borderRadius="25px"
           display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="space-evenly"
+          key={index}
         >
           <Text fontWeight="bold" fontSize="36px" color="white">
             {(Math.random() * 100).toFixed(2)}

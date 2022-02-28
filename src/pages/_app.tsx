@@ -3,16 +3,17 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { DAppProvider } from '@usedapp/core'
 import { WalletProvider } from '../context/wallet-provider'
-import { Root } from '../components/Root'
+import { Page } from '../components/Page'
+import { theme } from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <DAppProvider config={{}}>
       <WalletProvider>
-        <ChakraProvider>
-          <Root>
+        <ChakraProvider theme={theme}>
+          <Page>
             <Component {...pageProps} />
-          </Root>
+          </Page>
         </ChakraProvider>
       </WalletProvider>
     </DAppProvider>
