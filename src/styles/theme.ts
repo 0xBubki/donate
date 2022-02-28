@@ -5,21 +5,14 @@ import { extendTheme } from '@chakra-ui/react'
 export const theme = extendTheme({
   colors: {
     ukraineBlue: '005BBB',
-    ukraineYellow: '#FFD500'
+    ukraineYellow: '#FFD500',
+    darkYellow: '#dbb700'
   },
   styles: {
     global: {
-      // styles for the `body`
       body: {
         bg: 'ukraineBlue',
         color: 'white'
-      },
-      // styles for the `a`
-      a: {
-        color: 'teal.500',
-        _hover: {
-          textDecoration: 'underline'
-        }
       }
     }
   }

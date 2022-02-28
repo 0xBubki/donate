@@ -6,7 +6,8 @@ import {
   DrawerContent,
   DrawerOverlay,
   useDisclosure,
-  Link
+  Link,
+  Button
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -42,14 +43,13 @@ export const Header = () => {
   return (
     <header>
       <Box width="100%">
-        <Stack
-          direction={['column', 'column', 'row']}
-          shadow="sm"
-          px={2}
-          py={4}
-        >
+        <Stack direction={['column', 'column', 'row']} px={2} py={4}>
           <HStack justifyContent={['space-between']} w={'full'}>
-            <Box fontWeight="bold" fontSize={[30, 40, 40, 50]} marginX="1rem">
+            <Box
+              ml={['none', '40px']}
+              fontWeight="bold"
+              fontSize={[30, 40, 40]}
+            >
               <Link href="/">🇺🇦</Link>
             </Box>
 
@@ -94,12 +94,12 @@ export const Header = () => {
                   </Flex>
                 ) : (
                   <Flex alignItems="center" gap={2} paddingX={4}>
-                    <Text>Connect wallet</Text>
+                    <Text>Connect</Text>
                     <LoginIcon className="w-5 h-5" />
                   </Flex>
                 )}
               </NavButton>
-              <NavButton
+              <Button
                 backgroundColor="transparent"
                 display={['flex', 'flex', 'flex', 'none']}
                 color="white"
@@ -114,7 +114,7 @@ export const Header = () => {
                 ) : (
                   <MenuIcon className="w-5 h-5" />
                 )}
-              </NavButton>
+              </Button>
             </HStack>
           </HStack>
 
