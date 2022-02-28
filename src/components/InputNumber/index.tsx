@@ -25,11 +25,11 @@ export const InputNumber = ({ onChange }: Props) => {
 
   const inc = getIncrementButtonProps()
   const dec = getDecrementButtonProps()
-  const input = getInputProps()
+  const input = getInputProps({ readOnly: true })
 
   return (
     <HStack
-      maxW="190px"
+      maxW="195px"
       background="whiteAlpha.400"
       p="12px"
       style={{ borderRadius: 16 }}
