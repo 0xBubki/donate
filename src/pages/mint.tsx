@@ -79,9 +79,19 @@ const MintPage: NextPage = () => {
                   fontSize="20px"
                   display="inline-block"
                 >
-                  {mintState === 'active' && '2 / 10000 minted'}
+                  {mintState === 'active' && (
+                    <Text display="flex" alignItems="center" gap={2}>
+                      <Text fontWeight="black">2 / 10000</Text>
+                      <Text>minted</Text>
+                    </Text>
+                  )}
                   {mintState === 'inactive' && 'Available from March 4th, 2022'}
-                  {mintState === 'finished' && '10000 / 10000 minted'}
+                  {mintState === 'finished' && (
+                    <Text display="flex" alignItems="center" gap={2}>
+                      <Text fontWeight="black">10000 / 10000</Text>
+                      <Text>minted</Text>
+                    </Text>
+                  )}
                 </Text>
               </Box>
 
