@@ -39,15 +39,11 @@ const MintPage: NextPage = () => {
       >
         <GridItem colSpan={[12, null, 5]}>
           <Box rounded="3xl" bg="white" overflow={'hidden'}>
-            <Image
-              src="https://artblocks-mainnet.s3.amazonaws.com/264000152.png"
-              alt="Example NFT"
-            />
+            <Image src="/example-nft.png" alt="Example NFT" />
             <Flex justifyContent={'space-between'} p="4">
               <Text fontWeight={'bold'}>NFT Name</Text>
               <Text fontWeight={'bold'}>2 ETH</Text>
             </Flex>
-            {/* </AspectRatio> */}
           </Box>
         </GridItem>
 
