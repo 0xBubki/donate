@@ -16,7 +16,7 @@ export const Root: FC = ({ children }) => {
         position="absolute"
         direction="column"
         justifyContent="space-between"
-        height="100vh"
+        minHeight="100vh"
         width="100%"
         backgroundColor="#005BBB"
       >
