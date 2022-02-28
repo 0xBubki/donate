@@ -43,7 +43,7 @@ const MintPage: NextPage = () => {
   }, [router.query?.mintState])
 
   return (
-    <Flex direction="row" width="100%" height="100%">
+    <Flex direction="row" width="100%" height="100%" pb={10}>
       <div className="max-w-7xl mx-auto p-8">
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
