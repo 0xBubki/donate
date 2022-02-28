@@ -10,14 +10,25 @@
 /* purgecss start ignore */
 html,
 body,
-#__next,
-#root {
+main,
+#__next {
   /* Border-box, no padding. */
   @apply m-0 p-0 box-border;
   /* Fill screen, flex column, stretch items. */
-  @apply min-h-screen flex-col;
+  @apply w-full min-h-screen;
   /* Prevent text from breaking viewport. */
   word-break: break-word;
+}
+
+main {
+  @apply w-full h-full;
+  @apply flex flex-col justify-center items-center !important;
+  /* Room for header. */
+  @apply pt-24;
+}
+
+header {
+  @apply absolute w-full;
 }
 /* purgecss end ignore */
 
@@ -41,10 +52,11 @@ a {
   box-sizing: border-box;
 }
 
-main {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
+.nav-button {
+  @apply rounded-md;
+
+  height: 56px !important;
+  font-size: 14px !important;
 }
 
 .your-yield {
