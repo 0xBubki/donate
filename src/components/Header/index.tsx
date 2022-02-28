@@ -12,9 +12,14 @@ import {
 import Davatar from '@davatar/react'
 import {
   ChevronDownIcon,
+  FireIcon,
   GlobeAltIcon,
+  HeartIcon,
+  InformationCircleIcon,
+  KeyIcon,
   LoginIcon,
   MenuIcon,
+  PlusCircleIcon,
   XIcon
 } from '@heroicons/react/outline'
 import { useWallet } from '../../context/wallet-provider'
@@ -22,22 +27,31 @@ import { shorten } from '../../utils/shorten'
 import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
 
-const navItems = [
-  { text: 'Donate', href: '/donate' },
-  { text: 'Stake', href: '/stake' },
-  { text: 'Explore NFTs', href: '/explore' },
-  { text: 'About', href: '/about' }
-]
-
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navItems = [
-    { text: 'Stake', href: '/stake' },
-    { text: 'Mint', href: '/mint' },
-    { text: 'Donate', href: '/donate' },
-    { text: 'Leaderboard', href: '/leaderboard' },
-    { text: 'About', href: '/about' }
+    { text: 'Stake', href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
+    {
+      text: 'Mint',
+      href: '/mint',
+      icon: <PlusCircleIcon className="h-6 w-6" />
+    },
+    {
+      text: 'Donate',
+      href: '/donate',
+      icon: <HeartIcon className="h-6 w-6" />
+    },
+    {
+      text: 'Leaderboard',
+      href: '/leaderboard',
+      icon: <FireIcon className="h-6 w-6" />
+    },
+    {
+      text: 'About',
+      href: '/about',
+      icon: <InformationCircleIcon className="h-6 w-6" />
+    }
   ]
 
   return (
@@ -110,7 +124,10 @@ export const Header = () => {
           <DrawerBody background="#005BBB" px={2}>
             {navItems.map((navItem, index) => (
               <NavDrawerItem key={index} href={navItem.href}>
-                {navItem.text}
+                <Flex alignItems="center" gap={3}>
+                  {navItem.icon}
+                  <Text>{navItem.text}</Text>
+                </Flex>
               </NavDrawerItem>
             ))}
           </DrawerBody>
