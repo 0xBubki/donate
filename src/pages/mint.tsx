@@ -12,7 +12,7 @@ import {
   VStack
 } from '@chakra-ui/react'
 
-import { useTranslation } from '../../utils/use-translation'
+import { useTranslation } from '../utils/use-translation'
 
 const localisation = {
   en: {
