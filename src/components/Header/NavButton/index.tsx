@@ -6,6 +6,7 @@ export const NavButton: FC<ButtonProps> = ({ children }) => {
     <Button
       className="nav-button"
       backgroundColor="#FFD500"
+      color="black"
       borderRadius="25px"
       _hover={{
         bg: 'darkYellow'
