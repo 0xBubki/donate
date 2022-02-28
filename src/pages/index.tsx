@@ -21,7 +21,8 @@ const Home: NextPage = () => {
       alignItems="center"
       justifyContent="center"
       width="100vw"
-      height="75vh"
+      height={'75vh'}
+      mt={['-20vh', '0px']}
     >
       <Flex direction="column" alignItems="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
         </Heading>
 
         <Flex mt="1vh" fontWeight="bold" alignItems="center" gap={5}>
-          <Text fontSize={['2em', '2.8em', '4.2em']}>₴1,234,567.00</Text>
+          <Text fontSize={['2.2em', '2.8em', '4.2em']}>₴1,234,567.00</Text>
           <Text
             mt={['9px', '9px', '25px']}
             fontSize={['1.3em', '1.8em', '2em']}
