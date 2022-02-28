@@ -76,8 +76,8 @@ const Leaderboard: NextPage = () => {
   return (
     <Flex
       direction="row"
-      width="100vw"
-      minHeight="100vh"
+      width="100%"
+      height="100%"
       alignItems="center"
       justifyContent="center"
     >

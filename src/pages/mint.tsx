@@ -28,7 +28,7 @@ const MintPage: NextPage = () => {
   const translate = useTranslation(localisation)
 
   return (
-    <Flex direction="row" width="100vw" height="100%">
+    <Flex direction="row" width="100%" height="100%">
       <Grid
         templateColumns="repeat(12, 1fr)"
         gap={['32px']}

@@ -17,14 +17,16 @@ const localisation = {
 const Home: NextPage = () => {
   const translate = useTranslation(localisation)
 
+  // return <h1>Test</h1>;
+
   return (
     <Flex
       alignItems="center"
       justifyContent="center"
-      width="100vw"
+      width="100%"
       height="100%"
     >
-      <Flex direction="column" alignItems="center">
+      <Flex direction="column" alignItems="center" justifyContent="center">
         <Heading
           color="#fff"
           fontWeight="bold"
