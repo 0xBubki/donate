@@ -2,10 +2,7 @@ import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Root } from '../components/Root'
 import { useTranslation } from '../utils/use-translation'
-import { ArrowRightIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 
 const localisation = {
@@ -53,7 +50,7 @@ const Home: NextPage = () => {
         </Flex>
 
         <Flex direction="column" alignItems="center">
-          <Link href="/donate">
+          <Link href="/stake">
             <Button
               backgroundColor="#FFD500"
               style={{
@@ -66,11 +63,10 @@ const Home: NextPage = () => {
               alignItems="center"
               gap={2}
             >
-              <Text>Donate Now</Text>
-              <ArrowRightIcon className="h-5 w-5" />
+              <Text fontSize="2.8vh">Stake</Text>
             </Button>
           </Link>
-          <Link href="/explore">
+          <Link href="/donate">
             <Button
               backgroundColor="#fff"
               style={{
@@ -80,7 +76,7 @@ const Home: NextPage = () => {
                 marginTop: 20
               }}
             >
-              Explore NFTs
+              <Text fontSize="2.8vh">Donate</Text>
             </Button>
           </Link>
         </Flex>
