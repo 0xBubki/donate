@@ -83,11 +83,10 @@ const MintPage: NextPage = () => {
               </Heading>
 
               <Text as="p" fontSize="20px">
-                NFT project description goes here. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                Blending folk art-inspired motifs in a generative NFT project of
+                10,000 editions, Bubki aims to harness the power of web3 to
+                rally material support for Ukrainian organizations at this
+                pivotal moment.
               </Text>
 
               {/* Minting is active */}
