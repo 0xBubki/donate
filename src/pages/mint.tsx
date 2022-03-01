@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
-
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
-import { Button, Image, VStack } from '@chakra-ui/react'
+import { Button, Image, VStack, useToast } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { InputNumber } from '../components/InputNumber'
-
+import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
+import { useWallet } from '../context/wallet-provider'
+import { BigNumber } from 'ethers'
 
 const localisation = {
   en: {
@@ -20,17 +21,35 @@ const localisation = {
   }
 }
 
+type BlockchainError = { message: string }
+
 type MintState = 'inactive' | 'active' | 'finished'
 
 const MintPage: NextPage = () => {
   const router = useRouter()
   const [mintState, setMintState] = useState<MintState>()
+  const [buttonDisabled, setButtonDisabled] = useState(false)
   const [walletConnected, setWalletConnected] = useState(true)
+  const [totalSupply, setTotalSupply] = useState(0)
   const [mintCount, setMintCount] = useState(1)
   const translate = useTranslation(localisation)
+  const { activateBrowserWallet, account, library } = useWallet()
+  const toast = useToast()
 
   // @dev set 'mintState' based on url params
   // @todo - update to being based on contract state
+
+  useEffect(() => {
+    const contract = new ERC721Service(
+      library,
+      '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf',
+      account
+    )
+
+    contract.totalSupply().then((response) => {
+      setTotalSupply(BigNumber.from(response).toNumber())
+    })
+  }, [])
 
   useEffect(() => {
     setMintState(
@@ -41,6 +60,35 @@ const MintPage: NextPage = () => {
         : 'active'
     )
   }, [router.query?.mintState])
+
+  useEffect(() => {
+    setWalletConnected(!!account)
+  }, [account])
+
+  const handleMint = async () => {
+    // @todo - pass actual tokenAddress once added
+    const tokenAddress = '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+
+    try {
+      setButtonDisabled(true)
+      const response = await new ERC721Service(
+        library,
+        tokenAddress,
+        account
+      ).mint(mintCount)
+      // @todo - handle response. Show toast with link to tx? Or redirect to new view?
+    } catch (err) {
+      setButtonDisabled(false)
+      console.error(err)
+      toast({
+        title: 'Uh oh.',
+        // description: err.message,
+        description: 'too tired to fix this shit',
+        status: 'error',
+        isClosable: true
+      })
+    }
+  }
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
@@ -81,7 +129,7 @@ const MintPage: NextPage = () => {
                 >
                   {mintState === 'active' && (
                     <Text display="flex" alignItems="center" gap={2}>
-                      <Text fontWeight="black">2 / 10000</Text>
+                      <Text fontWeight="black">{totalSupply} / 10,000</Text>
                       <Text>minted</Text>
                     </Text>
                   )}
@@ -109,32 +157,53 @@ const MintPage: NextPage = () => {
               {/* Minting is active */}
               {mintState === 'active' && (
                 <VStack spacing={8} align="stretch">
-                  <Flex alignItems={'center'} gap="6">
-                    <InputNumber onChange={(value) => setMintCount(value)} />
-                    <Text
-                      fontSize="24px"
-                      fontWeight="semibold"
-                      whiteSpace="nowrap"
-                    >
-                      {Math.round(mintCount * 0.05 * 100) / 100} ETH
-                    </Text>
-                  </Flex>
+                  {walletConnected && (
+                    <Flex alignItems={'center'} gap="6">
+                      <InputNumber onChange={(value) => setMintCount(value)} />
+                      <Text
+                        fontSize="24px"
+                        fontWeight="semibold"
+                        whiteSpace="nowrap"
+                      >
+                        {Math.round(mintCount * 0.05 * 100) / 100} ETH
+                      </Text>
+                    </Flex>
+                  )}
 
                   <VStack spacing={4} align="stretch" maxWidth="320px">
-                    <Button
-                      width="100%"
-                      onClick={() => alert('Mint')}
-                      fontSize="24px"
-                      py="27px"
-                      colorScheme="yellow"
-                      style={{
-                        boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
-                        borderRadius: '12px'
-                      }}
-                    >
-                      {translate('mintButton')}
-                    </Button>
-                    <Text textAlign="center">Max 100 per transaction</Text>
+                    {walletConnected ? (
+                      <>
+                        <Button
+                          width="100%"
+                          onClick={handleMint}
+                          fontSize="24px"
+                          py="27px"
+                          colorScheme="yellow"
+                          style={{
+                            boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
+                            borderRadius: '12px'
+                          }}
+                          disabled={buttonDisabled}
+                        >
+                          {translate('mintButton')}
+                        </Button>
+                        <Text textAlign="center">Max 100 per transaction</Text>
+                      </>
+                    ) : (
+                      <Button
+                        width="100%"
+                        onClick={activateBrowserWallet}
+                        fontSize="24px"
+                        py="27px"
+                        colorScheme="yellow"
+                        style={{
+                          boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
+                          borderRadius: '12px'
+                        }}
+                      >
+                        Connect Wallet
+                      </Button>
+                    )}
                   </VStack>
                 </VStack>
               )}
