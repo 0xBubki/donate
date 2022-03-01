@@ -4,15 +4,26 @@ import NextLink from 'next/link'
 
 import { useEffect } from 'react'
 
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from '../utils/use-translation'
+
+const germanTrans = require('../../public/locales/de/about.json')
+const englishTrans = require('../../public/locales/en/about.json')
+const spanishTrans = require('../../public/locales/es/about.json')
+const frenchTrans = require('../../public/locales/fr/about.json')
+
+const localisation = {
+  de: germanTrans,
+  en: englishTrans,
+  es: spanishTrans,
+  fr: frenchTrans
+}
 
 import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
 import { confetti, blastConfetti } from '../utils/confetti'
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('common')
+  const translate = useTranslation(localisation)
 
   useEffect(() => {
     /**
@@ -49,7 +60,7 @@ const Home: NextPage = () => {
     >
       <Flex direction="column" alignItems="center" textAlign="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
-          {t('homepage-title')}{' '}
+          {translate('homepage-title')}{' '}
           <Text display="inline" color="ukraineYellow">
             Ukraine
           </Text>
@@ -62,7 +73,7 @@ const Home: NextPage = () => {
             fontSize={['1.3em', '1.8em', '2em']}
           >
             {' '}
-            {t('donated')}
+            {translate('donated')}
           </Text>
         </Flex>
         <Text
@@ -87,7 +98,7 @@ const Home: NextPage = () => {
               bg: 'darkYellow'
             }}
           >
-            {t('stake')}
+            {translate('stake')}
           </Button>
         </NextLink>
         <NextLink href="/donate" passHref>
@@ -104,7 +115,7 @@ const Home: NextPage = () => {
               bg: '#DDD'
             }}
           >
-            {t('donate')}
+            {translate('donate')}
           </Button>
         </NextLink>
       </Flex>
@@ -128,11 +139,5 @@ const Home: NextPage = () => {
     </Flex>
   )
 }
-
-export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common']))
-  }
-})
 
 export default Home
