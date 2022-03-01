@@ -120,22 +120,38 @@ export const Header = () => {
               </MenuButton>
               <MenuList bg="ukraineYellow" color="black">
                 <MenuItem>
-                  <NextLink href="" locale={locale === 'en' ? 'de' : 'en'}>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'en' ? 'de' : 'en'}
+                  >
                     <Text className="capitalize">{t('english')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <NextLink href="" locale={locale === 'fr' ? 'en' : 'fr'}>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'fr' ? 'en' : 'fr'}
+                  >
                     <Text className="capitalize">{t('french')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <NextLink href="" locale={locale === 'de' ? 'en' : 'de'}>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'de' ? 'en' : 'de'}
+                  >
                     <Text className="capitalize">{t('german')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <NextLink href="" locale={locale === 'es' ? 'en' : 'es'}>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'es' ? 'en' : 'es'}
+                  >
                     <Text className="capitalize">{t('spanish')}</Text>
                   </NextLink>
                 </MenuItem>
