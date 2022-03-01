@@ -73,8 +73,7 @@ export default function Deposit() {
                 height="80px"
               >
                 <Text fontSize="3xl" color="#000">
-                  {' '}
-                  Donate Principal{' '}
+                  Donate Principal
                 </Text>
               </Button>
             </>
