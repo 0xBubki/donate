@@ -19,6 +19,12 @@ const BoxDepositBox = () => {
         window.ethereum
       ).getSigner()
       const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
+      const txResponse = await user.approveDeposits(
+        ethers.utils.parseUnits(amountToDonate.toString())
+      )
+
+      console.log(txResponse)
+
       const tx = await user.depositAndDelegate(
         BigNumber.from(amountToDonate),
         '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
