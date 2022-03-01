@@ -6,6 +6,7 @@ import { Image } from '@chakra-ui/react'
 // import { useTranslation } from 'next-i18next'
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from '../utils/use-translation'
+import { useEffect } from 'react'
 
 const germanTrans = require('../../public/locales/de/about.json')
 const englishTrans = require('../../public/locales/en/about.json')
@@ -21,19 +22,27 @@ const localisation = {
 
 const About: NextPage = () => {
   console.log('<<', germanTrans)
+  // useEffect(() => {
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
   return (
     <Flex
       direction="row"
-      width="80%"
+      width="100%"
       height="90%"
       alignItems="center"
       justifyContent="space-between"
+      padding="2rem"
     >
       <Flex
-        width="60%"
+        width="66%"
         height="100%"
         direction="column"
         justifyContent="space-between"
+        gap="3rem"
       >
         <Paragraph
           header="headerOne"
@@ -49,7 +58,13 @@ const About: NextPage = () => {
 
         <Paragraph header="headerThree" paragraph1="paragraphThree" />
       </Flex>
-      <Box width="40%">
+      <Box
+        position="fixed"
+        right="1rem"
+        top="50%"
+        transform="translateY(-50%)"
+        width="30%"
+      >
         <Image
           src="/wewantyouryield.png"
           className="your-yield"
@@ -85,7 +100,12 @@ const Paragraph = ({
         paragraph2 ? (paragraph2 === 'paragraphOneB' ? '20%' : '40%') : '30%'
       }
     >
-      <Heading color="#fff" fontWeight="bold" fontSize="6vh">
+      <Heading
+        color="#fff"
+        fontWeight="bold"
+        fontSize={{ base: '1.5rem', sm: '2rem', md: '3rem', xl: '3.5rem' }}
+        marginBottom="0.5vh"
+      >
         {translate(header)}
       </Heading>
       <Flex
@@ -95,11 +115,19 @@ const Paragraph = ({
         }
         justifyContent="space-around"
       >
-        <Text color="#fff" fontWeight={400} fontSize="2vh">
+        <Text
+          color="#fff"
+          fontWeight={400}
+          fontSize={{ base: '1rem', md: '1.2rem' }}
+        >
           {translate(paragraph1)}
         </Text>
         {paragraph2 ? (
-          <Text color="#fff" fontWeight={400} fontSize="2vh">
+          <Text
+            color="#fff"
+            fontWeight={400}
+            fontSize={{ base: '1rem', md: '1.2rem' }}
+          >
             {translate(paragraph2)}
           </Text>
         ) : null}
