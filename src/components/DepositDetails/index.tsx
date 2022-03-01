@@ -34,7 +34,7 @@ const DetailsBox = (props: Props) => (
           $6.55m
         </Text>
         <Text color="white" fontSize="20px">
-          Total Value You've Donated so Far
+          Total Value You have Donated so Far
         </Text>
       </Box>
       <Box
