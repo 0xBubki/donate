@@ -26,6 +26,10 @@ const tokenAddress =
   process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
   '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
 
+const successUrl = (id: string = '1') => {
+  return `https://testnets.opensea.io/assets/${tokenAddress}/${id}`
+}
+
 const MintPage: NextPage = () => {
   const translate = useTranslation(localisation)
   const toast = useToast()
@@ -88,8 +92,7 @@ const MintPage: NextPage = () => {
               style={{
                 textDecoration: 'underline'
               }}
-              // href={`https://testnets.opensea.io/assets/${tokenAddress}/5`}
-              href={`https://testnets.opensea.io/collection/bubki-for-ukraine`}
+              href={successUrl('2')}
               target="_blank"
               rel="noreferrer"
             >
