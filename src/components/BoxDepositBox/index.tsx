@@ -32,9 +32,10 @@ const BoxDepositBox = () => {
           fontWeight="bold"
           border="none"
           focusBorderColor="none"
+          type="number"
           value={amountToDonate}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setAmountToDonate(e.target.value)
+            setAmountToDonate(parseInt(e.target.value) || null)
           }
           pl={0}
         />
