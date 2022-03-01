@@ -58,7 +58,7 @@ export const Header = () => {
     <header>
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
         <HStack justifyContent={['space-between']} w={'full'}>
-          <Box mx={[8, 8, 8, 'auto']} fontWeight="bold" fontSize={[20, 20, 20]}>
+          <Box mx="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
             <Link href="/" className="center flex-col sm:flex-row gap-2">
               <span>🇺🇦</span>
               <span className="text-sm md:text-xl">BUBKI</span>
