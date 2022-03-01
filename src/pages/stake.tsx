@@ -94,8 +94,7 @@ export default function Deposit() {
                 height="80px"
               >
                 <Text fontSize="3xl" color="#000">
-                  {' '}
-                  Donate Principal{' '}
+                  Donate Principal
                 </Text>
               </Button>
             </>
@@ -191,12 +190,10 @@ const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
   >
     <TabList>
       <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
-        {' '}
-        Stake{' '}
+        Stake
       </Tab>
       <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
-        {' '}
-        Unstake{' '}
+        Unstake
       </Tab>
     </TabList>
   </Tabs>
@@ -227,7 +224,7 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => (
         fontSize="48px"
         float="left"
       >
-        {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
+        {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}
       </Text>
     </Box>
 
@@ -327,8 +324,7 @@ const AssetMenu = () => {
                 onClick={(_) => select(val)}
                 key={index}
               >
-                {' '}
-                {val}{' '}
+                {val}
               </MenuItem>
             ))}
           </MenuList>
