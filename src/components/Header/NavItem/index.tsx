@@ -18,9 +18,14 @@ export const NavItem: FC<LinkProps> = ({ children, href }) => (
   </NextLink>
 )
 
-export const NavDrawerItem: FC<LinkProps> = ({ children, href }) => (
+export const NavDrawerItem: FC<LinkProps & { onClick: () => void }> = ({
+  children,
+  href,
+  onClick
+}) => (
   <NextLink href={href} passHref>
     <Link
+      onClick={onClick}
       style={{
         color: '#fff',
         textDecoration: 'none',
@@ -31,8 +36,8 @@ export const NavDrawerItem: FC<LinkProps> = ({ children, href }) => (
       <Text
         color="#fff"
         fontSize={20}
-        py={4}
-        px={4}
+        py={2}
+        px={2}
         _hover={{
           backgroundColor: 'rgba(255, 255, 255, 0.2)'
         }}
