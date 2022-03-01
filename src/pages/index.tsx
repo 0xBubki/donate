@@ -4,7 +4,6 @@ import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
 import { confetti } from '../utils/confetti'
-import { Link } from '@chakra-ui/react'
 import NextLink from 'next/Link'
 
 const localisation = {
