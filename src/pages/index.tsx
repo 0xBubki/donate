@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text } from '@chakra-ui/layout'
+import { Heading, Flex, Text, Link } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
@@ -39,11 +39,11 @@ const Home: NextPage = () => {
       const y = -0.01
       console.log('Confetti at', { x, y })
       confetti({
-        particleCount: 75,
+        particleCount: 50,
         angle: 90,
         startVelocity: 45,
         spread: 90,
-        ticks: 350,
+        ticks: 500,
         origin: { x, y }
       })
     }, 3000)
@@ -83,36 +83,40 @@ const Home: NextPage = () => {
           Ξ123,456.00
         </Text>
 
-        <Button
-          mt="5vh"
-          color="black"
-          w="180px"
-          borderRadius="25px"
-          bg="ukraineYellow"
-          _hover={{
-            bg: 'darkYellow'
-          }}
-          _active={{
-            bg: 'darkYellow'
-          }}
-        >
-          Stake
-        </Button>
-        <Button
-          mt="2vh"
-          color="black"
-          bg="white"
-          w="180px"
-          borderRadius="25px"
-          _hover={{
-            bg: '#DDD'
-          }}
-          _active={{
-            bg: '#DDD'
-          }}
-        >
-          Donate
-        </Button>
+        <Link href="/stake">
+          <Button
+            mt="5vh"
+            color="black"
+            w="180px"
+            borderRadius="25px"
+            bg="ukraineYellow"
+            _hover={{
+              bg: 'darkYellow'
+            }}
+            _active={{
+              bg: 'darkYellow'
+            }}
+          >
+            Stake
+          </Button>
+        </Link>
+        <Link href="/donate">
+          <Button
+            mt="2vh"
+            color="black"
+            bg="white"
+            w="180px"
+            borderRadius="25px"
+            _hover={{
+              bg: '#DDD'
+            }}
+            _active={{
+              bg: '#DDD'
+            }}
+          >
+            Donate
+          </Button>
+        </Link>
       </Flex>
       <Flex
         display={['none', 'none', 'none', 'none', 'block']}
@@ -129,7 +133,7 @@ const Home: NextPage = () => {
           alt="Statue"
           layout="fill"
           objectFit="contain"
-        ></Image>
+        />
       </Flex>
     </Flex>
   )
