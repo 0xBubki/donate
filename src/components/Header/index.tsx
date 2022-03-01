@@ -91,14 +91,14 @@ export const Header = () => {
           w={'full'}
           mx={['auto', 'auto', 70]}
         >
-          <Box fontWeight="bold" fontSize={[20, 20, 20]}>
-            <NextLink href="/" passHref>
-              <Link className="center flex-col sm:flex-row gap-2">
-                <span>🇺🇦</span>
-                <span className="text-sm md:text-xl">BUBKI</span>
-              </Link>
-            </NextLink>
-          </Box>
+          <NextLink href="/" passHref>
+            <Link className="center flex-col sm:flex-row sm:gap-2">
+              <span className="text-xl">🇺🇦</span>
+              <Text fontSize={['0.75em', '1em', '1.2em']} fontWeight="bold">
+                BUBKI
+              </Text>
+            </Link>
+          </NextLink>
 
           <HStack>
             <HStack
