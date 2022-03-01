@@ -83,6 +83,10 @@ const MintPage: NextPage = () => {
 
       toast({
         position: 'bottom-right',
+        containerStyle: {
+          marginRight: '2rem',
+          marginBottom: '2rem'
+        },
         render: () => (
           <Box color="white" p={5} rounded="2xl" bg="green.400">
             <Text fontSize="lg" fontWeight="bold">
@@ -104,11 +108,15 @@ const MintPage: NextPage = () => {
     } catch (err) {
       setButtonDisabled(false)
       toast({
-        position: 'bottom-right',
         title: 'Uh oh.',
         description: "The transaction didn't go through, try again.",
         status: 'error',
-        isClosable: true
+        isClosable: true,
+        position: 'bottom-right',
+        containerStyle: {
+          marginRight: '2rem',
+          marginBottom: '2rem'
+        }
       })
     } finally {
       setButtonDisabled(false)
