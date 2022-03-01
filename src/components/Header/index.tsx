@@ -89,6 +89,7 @@ export const Header = () => {
           w={'full'}
           px={{ base: 0, lg: '2rem' }}
         >
+
           <Box fontWeight="bold" fontSize={[20, 20, 20]}>
             {/* Bubki Flag Button */}
             <NextLink href="/" passHref>
@@ -98,6 +99,7 @@ export const Header = () => {
               </Link>
             </NextLink>
           </Box>
+
 
           <HStack>
             {/* Desktop Links */}

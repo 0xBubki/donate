@@ -7,7 +7,11 @@ class ERC721Service {
   provider: any
   contract: Contract
 
-  constructor(provider: any, tokenAddress: string, signerAddress?: string) {
+  constructor(
+    provider: any,
+    tokenAddress: string,
+    signerAddress?: string | null
+  ) {
     this.provider = provider
     if (signerAddress) {
       const signer: Wallet = provider.getSigner()

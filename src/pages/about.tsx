@@ -3,8 +3,6 @@ import type { NextPage } from 'next'
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 
-// import { useTranslation } from 'next-i18next'
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from '../utils/use-translation'
 import { useEffect } from 'react'
 
@@ -21,13 +19,8 @@ const localisation = {
 }
 
 const About: NextPage = () => {
-  console.log('<<', germanTrans)
-  // useEffect(() => {
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
 
+  console.log('<<', germanTrans)
   return (
     <Flex
       direction="row"
@@ -74,12 +67,6 @@ const About: NextPage = () => {
     </Flex>
   )
 }
-
-// export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
-//   props: {
-//     ...(await serverSideTranslations(locale, ['about', 'navigation']))
-//   }
-// })
 
 export default About
 
