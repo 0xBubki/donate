@@ -104,6 +104,7 @@ const MintPage: NextPage = () => {
     } catch (err) {
       setButtonDisabled(false)
       toast({
+        position: 'bottom-right',
         title: 'Uh oh.',
         description: "The transaction didn't go through, try again.",
         status: 'error',
