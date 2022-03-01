@@ -61,7 +61,7 @@ export const Header = () => {
           <Box margin="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
             <Link href="/" className="center flex-col sm:flex-row gap-2">
               <span>🇺🇦</span>
-              <span className="text-sm md:text-xl">S33DS</span>
+              <span className="text-sm md:text-xl">BUBKI</span>
             </Link>
           </Box>
 
