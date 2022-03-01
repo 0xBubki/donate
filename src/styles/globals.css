@@ -22,7 +22,7 @@ main,
 
 main {
   @apply w-full h-full;
-  @apply flex flex-col justify-center items-center !important;
+  @apply flex flex-col justify-center items-stretch !important;
   /* Room for header. */
   @apply pt-24;
   /* Side padding. */
