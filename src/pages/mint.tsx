@@ -75,7 +75,7 @@ const MintPage: NextPage = () => {
         account
       ).mint(mintCount)
       // @todo - handle response. Show toast with link to tx? Or redirect to new view?
-    } catch (err: { string: string }) {
+    } catch (err: { message: string }) {
       setButtonDisabled(false)
       console.error(err)
       toast({
