@@ -72,7 +72,7 @@ export default function Deposit() {
         </DepositBox>
       </Flex>
       <Flex flexDirection="column" align="center" justify="center">
-        {/*<DepositDetails mode={stakingMode} />*/}
+        <DepositDetails mode={stakingMode} />
       </Flex>
 
       <Flex flexDirection="column" align="center" justify="center" />

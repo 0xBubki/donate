@@ -15,6 +15,8 @@ const DetailsBox = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
+  console.log({ tokenBalance })
+
   return (
     <Flex flexDirection="column" align="left" justify="center" width="100%">
       <Flex
@@ -37,7 +39,7 @@ const DetailsBox = (props: Props) => {
           alignContent="center"
         >
           <Text color="white" fontSize="50px">
-            ${tokenBalance || 0}
+            ${tokenBalance?.toString() || 0}
           </Text>
           <Text color="white" fontSize="20px">
             Total Value You have Donated so Far
