@@ -10,19 +10,18 @@ const YourDeposits = () => {
 
   useEffect(() => {
     if (account) {
-      const getBalance = async () => {
-        const PrizePoolNetwork = new PrizePoolNetwork(providers, testnet)
-        const balances = await PrizePoolNetwork.prizePools.map(
-          async (prizePool) => {
-            // Get ethers contract, no nice util for getBalanceAt atm
-            const ticketContract = await prizePool.getTicketContract()
-            return ticketContract.getBalanceAt(user, currentEpochTimeInSeconds)
-          }
-        )
-        console.log(balances)
-      }
-
-      getBalance()
+      // const getBalance = async () => {
+      //   const PrizePoolNetwork = new PrizePoolNetwork(providers, testnet)
+      //   const balances = await PrizePoolNetwork.prizePools.map(
+      //     async (prizePool) => {
+      //       // Get ethers contract, no nice util for getBalanceAt atm
+      //       const ticketContract = await prizePool.getTicketContract()
+      //       return ticketContract.getBalanceAt(user, currentEpochTimeInSeconds)
+      //     }
+      //   )
+      //   console.log(balances)
+      // }
+      // getBalance()
     }
   }, [account])
 
