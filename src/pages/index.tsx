@@ -1,9 +1,9 @@
 import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text, Link } from '@chakra-ui/layout'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
-import NextLink from 'next/Link'
+import NextLink, { LinkProps } from 'next/Link'
 import { confetti, randomRange } from '../utils/confetti'
 import { useEffect } from 'react'
 
