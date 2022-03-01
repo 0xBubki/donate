@@ -12,10 +12,13 @@ import {
   Stat,
   StatNumber,
   StatHelpText,
-  Divider
+  Divider,
+  useToast
 } from '@chakra-ui/react'
-import { SetStateAction, useEffect, useState } from 'react'
+import { FC, SetStateAction, useEffect, useState } from 'react'
 import axios from 'axios'
+import { shorten } from '../utils/shorten'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const localisation = {
   en: {
@@ -27,6 +30,38 @@ const localisation = {
 }
 
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
+
+const AddressField: FC<{ address: string }> = ({ address }) => {
+  const toast = useToast()
+
+  return (
+    <CopyToClipboard text={address}>
+      <Stat
+        onClick={() => {
+          toast.closeAll()
+          toast({
+            title: 'Copied!',
+            description: `Address copied to clipboard.`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true
+          })
+        }}
+      >
+        <StatNumber
+          display={['block', 'block', 'none']}
+          fontSize={['sm', 'md']}
+        >
+          {shorten(address)}
+        </StatNumber>
+
+        <StatNumber display={['none', 'none', 'block']} fontSize={['sm', 'md']}>
+          {address}
+        </StatNumber>
+      </Stat>
+    </CopyToClipboard>
+  )
+}
 
 const Leaderboard: NextPage = () => {
   const [leaders, setLeaders] = useState([])
@@ -79,15 +114,16 @@ const Leaderboard: NextPage = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Box>
+      <Flex width="100%">
         <Box
-          width="80vw"
+          width="100%"
+          marginX={2}
+          padding={[4, 8]}
           backgroundColor="#0855A6"
           borderRadius="20px"
-          padding="40px"
           mb="100px"
         >
-          <Heading color="#fff" fontWeight="bold" fontSize="48">
+          <Heading color="#fff" fontWeight="bold" fontSize="48" paddingY={4}>
             {translate('title')}
           </Heading>
           <Divider />
@@ -96,7 +132,7 @@ const Leaderboard: NextPage = () => {
               <Spinner color="white" />
             </Box>
           ) : (
-            <Table variant="striped" colorScheme="whiteAlpha">
+            <Table size="sm" variant="striped" colorScheme="whiteAlpha">
               <Thead>
                 <Tr>
                   <Th />
@@ -113,15 +149,17 @@ const Leaderboard: NextPage = () => {
                         <StatHelpText>{` `}</StatHelpText>
                       </Stat>
                     </Td>
-                    <Td color="white">
-                      <Stat>
-                        <StatNumber>{data?.from}</StatNumber>
-                      </Stat>
+                    <Td color="white" lineHeight={1.5}>
+                      <AddressField address={data.from} />
                     </Td>
-                    <Td isNumeric color="white">
+                    <Td isNumeric color="white" lineHeight={1.5}>
                       <Stat>
-                        <StatNumber>Ξ {data?.value.toFixed(4)}</StatNumber>
-                        <StatHelpText>Donated</StatHelpText>
+                        <StatNumber fontSize={['xs', 'sm', 'md']}>
+                          Ξ{data?.value.toFixed(2)}
+                        </StatNumber>
+                        <StatHelpText fontSize={['xs', 'sm']}>
+                          Donated
+                        </StatHelpText>
                       </Stat>
                     </Td>
                   </Tr>
@@ -130,7 +168,7 @@ const Leaderboard: NextPage = () => {
             </Table>
           )}
         </Box>
-      </Box>
+      </Flex>
     </Flex>
   )
 }
