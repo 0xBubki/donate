@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
-import { Button, Image, VStack } from '@chakra-ui/react'
+import { Button, Image, VStack, useToast } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { InputNumber } from '../components/InputNumber'
 import { ERC721Service } from '../services/ERC721Service'
@@ -30,6 +30,7 @@ const MintPage: NextPage = () => {
   const [mintCount, setMintCount] = useState(1)
   const translate = useTranslation(localisation)
   const { activateBrowserWallet, account, library } = useWallet()
+  const toast = useToast()
 
   // @dev set 'mintState' based on url params
   // @todo - update to being based on contract state
@@ -48,9 +49,26 @@ const MintPage: NextPage = () => {
     setWalletConnected(!!account)
   }, [account])
 
-  const handleMint = () => {
+  const handleMint = async () => {
+    // @todo - pass actual tokenAddress once added
     const tokenAddress = 'need this'
-    new ERC721Service(tokenAddress, library.provider, account).mint(mintCount)
+    try {
+      const response = await new ERC721Service(
+        library,
+        tokenAddress,
+        account
+      ).mint(mintCount)
+
+      // @todo - handle response. Show toast with link to tx? Or redirect to new view?
+    } catch (err) {
+      console.error(err)
+      toast({
+        title: 'Uh oh.',
+        description: 'There was an error while minting.',
+        status: 'error',
+        isClosable: true
+      })
+    }
   }
 
   return (
