@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
   Drawer,
@@ -6,8 +9,11 @@ import {
   DrawerContent,
   DrawerOverlay,
   useDisclosure,
-  Link,
-  Button
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -30,6 +36,10 @@ import { NavDrawerItem, NavItem } from './NavItem'
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const router = useRouter()
+  const { t } = useTranslation('common')
+
   const navItems = [
     { text: 'Stake', href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
     {
@@ -77,11 +87,37 @@ export const Header = () => {
               ))}
             </HStack>
 
-            <NavButton>
-              <GlobeAltIcon className="w-6 h-6" />
-              <Text>EN</Text>
-              <ChevronDownIcon className="w-4 h-4" />
-            </NavButton>
+            <Menu>
+              <MenuButton
+                as={Button}
+                colorScheme="yellow"
+                rounded="full"
+                py="7"
+              >
+                <Flex alignItems="center">
+                  <GlobeAltIcon className="w-6 h-6 mr-2" />
+                  <Text className="uppercase">{router.locale}</Text>
+                  <ChevronDownIcon className="w-6 h-6 ml-2" />
+                </Flex>
+              </MenuButton>
+              <MenuList bg="yellow.300" color="black">
+                <MenuItem>
+                  <Link href="/" locale={router.locale === 'en' ? 'de' : 'en'}>
+                    English
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href="/" locale={router.locale === 'fr' ? 'en' : 'fr'}>
+                    French
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href="/" locale={router.locale === 'de' ? 'en' : 'de'}>
+                    German
+                  </Link>
+                </MenuItem>
+              </MenuList>
+            </Menu>
 
             <NavButton ml="30px" onClick={activateBrowserWallet}>
               {account ? (

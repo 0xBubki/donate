@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   i18n: {
-    locales: ['en', 'fr'],
+    locales: ['de', 'en', 'fr'],
     defaultLocale: 'en'
   },
   webpack: (config) => {

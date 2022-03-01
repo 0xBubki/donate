@@ -1,42 +1,15 @@
-import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text } from '@chakra-ui/layout'
-import Confetti from 'canvas-confetti'
 import type { NextPage } from 'next'
-import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
 
-const localisation = {
-  en: {
-    title: 'Donate your yield to help'
-  },
-  fr: {
-    title: 'Donnez votre rendement'
-  }
-}
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-const r = (mi: number, ma: number) => Math.random() * (ma - mi) + mi
-let lastX = 0
-
-const blastConfetti = (evt: MouseEvent, hard: boolean) => {
-  const direction = Math.sign(lastX - evt?.clientX)
-  lastX = evt.clientX
-  const particleCount = hard ? r(122, 245) : r(2, 15)
-  Confetti({
-    particleCount,
-    angle: r(90, 90 + direction * 30),
-    colors: ['#0000FF', '#FFFF00'],
-    spread: r(45, 80),
-    origin: {
-      x: evt.clientX / window.innerWidth,
-      y: evt.clientY / window.innerHeight
-    }
-  })
-}
+import { Button } from '@chakra-ui/button'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
+import { blastConfetti } from '../utils/confetti'
 
 const Home: NextPage = () => {
-  const translate = useTranslation(localisation)
-
-  // return <h1>Test</h1>;
+  const { t } = useTranslation('common')
 
   return (
     <Flex
@@ -51,7 +24,7 @@ const Home: NextPage = () => {
     >
       <Flex direction="column" alignItems="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
-          {translate('title')}{' '}
+          {t('homepage-title')}{' '}
           <Text display="inline" color="ukraineYellow">
             Ukraine
           </Text>
@@ -64,7 +37,7 @@ const Home: NextPage = () => {
             fontSize={['1.3em', '1.8em', '2em']}
           >
             {' '}
-            donated
+            {t('donated')}
           </Text>
         </Flex>
         <Text
@@ -88,7 +61,7 @@ const Home: NextPage = () => {
             bg: 'darkYellow'
           }}
         >
-          Stake
+          {t('stake')}
         </Button>
         <Button
           mt="2vh"
@@ -103,7 +76,7 @@ const Home: NextPage = () => {
             bg: '#DDD'
           }}
         >
-          Donate
+          {t('donate')}
         </Button>
       </Flex>
       <Flex
@@ -126,5 +99,16 @@ const Home: NextPage = () => {
     </Flex>
   )
 }
+
+type LocaleType = 'de' | 'en' | 'fr'
+interface LocaleTypeProps {
+  locale: LocaleType
+}
+
+export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common']))
+  }
+})
 
 export default Home
