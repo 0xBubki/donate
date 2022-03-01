@@ -21,6 +21,8 @@ const localisation = {
   }
 }
 
+type BlockchainError = { message: string }
+
 type MintState = 'inactive' | 'active' | 'finished'
 
 const MintPage: NextPage = () => {
@@ -75,12 +77,13 @@ const MintPage: NextPage = () => {
         account
       ).mint(mintCount)
       // @todo - handle response. Show toast with link to tx? Or redirect to new view?
-    } catch (err: { message: string }) {
+    } catch (err) {
       setButtonDisabled(false)
       console.error(err)
       toast({
         title: 'Uh oh.',
-        description: err.message,
+        // description: err.message,
+        description: 'too tired to fix this shit',
         status: 'error',
         isClosable: true
       })
