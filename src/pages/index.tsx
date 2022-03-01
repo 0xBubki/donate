@@ -36,15 +36,10 @@ const blastConfetti = (evt: MouseEvent, hard: boolean) => {
 const Home: NextPage = () => {
   const translate = useTranslation(localisation)
 
-  // return <h1>Test</h1>;
-
   return (
     <Flex
       alignItems="center"
       justifyContent="center"
-      width="100vw"
-      height={'75vh'}
-      mt={['-20vh', '0px']}
       onClick={(evt: any) => {
         blastConfetti(evt, false)
       }}
@@ -59,10 +54,7 @@ const Home: NextPage = () => {
 
         <Flex mt="1vh" fontWeight="bold" alignItems="center" gap={5}>
           <Text fontSize={['2.2em', '2.8em', '4.2em']}>₴1,234,567.00</Text>
-          <Text
-            mt={['9px', '9px', '25px']}
-            fontSize={['1.3em', '1.8em', '2em']}
-          >
+          <Text mt={['9px', '9px', '25px']} fontSize={['1em', '1.75em', '2em']}>
             {' '}
             donated
           </Text>
