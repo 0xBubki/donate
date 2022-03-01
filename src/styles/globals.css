@@ -25,6 +25,8 @@ main {
   @apply flex flex-col justify-center items-center !important;
   /* Room for header. */
   @apply pt-24;
+  /* Side padding. */
+  @apply px-4;
 }
 
 header {
@@ -51,10 +53,12 @@ a {
   box-sizing: border-box;
 }
 
+.center {
+  @apply flex justify-center items-center text-center;
+}
+
 .nav-button {
   @apply rounded-md;
-
-  height: 56px !important;
   font-size: 14px !important;
 }
 
