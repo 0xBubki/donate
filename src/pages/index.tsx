@@ -3,7 +3,7 @@ import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
-import NextLink, { LinkProps } from 'next/Link'
+import NextLink from 'next/link'
 import { confetti, randomRange } from '../utils/confetti'
 import { useEffect } from 'react'
 
