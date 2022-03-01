@@ -3,7 +3,7 @@ import { Input } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { usdcTokenAddress } from '../../utils/poolTogether'
-import { utils } from 'ethers'
+import { BigNumber, utils } from 'ethers'
 import React, { useState } from 'react'
 
 const BoxDepositBox = () => {
@@ -12,7 +12,7 @@ const BoxDepositBox = () => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
-  console.log({ tokenBalance })
+  console.log()
   return (
     <Box
       backgroundColor="rgba(255,255,255,0.2)"
@@ -40,7 +40,7 @@ const BoxDepositBox = () => {
           pl={0}
         />
         <Text color="#DADADA">
-          Balance: {tokenBalance ? utils.formatEther(tokenBalance) : 0.0}
+          Balance: {tokenBalance ? utils.formatUnits(tokenBalance, 6) : 0.0}
         </Text>
       </Box>
       <Box color="white">
