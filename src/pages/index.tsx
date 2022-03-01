@@ -21,7 +21,7 @@ const Home: NextPage = () => {
     const interval = setInterval(() => {
       const x = 0.5
       const y = -0.01
-      console.log('Confetti at', { x, y })
+
       confetti({
         particleCount: 50,
         angle: 90,
