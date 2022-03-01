@@ -24,7 +24,7 @@ const providers = {
 // prod
 // export const usdcTokenAddress = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
 // rinkeby
-export const usdcTokenAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b'
+export const usdcTokenAddress = '0x4e2eeB8D66131463C14D07c974bDb12c8F4B5E6A'
 export const ticketTokenAddress = '0x325E456e8Ac0bCB65a5515FA70B6b9D581809c36'
 
 export const PrizePoolNetwork = new PoolNetwork(providers, testnet)
