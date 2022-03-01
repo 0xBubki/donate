@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import { Heading, Flex, Box } from '@chakra-ui/layout'
 import {
-  Text,
   Table,
   Thead,
   Tbody,
@@ -147,10 +146,17 @@ const Leaderboard: NextPage = () => {
                 {leaders?.map((data: { from: string; value: number }, i) => (
                   <Tr key={i}>
                     <Td color="white">
-                      <Stat>
-                        <StatNumber>#{i + 1}</StatNumber>
-                        <StatHelpText>{` `}</StatHelpText>
-                      </Stat>
+                      <Tag
+                        colorScheme="whiteAlpha"
+                        textColor="white"
+                        fontWeight="bold"
+                        fontSize="xl"
+                        paddingX={4}
+                        paddingY={2}
+                        borderRadius="10px"
+                      >
+                        {i + 1}
+                      </Tag>
                     </Td>
                     <Td color="white" lineHeight={1.5}>
                       <AddressField address={data.from} />
