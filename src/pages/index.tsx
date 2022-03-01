@@ -22,6 +22,10 @@ import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
 import { confetti, blastConfetti } from '../utils/confetti'
 
+const headerSizing = [1, 1.25, 1.5, 2.5]
+const headerSizingSm = headerSizing.map((x) => `${x}em`)
+const headerSizingLg = headerSizing.map((x) => `${x * 2}em`)
+
 const Home: NextPage = () => {
   const translate = useTranslation(localisation)
 
@@ -51,38 +55,37 @@ const Home: NextPage = () => {
       flex="1"
       direction="column"
       justifyContent="center"
-      width="100vw"
-      height={'75vh'}
-      mt={['-20vh', '0px']}
+      width="100%"
+      height="100%"
       onClick={(evt: any) => {
         blastConfetti(evt, true)
       }}
     >
       <Flex direction="column" alignItems="center" textAlign="center">
-        <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
-          {translate('homepage-title')}{' '}
-          <Text display="inline" color="ukraineYellow">
-            Ukraine
-          </Text>
-        </Heading>
+        <Flex direction="column" gap={4}>
+          <Heading fontSize={headerSizingSm}>
+            {translate('homepage-title')}{' '}
+            <Text display="inline" color="ukraineYellow">
+              Ukraine
+            </Text>
+          </Heading>
 
-        <Flex mt="1vh" fontWeight="bold" alignItems="center" gap={5}>
-          <Text fontSize={['2.2em', '2.8em', '4.2em']}>₴1,234,567.00</Text>
+          <Flex fontWeight="bold" alignItems="end" gap={3}>
+            <Text fontSize={headerSizingLg}>₴1,234,567.00</Text>
+            <Text fontSize={headerSizingSm} paddingBottom="0.5em">
+              {' '}
+              {translate('donated')}
+            </Text>
+          </Flex>
+
           <Text
-            mt={['9px', '9px', '25px']}
-            fontSize={['1.3em', '1.8em', '2em']}
+            color="rgba(255, 255, 255, 0.88)"
+            fontWeight="bold"
+            fontSize={headerSizingSm}
           >
-            {' '}
-            {translate('donated')}
+            Ξ123,456.00
           </Text>
         </Flex>
-        <Text
-          color="rgba(255, 255, 255, 0.88)"
-          fontWeight="bold"
-          fontSize={['1.3em', '1.7em', '1.8em']}
-        >
-          Ξ123,456.00
-        </Text>
 
         <NextLink href="/stake" passHref>
           <Button
@@ -101,6 +104,7 @@ const Home: NextPage = () => {
             {translate('stake')}
           </Button>
         </NextLink>
+
         <NextLink href="/donate" passHref>
           <Button
             mt="2vh"
@@ -119,6 +123,7 @@ const Home: NextPage = () => {
           </Button>
         </NextLink>
       </Flex>
+
       <Flex
         display={['none', 'none', 'none', 'none', 'block']}
         position="fixed"
