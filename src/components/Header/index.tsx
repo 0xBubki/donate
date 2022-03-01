@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
   Drawer,
@@ -37,28 +38,28 @@ export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const router = useRouter()
-  const { t } = useTranslation('common')
+  const { locale } = useRouter()
+  const { t } = useTranslation('navigation')
 
   const navItems = [
-    { text: 'Stake', href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
+    { text: t('stake'), href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
     {
-      text: 'Mint',
+      text: t('mint'),
       href: '/mint',
       icon: <PlusCircleIcon className="h-6 w-6" />
     },
     {
-      text: 'Donate',
+      text: t('donate'),
       href: '/donate',
       icon: <HeartIcon className="h-6 w-6" />
     },
     {
-      text: 'Leaderboard',
+      text: t('leaderboard'),
       href: '/leaderboard',
       icon: <FireIcon className="h-6 w-6" />
     },
     {
-      text: 'About',
+      text: t('about'),
       href: '/about',
       icon: <InformationCircleIcon className="h-6 w-6" />
     }
@@ -69,7 +70,9 @@ export const Header = () => {
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
         <HStack justifyContent={['space-between']} w={'full'}>
           <Box ml={['none', '208px']} fontWeight="bold" fontSize={[20, 20, 20]}>
-            <Link href="/">🇺🇦 S33DS</Link>
+            <Link href="/">
+              <Text className="capitalize">🇺🇦 {t('title')}</Text>
+            </Link>
           </Box>
 
           <HStack>
@@ -81,7 +84,7 @@ export const Header = () => {
               width="auto"
             >
               {navItems.map((navItem, index) => (
-                <NavItem key={index} href={navItem.href}>
+                <NavItem key={index} href={navItem.href} className="capitalize">
                   {navItem.text}
                 </NavItem>
               ))}
@@ -96,24 +99,29 @@ export const Header = () => {
               >
                 <Flex alignItems="center">
                   <GlobeAltIcon className="w-6 h-6 mr-2" />
-                  <Text className="uppercase">{router.locale}</Text>
+                  <Text className="uppercase">{locale}</Text>
                   <ChevronDownIcon className="w-6 h-6 ml-2" />
                 </Flex>
               </MenuButton>
-              <MenuList bg="yellow.300" color="black">
+              <MenuList bg="yellow.300" color="black" className="capitalize">
                 <MenuItem>
-                  <Link href="/" locale={router.locale === 'en' ? 'de' : 'en'}>
-                    English
+                  <Link href="/" locale={locale === 'en' ? 'de' : 'en'}>
+                    <Text>{t('english')}</Text>
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="/" locale={router.locale === 'fr' ? 'en' : 'fr'}>
-                    French
+                  <Link href="/" locale={locale === 'fr' ? 'en' : 'fr'}>
+                    <Text>{t('french')}</Text>
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="/" locale={router.locale === 'de' ? 'en' : 'de'}>
-                    German
+                  <Link href="/" locale={locale === 'de' ? 'en' : 'de'}>
+                    <Text>{t('german')}</Text>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href="/" locale={locale === 'es' ? 'en' : 'es'}>
+                    <Text>{t('spanish')}</Text>
                   </Link>
                 </MenuItem>
               </MenuList>
@@ -129,7 +137,7 @@ export const Header = () => {
                 </>
               ) : (
                 <>
-                  <Text>Connect</Text>
+                  <Text className="capitalize">{t('connect')}</Text>
                   <LoginIcon className="w-5 h-5" />
                 </>
               )}

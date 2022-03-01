@@ -1,9 +1,8 @@
+const { i18n } = require('./next-i18next.config')
+
 module.exports = {
+  i18n,
   reactStrictMode: true,
-  i18n: {
-    locales: ['de', 'en', 'fr'],
-    defaultLocale: 'en'
-  },
   webpack: (config) => {
     // config.experiments = { topLevelAwait: true };
     // config.resolve.fallback = {
