@@ -33,8 +33,8 @@ const DetailsBox = (props: Props) => (
         <Text color="white" fontSize="50px">
           $6.55m
         </Text>
-        <Text color="white" fontSize="24px">
-          Total Value Donating
+        <Text color="white" fontSize="20px">
+          Total Value You've Donated so Far
         </Text>
       </Box>
       <Box
@@ -50,8 +50,8 @@ const DetailsBox = (props: Props) => (
         <Text color="white" fontSize="50px">
           $6.55m
         </Text>
-        <Text color="white" fontSize="24px">
-          Total Value Donating
+        <Text color="white" fontSize="20px">
+          Total Contributions
         </Text>
       </Box>
     </Flex>

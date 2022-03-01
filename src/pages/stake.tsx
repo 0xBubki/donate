@@ -2,7 +2,6 @@ import { Button } from '@chakra-ui/button'
 import { Flex, Text } from '@chakra-ui/layout'
 import { SimpleGrid } from '@chakra-ui/react'
 import { useState } from 'react'
-import YourStake from '../components/YourStake'
 import DepositDetails from '../components/DepositDetails'
 import DepositBox from '../components/DepositBox'
 import BoxDepositBox from '../components/BoxDepositBox'
@@ -44,8 +43,8 @@ export default function Deposit() {
             <>
               <Button
                 _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#06927b"
-                color="white"
+                backgroundColor="#FFD500"
+                color="black"
                 width="455px"
                 height="80px"
                 borderRadius="25px"
@@ -57,10 +56,11 @@ export default function Deposit() {
             <>
               <Button
                 _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#06927b"
-                color="white"
+                backgroundColor="#FFD500"
+                color="black"
                 width="455px"
                 height="80px"
+                borderRadius="25px"
               >
                 <Text fontSize="3xl">Unstake</Text>
               </Button>
@@ -68,9 +68,11 @@ export default function Deposit() {
               <Button
                 _hover={{ color: 'black', background: 'white' }}
                 backgroundColor="#FFF"
-                color="white"
+                color="black"
                 width="455px"
                 height="80px"
+                borderRadius="25px"
+                mt={6}
               >
                 <Text fontSize="3xl" color="#000">
                   Donate Principal
@@ -79,8 +81,6 @@ export default function Deposit() {
             </>
           )}
         </DepositBox>
-
-        <YourStake />
       </Flex>
       <Flex flexDirection="column" align="center" justify="center">
         <DepositDetails mode={stakingMode} />
