@@ -58,8 +58,12 @@ export const Header = () => {
   return (
     <header>
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
-        <HStack justifyContent={['space-between']} w={'full'}>
-          <Box mx="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
+        <HStack
+          justifyContent={['space-between']}
+          w={'full'}
+          mx={['auto', 'auto', 70]}
+        >
+          <Box fontWeight="bold" fontSize={[20, 20, 20]}>
             <NextLink href="/" passHref>
               <Link className="center flex-col sm:flex-row gap-2">
                 <span>🇺🇦</span>
