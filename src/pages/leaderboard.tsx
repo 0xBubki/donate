@@ -13,12 +13,14 @@ import {
   StatNumber,
   StatHelpText,
   Divider,
-  useToast
+  useToast,
+  Tag
 } from '@chakra-ui/react'
 import { FC, SetStateAction, useEffect, useState } from 'react'
 import axios from 'axios'
 import { shorten } from '../utils/shorten'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { DuplicateIcon } from '@heroicons/react/outline'
 
 const localisation = {
   en: {
@@ -48,16 +50,16 @@ const AddressField: FC<{ address: string }> = ({ address }) => {
           })
         }}
       >
-        <StatNumber
-          display={['block', 'block', 'none']}
-          fontSize={['sm', 'md']}
-        >
-          {shorten(address)}
-        </StatNumber>
-
-        <StatNumber display={['none', 'none', 'block']} fontSize={['sm', 'md']}>
-          {address}
-        </StatNumber>
+        <Flex alignItems="center" gap={1} cursor="pointer">
+          <Tag
+            fontSize={['xs', 'md', 'lg']}
+            colorScheme="whiteAlpha"
+            paddingY={1}
+          >
+            {shorten(address)}
+          </Tag>
+          <DuplicateIcon className="h-5 w-5" />
+        </Flex>
       </Stat>
     </CopyToClipboard>
   )
@@ -144,10 +146,17 @@ const Leaderboard: NextPage = () => {
                 {leaders?.map((data: { from: string; value: number }, i) => (
                   <Tr key={i}>
                     <Td color="white">
-                      <Stat>
-                        <StatNumber>#{i + 1}</StatNumber>
-                        <StatHelpText>{` `}</StatHelpText>
-                      </Stat>
+                      <Tag
+                        colorScheme="whiteAlpha"
+                        textColor="white"
+                        fontWeight="bold"
+                        fontSize="xl"
+                        paddingX={4}
+                        paddingY={2}
+                        borderRadius="10px"
+                      >
+                        {i + 1}
+                      </Tag>
                     </Td>
                     <Td color="white" lineHeight={1.5}>
                       <AddressField address={data.from} />

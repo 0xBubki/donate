@@ -1,35 +1,18 @@
-import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
-import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { confetti, randomRange } from '../utils/confetti'
+
 import { useEffect } from 'react'
 
-const localisation = {
-  en: {
-    title: 'Donate your yield to help'
-  },
-  fr: {
-    title: 'Donnez votre rendement'
-  }
-}
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-const blastConfetti = (evt: MouseEvent, hard: boolean) => {
-  const particleCount = hard ? randomRange(122, 245) : randomRange(2, 15)
-
-  confetti({
-    particleCount,
-    origin: {
-      x: evt.clientX / window.innerWidth,
-      y: evt.clientY / window.innerHeight
-    }
-  })
-}
+import { Button } from '@chakra-ui/button'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
+import { confetti, blastConfetti } from '../utils/confetti'
 
 const Home: NextPage = () => {
-  const translate = useTranslation(localisation)
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     /**
@@ -57,13 +40,16 @@ const Home: NextPage = () => {
       flex="1"
       direction="column"
       justifyContent="center"
+      width="100vw"
+      height={'75vh'}
+      mt={['-20vh', '0px']}
       onClick={(evt: any) => {
-        blastConfetti(evt, false)
+        blastConfetti(evt, true)
       }}
     >
       <Flex direction="column" alignItems="center" textAlign="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
-          {translate('title')}{' '}
+          {t('homepage-title')}{' '}
           <Text display="inline" color="ukraineYellow">
             Ukraine
           </Text>
@@ -71,9 +57,12 @@ const Home: NextPage = () => {
 
         <Flex mt="1vh" fontWeight="bold" alignItems="center" gap={5}>
           <Text fontSize={['2.2em', '2.8em', '4.2em']}>₴1,234,567.00</Text>
-          <Text mt={['9px', '9px', '25px']} fontSize={['1em', '1.75em', '2em']}>
+          <Text
+            mt={['9px', '9px', '25px']}
+            fontSize={['1.3em', '1.8em', '2em']}
+          >
             {' '}
-            donated
+            {t('donated')}
           </Text>
         </Flex>
         <Text
@@ -98,7 +87,7 @@ const Home: NextPage = () => {
               bg: 'darkYellow'
             }}
           >
-            Stake
+            {t('stake')}
           </Button>
         </NextLink>
         <NextLink href="/donate" passHref>
@@ -115,7 +104,7 @@ const Home: NextPage = () => {
               bg: '#DDD'
             }}
           >
-            Donate
+            {t('donate')}
           </Button>
         </NextLink>
       </Flex>
@@ -139,5 +128,16 @@ const Home: NextPage = () => {
     </Flex>
   )
 }
+
+type LocaleType = 'de' | 'en' | 'es' | 'fr'
+interface LocaleTypeProps {
+  locale: LocaleType
+}
+
+export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common']))
+  }
+})
 
 export default Home
