@@ -11,6 +11,7 @@ type IWalletProviderContext = {
   account?: string | null
   ens?: string | null
   etherBalance: BigNumber | 0
+  library: any
 }
 
 const WalletContext = React.createContext(
@@ -18,13 +19,13 @@ const WalletContext = React.createContext(
 )
 
 export const WalletProvider = ({ children }: any) => {
-  const { account, activateBrowserWallet } = useEthers()
+  const { account, activateBrowserWallet, library } = useEthers()
   const ens = useLookupAddress()
   const etherBalance = useEtherBalance(account) || 0
 
   return (
     <WalletContext.Provider
-      value={{ account, activateBrowserWallet, ens, etherBalance }}
+      value={{ account, activateBrowserWallet, ens, etherBalance, library }}
     >
       {children}
     </WalletContext.Provider>
