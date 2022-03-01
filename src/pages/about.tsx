@@ -3,10 +3,24 @@ import type { NextPage } from 'next'
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+// import { useTranslation } from 'next-i18next'
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from '../utils/use-translation'
+
+const germanTrans = require('../../public/locales/de/about.json')
+const englishTrans = require('../../public/locales/en/about.json')
+const spanishTrans = require('../../public/locales/es/about.json')
+const frenchTrans = require('../../public/locales/fr/about.json')
+
+const localisation = {
+  de: germanTrans,
+  en: englishTrans,
+  es: spanishTrans,
+  fr: frenchTrans
+}
 
 const About: NextPage = () => {
+  console.log('<<', germanTrans)
   return (
     <Flex
       direction="row"
@@ -36,22 +50,21 @@ const About: NextPage = () => {
         <Paragraph header="headerThree" paragraph1="paragraphThree" />
       </Flex>
       <Box width="40%">
-        <Image src="/wewantyouryield.png" className="your-yield" />
+        <Image
+          src="/wewantyouryield.png"
+          className="your-yield"
+          alt="We want your yield"
+        />
       </Box>
     </Flex>
   )
 }
 
-type LocaleType = 'de' | 'en' | 'es' | 'fr'
-interface LocaleTypeProps {
-  locale: LocaleType
-}
-
-export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['about']))
-  }
-})
+// export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ['about', 'navigation']))
+//   }
+// })
 
 export default About
 
@@ -64,7 +77,7 @@ const Paragraph = ({
   paragraph1: string
   paragraph2?: string
 }) => {
-  const { t } = useTranslation('about')
+  const translate = useTranslation(localisation)
 
   return (
     <Box
@@ -73,7 +86,7 @@ const Paragraph = ({
       }
     >
       <Heading color="#fff" fontWeight="bold" fontSize="6vh">
-        {t(header)}
+        {translate(header)}
       </Heading>
       <Flex
         direction="column"
@@ -83,11 +96,11 @@ const Paragraph = ({
         justifyContent="space-around"
       >
         <Text color="#fff" fontWeight={400} fontSize="2vh">
-          {t(paragraph1)}
+          {translate(paragraph1)}
         </Text>
         {paragraph2 ? (
           <Text color="#fff" fontWeight={400} fontSize="2vh">
-            {t(paragraph2)}
+            {translate(paragraph2)}
           </Text>
         ) : null}
       </Flex>
