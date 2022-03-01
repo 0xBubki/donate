@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_ipfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          yarn
+          yarn build
+          yarn export
+
+      - name: Deploy to IPFS
+        id: pinata
+        uses: aave/pinata-action@v1.1
+        with:
+          PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
+          PINATA_SECRET_KEY: ${{ secrets.PINATA_SECRET_KEY }}
+          PIN_ALIAS: production
+          BUILD_LOCATION: './build'
+          CID_VERSION: 1
