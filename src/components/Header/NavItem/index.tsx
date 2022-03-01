@@ -3,7 +3,7 @@ import NextLink, { LinkProps } from 'next/link'
 import { FC } from 'react'
 
 export const NavItem: FC<LinkProps> = ({ children, href }) => (
-  <NextLink href={href}>
+  <NextLink href={href} passHref>
     <Link style={{ color: '#fff', cursor: 'pointer' }}>
       <Text
         color="#fff"
@@ -19,7 +19,7 @@ export const NavItem: FC<LinkProps> = ({ children, href }) => (
 )
 
 export const NavDrawerItem: FC<LinkProps> = ({ children, href }) => (
-  <NextLink href={href}>
+  <NextLink href={href} passHref>
     <Link
       style={{
         color: '#fff',

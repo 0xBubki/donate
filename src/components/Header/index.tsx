@@ -60,7 +60,7 @@ export const Header = () => {
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
         <HStack justifyContent={['space-between']} w={'full'}>
           <Box mx="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
-            <NextLink href="/">
+            <NextLink href="/" passHref>
               <Link className="center flex-col sm:flex-row gap-2">
                 <span>🇺🇦</span>
                 <span className="text-sm md:text-xl">BUBKI</span>
