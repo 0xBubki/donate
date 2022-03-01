@@ -40,18 +40,7 @@ export default function Deposit() {
         <DepositBox mode={stakingMode}>
           <BoxDepositBox />
           {stakingMode === DepositMode.DEPOSIT ? (
-            <>
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#FFD500"
-                color="black"
-                width="455px"
-                height="80px"
-                borderRadius="25px"
-              >
-                <Text fontSize="3xl">Stake</Text>
-              </Button>
-            </>
+            <></>
           ) : (
             <>
               <Button
