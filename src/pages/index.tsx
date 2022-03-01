@@ -3,7 +3,7 @@ import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
-import { confetti } from '../utils/confetti'
+import { confetti, randomRange } from '../utils/confetti'
 import { useEffect } from 'react'
 
 const localisation = {
@@ -15,17 +15,11 @@ const localisation = {
   }
 }
 
-const r = (mi: number, ma: number) => Math.random() * (ma - mi) + mi
-let lastX = 0
-
 const blastConfetti = (evt: MouseEvent, hard: boolean) => {
-  const direction = Math.sign(lastX - evt?.clientX)
-  lastX = evt.clientX
-  const particleCount = hard ? r(122, 245) : r(2, 15)
+  const particleCount = hard ? randomRange(122, 245) : randomRange(2, 15)
+
   confetti({
     particleCount,
-    angle: r(90, 90 + direction * 30),
-    spread: r(45, 80),
     origin: {
       x: evt.clientX / window.innerWidth,
       y: evt.clientY / window.innerHeight
@@ -36,12 +30,26 @@ const blastConfetti = (evt: MouseEvent, hard: boolean) => {
 const Home: NextPage = () => {
   const translate = useTranslation(localisation)
 
-  // useEffect(
-  //   () => {
-  //     confetti();
-  //   },
-  //   []
-  // );
+  useEffect(() => {
+    /**
+     * Every few seconds, blast confetti at a random location.
+     */
+    const interval = setInterval(() => {
+      const x = 0.5
+      const y = -0.01
+      console.log('Confetti at', { x, y })
+      confetti({
+        particleCount: 75,
+        angle: 90,
+        startVelocity: 45,
+        spread: 90,
+        ticks: 350,
+        origin: { x, y }
+      })
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <Flex
@@ -52,7 +60,7 @@ const Home: NextPage = () => {
         blastConfetti(evt, false)
       }}
     >
-      <Flex direction="column" alignItems="center">
+      <Flex direction="column" alignItems="center" textAlign="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
           {translate('title')}{' '}
           <Text display="inline" color="ukraineYellow">
