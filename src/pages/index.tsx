@@ -6,10 +6,10 @@ import { useEffect } from 'react'
 
 import { useTranslation } from '../utils/use-translation'
 
-const germanTrans = require('../../public/locales/de/about.json')
-const englishTrans = require('../../public/locales/en/about.json')
-const spanishTrans = require('../../public/locales/es/about.json')
-const frenchTrans = require('../../public/locales/fr/about.json')
+const germanTrans = require('../../public/locales/de/common.json')
+const englishTrans = require('../../public/locales/en/common.json')
+const spanishTrans = require('../../public/locales/es/common.json')
+const frenchTrans = require('../../public/locales/fr/common.json')
 
 const localisation = {
   de: germanTrans,

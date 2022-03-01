@@ -50,7 +50,11 @@ const About: NextPage = () => {
         <Paragraph header="headerThree" paragraph1="paragraphThree" />
       </Flex>
       <Box width="40%">
-        <Image src="/wewantyouryield.png" className="your-yield" />
+        <Image
+          src="/wewantyouryield.png"
+          className="your-yield"
+          alt="We want your yield"
+        />
       </Box>
     </Flex>
   )
