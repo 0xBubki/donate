@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from '@chakra-ui/react'
 import { FC } from 'react'
 
-export const NavButton: FC<ButtonProps> = ({ children }) => {
+export const NavButton: FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <Button
       className="nav-button flex flex-row gap-2"
@@ -14,6 +14,7 @@ export const NavButton: FC<ButtonProps> = ({ children }) => {
       _active={{
         bg: 'darkYellow'
       }}
+      onClick={onClick}
     >
       {children}
     </Button>

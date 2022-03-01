@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
@@ -14,7 +14,8 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem
+  MenuItem,
+  Link
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -68,12 +69,18 @@ export const Header = () => {
   return (
     <header>
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
-        <HStack justifyContent={['space-between']} w={'full'}>
-          <Box mx="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
-            <Link href="/" className="center flex-col sm:flex-row gap-2">
-              <span>🇺🇦</span>
-              <span className="text-sm md:text-xl">BUBKI</span>
-            </Link>
+        <HStack
+          justifyContent={['space-between']}
+          w={'full'}
+          mx={['auto', 'auto', 70]}
+        >
+          <Box fontWeight="bold" fontSize={[20, 20, 20]}>
+            <NextLink href="/" passHref>
+              <Link className="center flex-col sm:flex-row gap-2">
+                <span>🇺🇦</span>
+                <span className="text-sm md:text-xl">BUBKI</span>
+              </Link>
+            </NextLink>
           </Box>
 
           <HStack>
@@ -85,8 +92,8 @@ export const Header = () => {
               width="auto"
             >
               {navItems.map((navItem, index) => (
-                <NavItem key={index} href={navItem.href} className="capitalize">
-                  {navItem.text}
+                <NavItem key={index} href={navItem.href}>
+                  <Text className="capitalize">{navItem.text}</Text>
                 </NavItem>
               ))}
             </HStack>
@@ -94,9 +101,16 @@ export const Header = () => {
             <Menu>
               <MenuButton
                 as={Button}
-                colorScheme="yellow"
+                bg="ukraineYellow"
+                color="black"
+                _hover={{
+                  bg: 'darkYellow'
+                }}
+                _active={{
+                  bg: 'darkYellow'
+                }}
                 rounded="full"
-                py="7"
+                py="3"
               >
                 <Flex alignItems="center">
                   <GlobeAltIcon className="w-6 h-6 mr-2" />
@@ -104,26 +118,26 @@ export const Header = () => {
                   <ChevronDownIcon className="w-6 h-6 ml-2" />
                 </Flex>
               </MenuButton>
-              <MenuList bg="yellow.300" color="black" className="capitalize">
+              <MenuList bg="ukraineYellow" color="black">
                 <MenuItem>
-                  <Link href="/" locale={locale === 'en' ? 'de' : 'en'}>
-                    <Text>{t('english')}</Text>
-                  </Link>
+                  <NextLink href="/" locale={locale === 'en' ? 'de' : 'en'}>
+                    <Text className="capitalize">{t('english')}</Text>
+                  </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="/" locale={locale === 'fr' ? 'en' : 'fr'}>
-                    <Text>{t('french')}</Text>
-                  </Link>
+                  <NextLink href="/" locale={locale === 'fr' ? 'en' : 'fr'}>
+                    <Text className="capitalize">{t('french')}</Text>
+                  </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="/" locale={locale === 'de' ? 'en' : 'de'}>
-                    <Text>{t('german')}</Text>
-                  </Link>
+                  <NextLink href="/" locale={locale === 'de' ? 'en' : 'de'}>
+                    <Text className="capitalize">{t('german')}</Text>
+                  </NextLink>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="/" locale={locale === 'es' ? 'en' : 'es'}>
-                    <Text>{t('spanish')}</Text>
-                  </Link>
+                  <NextLink href="/" locale={locale === 'es' ? 'en' : 'es'}>
+                    <Text className="capitalize">{t('spanish')}</Text>
+                  </NextLink>
                 </MenuItem>
               </MenuList>
             </Menu>

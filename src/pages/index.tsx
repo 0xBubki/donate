@@ -1,28 +1,53 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import NextLink from 'next/link'
+
+import { useEffect } from 'react'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Button } from '@chakra-ui/button'
 import { Heading, Flex, Text } from '@chakra-ui/layout'
-import { blastConfetti } from '../utils/confetti'
+import { confetti, blastConfetti } from '../utils/confetti'
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common')
 
+  useEffect(() => {
+    /**
+     * Every few seconds, blast confetti at a random location.
+     */
+    const interval = setInterval(() => {
+      const x = 0.5
+      const y = -0.01
+      console.log('Confetti at', { x, y })
+      confetti({
+        particleCount: 50,
+        angle: 90,
+        startVelocity: 45,
+        spread: 90,
+        ticks: 500,
+        origin: { x, y }
+      })
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <Flex
-      alignItems="center"
+      flex="1"
+      direction="column"
       justifyContent="center"
       width="100vw"
       height={'75vh'}
       mt={['-20vh', '0px']}
       onClick={(evt: any) => {
-        blastConfetti(evt, false)
+        blastConfetti(evt, true)
       }}
     >
-      <Flex direction="column" alignItems="center">
+      <Flex direction="column" alignItems="center" textAlign="center">
         <Heading fontSize={['1.4em', '1.7em', '2.1em']}>
           {t('homepage-title')}{' '}
           <Text display="inline" color="ukraineYellow">
@@ -48,36 +73,40 @@ const Home: NextPage = () => {
           Ξ123,456.00
         </Text>
 
-        <Button
-          mt="5vh"
-          color="black"
-          w="180px"
-          borderRadius="25px"
-          bg="ukraineYellow"
-          _hover={{
-            bg: 'darkYellow'
-          }}
-          _active={{
-            bg: 'darkYellow'
-          }}
-        >
-          {t('stake')}
-        </Button>
-        <Button
-          mt="2vh"
-          color="black"
-          bg="white"
-          w="180px"
-          borderRadius="25px"
-          _hover={{
-            bg: '#DDD'
-          }}
-          _active={{
-            bg: '#DDD'
-          }}
-        >
-          {t('donate')}
-        </Button>
+        <NextLink href="/stake" passHref>
+          <Button
+            mt="5vh"
+            color="black"
+            w="180px"
+            borderRadius="25px"
+            bg="ukraineYellow"
+            _hover={{
+              bg: 'darkYellow'
+            }}
+            _active={{
+              bg: 'darkYellow'
+            }}
+          >
+            {t('stake')}
+          </Button>
+        </NextLink>
+        <NextLink href="/donate" passHref>
+          <Button
+            mt="2vh"
+            color="black"
+            bg="white"
+            w="180px"
+            borderRadius="25px"
+            _hover={{
+              bg: '#DDD'
+            }}
+            _active={{
+              bg: '#DDD'
+            }}
+          >
+            {t('donate')}
+          </Button>
+        </NextLink>
       </Flex>
       <Flex
         display={['none', 'none', 'none', 'none', 'block']}
@@ -94,7 +123,7 @@ const Home: NextPage = () => {
           alt="Statue"
           layout="fill"
           objectFit="contain"
-        ></Image>
+        />
       </Flex>
     </Flex>
   )
