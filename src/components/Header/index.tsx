@@ -1,4 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from 'next/router'
+import NextLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
   Drawer,
@@ -7,6 +11,10 @@ import {
   DrawerOverlay,
   useDisclosure,
   Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
   Link
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
@@ -26,30 +34,33 @@ import { useWallet } from '../../context/wallet-provider'
 import { shorten } from '../../utils/shorten'
 import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
-import NextLink from 'next/link'
 
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const { locale } = useRouter()
+  const { t } = useTranslation('navigation')
+
   const navItems = [
-    { text: 'Stake', href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
+    { text: t('stake'), href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
     {
-      text: 'Mint',
+      text: t('mint'),
       href: '/mint',
       icon: <PlusCircleIcon className="h-6 w-6" />
     },
     {
-      text: 'Donate',
+      text: t('donate'),
       href: '/donate',
       icon: <HeartIcon className="h-6 w-6" />
     },
     {
-      text: 'Leaderboard',
+      text: t('leaderboard'),
       href: '/leaderboard',
       icon: <FireIcon className="h-6 w-6" />
     },
     {
-      text: 'About',
+      text: t('about'),
       href: '/about',
       icon: <InformationCircleIcon className="h-6 w-6" />
     }
@@ -82,16 +93,70 @@ export const Header = () => {
             >
               {navItems.map((navItem, index) => (
                 <NavItem key={index} href={navItem.href}>
-                  {navItem.text}
+                  <Text className="capitalize">{navItem.text}</Text>
                 </NavItem>
               ))}
             </HStack>
 
-            <NavButton>
-              <GlobeAltIcon className="w-6 h-6" />
-              <Text>EN</Text>
-              <ChevronDownIcon className="w-4 h-4" />
-            </NavButton>
+            <Menu>
+              <MenuButton
+                as={Button}
+                bg="ukraineYellow"
+                color="black"
+                _hover={{
+                  bg: 'darkYellow'
+                }}
+                _active={{
+                  bg: 'darkYellow'
+                }}
+                rounded="full"
+                py="3"
+              >
+                <Flex alignItems="center">
+                  <GlobeAltIcon className="w-6 h-6 mr-2" />
+                  <Text className="uppercase">{locale}</Text>
+                  <ChevronDownIcon className="w-6 h-6 ml-2" />
+                </Flex>
+              </MenuButton>
+              <MenuList bg="ukraineYellow" color="black">
+                <MenuItem>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'en' ? 'de' : 'en'}
+                  >
+                    <Text className="capitalize">{t('english')}</Text>
+                  </NextLink>
+                </MenuItem>
+                <MenuItem>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'fr' ? 'en' : 'fr'}
+                  >
+                    <Text className="capitalize">{t('french')}</Text>
+                  </NextLink>
+                </MenuItem>
+                <MenuItem>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'de' ? 'en' : 'de'}
+                  >
+                    <Text className="capitalize">{t('german')}</Text>
+                  </NextLink>
+                </MenuItem>
+                <MenuItem>
+                  <NextLink
+                    href=""
+                    passHref
+                    locale={locale === 'es' ? 'en' : 'es'}
+                  >
+                    <Text className="capitalize">{t('spanish')}</Text>
+                  </NextLink>
+                </MenuItem>
+              </MenuList>
+            </Menu>
 
             <NavButton ml="30px" onClick={activateBrowserWallet}>
               {account ? (
@@ -103,7 +168,7 @@ export const Header = () => {
                 </>
               ) : (
                 <>
-                  <Text>Connect</Text>
+                  <Text className="capitalize">{t('connect')}</Text>
                   <LoginIcon className="w-5 h-5" />
                 </>
               )}
