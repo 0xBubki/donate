@@ -22,13 +22,16 @@ import { shorten } from '../utils/shorten'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { DuplicateIcon } from '@heroicons/react/outline'
 
+const germanTrans = require('../../public/locales/de/leaderboard.json')
+const englishTrans = require('../../public/locales/en/leaderboard.json')
+const spanishTrans = require('../../public/locales/es/leaderboard.json')
+const frenchTrans = require('../../public/locales/fr/leaderboard.json')
+
 const localisation = {
-  en: {
-    title: 'Leaderboard'
-  },
-  fr: {
-    title: 'Classement'
-  }
+  de: germanTrans,
+  en: englishTrans,
+  es: spanishTrans,
+  fr: frenchTrans
 }
 
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'

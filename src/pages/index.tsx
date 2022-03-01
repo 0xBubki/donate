@@ -129,11 +129,6 @@ const Home: NextPage = () => {
   )
 }
 
-type LocaleType = 'de' | 'en' | 'es' | 'fr'
-interface LocaleTypeProps {
-  locale: LocaleType
-}
-
 export const getStaticProps = async ({ locale }: LocaleTypeProps) => ({
   props: {
     ...(await serverSideTranslations(locale, ['common']))

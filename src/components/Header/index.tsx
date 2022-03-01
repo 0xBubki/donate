@@ -1,7 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
-import { useTranslation } from 'next-i18next'
+
+import { useTranslation } from '../../utils/use-translation'
+
+const germanTrans = require('../../../public/locales/de/navigation.json')
+const englishTrans = require('../../../public/locales/en/navigation.json')
+const spanishTrans = require('../../../public/locales/es/navigation.json')
+const frenchTrans = require('../../../public/locales/fr/navigation.json')
+
+const localisation = {
+  de: germanTrans,
+  en: englishTrans,
+  es: spanishTrans,
+  fr: frenchTrans
+}
 
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
@@ -40,27 +53,31 @@ export const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const { locale } = useRouter()
-  const { t } = useTranslation('navigation')
+  const translate = useTranslation(localisation)
 
   const navItems = [
-    { text: t('stake'), href: '/stake', icon: <KeyIcon className="h-6 w-6" /> },
     {
-      text: t('mint'),
+      text: translate('stake'),
+      href: '/stake',
+      icon: <KeyIcon className="h-6 w-6" />
+    },
+    {
+      text: translate('mint'),
       href: '/mint',
       icon: <PlusCircleIcon className="h-6 w-6" />
     },
     {
-      text: t('donate'),
+      text: translate('donate'),
       href: '/donate',
       icon: <HeartIcon className="h-6 w-6" />
     },
     {
-      text: t('leaderboard'),
+      text: translate('leaderboard'),
       href: '/leaderboard',
       icon: <FireIcon className="h-6 w-6" />
     },
     {
-      text: t('about'),
+      text: translate('about'),
       href: '/about',
       icon: <InformationCircleIcon className="h-6 w-6" />
     }
@@ -125,7 +142,7 @@ export const Header = () => {
                     passHref
                     locale={locale === 'en' ? 'de' : 'en'}
                   >
-                    <Text className="capitalize">{t('english')}</Text>
+                    <Text className="capitalize">{translate('english')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
@@ -134,7 +151,7 @@ export const Header = () => {
                     passHref
                     locale={locale === 'fr' ? 'en' : 'fr'}
                   >
-                    <Text className="capitalize">{t('french')}</Text>
+                    <Text className="capitalize">{translate('french')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
@@ -143,7 +160,7 @@ export const Header = () => {
                     passHref
                     locale={locale === 'de' ? 'en' : 'de'}
                   >
-                    <Text className="capitalize">{t('german')}</Text>
+                    <Text className="capitalize">{translate('german')}</Text>
                   </NextLink>
                 </MenuItem>
                 <MenuItem>
@@ -152,7 +169,7 @@ export const Header = () => {
                     passHref
                     locale={locale === 'es' ? 'en' : 'es'}
                   >
-                    <Text className="capitalize">{t('spanish')}</Text>
+                    <Text className="capitalize">{translate('spanish')}</Text>
                   </NextLink>
                 </MenuItem>
               </MenuList>
@@ -168,7 +185,7 @@ export const Header = () => {
                 </>
               ) : (
                 <>
-                  <Text className="capitalize">{t('connect')}</Text>
+                  <Text className="capitalize">{translate('connect')}</Text>
                   <LoginIcon className="w-5 h-5" />
                 </>
               )}
