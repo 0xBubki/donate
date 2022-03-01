@@ -1,6 +1,6 @@
 import { Web3Provider } from '@ethersproject/providers'
 import { BigNumber, Contract, ethers, Signer } from 'ethers'
-import { YIELD_DONATE_CONTRACT } from '../utils/constants'
+import { YIELD_DONATE_CONTRACT, ZEROXAPI } from '../utils/constants'
 import YieldDonateAbi from './abis/YieldDonateAbi.json'
 
 class YieldDonateService {
@@ -46,8 +46,13 @@ class YieldDonateService {
     minTokens: BigNumber
   ) => {
     try {
-      // TODO: Add appropriate data
-      const data = ''
+      const params = new URLSearchParams()
+      params.append('sellToken', sellToken)
+      params.append('buyToken', buyToken)
+      params.append('sellAmmount', sellAmount.toString())
+      const response = await fetch(`${ZEROXAPI}/swap/v1/price?${params}`)
+      const data = await response.json()
+
       const tx = await this.contract.deposit(
         sellToken,
         sellAmount,

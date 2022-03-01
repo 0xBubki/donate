@@ -100,7 +100,7 @@ const Home: NextPage = () => {
   )
 }
 
-type LocaleType = 'de' | 'en' | 'fr'
+type LocaleType = 'de' | 'en' | 'es' | 'fr'
 interface LocaleTypeProps {
   locale: LocaleType
 }
