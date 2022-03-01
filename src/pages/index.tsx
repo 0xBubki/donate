@@ -5,6 +5,7 @@ import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
 import { confetti } from '../utils/confetti'
 import { Link } from '@chakra-ui/react'
+import NextLink from 'next/Link'
 
 const localisation = {
   en: {
@@ -68,7 +69,7 @@ const Home: NextPage = () => {
           Ξ123,456.00
         </Text>
 
-        <Link href="/stake">
+        <NextLink href="/stake">
           <Button
             mt="5vh"
             color="black"
@@ -84,8 +85,8 @@ const Home: NextPage = () => {
           >
             Stake
           </Button>
-        </Link>
-        <Link href="/donate">
+        </NextLink>
+        <NextLink href="/donate">
           <Button
             mt="2vh"
             color="black"
@@ -101,7 +102,7 @@ const Home: NextPage = () => {
           >
             Donate
           </Button>
-        </Link>
+        </NextLink>
       </Flex>
       <Flex
         display={['none', 'none', 'none', 'none', 'block']}
