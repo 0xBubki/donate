@@ -12,7 +12,6 @@ const BoxDepositBox = () => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
-  console.log()
   return (
     <Box
       backgroundColor="rgba(255,255,255,0.2)"
