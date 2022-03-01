@@ -1,8 +1,9 @@
 import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text, Link } from '@chakra-ui/layout'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
 import type { NextPage } from 'next'
 import { useTranslation } from '../utils/use-translation'
 import Image from 'next/image'
+import NextLink from 'next/link'
 import { confetti, randomRange } from '../utils/confetti'
 import { useEffect } from 'react'
 
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
           Ξ123,456.00
         </Text>
 
-        <Link href="/stake">
+        <NextLink href="/stake" passHref>
           <Button
             mt="5vh"
             color="black"
@@ -99,8 +100,8 @@ const Home: NextPage = () => {
           >
             Stake
           </Button>
-        </Link>
-        <Link href="/donate">
+        </NextLink>
+        <NextLink href="/donate" passHref>
           <Button
             mt="2vh"
             color="black"
@@ -116,7 +117,7 @@ const Home: NextPage = () => {
           >
             Donate
           </Button>
-        </Link>
+        </NextLink>
       </Flex>
       <Flex
         display={['none', 'none', 'none', 'none', 'block']}

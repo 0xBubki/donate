@@ -1,9 +1,10 @@
-import { Text, LinkProps, Link } from '@chakra-ui/react'
+import { Text, Link } from '@chakra-ui/react'
+import NextLink, { LinkProps } from 'next/link'
 import { FC } from 'react'
 
-export const NavItem: FC<LinkProps> = ({ children, ...props }) => {
-  return (
-    <Link href={props.href} {...props} style={{ color: '#fff' }}>
+export const NavItem: FC<LinkProps> = ({ children, href }) => (
+  <NextLink href={href} passHref>
+    <Link style={{ color: '#fff', cursor: 'pointer' }}>
       <Text
         color="#fff"
         fontSize={[16, 16, 16, 18]}
@@ -14,14 +15,12 @@ export const NavItem: FC<LinkProps> = ({ children, ...props }) => {
         {children}
       </Text>
     </Link>
-  )
-}
+  </NextLink>
+)
 
-export const NavDrawerItem: FC<LinkProps> = ({ children, ...props }) => {
-  return (
+export const NavDrawerItem: FC<LinkProps> = ({ children, href }) => (
+  <NextLink href={href} passHref>
     <Link
-      href={props.href}
-      {...props}
       style={{
         color: '#fff',
         textDecoration: 'none',
@@ -45,5 +44,5 @@ export const NavDrawerItem: FC<LinkProps> = ({ children, ...props }) => {
         {children}
       </Text>
     </Link>
-  )
-}
+  </NextLink>
+)

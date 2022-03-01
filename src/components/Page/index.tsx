@@ -1,9 +1,19 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Flex } from '@chakra-ui/layout'
 import { Header } from '../Header'
 import Head from 'next/head'
+import { useWallet } from '../../context/wallet-provider'
 
 export const Page: FC = ({ children }) => {
+  const { activateBrowserWallet, account } = useWallet()
+
+  useEffect(() => {
+    try {
+      activateBrowserWallet()
+    } catch (e) {
+      console.error(e)
+    }
+  }, [])
   return (
     <>
       <Head>

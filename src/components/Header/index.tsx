@@ -6,8 +6,8 @@ import {
   DrawerContent,
   DrawerOverlay,
   useDisclosure,
-  Link,
-  Button
+  Button,
+  Link
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -26,6 +26,7 @@ import { useWallet } from '../../context/wallet-provider'
 import { shorten } from '../../utils/shorten'
 import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
+import NextLink from 'next/link'
 
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
@@ -59,10 +60,12 @@ export const Header = () => {
       <Stack direction={['column', 'column', 'row']} px={2} py={4}>
         <HStack justifyContent={['space-between']} w={'full'}>
           <Box mx="auto" fontWeight="bold" fontSize={[20, 20, 20]}>
-            <Link href="/" className="center flex-col sm:flex-row gap-2">
-              <span>🇺🇦</span>
-              <span className="text-sm md:text-xl">BUBKI</span>
-            </Link>
+            <NextLink href="/" passHref>
+              <Link className="center flex-col sm:flex-row gap-2">
+                <span>🇺🇦</span>
+                <span className="text-sm md:text-xl">BUBKI</span>
+              </Link>
+            </NextLink>
           </Box>
 
           <HStack>
