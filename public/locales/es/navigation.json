@@ -1,13 +1,13 @@
 {
-  "title": "S33DS",
-  "stake": "Stake",
-  "mint": "Mint",
-  "donate": "Donate",
-  "leaderboard": "Leaderboard",
-  "about": "About",
-  "connect": "Connect",
-  "english": "English",
-  "german": "German",
-  "french": "French",
-  "spanish": "Spanish"
+  "title": "Semillas",
+  "stake": "Apostar",
+  "mint": "Acuñar",
+  "donate": "Donar",
+  "leaderboard": "Clasificación",
+  "about": "Sobre",
+  "connect": "Conectar",
+  "english": "Inglés",
+  "german": "Alemán",
+  "french": "Francés",
+  "spanish": "Español"
 }
