@@ -35,7 +35,7 @@ const BoxDepositBox = () => {
           type="number"
           value={amountToDonate}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setAmountToDonate(parseInt(e.target.value) || null)
+            setAmountToDonate(parseInt(e.target.value))
           }
           pl={0}
         />
