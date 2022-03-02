@@ -69,19 +69,19 @@ const BoxDepositBox = () => {
   return (
     <Flex direction="column" gap={8}>
       <Flex
-        backgroundColor="rgba(255,255,255,0.2)"
-        width="100%"
-        borderRadius="25px"
-        display="flex"
-        paddingX="25px"
-        paddingY="20px"
-        direction="column"
+        direction={['column', 'row']}
         align="center"
+        justify="space-around"
+        padding={4}
+        gap={4}
+        backgroundColor="rgba(255,255,255,0.2)"
+        borderRadius="25px"
       >
-        <Flex color="white" direction="column">
+        <Flex direction="column" justify="center" align="center" color="white">
           <Input
-            width="100%"
-            fontSize="36px"
+            padding="0px"
+            textAlign="center"
+            fontSize="2em"
             fontWeight="bold"
             border="none"
             focusBorderColor="none"

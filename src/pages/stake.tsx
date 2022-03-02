@@ -1,13 +1,11 @@
 import { Flex, Text } from '@chakra-ui/layout'
-import { SimpleGrid } from '@chakra-ui/react'
 import { useState } from 'react'
+
 import DepositDetails from '../components/DepositDetails'
 import DepositBox from '../components/DepositBox'
 import BoxDepositBox from '../components/BoxDepositBox'
 import BoxUnstakeBox from '../components/BoxUnstakeBox'
 import RedeemSwitch from '../components/RedeemSwitch'
-import Link from 'next/link'
-import { headerSizingLg, headerSizingSm, headerSizingXs } from '../utils/sizing'
 
 enum DepositMode {
   WITHDRAW,
@@ -29,7 +27,7 @@ export default function Deposit() {
 
   return (
     <Flex direction="column" gap={16}>
-      <Flex direction="column" align="center" justify="center" width="100%">
+      <Flex direction="column" align="center" justify="center">
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
           {stakingMode === DepositMode.DEPOSIT ? (
