@@ -13,7 +13,8 @@ export const Page: FC = ({ children }) => {
     } catch (e) {
       console.error(e)
     }
-  }, [])
+  }, [activateBrowserWallet])
+
   return (
     <>
       <Head>
