@@ -5,7 +5,11 @@ import { DepositDetails } from '../components/Stake/DepositDetails'
 import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
 import { StakeMode, StakeView } from '../components/Stake'
 
+import { useTranslation } from '../utils/use-translation'
+const translations = require('../../public/locales/mint.json')
+
 export default function Deposit() {
+  const translate = useTranslation(translations)
   const [stakingMode, setStakingMode] = useState<StakeMode>(StakeMode.STAKE)
 
   function tabChanged() {
@@ -19,7 +23,11 @@ export default function Deposit() {
   return (
     <Flex direction="column" gap={16} width="100%" align="center">
       <Flex direction="column" align="center" justify="center">
-        <RedeemSwitch onChange={tabChanged} />
+        <RedeemSwitch
+          stake={translate('stake') || 'Stake'}
+          unstake={translate('unstake') || 'Unstake'}
+          onChange={tabChanged}
+        />
         <Flex
           direction="column"
           align="center"
@@ -35,7 +43,9 @@ export default function Deposit() {
               color="white"
               fontSize={['2rem', '3rem']}
             >
-              {stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'}{' '}
+              {stakingMode === StakeMode.STAKE
+                ? translate('stake')
+                : translate('unstake')}
             </Text>
           </Box>
 
@@ -43,7 +53,15 @@ export default function Deposit() {
         </Flex>
       </Flex>
 
-      <DepositDetails stakingMode={stakingMode} />
+      <DepositDetails
+        stakingMode={stakingMode}
+        cta={translate('cta') || 'Deposit, yield, support'}
+        withdrawCta={
+          translate('withdrawCta') || 'Withdraw all deposited assets'
+        }
+        stakedValueLabel={translate('stakedValueLabel') || 'Your Staked Value'}
+        totalStakedLabel={translate('totalStakedLabel') || 'Total Staked'}
+      />
     </Flex>
   )
 }

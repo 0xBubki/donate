@@ -1,6 +1,14 @@
 import { Tab, TabList, Tabs } from '@chakra-ui/react'
 
-export const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
+export const RedeemSwitch = ({
+  stake = '',
+  unstake = '',
+  onChange
+}: {
+  stake: string
+  unstake: string
+  onChange: () => void
+}) => (
   <Tabs
     variant="soft-rounded"
     backgroundColor={'white'}
@@ -11,11 +19,11 @@ export const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
     <TabList>
       <Tab width="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
-        Stake{' '}
+        {stake}{' '}
       </Tab>
       <Tab maxWidth="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
-        Unstake{' '}
+        {unstake}{' '}
       </Tab>
     </TabList>
   </Tabs>

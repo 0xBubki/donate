@@ -4,7 +4,8 @@
     "unstake": "Unstake",
     "connectTo": "Connect to ETH mainnet",
     "cta": "Deposit, yield, support",
-    "yourValue": "Your Staked Value",
-    "totalStaked": "Total Staked"
+    "withdrawCta": "Withdraw all deposited assets",
+    "stakedValueLabel": "Your Staked Value",
+    "totalStakedLabel": "Total Staked"
   }
 }

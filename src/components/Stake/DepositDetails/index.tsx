@@ -7,11 +7,21 @@ import { StakeMode } from '..'
 
 interface Props {
   stakingMode: StakeMode
+  cta: string
+  withdrawCta: string
+  stakedValueLabel: string
+  totalStakedLabel: string
 }
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-export const DepositDetails = (props: Props) => {
+export const DepositDetails = ({
+  stakingMode,
+  cta,
+  withdrawCta,
+  stakedValueLabel,
+  totalStakedLabel
+}: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
   const tokenBalanceOrZero = tokenBalance || 0
@@ -47,9 +57,7 @@ export const DepositDetails = (props: Props) => {
       maxWidth={720}
     >
       <Heading textAlign="center">
-        {props.stakingMode === StakeMode.STAKE
-          ? `Deposit, yield, support`
-          : `Withdraw all deposited assets`}
+        {stakingMode === StakeMode.STAKE ? cta : withdrawCta}
       </Heading>
 
       <Flex
@@ -73,7 +81,7 @@ export const DepositDetails = (props: Props) => {
               ?.toString() || 0}
           </Heading>
           <Text color="white" fontSize="20px">
-            Your Staked Value
+            {stakedValueLabel}
           </Text>
         </Flex>
 
@@ -89,7 +97,7 @@ export const DepositDetails = (props: Props) => {
             ${totalYieldEarned}
           </Heading>
           <Text color="white" fontSize="20px">
-            Total Staked
+            {totalStakedLabel}
           </Text>
         </Flex>
       </Flex>
