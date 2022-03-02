@@ -55,7 +55,7 @@ const BoxDepositBox = () => {
 
   const determineText = () => {
     if (chainId !== 1) {
-      return 'Change to ETH mainnet'
+      return 'Connect to ETH mainnet'
     }
     if (account) {
       if (approve) return 'Approving...'
@@ -112,7 +112,7 @@ const BoxDepositBox = () => {
         onClick={handleStaking}
         disabled={approve || deposit || chainId !== 1}
       >
-        <Text>{determineText()}</Text>
+        <Text fontSize={['0.8rem', '1rem']}>{determineText()}</Text>
       </Button>
     </Flex>
   )

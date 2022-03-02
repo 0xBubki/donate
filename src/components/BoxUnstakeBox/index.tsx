@@ -106,19 +106,6 @@ const BoxDepositBox = () => {
       >
         <Text fontSize="3xl">{determineText()}</Text>
       </Button>
-      {/*<Button*/}
-      {/*  _hover={{ color: 'black', background: 'white' }}*/}
-      {/*  backgroundColor="#FFF"*/}
-      {/*  color="black"*/}
-      {/*  width="455px"*/}
-      {/*  height="80px"*/}
-      {/*  borderRadius="25px"*/}
-      {/*  mt={6}*/}
-      {/*>*/}
-      {/*  <Text fontSize="3xl" color="#000">*/}
-      {/*    Donate Principal*/}
-      {/*  </Text>*/}
-      {/*</Button>*/}
     </>
   )
 }

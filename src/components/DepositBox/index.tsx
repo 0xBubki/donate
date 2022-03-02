@@ -10,23 +10,25 @@ enum DepositMode {
   DEPOSIT
 }
 
-const DepositBox = ({ children, mode }: DepositBoxProps) => (
-  <Flex
-    direction="column"
-    align="center"
-    justify="space-around"
-    borderRadius="25px"
-    background="rgba(0, 0, 0, 0.2)"
-    padding={8}
-  >
-    <Box width="100%">
-      <Text mb="20px" fontWeight="bold" color="white" fontSize="48px">
-        {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
-      </Text>
-    </Box>
+const DepositBox = ({ children, mode }: DepositBoxProps) => {
+  return (
+    <Flex
+      direction="column"
+      align="center"
+      justify="space-around"
+      borderRadius="25px"
+      background="rgba(0, 0, 0, 0.2)"
+      padding={6}
+    >
+      <Box width="100%">
+        <Text mb="20px" fontWeight="bold" color="white" fontSize="3rem">
+          {mode === DepositMode.DEPOSIT ? 'Stake' : 'Unstake'}{' '}
+        </Text>
+      </Box>
 
-    {children}
-  </Flex>
-)
+      {children}
+    </Flex>
+  )
+}
 
 export default DepositBox

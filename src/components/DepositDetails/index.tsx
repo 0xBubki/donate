@@ -57,12 +57,11 @@ const DetailsBox = (props: Props) => {
         gap={4}
       >
         <Flex
+          direction="column"
+          align="center"
+          padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="276px"
-          padding="20px"
-          flexDirection="column"
-          alignItems="center"
         >
           <Text color="white" fontSize="50px">
             $
@@ -76,13 +75,11 @@ const DetailsBox = (props: Props) => {
         </Flex>
 
         <Flex
+          direction="column"
+          align="center"
+          padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="276px"
-          padding="20px"
-          display="flex"
-          direction="column"
-          alignItems="center"
         >
           <Text color="white" fontSize="50px">
             ${totalYieldEarned}
