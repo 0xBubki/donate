@@ -54,7 +54,6 @@ a {
 .nav-button {
   @apply rounded-md;
 
-  height: 56px !important;
   font-size: 14px !important;
 }
 

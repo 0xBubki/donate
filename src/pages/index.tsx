@@ -127,7 +127,7 @@ const Home: NextPage = () => {
               </Text>
             )}
 
-            <Text fontSize={headerSizingSm} paddingBottom="0.5em">
+            <Text fontSize={headerSizingSm} paddingBottom="0.5rem">
               {' '}
               {translate('donated')}
             </Text>
