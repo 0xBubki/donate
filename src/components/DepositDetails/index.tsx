@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
-import { PrizePoolNetwork, ticketTokenAddress } from '../../utils/poolTogether'
+import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 
@@ -46,7 +46,7 @@ const DetailsBox = (props: Props) => {
               ?.toString() || 0}
           </Text>
           <Text color="white" fontSize="20px">
-            Total Value You have Donated so Far
+            Total Staked Value
           </Text>
         </Box>
         <Box

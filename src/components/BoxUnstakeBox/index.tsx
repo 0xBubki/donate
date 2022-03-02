@@ -2,7 +2,11 @@ import { Box, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
-import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
+import {
+  prizePool,
+  ticketTokenAddress,
+  usdcTokenAddress
+} from '../../utils/poolTogether'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
@@ -23,17 +27,12 @@ const BoxDepositBox = () => {
 
       if (prizePool) {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
+        // const amountToUnStake = ethers.utils.parseUnits(amountToUnstake.toString(), 6)
+        // console.log(BigNumber.from(amountToUnStake).toString())
 
-        return user.approveDeposits().then(() => {
-          user
-            .depositAndDelegate(
-              BigNumber.from(amountToUnstake),
-              '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
-            )
-            .then((response) => {
-              console.log(response)
-            })
-        })
+        return user.withdraw(
+          ethers.utils.parseUnits(BigNumber.from(amountToUnstake).toString(), 6)
+        )
       }
     } else {
       activateBrowserWallet()
@@ -86,19 +85,19 @@ const BoxDepositBox = () => {
       >
         <Text fontSize="3xl">{account ? 'Unstake' : 'Connect'}</Text>
       </Button>
-      <Button
-        _hover={{ color: 'black', background: 'white' }}
-        backgroundColor="#FFF"
-        color="black"
-        width="455px"
-        height="80px"
-        borderRadius="25px"
-        mt={6}
-      >
-        <Text fontSize="3xl" color="#000">
-          Donate Principal
-        </Text>
-      </Button>
+      {/*<Button*/}
+      {/*  _hover={{ color: 'black', background: 'white' }}*/}
+      {/*  backgroundColor="#FFF"*/}
+      {/*  color="black"*/}
+      {/*  width="455px"*/}
+      {/*  height="80px"*/}
+      {/*  borderRadius="25px"*/}
+      {/*  mt={6}*/}
+      {/*>*/}
+      {/*  <Text fontSize="3xl" color="#000">*/}
+      {/*    Donate Principal*/}
+      {/*  </Text>*/}
+      {/*</Button>*/}
     </>
   )
 }
