@@ -2,6 +2,10 @@
   "en": {
     "stake": "Stake",
     "unstake": "Unstake",
+    "connect": "Connect",
+    "approving": "Approving...",
+    "sending": "Sending...",
+    "balance": "Balance:",
     "connectTo": "Connect to ETH mainnet",
     "cta": "Deposit, yield, support",
     "withdrawCta": "Withdraw all deposited assets",

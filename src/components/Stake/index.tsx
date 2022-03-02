@@ -12,6 +12,9 @@ import {
 } from '../../utils/poolTogether'
 import { useWallet } from '../../context/wallet-provider'
 
+import { useTranslation } from '../../utils/use-translation'
+const translations = require('../../../public/locales/stake.json')
+
 declare let window: any
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
@@ -25,6 +28,8 @@ export interface StakeUnstakeBoxProps {
 }
 
 export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
+  const translate = useTranslation(translations)
+
   const [amountToUpdate, setAmountToUpdate] = useState(0)
   const [approving, setApproving] = useState(false)
   const [sending, setSending] = useState(false)
@@ -92,19 +97,25 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
     }
   }
 
-  const determineText = () => {
+  const determineText = (
+    connectText = translate('connectTo') || 'Connect to ETH mainnet',
+    approvingText = translate('stake') || 'Approving...',
+    sendingText = translate('stake') || 'Sending...'
+  ) => {
     if (chainId !== 1) {
-      return 'Connect to ETH mainnet'
+      return connectText
     }
 
     if (account) {
-      if (approving) return 'Approving...'
-      if (sending) return 'Sending...'
+      if (approving) return approvingText
+      if (sending) return sendingText
 
-      return stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'
+      return stakingMode === StakeMode.STAKE
+        ? translate('stake')
+        : translate('unstake')
     }
 
-    return 'Connect'
+    return translate('connect')
   }
 
   return (
@@ -134,7 +145,8 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
             pl={0}
           />
           <Text color="#DADADA">
-            Balance: {tokenBalance ? utils.formatUnits(tokenBalance, 6) : 0.0}
+            {translate('balance')}{' '}
+            {tokenBalance ? utils.formatUnits(tokenBalance, 6) : 0.0}
           </Text>
         </Flex>
 
