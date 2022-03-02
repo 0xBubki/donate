@@ -19,8 +19,7 @@ const localisation = {
 }
 
 const About: NextPage = () => {
-
-  console.log('<<', germanTrans)
+  // console.log('<<', germanTrans)
   return (
     <Flex
       direction="row"

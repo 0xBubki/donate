@@ -77,7 +77,7 @@ const MintPage: NextPage = () => {
     try {
       const res = await contract.resMint(mintCount)
 
-      console.log({ res })
+      // console.log({ res })
 
       // @todo - handle response. Show toast with link to tx? Or redirect to new view?
 
