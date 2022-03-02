@@ -1,61 +1,49 @@
 import { Flex, Text } from '@chakra-ui/layout'
-import { SimpleGrid } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useState } from 'react'
-import DepositDetails from '../components/DepositDetails'
-import DepositBox from '../components/DepositBox'
-import BoxDepositBox from '../components/BoxDepositBox'
-import BoxUnstakeBox from '../components/BoxUnstakeBox'
-import RedeemSwitch from '../components/RedeemSwitch'
-import Link from 'next/link'
-import { headerSizingLg, headerSizingSm, headerSizingXs } from '../utils/sizing'
-
-enum DepositMode {
-  WITHDRAW,
-  DEPOSIT
-}
+import { DepositDetails } from '../components/Stake/DepositDetails'
+import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
+import { StakeMode, StakeView } from '../components/Stake'
 
 export default function Deposit() {
-  const [stakingMode, setStakingMode] = useState<DepositMode>(
-    DepositMode.DEPOSIT
-  )
+  const [stakingMode, setStakingMode] = useState<StakeMode>(StakeMode.STAKE)
 
   function tabChanged() {
-    if (stakingMode === DepositMode.WITHDRAW) {
-      setStakingMode(DepositMode.DEPOSIT)
+    if (stakingMode === StakeMode.UNSTAKE) {
+      setStakingMode(StakeMode.STAKE)
     } else {
-      setStakingMode(DepositMode.WITHDRAW)
+      setStakingMode(StakeMode.UNSTAKE)
     }
   }
 
   return (
-    <Flex direction="column" gap={16}>
-      <Flex direction="column" align="center" justify="center" width="100%">
+    <Flex direction="column" gap={16} width="100%">
+      <Flex direction="column" align="center" justify="center">
         <RedeemSwitch onChange={tabChanged} />
-        <DepositBox mode={stakingMode}>
-          {stakingMode === DepositMode.DEPOSIT ? (
-            <BoxDepositBox />
-          ) : (
-            <>
-              <BoxUnstakeBox />
-            </>
-          )}
-        </DepositBox>
+        <Flex
+          direction="column"
+          align="center"
+          justify="space-around"
+          borderRadius="25px"
+          background="rgba(0, 0, 0, 0.2)"
+          padding={6}
+        >
+          <Box width="100%">
+            <Text
+              mb="20px"
+              fontWeight="bold"
+              color="white"
+              fontSize={['2rem', '3rem']}
+            >
+              {stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'}{' '}
+            </Text>
+          </Box>
+
+          <StakeView stakingMode={stakingMode} />
+        </Flex>
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center">
-        <DepositDetails mode={stakingMode} />
-      </Flex>
-
-      {/* <Flex flexDirection="column" align="center" justify="center" /> */}
-      {/* <Flex flexDirection="column" align="end">
-        <Text color="white" fontSize={headerSizingXs}>
-          Looking an NFT instead?
-        </Text>
-
-        <Text color="white" fontSize={headerSizingXs}>
-          <Link href="/mint">Click here</Link>
-        </Text>
-      </Flex> */}
+      <DepositDetails stakingMode={stakingMode} />
     </Flex>
   )
 }

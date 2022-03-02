@@ -8,18 +8,9 @@ import { useTranslation } from '../utils/use-translation'
 import { useWallet } from '../context/wallet-provider'
 import { BigNumber } from 'ethers'
 import { useEthers } from '@usedapp/core'
+import { TranslatedParagraph } from '../components/TranslatedParagraph'
 
-const localisation = {
-  en: {
-    mintButton: 'Mint NFT',
-    connectWallet: 'Connect Wallet'
-  },
-  fr: {
-    // @todo translate
-    mintButton: 'Mint NFT',
-    connectWallet: 'Connect Wallet'
-  }
-}
+const translations = require('../../public/locales/mint.json')
 
 type BlockchainError = { message: string }
 
@@ -34,7 +25,7 @@ const networkChainId = 1
 const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
 const MintPage: NextPage = () => {
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(translations)
   const toast = useToast()
   const { chainId } = useEthers()
 
@@ -143,7 +134,7 @@ const MintPage: NextPage = () => {
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto p-3 md:p-8">
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
@@ -154,7 +145,11 @@ const MintPage: NextPage = () => {
                   objectFit="cover"
                 />
               </AspectRatio>
-              <Flex justifyContent={'space-between'} p="4">
+              <Flex
+                justifyContent={'space-between'}
+                p="4"
+                className="text-xs xs:text-lg md:text-xl"
+              >
                 <Text textColor="black" fontWeight="semibold">
                   Bubki NFTs
                 </Text>
@@ -198,13 +193,10 @@ const MintPage: NextPage = () => {
                 Bubki NFTs
               </Heading>
 
-              <Text as="p" fontSize="20px">
-                Blending folk art-inspired motifs in a generative NFT project of
-                10,000 editions, Bubki aims to harness the power of web3 to
-                rally material support for Ukrainian organizations at this
-                pivotal moment. 100% of the proceeds and royalties will be
-                donated to Unchain.fund.
-              </Text>
+              <TranslatedParagraph
+                translations={translations}
+                paragraphs={['p1', 'p2']}
+              />
 
               {/* Minting is active */}
               {isSaleActive && (

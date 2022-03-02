@@ -1,6 +1,6 @@
 import { Tab, TabList, Tabs } from '@chakra-ui/react'
 
-const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
+export const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
   <Tabs
     variant="soft-rounded"
     backgroundColor={'white'}
@@ -9,16 +9,14 @@ const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
     onChange={onChange}
   >
     <TabList>
-      <Tab width="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab width="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         Stake{' '}
       </Tab>
-      <Tab width="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab maxWidth="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         Unstake{' '}
       </Tab>
     </TabList>
   </Tabs>
 )
-
-export default RedeemSwitch

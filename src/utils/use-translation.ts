@@ -1,12 +1,19 @@
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 
-type LanguageMap = {
-  en: Object
-  fr?: Object
+export type LanguageID = string
+export type Untranslated = string
+export type Translated = string
+
+export interface TranslationDict {
+  [untranslated: Untranslated]: Translated
 }
 
-export function useTranslation(dictionary: LanguageMap) {
+export interface Translations {
+  [lang: LanguageID]: TranslationDict
+}
+
+export function useTranslation(dictionary: Translations) {
   const { locale, defaultLocale, pathname } = useRouter()
 
   const translate = useCallback(

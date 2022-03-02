@@ -18,7 +18,7 @@ const eth_2_assets = {
   USDC: { text: 'USDC', symbol: './' }
 }
 
-const AssetMenu = () => {
+export const AssetMenu = () => {
   const [selected, select] = useState<Assets>(Assets.usdc)
   const assetName = selected.startsWith('W') ? selected.slice(1) : selected
 
@@ -62,5 +62,3 @@ const AssetMenu = () => {
     </Menu>
   )
 }
-
-export default AssetMenu

@@ -107,6 +107,7 @@ const Leaderboard: NextPage = () => {
       height="100%"
       alignItems="center"
       justifyContent="center"
+      padding={[0, 2, 4, 8]}
     >
       <Flex width="100%">
         <Box
@@ -117,7 +118,7 @@ const Leaderboard: NextPage = () => {
           borderRadius="20px"
           mb="100px"
         >
-          <Heading color="#fff" fontWeight="bold" fontSize="48" paddingY={4}>
+          <Heading color="#fff" fontWeight="bold" paddingY={4}>
             {translate('title')}
           </Heading>
           <Divider />
@@ -142,7 +143,7 @@ const Leaderboard: NextPage = () => {
                         colorScheme="whiteAlpha"
                         textColor="white"
                         fontWeight="bold"
-                        fontSize="xl"
+                        fontSize={['xs', 'xl']}
                         paddingX={4}
                         paddingY={2}
                         borderRadius="10px"
@@ -151,16 +152,20 @@ const Leaderboard: NextPage = () => {
                       </Tag>
                     </Td>
                     <Td color="white" lineHeight={1.5}>
-                      <AddressField address={data.from} />
+                      <div className="hidden xs:block">
+                        <AddressField address={data.from} />
+                      </div>
                     </Td>
                     <Td isNumeric color="white" lineHeight={1.5}>
                       <Stat>
                         <StatNumber fontSize={['xs', 'sm', 'md']}>
                           Ξ{data?.value.toFixed(2)}
                         </StatNumber>
-                        <StatHelpText fontSize={['xs', 'sm']}>
-                          Donated
-                        </StatHelpText>
+                        <div className="hidden xs:block">
+                          <StatHelpText fontSize={['xs', 'sm']}>
+                            Donated
+                          </StatHelpText>
+                        </div>
                       </Stat>
                     </Td>
                   </Tr>

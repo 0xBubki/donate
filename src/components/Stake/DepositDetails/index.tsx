@@ -1,22 +1,17 @@
-import { Flex, Text } from '@chakra-ui/layout'
-import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
+import { Flex, Heading, Text } from '@chakra-ui/layout'
+import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
-import { headerSizingSm } from '../../utils/sizing'
+import { StakeMode } from '..'
 
 interface Props {
-  mode: DepositMode
-}
-
-enum DepositMode {
-  WITHDRAW,
-  DEPOSIT
+  stakingMode: StakeMode
 }
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-const DetailsBox = (props: Props) => {
+export const DepositDetails = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
   const tokenBalanceOrZero = tokenBalance || 0
@@ -50,6 +45,12 @@ const DetailsBox = (props: Props) => {
       gap={16}
       width="100%"
     >
+      <Heading textAlign="center">
+        {props.stakingMode === StakeMode.STAKE
+          ? `Deposit, yield, support`
+          : `Withdraw all deposited assets`}
+      </Heading>
+
       <Flex
         direction={['column', 'column', 'row', 'row']}
         justify="space-around"
@@ -57,49 +58,38 @@ const DetailsBox = (props: Props) => {
         gap={4}
       >
         <Flex
+          direction="column"
+          align="center"
+          padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="320px"
-          padding="20px"
-          flexDirection="column"
-          alignItems="center"
         >
-          <Text color="white" fontSize="50px">
+          <Heading color="white" fontSize="50px">
             $
             {utils
               .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
               ?.toString() || 0}
-          </Text>
+          </Heading>
           <Text color="white" fontSize="20px">
             Your Staked Value
           </Text>
         </Flex>
 
         <Flex
+          direction="column"
+          align="center"
+          padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="320px"
-          padding="20px"
-          display="flex"
-          direction="column"
-          alignItems="center"
         >
-          <Text color="white" fontSize="50px">
+          <Heading color="white" fontSize="50px">
             ${totalYieldEarned}
-          </Text>
+          </Heading>
           <Text color="white" fontSize="20px">
             Total Yield Earned
           </Text>
         </Flex>
       </Flex>
-
-      <Text fontSize={headerSizingSm} textAlign="center">
-        {props.mode === DepositMode.DEPOSIT
-          ? `Join the movement: deposit, yield, support!`
-          : `Withdraw all deposited assets`}
-      </Text>
     </Flex>
   )
 }
-
-export default DetailsBox

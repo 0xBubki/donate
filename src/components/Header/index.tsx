@@ -32,6 +32,7 @@ import LanguageMenu from './LanguageMenu'
 
 // @ts-ignore
 import { SocialIcon } from 'react-social-icons'
+import { Logo } from '../Logo'
 
 const ConnectWallet = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
@@ -47,9 +48,9 @@ const ConnectWallet = () => {
           <Text>{ens || shorten(account)}</Text>
         </>
       ) : (
-        <Flex gap={2}>
+        <Flex className="center" gap={2}>
           <Text className="capitalize">{translate('connect')}</Text>
-          <LoginIcon className="w-5 h-5" />
+          <LoginIcon className="w-4 h-4" />
         </Flex>
       )}
     </NavButton>
@@ -100,60 +101,52 @@ export const Header = () => {
           justifyContent={['space-between']}
           w={'full'}
           px={{ base: 0, lg: '2rem' }}
+          margin="0px !important"
         >
           {/* Bubki Flag Button */}
-          <Box fontWeight="bold" fontSize={[20, 20, 20]}>
-            <NextLink href="/" passHref>
-              <Link className="center flex gap-2">
-                <span>🇺🇦</span>
-                <span className="text-xl">Bubki</span>
-              </Link>
-            </NextLink>
-          </Box>
+          <Logo />
 
           {/* Desktop Links */}
-          <HStack>
-            <HStack
-              px={[4, 4, 0]}
-              display={['none', 'none', 'none', 'flex']}
-              gap={{ lg: '0.4rem', xl: '1.5rem' }}
-              // width="fit-content"
-              mr={4}
-              // width="auto"
-            >
-              {navItems.map((navItem, index) => (
-                <NavItem key={index} href={navItem.href}>
-                  <Text className="capitalize">{navItem.text}</Text>
-                </NavItem>
-              ))}
-            </HStack>
+          <HStack
+            px={[4, 4, 0]}
+            display={['none', 'none', 'none', 'flex']}
+            gap={{ lg: '0.4rem', xl: '1.5rem' }}
+            // width="fit-content"
+            mr={4}
+            // width="auto"
+          >
+            {navItems.map((navItem, index) => (
+              <NavItem key={index} href={navItem.href}>
+                <Text className="capitalize">{navItem.text}</Text>
+              </NavItem>
+            ))}
+          </HStack>
 
+          <Flex gap={4}>
             {/* Language Menu */}
-            <Box display={{ base: 'none', lg: 'block' }}>
+            <div className="hidden lg:flex lg:items-center">
               <LanguageMenu />
-            </Box>
+            </div>
 
             {/* Connect Wallet Button */}
             <ConnectWallet />
+          </Flex>
 
-            {/* Drawer Toggle Button */}
-            <Button
-              backgroundColor="transparent"
-              display={['flex', 'flex', 'flex', 'none']}
-              color="white"
-              _hover={{
-                backgroundColor: 'rgba(255, 255, 255, 0.2)'
-              }}
-              borderRadius="100%"
-              onClick={onOpen}
-            >
-              {isOpen ? (
-                <XIcon className="w-5 h-5" />
-              ) : (
-                <MenuIcon className="w-5 h-5" />
-              )}
-            </Button>
-          </HStack>
+          {/* Drawer Toggle Button */}
+          <Button
+            backgroundColor="transparent"
+            display={['flex', 'flex', 'flex', 'none']}
+            color="white"
+            margin="0px !important"
+            padding="0px !important"
+            onClick={onOpen}
+          >
+            {isOpen ? (
+              <XIcon className="w-5 h-5" />
+            ) : (
+              <MenuIcon className="w-5 h-5" />
+            )}
+          </Button>
         </HStack>
       </Stack>
 
@@ -166,32 +159,11 @@ export const Header = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerBody background="#005BBB" px={2}>
-            {/* Top Wrapper */}
-            <Box
-              fontWeight="bold"
-              display="flex"
-              justifyContent="space-between"
-              width="100%"
-              paddingX="0.5rem"
-              paddingTop="0.5rem"
-              marginBottom="3rem"
-              fontSize={[20, 20, 20]}
-            >
-              {/* Bubki Flag Button */}
-              <NextLink href="/" passHref>
-                <Link className="center flex gap-2">
-                  <span>🇺🇦</span>
-                  <span className="text-xl">Bubki</span>
-                </Link>
-              </NextLink>
-
-              {/* Wallet and Close Button Wrapper */}
-              <Flex gap="0.5rem">
-                {/* Connect Wallet Button */}
-                <ConnectWallet />
-
-                {/* Close Icon */}
+          <DrawerBody background="#005BBB" padding={8}>
+            <Flex direction="column" justify="space-around" height="100%">
+              {/* Top Wrapper */}
+              {/* Close Icon */}
+              <div className="flex justify-end">
                 <Button
                   backgroundColor="transparent"
                   color="white"
@@ -204,34 +176,30 @@ export const Header = () => {
                 >
                   <XIcon className="w-7 h-7" />
                 </Button>
+              </div>
+
+              {/* Mapping through Links */}
+              <Flex direction="column" gap={2}>
+                {navItems.map((navItem, index) => (
+                  <NavDrawerItem
+                    onClick={onToggle}
+                    key={index}
+                    href={navItem.href}
+                  >
+                    <Text lineHeight={1} padding="0" fontSize={'2rem'}>
+                      {navItem.text}
+                    </Text>
+                  </NavDrawerItem>
+                ))}
               </Flex>
-            </Box>
 
-            {/* Mapping through Links */}
-            {navItems.map((navItem, index) => (
-              <NavDrawerItem onClick={onToggle} key={index} href={navItem.href}>
-                <Flex alignItems="center" gap={2}>
-                  <Text padding="0" fontSize={'2rem'}>
-                    {navItem.text}
-                  </Text>
-                </Flex>
-              </NavDrawerItem>
-            ))}
-
-            {/* Twitter and Language Menu Wrapper */}
-            <Flex
-              width="100%"
-              justify="space-between"
-              bottom="2rem"
-              alignItems="center"
-              left="0"
-              paddingX="1.5rem"
-              position="absolute"
-            >
-              {/* Twitter Link - URL SHOULD BE UPDATED */}
-              <SocialIcon bgColor="white" url="https://twitter.com/" />
-              {/* Language Menu */}
-              <LanguageMenu />
+              {/* Twitter and Language Menu Wrapper */}
+              <Flex justify="space-between" align="center" paddingX="1.5rem">
+                {/* Twitter Link - URL SHOULD BE UPDATED */}
+                <SocialIcon bgColor="white" url="https://twitter.com/" />
+                {/* Language Menu */}
+                <LanguageMenu />
+              </Flex>
             </Flex>
           </DrawerBody>
         </DrawerContent>
