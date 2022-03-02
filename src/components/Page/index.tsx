@@ -5,16 +5,6 @@ import Head from 'next/head'
 import { useWallet } from '../../context/wallet-provider'
 
 export const Page: FC = ({ children }) => {
-  const { activateBrowserWallet, account } = useWallet()
-
-  useEffect(() => {
-    try {
-      activateBrowserWallet()
-    } catch (e) {
-      console.error(e)
-    }
-  }, [activateBrowserWallet])
-
   return (
     <>
       <Head>
