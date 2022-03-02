@@ -22,12 +22,13 @@ const localisation = {
 
 type BlockchainError = { message: string }
 
-const tokenAddress =
-  process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
-  '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
+// process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
+// '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
 
 const successUrl = (id: string = '1') => {
-  return `https://testnets.opensea.io/assets/${tokenAddress}/${id}`
+  return `https://opensea.io/assets/${tokenAddress}/${id}`
+  // return `https://testnets.opensea.io/assets/${tokenAddress}/${id}`
 }
 
 const MintPage: NextPage = () => {
