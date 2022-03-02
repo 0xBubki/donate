@@ -3,6 +3,9 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['de', 'en', 'es', 'fr']
   },
+  images: {
+    domains: ['cdn.jsdelivr.net']
+  },
   reactStrictMode: true,
   webpack: (config) => {
     // config.experiments = { topLevelAwait: true };
