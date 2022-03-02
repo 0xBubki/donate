@@ -106,7 +106,7 @@ export const Header = () => {
           <Box fontWeight="bold" fontSize={[20, 20, 20]}>
             <NextLink href="/" passHref>
               <Link className="center flex p-2">
-                <span className="p-2">🇺🇦</span>
+                <span className="p-0 xs:p-2">🇺🇦</span>
                 <span className="hidden xs:block text-sm xs:text-md md:text-xl">
                   Bubki
                 </span>

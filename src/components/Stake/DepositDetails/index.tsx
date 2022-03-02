@@ -4,14 +4,10 @@ import { headerSizingSm } from '../../../utils/sizing'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
+import { StakeMode } from '../StakeView'
 
 interface Props {
-  mode: DepositMode
-}
-
-enum DepositMode {
-  WITHDRAW,
-  DEPOSIT
+  stakingMode: StakeMode
 }
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
@@ -91,7 +87,7 @@ export const DepositDetails = (props: Props) => {
       </Flex>
 
       <Text fontSize={headerSizingSm} textAlign="center">
-        {props.mode === DepositMode.DEPOSIT
+        {props.stakingMode === StakeMode.STAKE
           ? `Join the movement: deposit, yield, support!`
           : `Withdraw all deposited assets`}
       </Text>

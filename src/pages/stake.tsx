@@ -1,21 +1,17 @@
-import { Flex } from '@chakra-ui/layout'
+import { Flex, Text } from '@chakra-ui/layout'
+import { Box } from '@chakra-ui/react'
 import { useState } from 'react'
 import { DepositDetails, RedeemSwitch } from '../components/Stake'
-import {
-  DepositMode,
-  StakeUnstakeBox
-} from '../components/Stake/StakeUnstakeBox'
+import { StakeMode, StakeView } from '../components/Stake/StakeView'
 
 export default function Deposit() {
-  const [stakingMode, setStakingMode] = useState<DepositMode>(
-    DepositMode.DEPOSIT
-  )
+  const [stakingMode, setStakingMode] = useState<StakeMode>(StakeMode.STAKE)
 
   function tabChanged() {
-    if (stakingMode === DepositMode.WITHDRAW) {
-      setStakingMode(DepositMode.DEPOSIT)
+    if (stakingMode === StakeMode.UNSTAKE) {
+      setStakingMode(StakeMode.STAKE)
     } else {
-      setStakingMode(DepositMode.WITHDRAW)
+      setStakingMode(StakeMode.UNSTAKE)
     }
   }
 
@@ -23,10 +19,25 @@ export default function Deposit() {
     <Flex direction="column" gap={16}>
       <Flex direction="column" align="center" justify="center">
         <RedeemSwitch onChange={tabChanged} />
-        <StakeUnstakeBox stakingMode={stakingMode} />
+        <Flex
+          direction="column"
+          align="center"
+          justify="space-around"
+          borderRadius="25px"
+          background="rgba(0, 0, 0, 0.2)"
+          padding={6}
+        >
+          <Box width="100%">
+            <Text mb="20px" fontWeight="bold" color="white" fontSize="3rem">
+              {stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'}{' '}
+            </Text>
+          </Box>
+
+          <StakeView stakingMode={stakingMode} />
+        </Flex>
       </Flex>
 
-      <DepositDetails mode={stakingMode} />
+      <DepositDetails stakingMode={stakingMode} />
     </Flex>
   )
 }
