@@ -17,7 +17,7 @@ export default function Deposit() {
   }
 
   return (
-    <Flex direction="column" gap={16} width="100%">
+    <Flex direction="column" gap={16} width="100%" align="center">
       <Flex direction="column" align="center" justify="center">
         <RedeemSwitch onChange={tabChanged} />
         <Flex

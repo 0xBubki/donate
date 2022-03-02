@@ -44,6 +44,7 @@ export const DepositDetails = (props: Props) => {
       justify="center"
       gap={16}
       width="100%"
+      maxWidth={720}
     >
       <Heading textAlign="center">
         {props.stakingMode === StakeMode.STAKE
@@ -63,6 +64,7 @@ export const DepositDetails = (props: Props) => {
           padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
+          minWidth={240}
         >
           <Heading color="white" fontSize="50px">
             $
@@ -81,6 +83,7 @@ export const DepositDetails = (props: Props) => {
           padding={8}
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
+          minWidth={240}
         >
           <Heading color="white" fontSize="50px">
             ${totalYieldEarned}
