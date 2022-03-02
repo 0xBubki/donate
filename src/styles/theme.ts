@@ -13,6 +13,9 @@ export const theme = extendTheme({
       body: {
         bg: 'ukraineBlue',
         color: 'white'
+      },
+      article: {
+        padding: '1rem'
       }
     }
   }

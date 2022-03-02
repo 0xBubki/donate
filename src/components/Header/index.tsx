@@ -47,9 +47,9 @@ const ConnectWallet = () => {
           <Text>{ens || shorten(account)}</Text>
         </>
       ) : (
-        <Flex gap={2}>
+        <Flex className="center" gap={2}>
           <Text className="capitalize">{translate('connect')}</Text>
-          <LoginIcon className="w-5 h-5" />
+          <LoginIcon className="w-4 h-4" />
         </Flex>
       )}
     </NavButton>
@@ -130,24 +130,23 @@ export const Header = () => {
             ))}
           </HStack>
 
-          {/* Language Menu */}
-          <Box display={{ base: 'none', lg: 'block' }}>
-            <LanguageMenu />
-          </Box>
+          <Flex gap={4}>
+            {/* Language Menu */}
+            <Box display={{ base: 'none', lg: 'block' }}>
+              <LanguageMenu />
+            </Box>
 
-          {/* Connect Wallet Button */}
-          <ConnectWallet />
+            {/* Connect Wallet Button */}
+            <ConnectWallet />
+          </Flex>
 
           {/* Drawer Toggle Button */}
           <Button
             backgroundColor="transparent"
             display={['flex', 'flex', 'flex', 'none']}
             color="white"
-            _hover={{
-              backgroundColor: 'rgba(255, 255, 255, 0.2)'
-            }}
-            borderRadius="100%"
             margin="0px !important"
+            padding="0px !important"
             onClick={onOpen}
           >
             {isOpen ? (
@@ -169,27 +168,9 @@ export const Header = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody background="#005BBB" padding={8}>
-            {/* Top Wrapper */}
-            <Box
-              fontWeight="bold"
-              display="flex"
-              justifyContent="space-between"
-              width="100%"
-              paddingX="0.5rem"
-              paddingTop="0.5rem"
-              marginBottom="3rem"
-              fontSize={[20, 20, 20]}
-            >
-              {/* Bubki Flag Button */}
-              <NextLink href="/" passHref>
-                <Link className="center flex gap-2">
-                  <span>🇺🇦</span>
-                  <span className="text-xl">Bubki</span>
-                </Link>
-              </NextLink>
-
-              {/* Wallet and Close Button Wrapper */}
-              <Flex gap="0.5rem">
+            <Flex direction="column" justify="space-around" height="100%">
+              {/* Top Wrapper */}
+              <Flex justify="end">
                 {/* Close Icon */}
                 <Button
                   backgroundColor="transparent"
@@ -204,33 +185,29 @@ export const Header = () => {
                   <XIcon className="w-7 h-7" />
                 </Button>
               </Flex>
-            </Box>
 
-            {/* Mapping through Links */}
-            {navItems.map((navItem, index) => (
-              <NavDrawerItem onClick={onToggle} key={index} href={navItem.href}>
-                <Flex alignItems="center" gap={2}>
-                  <Text padding="0" fontSize={'2rem'}>
-                    {navItem.text}
-                  </Text>
-                </Flex>
-              </NavDrawerItem>
-            ))}
+              {/* Mapping through Links */}
+              <Flex direction="column" gap={2}>
+                {navItems.map((navItem, index) => (
+                  <NavDrawerItem
+                    onClick={onToggle}
+                    key={index}
+                    href={navItem.href}
+                  >
+                    <Text lineHeight={1} padding="0" fontSize={'2rem'}>
+                      {navItem.text}
+                    </Text>
+                  </NavDrawerItem>
+                ))}
+              </Flex>
 
-            {/* Twitter and Language Menu Wrapper */}
-            <Flex
-              width="100%"
-              justify="space-between"
-              bottom="2rem"
-              alignItems="center"
-              left="0"
-              paddingX="1.5rem"
-              position="absolute"
-            >
-              {/* Twitter Link - URL SHOULD BE UPDATED */}
-              <SocialIcon bgColor="white" url="https://twitter.com/" />
-              {/* Language Menu */}
-              <LanguageMenu />
+              {/* Twitter and Language Menu Wrapper */}
+              <Flex justify="space-between" align="center" paddingX="1.5rem">
+                {/* Twitter Link - URL SHOULD BE UPDATED */}
+                <SocialIcon bgColor="white" url="https://twitter.com/" />
+                {/* Language Menu */}
+                <LanguageMenu />
+              </Flex>
             </Flex>
           </DrawerBody>
         </DrawerContent>

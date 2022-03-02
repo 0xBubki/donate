@@ -111,7 +111,7 @@ const BoxDepositBox = () => {
         onClick={handleStaking}
         disabled={approve || deposit || chainId !== 1}
       >
-        <Text fontSize="3xl">{determineText()}</Text>
+        <Text>{determineText()}</Text>
       </Button>
     </>
   )

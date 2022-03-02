@@ -8,18 +8,9 @@ import { useTranslation } from '../utils/use-translation'
 import { useWallet } from '../context/wallet-provider'
 import { BigNumber } from 'ethers'
 import { useEthers } from '@usedapp/core'
+import { TranslatedParagraph } from '../components/TranslatedParagraph'
 
-const localisation = {
-  en: {
-    mintButton: 'Mint NFT',
-    connectWallet: 'Connect Wallet'
-  },
-  fr: {
-    // @todo translate
-    mintButton: 'Mint NFT',
-    connectWallet: 'Connect Wallet'
-  }
-}
+const translations = require('../../public/locales/mint.json')
 
 type BlockchainError = { message: string }
 
@@ -30,7 +21,7 @@ const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
 const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
 const MintPage: NextPage = () => {
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(translations)
   const toast = useToast()
   const { chainId } = useEthers()
 
@@ -180,13 +171,10 @@ const MintPage: NextPage = () => {
                 Bubki NFTs
               </Heading>
 
-              <Text as="p" fontSize="20px">
-                Blending folk art-inspired motifs in a generative NFT project of
-                10,000 editions, Bubki aims to harness the power of web3 to
-                rally material support for Ukrainian organizations at this
-                pivotal moment. 100% of the proceeds and royalties will be
-                donated to Unchain.fund.
-              </Text>
+              <TranslatedParagraph
+                translations={translations}
+                paragraphs={['p1', 'p2']}
+              />
 
               {/* Minting is active */}
               {isSaleActive && (

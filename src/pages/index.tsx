@@ -142,41 +142,42 @@ const Home: NextPage = () => {
           )}
         </Flex>
 
-        <NextLink href="/stake" passHref>
-          <Button
-            mt="5vh"
-            color="black"
-            w="180px"
-            borderRadius="25px"
-            bg="ukraineYellow"
-            _hover={{
-              bg: 'darkYellow'
-            }}
-            _active={{
-              bg: 'darkYellow'
-            }}
-          >
-            {translate('stake')}
-          </Button>
-        </NextLink>
+        <Flex direction="column" gap={4}>
+          <NextLink href="/stake" passHref>
+            <Button
+              mt="5vh"
+              color="black"
+              w="180px"
+              borderRadius="25px"
+              bg="ukraineYellow"
+              _hover={{
+                bg: 'darkYellow'
+              }}
+              _active={{
+                bg: 'darkYellow'
+              }}
+            >
+              {translate('stake')}
+            </Button>
+          </NextLink>
 
-        <NextLink href="/mint" passHref>
-          <Button
-            mt="2vh"
-            color="black"
-            bg="white"
-            w="180px"
-            borderRadius="25px"
-            _hover={{
-              bg: '#DDD'
-            }}
-            _active={{
-              bg: '#DDD'
-            }}
-          >
-            {translate('mint')}
-          </Button>
-        </NextLink>
+          <NextLink href="/mint" passHref>
+            <Button
+              color="black"
+              bg="white"
+              w="180px"
+              borderRadius="25px"
+              _hover={{
+                bg: '#DDD'
+              }}
+              _active={{
+                bg: '#DDD'
+              }}
+            >
+              {translate('mint')}
+            </Button>
+          </NextLink>
+        </Flex>
       </Flex>
 
       <Flex

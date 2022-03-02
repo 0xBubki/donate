@@ -31,7 +31,7 @@ export default function Deposit() {
     <Flex direction="column" gap={16}>
       <Flex direction="column" align="center" justify="center" width="100%">
         <RedeemSwitch onChange={tabChanged} />
-        <DepositBox mode={stakingMode}>
+        {/* <DepositBox mode={stakingMode}>
           {stakingMode === DepositMode.DEPOSIT ? (
             <BoxDepositBox />
           ) : (
@@ -39,23 +39,10 @@ export default function Deposit() {
               <BoxUnstakeBox />
             </>
           )}
-        </DepositBox>
+        </DepositBox> */}
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center">
-        <DepositDetails mode={stakingMode} />
-      </Flex>
-
-      {/* <Flex flexDirection="column" align="center" justify="center" /> */}
-      {/* <Flex flexDirection="column" align="end">
-        <Text color="white" fontSize={headerSizingXs}>
-          Looking an NFT instead?
-        </Text>
-
-        <Text color="white" fontSize={headerSizingXs}>
-          <Link href="/mint">Click here</Link>
-        </Text>
-      </Flex> */}
+      <DepositDetails mode={stakingMode} />
     </Flex>
   )
 }
