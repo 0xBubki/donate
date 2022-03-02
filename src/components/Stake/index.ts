@@ -1,6 +1,0 @@
-export * from './AssetMenu'
-export * from './DepositBox'
-export * from './DepositDetails'
-export * from './RedeemSwitch'
-export * from './StakeBox'
-export * from './UnstakeBox'

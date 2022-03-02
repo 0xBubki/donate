@@ -1,7 +1,8 @@
 import { Flex, Text } from '@chakra-ui/layout'
 import { Box } from '@chakra-ui/react'
 import { useState } from 'react'
-import { DepositDetails, RedeemSwitch } from '../components/Stake'
+import { DepositDetails } from '../components/Stake/DepositDetails'
+import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
 import { StakeMode, StakeView } from '../components/Stake/StakeView'
 
 export default function Deposit() {
