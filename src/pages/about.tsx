@@ -2,23 +2,11 @@ import type { NextPage } from 'next'
 
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
-
 import { useTranslation } from '../utils/use-translation'
 
-const germanTrans = require('../../public/locales/de/about.json')
-const englishTrans = require('../../public/locales/en/about.json')
-const spanishTrans = require('../../public/locales/es/about.json')
-const frenchTrans = require('../../public/locales/fr/about.json')
-
-const localisation = {
-  de: germanTrans,
-  en: englishTrans,
-  es: spanishTrans,
-  fr: frenchTrans
-}
+const localization = require('../../public/locales/about.json')
 
 const About: NextPage = () => {
-  // console.log('<<', germanTrans)
   return (
     <Flex
       direction="row"
@@ -77,7 +65,7 @@ const Paragraph = ({
   paragraph1: string
   paragraph2?: string
 }) => {
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(localization)
 
   return (
     <Box

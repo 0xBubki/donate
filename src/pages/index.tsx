@@ -11,23 +11,12 @@ import axios from 'axios'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { headerSizingLg, headerSizingSm } from '../utils/sizing'
 
-const germanTrans = require('../../public/locales/de/common.json')
-const englishTrans = require('../../public/locales/en/common.json')
-const spanishTrans = require('../../public/locales/es/common.json')
-const frenchTrans = require('../../public/locales/fr/common.json')
-
-const localisation = {
-  de: germanTrans,
-  en: englishTrans,
-  es: spanishTrans,
-  fr: frenchTrans
-}
-
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
+const localization = require('../../public/locales/common.json')
 
 const Home: NextPage = () => {
   const [currentEthValue, setCurrentEthValue] = useState(0)
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(localization)
   const etherPrice = useCoingeckoPrice('ethereum', 'usd')
   const etherPriceOrFallBack = etherPrice || 3000
 
