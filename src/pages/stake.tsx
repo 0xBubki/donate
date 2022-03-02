@@ -55,11 +55,11 @@ export default function Deposit() {
       <Flex flexDirection="column" align="center" justify="center" />
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
-          Looking to donate instead?
+          Looking an NFT instead?
         </Text>
 
         <Text color="white" fontSize="30px">
-          <Link href="/donate">link to donate</Link>
+          <Link href="/mint">Click here</Link>
         </Text>
       </Flex>
     </SimpleGrid>
