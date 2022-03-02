@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 import DepositDetails from '../components/Stake/DepositDetails'
 import DepositBox from '../components/Stake/DepositBox'
-import BoxDepositBox from '../components/Stake/BoxDepositBox'
-import BoxUnstakeBox from '../components/Stake/BoxUnstakeBox'
+import StakeBox from '../components/Stake/StakeBox'
+import BoxUnstakeBox from '../components/Stake/UnstakeBox'
 import RedeemSwitch from '../components/Stake/RedeemSwitch'
 
 enum DepositMode {
@@ -31,7 +31,7 @@ export default function Deposit() {
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
           {stakingMode === DepositMode.DEPOSIT ? (
-            <BoxDepositBox />
+            <StakeBox />
           ) : (
             <>
               <BoxUnstakeBox />

@@ -12,7 +12,7 @@ declare let window: any
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-const BoxDepositBox = () => {
+const StakeBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
   const [approve, setApprove] = useState(false)
   const [deposit, setDeposit] = useState(false)
@@ -118,4 +118,4 @@ const BoxDepositBox = () => {
   )
 }
 
-export default BoxDepositBox
+export default StakeBox

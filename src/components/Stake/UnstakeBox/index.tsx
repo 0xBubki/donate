@@ -14,7 +14,7 @@ import { User } from '@pooltogether/v4-client-js'
 
 declare let window: any
 
-const BoxDepositBox = () => {
+const UnstakeBox = () => {
   const [amountToUnstake, setAmountToUnstake] = useState(0)
   const [withdrawing, setWithdrawing] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
@@ -110,4 +110,4 @@ const BoxDepositBox = () => {
   )
 }
 
-export default BoxDepositBox
+export default UnstakeBox
