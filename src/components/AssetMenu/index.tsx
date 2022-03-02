@@ -11,23 +11,15 @@ import { CryptoIcon } from 'next-crypto-icons'
 // const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
 
 enum Assets {
-  eth = 'WETH',
-  usdc = 'USDC',
-  usdt = 'USDT',
-  dai = 'DAI',
-  btc = 'WBTC'
+  usdc = 'USDC'
 }
 
 const eth_2_assets = {
-  WETH: { text: 'WETH', symbol: './' },
-  USDC: { text: 'USDC', symbol: './' },
-  USDT: { text: 'USDT', symbol: './' },
-  DAI: { text: 'DAI', symbol: './' },
-  WBTC: { text: 'WBTC', symbol: './' }
+  USDC: { text: 'USDC', symbol: './' }
 }
 
 const AssetMenu = () => {
-  const [selected, select] = useState<Assets>(Assets.eth)
+  const [selected, select] = useState<Assets>(Assets.usdc)
   const assetName = selected.startsWith('W') ? selected.slice(1) : selected
 
   return (
@@ -46,6 +38,7 @@ const AssetMenu = () => {
             backgroundColor="#5c8abc"
             isActive={isOpen}
             as={Button}
+            cursor="inherit"
           >
             <Box
               width="100%"
@@ -62,28 +55,8 @@ const AssetMenu = () => {
                 height={24}
               />
               <Text>{eth_2_assets[selected].text}</Text>
-              <ChevronDownIcon className="h-5 w-5" />
             </Box>
           </MenuButton>
-
-          <MenuList
-            backgroundColor="#5c8abc"
-            _active={{ bg: '5c8abc' }}
-            _focus={{ bg: '#5c8abc' }}
-          >
-            {Object.values(Assets).map((val, index) => (
-              <MenuItem
-                _focus={{ bg: '#5c8abc' }}
-                _active={{ bg: '5c8abc' }}
-                _hover={{ bg: '#5c8abc' }}
-                onClick={(_) => select(val)}
-                key={index}
-              >
-                {' '}
-                {val}{' '}
-              </MenuItem>
-            ))}
-          </MenuList>
         </>
       )}
     </Menu>
