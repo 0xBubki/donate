@@ -182,7 +182,7 @@ const Home: NextPage = () => {
               bg: '#DDD'
             }}
           >
-            NFTs
+            {translate('mint')}
           </Button>
         </NextLink>
       </Flex>
