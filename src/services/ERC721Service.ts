@@ -1,5 +1,8 @@
 import { Contract, Wallet, ethers, BigNumber } from 'ethers'
-import { TransactionReceipt } from '@ethersproject/providers'
+import {
+  TransactionReceipt,
+  TransactionResponse
+} from '@ethersproject/providers'
 
 import Erc721Abi from './abis/Erc721Abi.json'
 
@@ -91,6 +94,13 @@ class ERC721Service {
     const ethToSend = price.mul(BigNumber.from(amount))
     const tx = await this.contract.mint(amount, { value: ethToSend })
     return tx
+  }
+
+  resMint = async (amount: number): Promise<TransactionResponse> => {
+    const price = await this.mintPrice()
+    const ethToSend = price.mul(BigNumber.from(amount))
+    const tx = await this.contract.mint(amount, { value: ethToSend })
+    return await tx.wait()
   }
 }
 

@@ -29,7 +29,7 @@ export const InputNumber = ({ onChange }: Props) => {
 
   return (
     <HStack
-      maxW="195px"
+      width="195px"
       background="whiteAlpha.400"
       p="12px"
       style={{ borderRadius: 16 }}
