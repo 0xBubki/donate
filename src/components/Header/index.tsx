@@ -100,60 +100,62 @@ export const Header = () => {
           justifyContent={['space-between']}
           w={'full'}
           px={{ base: 0, lg: '2rem' }}
+          margin="0px !important"
         >
           {/* Bubki Flag Button */}
           <Box fontWeight="bold" fontSize={[20, 20, 20]}>
             <NextLink href="/" passHref>
-              <Link className="center flex gap-2">
-                <span>🇺🇦</span>
-                <span className="text-xl">Bubki</span>
+              <Link className="center flex p-2">
+                <span className="p-2">🇺🇦</span>
+                <span className="hidden xs:block text-sm xs:text-md md:text-xl">
+                  Bubki
+                </span>
               </Link>
             </NextLink>
           </Box>
 
           {/* Desktop Links */}
-          <HStack>
-            <HStack
-              px={[4, 4, 0]}
-              display={['none', 'none', 'none', 'flex']}
-              gap={{ lg: '0.4rem', xl: '1.5rem' }}
-              // width="fit-content"
-              mr={4}
-              // width="auto"
-            >
-              {navItems.map((navItem, index) => (
-                <NavItem key={index} href={navItem.href}>
-                  <Text className="capitalize">{navItem.text}</Text>
-                </NavItem>
-              ))}
-            </HStack>
-
-            {/* Language Menu */}
-            <Box display={{ base: 'none', lg: 'block' }}>
-              <LanguageMenu />
-            </Box>
-
-            {/* Connect Wallet Button */}
-            <ConnectWallet />
-
-            {/* Drawer Toggle Button */}
-            <Button
-              backgroundColor="transparent"
-              display={['flex', 'flex', 'flex', 'none']}
-              color="white"
-              _hover={{
-                backgroundColor: 'rgba(255, 255, 255, 0.2)'
-              }}
-              borderRadius="100%"
-              onClick={onOpen}
-            >
-              {isOpen ? (
-                <XIcon className="w-5 h-5" />
-              ) : (
-                <MenuIcon className="w-5 h-5" />
-              )}
-            </Button>
+          <HStack
+            px={[4, 4, 0]}
+            display={['none', 'none', 'none', 'flex']}
+            gap={{ lg: '0.4rem', xl: '1.5rem' }}
+            // width="fit-content"
+            mr={4}
+            // width="auto"
+          >
+            {navItems.map((navItem, index) => (
+              <NavItem key={index} href={navItem.href}>
+                <Text className="capitalize">{navItem.text}</Text>
+              </NavItem>
+            ))}
           </HStack>
+
+          {/* Language Menu */}
+          <Box display={{ base: 'none', lg: 'block' }}>
+            <LanguageMenu />
+          </Box>
+
+          {/* Connect Wallet Button */}
+          <ConnectWallet />
+
+          {/* Drawer Toggle Button */}
+          <Button
+            backgroundColor="transparent"
+            display={['flex', 'flex', 'flex', 'none']}
+            color="white"
+            _hover={{
+              backgroundColor: 'rgba(255, 255, 255, 0.2)'
+            }}
+            borderRadius="100%"
+            margin="0px !important"
+            onClick={onOpen}
+          >
+            {isOpen ? (
+              <XIcon className="w-5 h-5" />
+            ) : (
+              <MenuIcon className="w-5 h-5" />
+            )}
+          </Button>
         </HStack>
       </Stack>
 
@@ -166,7 +168,7 @@ export const Header = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerBody background="#005BBB" px={2}>
+          <DrawerBody background="#005BBB" padding={8}>
             {/* Top Wrapper */}
             <Box
               fontWeight="bold"
@@ -188,9 +190,6 @@ export const Header = () => {
 
               {/* Wallet and Close Button Wrapper */}
               <Flex gap="0.5rem">
-                {/* Connect Wallet Button */}
-                <ConnectWallet />
-
                 {/* Close Icon */}
                 <Button
                   backgroundColor="transparent"

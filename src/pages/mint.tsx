@@ -7,6 +7,7 @@ import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
 import { useWallet } from '../context/wallet-provider'
 import { BigNumber } from 'ethers'
+import { useEthers } from '@usedapp/core'
 
 const localisation = {
   en: {
@@ -22,17 +23,16 @@ const localisation = {
 
 type BlockchainError = { message: string }
 
-const tokenAddress =
-  process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
-  '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
+// process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
+// '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
 
-const successUrl = (id: string = '1') => {
-  return `https://testnets.opensea.io/assets/${tokenAddress}/${id}`
-}
+const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
 const MintPage: NextPage = () => {
   const translate = useTranslation(localisation)
   const toast = useToast()
+  const { chainId } = useEthers()
 
   // UI States
   const [mintCount, setMintCount] = useState(1)
@@ -54,7 +54,7 @@ const MintPage: NextPage = () => {
   }, [library, account])
 
   useEffect(() => {
-    if (account) {
+    if (account && chainId === 1) {
       contract?.isSaleActive()?.then((response) => {
         setIsSaleActive(!!response)
       })
@@ -65,7 +65,7 @@ const MintPage: NextPage = () => {
         setMaxSupply(BigNumber.from(response).toNumber())
       })
     }
-  }, [account, library, contract])
+  }, [account, library, contract, chainId])
 
   useEffect(() => {
     setWalletConnected(!!account)
@@ -96,7 +96,7 @@ const MintPage: NextPage = () => {
               style={{
                 textDecoration: 'underline'
               }}
-              href={successUrl('2')}
+              href={collectionUrl}
               target="_blank"
               rel="noreferrer"
             >
@@ -125,7 +125,7 @@ const MintPage: NextPage = () => {
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
-      <div className="max-w-7xl mx-auto p-8">
+      <div className="mx-auto p-3 md:p-8">
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
@@ -156,27 +156,25 @@ const MintPage: NextPage = () => {
           </div>
           <div className="md:col-start-7 md:col-span-5">
             <VStack spacing={6} align="stretch">
-              <Box>
-                <Text
-                  as="span"
-                  px={4}
-                  py="5px"
-                  bg="whiteAlpha.400"
-                  rounded="xl"
-                  fontWeight="semibold"
-                  fontSize="20px"
-                  display="inline-block"
-                >
-                  {!isSaleActive && 'Available from March 4th, 2022'}
-
-                  {isSaleActive && (
+              {isSaleActive && (
+                <Box>
+                  <Text
+                    as="span"
+                    px={4}
+                    py="5px"
+                    bg="whiteAlpha.400"
+                    rounded="xl"
+                    fontWeight="semibold"
+                    fontSize="20px"
+                    display="inline-block"
+                  >
                     <Text display="flex" alignItems="center" gap={2}>
                       <Text fontWeight="black">{totalSupply} / 10,000</Text>
                       <Text>minted</Text>
                     </Text>
-                  )}
-                </Text>
-              </Box>
+                  </Text>
+                </Box>
+              )}
 
               <Heading fontSize={48} lineHeight={1.33}>
                 Bubki NFTs
@@ -219,9 +217,11 @@ const MintPage: NextPage = () => {
                             boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
                             borderRadius: '12px'
                           }}
-                          disabled={buttonDisabled}
+                          disabled={buttonDisabled || chainId !== 1}
                         >
-                          {translate('mintButton')}
+                          {chainId !== 1
+                            ? 'Change to ETH mainnet'
+                            : translate('mintButton')}
                         </Button>
                         <Text textAlign="center">Max 100 per transaction</Text>
                       </>

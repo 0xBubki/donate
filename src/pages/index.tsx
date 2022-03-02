@@ -101,11 +101,14 @@ const Home: NextPage = () => {
             </Text>
           </Heading>
 
-          <Flex fontWeight="bold" alignItems="center" gap={3}>
+          <Flex
+            className="center flex-col xs:flex-row xs:gap-2"
+            fontWeight="bold"
+          >
             {currentEthValue === 0 ? (
-              <Flex alignItems="center" justifyContent="center">
+              <Flex alignItems="center" justifyContent="center" gap={2}>
                 <Text fontSize={headerSizingLg}>$</Text>
-                <Skeleton height="120px" width="500px" />
+                <Skeleton height="48px" width={['120px', '320px']} />
               </Flex>
             ) : (
               <Text fontSize={headerSizingLg}>
@@ -114,11 +117,11 @@ const Home: NextPage = () => {
               </Text>
             )}
 
-            <Text fontSize={headerSizingSm}> {translate('donated')}</Text>
+            <Text fontSize={headerSizingSm}>{translate('donated')}</Text>
           </Flex>
 
           {currentEthValue === 0 ? (
-            <Flex alignItems="center" justifyContent="center">
+            <Flex alignItems="center" justifyContent="center" gap={2}>
               <Text
                 color="rgba(255, 255, 255, 0.88)"
                 fontWeight="bold"

@@ -4,7 +4,8 @@ import { FC } from 'react'
 export const NavButton: FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <Button
-      className="nav-button flex flex-row gap-2"
+      className="flex flex-row gap-2"
+      margin="0px !important"
       backgroundColor="#FFD500"
       color="black"
       borderRadius="25px"

@@ -50,3 +50,7 @@ a {
 .your-yield {
   width: 100%;
 }
+
+.center {
+  @apply flex justify-center items-center text-center;
+}
