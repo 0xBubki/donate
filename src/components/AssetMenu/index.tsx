@@ -5,6 +5,8 @@ import { Box, Text } from '@chakra-ui/layout'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import CoinList from '../../assets/tokenlist.json'
 
+import { CryptoIcon } from 'next-crypto-icons'
+
 enum Assets {
   eth = 'WETH',
   usdc = 'USDC',
@@ -34,6 +36,8 @@ const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
 const AssetMenu = () => {
   const [selected, select] = useState<Assets>(Assets.eth)
 
+  const assetName = selected.startsWith('W') ? selected.slice(1) : selected
+
   return (
     <Menu>
       {({ isOpen }) => (
@@ -59,10 +63,16 @@ const AssetMenu = () => {
               alignContent="center"
               alignItems="center"
             >
-              <img
+              {/* <img
                 src={TokenSymbols[selected]}
                 alt={selected}
                 className="h-6 w-6"
+              /> */}
+              <CryptoIcon
+                name={assetName.toLowerCase()}
+                style="white"
+                width={24}
+                height={24}
               />
               <Text>{eth_2_assets[selected].text}</Text>
               <ChevronDownIcon className="h-5 w-5" />

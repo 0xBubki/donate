@@ -3040,6 +3040,11 @@ crypto-browserify@3.12.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+cryptocurrency-icons@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/cryptocurrency-icons/-/cryptocurrency-icons-0.18.0.tgz#823552afcd299f4899d26a869252d1d27b004bc0"
+  integrity sha512-Q8Uq/Vhzcn/B6ouoJk+5Q/Kfp0zz0DjfldPv836OKT5mxgYDZm8vWgMQ5wBuRvT8Z/ZHLeXaBUgJtufPXmG0NQ==
+
 css-box-model@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
@@ -5321,6 +5326,13 @@ negotiator@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
+
+next-crypto-icons@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/next-crypto-icons/-/next-crypto-icons-0.1.0.tgz#57de444f3709aab46fbc7a5d5c60b1ea330055a5"
+  integrity sha512-4HFOVEHw+D0s/kWpDAlVt0qtQuGUNUsZn8d1BwHuCRoBjoipNUdn55h9Z3hj8IHcKRF9iR6oSHqNorANryeUPg==
+  dependencies:
+    cryptocurrency-icons "^0.18.0"
 
 next-tick@~1.0.0:
   version "1.0.0"
