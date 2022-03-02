@@ -121,10 +121,9 @@ const Home: NextPage = () => {
                 <Skeleton height="120px" width="500px" />
               </Flex>
             ) : (
-              // @ts-ignore
               <Text fontSize={headerSizingLg}>
                 ₴
-                {formatter
+                {formatter // @ts-ignore
                   .format(etherPriceOrFallBack * currentEthValue)
                   .substring(1)}
               </Text>
