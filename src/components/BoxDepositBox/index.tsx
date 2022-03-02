@@ -1,35 +1,39 @@
 import { Box, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
-import { useEthers, useTokenBalance, useSendTransaction } from '@usedapp/core'
+import { useEthers, useTokenBalance } from '@usedapp/core'
 import { usdcTokenAddress, prizePool } from '../../utils/poolTogether'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
 
+declare let window: any
+
 const BoxDepositBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
   const { account } = useEthers()
-  const { sendTransaction, state } = useSendTransaction()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
   const handleStaking = async () => {
     if (account) {
       const signer = new ethers.providers.Web3Provider(
-        window?.ethereum
+        window.ethereum
       ).getSigner()
-      const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
 
-      return user.approveDeposits().then(() => {
-        user
-          .depositAndDelegate(
-            BigNumber.from(amountToDonate),
-            '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
-          )
-          .then((response) => {
-            console.log(response)
-          })
-      })
+      if (prizePool) {
+        const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
+
+        return user.approveDeposits().then(() => {
+          user
+            .depositAndDelegate(
+              BigNumber.from(amountToDonate),
+              '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
+            )
+            .then((response) => {
+              console.log(response)
+            })
+        })
+      }
     }
   }
 

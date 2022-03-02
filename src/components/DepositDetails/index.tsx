@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { PrizePoolNetwork, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
+import { BigNumber, utils } from 'ethers'
 
 interface Props {
   mode: DepositMode
@@ -15,7 +16,7 @@ const DetailsBox = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
-  console.log({ tokenBalance })
+  const tokenBalanceOrZero = tokenBalance || 0
 
   return (
     <Flex flexDirection="column" align="left" justify="center" width="100%">
@@ -39,7 +40,10 @@ const DetailsBox = (props: Props) => {
           alignContent="center"
         >
           <Text color="white" fontSize="50px">
-            ${tokenBalance?.toString() || 0}
+            $
+            {utils
+              .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
+              ?.toString() || 0}
           </Text>
           <Text color="white" fontSize="20px">
             Total Value You have Donated so Far
