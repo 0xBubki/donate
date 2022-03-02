@@ -51,7 +51,7 @@ const NFTsNavBar = () => {
 
 const LinkButton = ({ title, number }: { title: string; number: number }) => {
   return (
-    <Link href={'/hey'}>
+    <Link href={'/hey'} passHref>
       <Flex
         direction="row"
         fontSize="3vh"
