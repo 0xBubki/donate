@@ -170,7 +170,7 @@ const Home: NextPage = () => {
           </Button>
         </NextLink>
 
-        <NextLink href="/donate" passHref>
+        <NextLink href="/mint" passHref>
           <Button
             mt="2vh"
             color="black"
