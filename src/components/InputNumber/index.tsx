@@ -9,15 +9,17 @@ import {
 
 type Props = {
   onChange: (value: number) => void
+  isDisabled: boolean
 }
 
-export const InputNumber = ({ onChange }: Props) => {
+export const InputNumber = ({ onChange, isDisabled }: Props) => {
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
       step: 1,
       defaultValue: 1,
       min: 1,
       max: 100,
+      isDisabled,
       precision: 0,
       focusInputOnChange: false,
       onChange: (stringVal, numVal) => onChange(numVal)
