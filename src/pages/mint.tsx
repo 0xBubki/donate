@@ -115,6 +115,7 @@ const MintPage: NextPage = () => {
         )
       })
     } catch (err) {
+      console.log(err)
       setButtonDisabled(false)
       toast({
         title: 'Uh oh.',
