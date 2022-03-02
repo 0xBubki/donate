@@ -11,13 +11,19 @@ export const Page: FC = ({ children }) => {
         <meta name="description" content="Donate your yield to help Ukraine" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Bubki - Donate. Stake. Mint." />
-        <meta name="twitter:image" content="/og_image.png" />
+        <meta
+          name="twitter:image"
+          content="https://www.bubki.xyz/og_image.png"
+        />
         <meta property="og:title" content="Bubki - Donate. Stake. Mint." />
         <meta
           property="og:description"
           content="Using the power of Web3 to help Ukraine"
         />
-        <meta property="og:image" content="og_image.png" />
+        <meta
+          property="og:image"
+          content="https://www.bubki.xyz/og_image.png"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
