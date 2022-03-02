@@ -156,27 +156,25 @@ const MintPage: NextPage = () => {
           </div>
           <div className="md:col-start-7 md:col-span-5">
             <VStack spacing={6} align="stretch">
-              <Box>
-                <Text
-                  as="span"
-                  px={4}
-                  py="5px"
-                  bg="whiteAlpha.400"
-                  rounded="xl"
-                  fontWeight="semibold"
-                  fontSize="20px"
-                  display="inline-block"
-                >
-                  {!isSaleActive && 'Not Available Yet'}
-
-                  {isSaleActive && (
+              {isSaleActive && (
+                <Box>
+                  <Text
+                    as="span"
+                    px={4}
+                    py="5px"
+                    bg="whiteAlpha.400"
+                    rounded="xl"
+                    fontWeight="semibold"
+                    fontSize="20px"
+                    display="inline-block"
+                  >
                     <Text display="flex" alignItems="center" gap={2}>
                       <Text fontWeight="black">{totalSupply} / 10,000</Text>
                       <Text>minted</Text>
                     </Text>
-                  )}
-                </Text>
-              </Box>
+                  </Text>
+                </Box>
+              )}
 
               <Heading fontSize={48} lineHeight={1.33}>
                 Bubki NFTs
