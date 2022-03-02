@@ -24,7 +24,7 @@ main {
   @apply w-full h-full;
   @apply flex flex-col justify-center items-center !important;
   /* Room for header. */
-  @apply pt-24;
+  @apply py-24 px-4;
 }
 
 header {
@@ -36,10 +36,6 @@ html,
 body {
   @apply p-0 m-0;
   font-family: 'Inter', sans-serif !important;
-}
-
-header {
-  height: 20%;
 }
 
 a {

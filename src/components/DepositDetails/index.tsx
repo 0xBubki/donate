@@ -2,6 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/layout'
 import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
+import { headerSizingXs } from '../../utils/sizing'
 
 interface Props {
   mode: DepositMode
@@ -20,24 +21,14 @@ const DetailsBox = (props: Props) => {
 
   return (
     <Flex flexDirection="column" align="left" justify="center" width="100%">
-      <Flex
-        justify="space-between"
-        gap="18px"
-        marginBottom="60px"
-        flexDirection={{
-          base: 'column',
-          lg: 'row'
-        }}
-      >
-        <Box
+      <Flex justify="space-between" gap={4} direction="column">
+        <Flex
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
           width="100%"
           padding="20px"
-          display="flex"
           flexDirection="column"
           alignItems="center"
-          alignContent="center"
         >
           <Text color="white" fontSize="50px">
             $
@@ -48,16 +39,17 @@ const DetailsBox = (props: Props) => {
           <Text color="white" fontSize="20px">
             Your Staked Value
           </Text>
-        </Box>
-        <Box
+        </Flex>
+
+        <Flex
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
           width="100%"
+          minWidth="320px"
           padding="20px"
           display="flex"
-          flexDirection="column"
+          direction="column"
           alignItems="center"
-          alignContent="center"
         >
           <Text color="white" fontSize="50px">
             $6.55m
@@ -65,17 +57,13 @@ const DetailsBox = (props: Props) => {
           <Text color="white" fontSize="20px">
             Total Staked
           </Text>
-        </Box>
+        </Flex>
       </Flex>
-      <Text color="white" fontSize="30px">
+      {/* <Text fontSize={headerSizingXs} textAlign="center">
         {props.mode === DepositMode.DEPOSIT
-          ? `Get your yield on. Degen for a good cause.\n
-        [insert copy in terms of yield to donate passive feeder collecting yields
-          as they are being harvested to funnel into ukraine]\n
-          Join the movement: deposit, yield, support!
-          `
+          ? `[DEPOSIT COPY]`
           : `Withdraw the exact amount of assets that you deposited`}
-      </Text>
+      </Text> */}
     </Flex>
   )
 }

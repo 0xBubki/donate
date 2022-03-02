@@ -9,6 +9,7 @@ import { Heading, Flex, Text } from '@chakra-ui/layout'
 import { confetti, blastConfetti } from '../utils/confetti'
 import axios from 'axios'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
+import { headerSizingLg, headerSizingSm } from '../utils/sizing'
 
 const germanTrans = require('../../public/locales/de/common.json')
 const englishTrans = require('../../public/locales/en/common.json')
@@ -22,9 +23,6 @@ const localisation = {
   fr: frenchTrans
 }
 
-const headerSizing = [1, 1.25, 1.5, 2.5]
-const headerSizingSm = headerSizing.map((x) => `${x}em`)
-const headerSizingLg = headerSizing.map((x) => `${x * 2}em`)
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const Home: NextPage = () => {
