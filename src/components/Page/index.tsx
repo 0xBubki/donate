@@ -1,8 +1,7 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Flex } from '@chakra-ui/layout'
 import { Header } from '../Header'
 import Head from 'next/head'
-import { useWallet } from '../../context/wallet-provider'
 
 export const Page: FC = ({ children }) => {
   return (
@@ -10,6 +9,15 @@ export const Page: FC = ({ children }) => {
       <Head>
         <title>Donate | Help Ukraine</title>
         <meta name="description" content="Donate your yield to help Ukraine" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Bubki - Donate. Stake. Mint." />
+        <meta name="twitter:image" content="/og_image.png" />
+        <meta property="og:title" content="Bubki - Donate. Stake. Mint." />
+        <meta
+          property="og:description"
+          content="Using the power of Web3 to help Ukraine"
+        />
+        <meta property="og:image" content="og_image.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
