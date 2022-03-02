@@ -1,4 +1,3 @@
-import { Button } from '@chakra-ui/button'
 import { Flex, Text } from '@chakra-ui/layout'
 import { SimpleGrid } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -59,7 +58,7 @@ export default function Deposit() {
         </Text>
 
         <Text color="white" fontSize="30px">
-          <a href="#">link to donate</a>
+          <a href="/donate">link to donate</a>
         </Text>
       </Flex>
     </SimpleGrid>

@@ -46,7 +46,7 @@ const DetailsBox = (props: Props) => {
               ?.toString() || 0}
           </Text>
           <Text color="white" fontSize="20px">
-            Total Staked Value
+            Your Staked Value
           </Text>
         </Box>
         <Box
@@ -63,7 +63,7 @@ const DetailsBox = (props: Props) => {
             $6.55m
           </Text>
           <Text color="white" fontSize="20px">
-            Total Contributions
+            Total Staked
           </Text>
         </Box>
       </Flex>
