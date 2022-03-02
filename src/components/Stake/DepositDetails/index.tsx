@@ -86,7 +86,7 @@ export const DepositDetails = (props: Props) => {
             ${totalYieldEarned}
           </Heading>
           <Text color="white" fontSize="20px">
-            Total Yield Earned
+            Total Staked
           </Text>
         </Flex>
       </Flex>
