@@ -23,9 +23,13 @@ const localisation = {
 
 type BlockchainError = { message: string }
 
-const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
-// process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
-// '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+// Mainnet
+// const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
+// const correctChainId = 1
+
+// Rinkeby
+const tokenAddress = '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+const correctChainId = 4
 
 const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
@@ -37,6 +41,7 @@ const MintPage: NextPage = () => {
   // UI States
   const [mintCount, setMintCount] = useState(1)
   const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [buttonConnecting, setButtonConnecting] = useState(false)
 
   // Contract States
   const { activateBrowserWallet, account, library } = useWallet()
@@ -49,12 +54,24 @@ const MintPage: NextPage = () => {
     return totalSupply >= maxSupply
   }, [maxSupply, totalSupply])
 
+  const isCorrectChainId = useMemo(() => {
+    return chainId === correctChainId
+  }, [chainId])
+
   const contract = useMemo(() => {
     return new ERC721Service(library, tokenAddress, account)
   }, [library, account])
 
+  const handleConnectWallet = () => {
+    setButtonConnecting(true)
+    activateBrowserWallet()
+    setTimeout(() => {
+      setButtonConnecting(false)
+    }, 5000)
+  }
+
   useEffect(() => {
-    if (account && chainId === 1) {
+    if (account && isCorrectChainId) {
       contract?.isSaleActive()?.then((response) => {
         setIsSaleActive(!!response)
       })
@@ -65,9 +82,12 @@ const MintPage: NextPage = () => {
         setMaxSupply(BigNumber.from(response).toNumber())
       })
     }
-  }, [account, library, contract, chainId])
+  }, [account, library, contract, chainId, isCorrectChainId])
 
   useEffect(() => {
+    if (account) {
+      setButtonConnecting(false)
+    }
     setWalletConnected(!!account)
   }, [account])
 
@@ -75,9 +95,7 @@ const MintPage: NextPage = () => {
     setButtonDisabled(true)
 
     try {
-      const res = await contract.resMint(mintCount)
-
-      // console.log({ res })
+      await contract.resMint(mintCount)
 
       // @todo - handle response. Show toast with link to tx? Or redirect to new view?
 
@@ -125,7 +143,7 @@ const MintPage: NextPage = () => {
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
-      <div className="max-w-7xl mx-auto p-8">
+      <div className="max-w-7xl mx-auto">
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
@@ -193,7 +211,10 @@ const MintPage: NextPage = () => {
                 <VStack spacing={8} align="stretch">
                   {walletConnected && (
                     <Flex alignItems={'center'} gap="6">
-                      <InputNumber onChange={(value) => setMintCount(value)} />
+                      <InputNumber
+                        isDisabled={buttonDisabled}
+                        onChange={(value) => setMintCount(value)}
+                      />
                       <Text
                         fontSize="24px"
                         fontWeight="semibold"
@@ -217,9 +238,11 @@ const MintPage: NextPage = () => {
                             boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
                             borderRadius: '12px'
                           }}
-                          disabled={buttonDisabled || chainId !== 1}
+                          disabled={buttonDisabled || !isCorrectChainId}
                         >
-                          {chainId !== 1
+                          {buttonDisabled
+                            ? 'Minting...'
+                            : !isCorrectChainId
                             ? 'Change to ETH mainnet'
                             : translate('mintButton')}
                         </Button>
@@ -228,8 +251,9 @@ const MintPage: NextPage = () => {
                     ) : (
                       <Button
                         width="100%"
-                        onClick={activateBrowserWallet}
+                        onClick={() => handleConnectWallet()}
                         fontSize="24px"
+                        disabled={buttonConnecting}
                         py="27px"
                         colorScheme="yellow"
                         style={{
@@ -237,7 +261,10 @@ const MintPage: NextPage = () => {
                           borderRadius: '12px'
                         }}
                       >
-                        Connect Wallet
+                        {translate('connectWallet')}
+                        {/* {buttonConnecting
+                          ? 'Open wallet...'
+                          : translate('connectWallet')} */}
                       </Button>
                     )}
                   </VStack>
@@ -250,8 +277,9 @@ const MintPage: NextPage = () => {
                   <Button
                     width="100%"
                     // @todo - connect wallet
-                    onClick={activateBrowserWallet}
+                    onClick={handleConnectWallet}
                     fontSize="24px"
+                    disabled={buttonConnecting}
                     py="27px"
                     colorScheme="yellow"
                     style={{
@@ -260,6 +288,9 @@ const MintPage: NextPage = () => {
                     }}
                   >
                     {translate('connectWallet')}
+                    {/* {buttonConnecting
+                      ? 'Open wallet...'
+                      : translate('connectWallet')} */}
                   </Button>
                 </VStack>
               )}
