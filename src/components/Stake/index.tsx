@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
-import { AssetMenu } from '../AssetMenu'
+import { AssetMenu } from './AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { FC, useState } from 'react'
@@ -9,8 +9,8 @@ import {
   usdcTokenAddress,
   prizePool,
   ticketTokenAddress
-} from '../../../utils/poolTogether'
-import { useWallet } from '../../../context/wallet-provider'
+} from '../../utils/poolTogether'
+import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'

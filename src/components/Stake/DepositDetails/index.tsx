@@ -3,7 +3,7 @@ import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
-import { StakeMode } from '../StakeView'
+import { StakeMode } from '..'
 
 interface Props {
   stakingMode: StakeMode
