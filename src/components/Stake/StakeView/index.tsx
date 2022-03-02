@@ -5,7 +5,11 @@ import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { FC, useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
-import { usdcTokenAddress, prizePool } from '../../../utils/poolTogether'
+import {
+  usdcTokenAddress,
+  prizePool,
+  ticketTokenAddress
+} from '../../../utils/poolTogether'
 import { useWallet } from '../../../context/wallet-provider'
 
 declare let window: any
@@ -27,7 +31,10 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
 
   const { activateBrowserWallet, account } = useWallet()
   const { chainId } = useEthers()
-  const tokenBalance = useTokenBalance(usdcTokenAddress, account)
+  const tokenBalance = useTokenBalance(
+    stakingMode === StakeMode.STAKE ? usdcTokenAddress : ticketTokenAddress,
+    account
+  )
 
   const stakeOrUnstake = async () => {
     if (account) {
@@ -46,6 +53,8 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
 
               const approveTx = await user.approveDeposits()
               const approveReceipt = await approveTx.wait()
+
+              console.log({ approveReceipt })
 
               setApproving(false)
               setSending(true)
@@ -118,9 +127,9 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
             border="none"
             focusBorderColor="none"
             type="number"
-            value={amountToUpdate}
+            value={amountToUpdate || ''}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setAmountToUpdate(parseInt(e.target.value) || 0)
+              setAmountToUpdate(parseInt(e.target.value))
             }
             pl={0}
           />
@@ -142,7 +151,7 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
         height="80px"
         borderRadius="25px"
         onClick={stakeOrUnstake}
-        disabled={approving || sending || chainId !== 1}
+        // disabled={approving || sending || chainId !== 1}
       >
         <Text fontSize={['0.8rem', '1rem']}>{determineText()}</Text>
       </Button>

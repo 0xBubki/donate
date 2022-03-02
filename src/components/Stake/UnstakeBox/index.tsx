@@ -2,11 +2,7 @@ import { Box, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import { AssetMenu } from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
-import {
-  prizePool,
-  ticketTokenAddress,
-  usdcTokenAddress
-} from '../../../utils/poolTogether'
+import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
 import { useWallet } from '../../../context/wallet-provider'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
