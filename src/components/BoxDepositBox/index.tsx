@@ -10,7 +10,7 @@ import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 
-const multiSigAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
+const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const BoxDepositBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)

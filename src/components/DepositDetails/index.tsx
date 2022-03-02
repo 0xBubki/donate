@@ -13,7 +13,7 @@ enum DepositMode {
   DEPOSIT
 }
 
-const multiSigAddress = '0x664A99B82230eFd61d36828C46e66271BDBac92C'
+const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const DetailsBox = (props: Props) => {
   const { account } = useEthers()
