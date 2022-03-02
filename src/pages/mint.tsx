@@ -42,7 +42,7 @@ const MintPage: NextPage = () => {
   const { activateBrowserWallet, account, library } = useWallet()
   const [totalSupply, setTotalSupply] = useState(0)
   const [maxSupply, setMaxSupply] = useState(5000)
-  const [isSaleActive, setIsSaleActive] = useState(false)
+  const [isSaleActive, setIsSaleActive] = useState<boolean | null>(null)
   const [walletConnected, setWalletConnected] = useState(true)
 
   const isSoldOut = useMemo(() => {
@@ -75,7 +75,7 @@ const MintPage: NextPage = () => {
     setButtonDisabled(true)
 
     try {
-      const res = await contract.mint(mintCount)
+      const res = await contract.resMint(mintCount)
 
       console.log({ res })
 
@@ -257,7 +257,7 @@ const MintPage: NextPage = () => {
               )}
 
               {/* Minting not active, wallet is connected */}
-              {!isSaleActive && walletConnected && (
+              {isSaleActive === false && walletConnected && (
                 <Box>
                   <Button
                     as="a"
