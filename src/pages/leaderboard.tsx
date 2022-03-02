@@ -138,7 +138,7 @@ const Leaderboard: NextPage = () => {
               <Tbody>
                 {leaders?.map((data: { from: string; value: number }, i) => (
                   <Tr key={i}>
-                    <Td color="white">
+                    <Td color="white" paddingInline="4px">
                       <Tag
                         colorScheme="whiteAlpha"
                         textColor="white"
@@ -151,20 +151,23 @@ const Leaderboard: NextPage = () => {
                         {i + 1}
                       </Tag>
                     </Td>
-                    <Td color="white" lineHeight={1.5}>
+                    <Td color="white" lineHeight={1.5} paddingInline="8px">
                       <div className="hidden xs:block">
                         <AddressField address={data.from} />
                       </div>
                     </Td>
-                    <Td isNumeric color="white" lineHeight={1.5}>
+                    <Td
+                      isNumeric
+                      color="white"
+                      lineHeight={1.5}
+                      paddingInline="8px"
+                    >
                       <Stat>
                         <StatNumber fontSize={['xs', 'sm', 'md']}>
                           Ξ{data?.value.toFixed(2)}
                         </StatNumber>
                         <div className="hidden sm:block">
-                          <StatHelpText fontSize={['xs', 'sm']}>
-                            Donated
-                          </StatHelpText>
+                          <StatHelpText fontSize="sm">Donated</StatHelpText>
                         </div>
                       </Stat>
                     </Td>
