@@ -15,13 +15,7 @@ export interface StakeUnstakeBoxProps {
 export const StakeUnstakeBox: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
   return (
     <DepositBox mode={stakingMode}>
-      {stakingMode === DepositMode.DEPOSIT ? (
-        <StakeBox />
-      ) : (
-        <>
-          <UnstakeBox />
-        </>
-      )}
+      {stakingMode === DepositMode.DEPOSIT ? <StakeBox /> : <UnstakeBox />}
     </DepositBox>
   )
 }

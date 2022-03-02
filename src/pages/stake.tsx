@@ -25,6 +25,7 @@ export default function Deposit() {
         <RedeemSwitch onChange={tabChanged} />
         <StakeUnstakeBox stakingMode={stakingMode} />
       </Flex>
+
       <DepositDetails mode={stakingMode} />
     </Flex>
   )
