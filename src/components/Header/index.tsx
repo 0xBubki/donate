@@ -59,10 +59,10 @@ const ConnectWallet = () => {
           <Text>{ens || shorten(account)}</Text>
         </>
       ) : (
-        <Box>
+        <Flex gap={2}>
           <Text className="capitalize">{translate('connect')}</Text>
           <LoginIcon className="w-5 h-5" />
-        </Box>
+        </Flex>
       )}
     </NavButton>
   )
