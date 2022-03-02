@@ -25,11 +25,11 @@ type BlockchainError = { message: string }
 
 // Mainnet
 const tokenAddress = '0x5E96d69257b025d097863F3d69E9DcADb9a9810c'
-const correctChainId = 1
+const networkChainId = 1
 
 // Rinkeby
 // const tokenAddress = '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
-// const correctChainId = 4
+// const networkChainId = 4
 
 const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
@@ -55,7 +55,7 @@ const MintPage: NextPage = () => {
   }, [maxSupply, totalSupply])
 
   const isCorrectChainId = useMemo(() => {
-    return chainId === correctChainId
+    return chainId === networkChainId
   }, [chainId])
 
   const contract = useMemo(() => {
