@@ -6,6 +6,7 @@ import DepositBox from '../components/DepositBox'
 import BoxDepositBox from '../components/BoxDepositBox'
 import BoxUnstakeBox from '../components/BoxUnstakeBox'
 import RedeemSwitch from '../components/RedeemSwitch'
+import Link from 'next/link'
 
 enum DepositMode {
   WITHDRAW,
@@ -58,7 +59,7 @@ export default function Deposit() {
         </Text>
 
         <Text color="white" fontSize="30px">
-          <a href="/donate">link to donate</a>
+          <Link href="/donate">link to donate</Link>
         </Text>
       </Flex>
     </SimpleGrid>
