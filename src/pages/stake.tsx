@@ -23,11 +23,7 @@ export default function Deposit() {
   return (
     <Flex direction="column" gap={16} width="100%" align="center">
       <Flex direction="column" align="center" justify="center">
-        <RedeemSwitch
-          stake={translate('stake') || 'Stake'}
-          unstake={translate('unstake') || 'Unstake'}
-          onChange={tabChanged}
-        />
+        <RedeemSwitch onChange={tabChanged} />
         <Flex
           direction="column"
           align="center"
@@ -53,15 +49,7 @@ export default function Deposit() {
         </Flex>
       </Flex>
 
-      <DepositDetails
-        stakingMode={stakingMode}
-        cta={translate('cta') || 'Deposit, yield, support'}
-        withdrawCta={
-          translate('withdrawCta') || 'Withdraw all deposited assets'
-        }
-        stakedValueLabel={translate('stakedValueLabel') || 'Your Staked Value'}
-        totalStakedLabel={translate('totalStakedLabel') || 'Total Staked'}
-      />
+      <DepositDetails stakingMode={stakingMode} />
     </Flex>
   )
 }
