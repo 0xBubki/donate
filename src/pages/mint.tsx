@@ -65,7 +65,7 @@ const MintPage: NextPage = () => {
         setMaxSupply(BigNumber.from(response).toNumber())
       })
     }
-  }, [account, library, contract])
+  }, [account, library, contract, chainId])
 
   useEffect(() => {
     setWalletConnected(!!account)
