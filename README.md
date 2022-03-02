@@ -4,4 +4,5 @@ Frontend repository for the Bubki for Ukraine Donation portal, built on Next.js 
 
 ### Special Thanks
 
-Special thanks to [Vercel](https://vercel.com/) for their support.
+Special thanks to [Vercel](https://vercel.com/) and
+[Netlify](https://netlify.com) for their support.
