@@ -84,7 +84,7 @@ const DetailsBox = (props: Props) => {
             ${totalYieldEarned}
           </Text>
           <Text color="white" fontSize="20px">
-            Total Staked
+            Total Yield Earned
           </Text>
         </Box>
       </Flex>
