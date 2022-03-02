@@ -5,6 +5,7 @@ import { useState } from 'react'
 import DepositDetails from '../components/DepositDetails'
 import DepositBox from '../components/DepositBox'
 import BoxDepositBox from '../components/BoxDepositBox'
+import BoxUnstakeBox from '../components/BoxUnstakeBox'
 import RedeemSwitch from '../components/RedeemSwitch'
 
 enum DepositMode {
@@ -38,35 +39,11 @@ export default function Deposit() {
       <Flex flexDirection="column" align="center" justify="center" width="50vw">
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
-          <BoxDepositBox />
           {stakingMode === DepositMode.DEPOSIT ? (
-            <></>
+            <BoxDepositBox />
           ) : (
             <>
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#FFD500"
-                color="black"
-                width="455px"
-                height="80px"
-                borderRadius="25px"
-              >
-                <Text fontSize="3xl">Unstake</Text>
-              </Button>
-
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#FFF"
-                color="black"
-                width="455px"
-                height="80px"
-                borderRadius="25px"
-                mt={6}
-              >
-                <Text fontSize="3xl" color="#000">
-                  Donate Principal
-                </Text>
-              </Button>
+              <BoxUnstakeBox />
             </>
           )}
         </DepositBox>
