@@ -58,12 +58,12 @@ export const DepositDetails = (props: Props) => {
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
         >
-          <Text color="white" fontSize="50px">
+          <Heading color="white" fontSize="50px">
             $
             {utils
               .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
               ?.toString() || 0}
-          </Text>
+          </Heading>
           <Text color="white" fontSize="20px">
             Your Staked Value
           </Text>
@@ -76,9 +76,9 @@ export const DepositDetails = (props: Props) => {
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
         >
-          <Text color="white" fontSize="50px">
+          <Heading color="white" fontSize="50px">
             ${totalYieldEarned}
-          </Text>
+          </Heading>
           <Text color="white" fontSize="20px">
             Total Yield Earned
           </Text>
