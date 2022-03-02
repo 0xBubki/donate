@@ -1,4 +1,17 @@
 {
+  "de": {
+    "stake": "Einzahlen",
+    "unstake": "Auszahlen",
+    "connect": "Connect",
+    "approving": "Approving...",
+    "sending": "Sending...",
+    "balance": "Kontostand:",
+    "connectTo": "Mit dem ETH Netzwerk verbinden",
+    "cta": "Einzahlung, Rendite, Unterstützung",
+    "withdrawCta": "Withdraw all deposited assets",
+    "stakedValueLabel": "Your Staked Value",
+    "totalStakedLabel": "Total Staked"
+  },
   "en": {
     "stake": "Stake",
     "unstake": "Unstake",

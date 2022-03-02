@@ -6,7 +6,7 @@ import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
 import { StakeMode, StakeView } from '../components/Stake'
 
 import { useTranslation } from '../utils/use-translation'
-const translations = require('../../public/locales/mint.json')
+const translations = require('../../public/locales/stake.json')
 
 export default function Deposit() {
   const translate = useTranslation(translations)
