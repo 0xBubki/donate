@@ -43,11 +43,16 @@ const DetailsBox = (props: Props) => {
 
   return (
     <Flex flexDirection="column" align="left" justify="center" width="100%">
-      <Flex justify="space-between" gap={4} direction="column">
+      <Flex
+        direction={['column', 'column', 'row', 'row']}
+        justify="space-around"
+        align="center"
+        gap={4}
+      >
         <Flex
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="100%"
+          width="320px"
           padding="20px"
           flexDirection="column"
           alignItems="center"
@@ -66,8 +71,7 @@ const DetailsBox = (props: Props) => {
         <Flex
           borderRadius="25px"
           background="rgba(0, 0, 0, 0.2)"
-          width="100%"
-          minWidth="320px"
+          width="320px"
           padding="20px"
           display="flex"
           direction="column"

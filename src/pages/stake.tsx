@@ -28,7 +28,7 @@ export default function Deposit() {
   }
 
   return (
-    <Flex direction={['column', 'column', 'column', 'row']} gap={16}>
+    <Flex direction="column" gap={16}>
       <Flex direction="column" align="center" justify="center" width="100%">
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
