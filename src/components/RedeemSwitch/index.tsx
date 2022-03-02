@@ -5,16 +5,15 @@ const RedeemSwitch = ({ onChange }: { onChange: () => void }) => (
     variant="soft-rounded"
     backgroundColor={'white'}
     borderRadius="25px"
-    width="524px"
     marginBottom="20px"
     onChange={onChange}
   >
     <TabList>
-      <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab width="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         Stake{' '}
       </Tab>
-      <Tab width="262px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab width="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         Unstake{' '}
       </Tab>

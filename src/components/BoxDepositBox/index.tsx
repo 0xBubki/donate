@@ -99,7 +99,7 @@ const BoxDepositBox = () => {
         _hover={{ color: 'black', background: 'white' }}
         backgroundColor="ukraineYellow"
         color="black"
-        width="455px"
+        width="100%"
         height="80px"
         borderRadius="25px"
         onClick={handleStaking}

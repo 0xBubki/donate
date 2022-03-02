@@ -7,6 +7,7 @@ import BoxDepositBox from '../components/BoxDepositBox'
 import BoxUnstakeBox from '../components/BoxUnstakeBox'
 import RedeemSwitch from '../components/RedeemSwitch'
 import Link from 'next/link'
+import { headerSizingLg, headerSizingSm, headerSizingXs } from '../utils/sizing'
 
 enum DepositMode {
   WITHDRAW,
@@ -27,16 +28,8 @@ export default function Deposit() {
   }
 
   return (
-    <SimpleGrid
-      columns={{
-        base: 2,
-        lg: 2,
-        md: 1,
-        sm: 1
-      }}
-      spacing={10}
-    >
-      <Flex flexDirection="column" align="center" justify="center" width="50vw">
+    <Flex direction={['column', 'column', 'column', 'row']} gap={16}>
+      <Flex direction="column" align="center" justify="center" width="100%">
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
           {stakingMode === DepositMode.DEPOSIT ? (
@@ -48,20 +41,21 @@ export default function Deposit() {
           )}
         </DepositBox>
       </Flex>
+
       <Flex flexDirection="column" align="center" justify="center">
         <DepositDetails mode={stakingMode} />
       </Flex>
 
-      <Flex flexDirection="column" align="center" justify="center" />
-      <Flex flexDirection="column" align="end">
-        <Text color="white" fontSize="30px">
+      {/* <Flex flexDirection="column" align="center" justify="center" /> */}
+      {/* <Flex flexDirection="column" align="end">
+        <Text color="white" fontSize={headerSizingXs}>
           Looking an NFT instead?
         </Text>
 
-        <Text color="white" fontSize="30px">
+        <Text color="white" fontSize={headerSizingXs}>
           <Link href="/mint">Click here</Link>
         </Text>
-      </Flex>
-    </SimpleGrid>
+      </Flex> */}
+    </Flex>
   )
 }
