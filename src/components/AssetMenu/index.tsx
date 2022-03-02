@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
 import { Box, Text } from '@chakra-ui/layout'
