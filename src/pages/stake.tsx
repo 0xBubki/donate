@@ -1,17 +1,10 @@
-import { Flex, Text } from '@chakra-ui/layout'
+import { Flex } from '@chakra-ui/layout'
 import { useState } from 'react'
+import { DepositDetails, RedeemSwitch } from '../components/Stake'
 import {
-  DepositBox,
-  DepositDetails,
-  RedeemSwitch,
-  StakeBox,
-  UnstakeBox
-} from '../components/Stake'
-
-enum DepositMode {
-  WITHDRAW,
-  DEPOSIT
-}
+  DepositMode,
+  StakeUnstakeBox
+} from '../components/Stake/StakeUnstakeBox'
 
 export default function Deposit() {
   const [stakingMode, setStakingMode] = useState<DepositMode>(
@@ -30,17 +23,8 @@ export default function Deposit() {
     <Flex direction="column" gap={16}>
       <Flex direction="column" align="center" justify="center">
         <RedeemSwitch onChange={tabChanged} />
-        <DepositBox mode={stakingMode}>
-          {stakingMode === DepositMode.DEPOSIT ? (
-            <StakeBox />
-          ) : (
-            <>
-              <UnstakeBox />
-            </>
-          )}
-        </DepositBox>
+        <StakeUnstakeBox stakingMode={stakingMode} />
       </Flex>
-
       <DepositDetails mode={stakingMode} />
     </Flex>
   )
