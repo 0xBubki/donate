@@ -6,12 +6,13 @@ import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
+import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 
 const BoxDepositBox = () => {
   const [amountToUnstake, setAmountToUnstake] = useState(0)
-  const { account } = useEthers()
+  const { activateBrowserWallet, account } = useWallet()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
   const handleStaking = async () => {
@@ -34,6 +35,8 @@ const BoxDepositBox = () => {
             })
         })
       }
+    } else {
+      activateBrowserWallet()
     }
   }
 
@@ -81,7 +84,7 @@ const BoxDepositBox = () => {
         borderRadius="25px"
         onClick={handleStaking}
       >
-        <Text fontSize="3xl">Unstake</Text>
+        <Text fontSize="3xl">{account ? 'Unstake' : 'Connect'}</Text>
       </Button>
       <Button
         _hover={{ color: 'black', background: 'white' }}
