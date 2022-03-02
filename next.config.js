@@ -1,7 +1,7 @@
 module.exports = {
   i18n: {
     defaultLocale: 'en',
-    locales: ['de', 'en', 'es', 'fr']
+    locales: ['de', 'en', 'es', 'fr', 'ua']
   },
   images: {
     domains: ['cdn.jsdelivr.net']

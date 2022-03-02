@@ -1,0 +1,10 @@
+{
+  "en": {
+    "stake": "Stake",
+    "unstake": "Unstake",
+    "connectTo": "Connect to ETH mainnet",
+    "cta": "Deposit, yield, support",
+    "yourValue": "Your Staked Value",
+    "totalStaked": "Total Staked"
+  }
+}
