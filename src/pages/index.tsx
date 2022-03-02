@@ -93,7 +93,7 @@ const Home: NextPage = () => {
       }}
     >
       <Flex direction="column" alignItems="center" textAlign="center">
-        <Flex direction="column" gap={4}>
+        <Flex direction="column" gap={16} align="center">
           <Heading>
             {translate('homepage-title')}{' '}
             <Text display="inline" color="ukraineYellow">
@@ -101,82 +101,85 @@ const Home: NextPage = () => {
             </Text>
           </Heading>
 
-          <Flex
-            className="center flex-col xs:flex-row xs:gap-2"
-            fontWeight="bold"
-          >
-            {currentEthValue === 0 ? (
-              <Flex alignItems="center" justifyContent="center" gap={2}>
-                <Text fontSize={headerSizingLg}>$</Text>
-                <Skeleton height="48px" width={['120px', '320px']} />
-              </Flex>
-            ) : (
-              <Text fontSize={headerSizingLg}>
-                {formatter // @ts-ignore
-                  .format(etherPriceOrFallBack * currentEthValue)}
-              </Text>
-            )}
+          <Flex direction="column" gap={2}>
+            <Flex
+              className="center flex-col xs:flex-row xs:gap-2"
+              fontWeight="bold"
+            >
+              {currentEthValue === 0 ? (
+                <Flex alignItems="center" justifyContent="center" gap={2}>
+                  <Text fontSize={headerSizingLg}>$</Text>
+                  <Skeleton height="48px" width={['120px', '320px']} />
+                </Flex>
+              ) : (
+                <Text fontSize={headerSizingLg}>
+                  {formatter // @ts-ignore
+                    .format(etherPriceOrFallBack * currentEthValue)}
+                </Text>
+              )}
 
-            <Heading fontSize={headerSizingSm}>{translate('donated')}</Heading>
-          </Flex>
-
-          {currentEthValue === 0 ? (
-            <Flex alignItems="center" justifyContent="center" gap={2}>
-              <Text
-                color="rgba(255, 255, 255, 0.88)"
-                fontWeight="bold"
-                fontSize={headerSizingSm}
-              >
-                Ξ
-              </Text>
-              <Skeleton height="30px" width="200px" />
+              <Heading fontSize={headerSizingSm}>
+                {translate('donated')}
+              </Heading>
             </Flex>
-          ) : (
+
             <Text
               color="rgba(255, 255, 255, 0.88)"
               fontWeight="bold"
               fontSize={headerSizingSm}
             >
-              Ξ{currentEthValue.toFixed(2)}
+              <Flex alignItems="center" justifyContent="center" gap={2}>
+                <span>Ξ</span>
+                {currentEthValue === 0 ? (
+                  <Skeleton height="30px" width="200px" />
+                ) : (
+                  <span>{currentEthValue.toFixed(2)}</span>
+                )}
+              </Flex>
             </Text>
-          )}
-        </Flex>
+          </Flex>
 
-        <Flex direction="column" gap={4}>
-          <NextLink href="/stake" passHref>
-            <Button
-              mt="5vh"
-              color="black"
-              w="180px"
-              borderRadius="25px"
-              bg="ukraineYellow"
-              _hover={{
-                bg: 'darkYellow'
-              }}
-              _active={{
-                bg: 'darkYellow'
-              }}
-            >
-              {translate('stake')}
-            </Button>
-          </NextLink>
+          <Flex
+            direction="column"
+            gap={4}
+            align="center"
+            width="100%"
+            maxWidth="200px"
+          >
+            <NextLink href="/stake" passHref>
+              <Button
+                color="black"
+                width="100%"
+                borderRadius="25px"
+                bg="ukraineYellow"
+                _hover={{
+                  bg: 'darkYellow'
+                }}
+                _active={{
+                  bg: 'darkYellow'
+                }}
+              >
+                {translate('stake')}
+              </Button>
+            </NextLink>
 
-          <NextLink href="/mint" passHref>
-            <Button
-              color="black"
-              bg="white"
-              w="180px"
-              borderRadius="25px"
-              _hover={{
-                bg: '#DDD'
-              }}
-              _active={{
-                bg: '#DDD'
-              }}
-            >
-              {translate('mint')}
-            </Button>
-          </NextLink>
+            <NextLink href="/mint" passHref>
+              <Button
+                color="black"
+                bg="white"
+                width="100%"
+                borderRadius="25px"
+                _hover={{
+                  bg: '#DDD'
+                }}
+                _active={{
+                  bg: '#DDD'
+                }}
+              >
+                {translate('mint')}
+              </Button>
+            </NextLink>
+          </Flex>
         </Flex>
       </Flex>
 
