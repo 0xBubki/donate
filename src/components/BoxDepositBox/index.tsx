@@ -74,7 +74,7 @@ const BoxDepositBox = () => {
       </Box>
       <Button
         _hover={{ color: 'black', background: 'white' }}
-        backgroundColor="#FFD500"
+        backgroundColor="ukraineYellow"
         color="black"
         width="455px"
         height="80px"
