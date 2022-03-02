@@ -2,7 +2,11 @@ import { Box, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
-import { usdcTokenAddress, prizePool } from '../../utils/poolTogether'
+import {
+  prizePool,
+  ticketTokenAddress,
+  usdcTokenAddress
+} from '../../utils/poolTogether'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
@@ -11,13 +15,12 @@ import { useWallet } from '../../context/wallet-provider'
 declare let window: any
 
 const BoxDepositBox = () => {
-  const [amountToDonate, setAmountToDonate] = useState(0)
-  const [approve, setApprove] = useState(false)
-  const [deposit, setDeposit] = useState(false)
+  const [amountToUnstake, setAmountToUnstake] = useState(0)
+  const [withdrawing, setWithdrawing] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
-  const tokenBalance = useTokenBalance(usdcTokenAddress, account)
+  const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
-  const handleStaking = async () => {
+  const handleUnStaking = async () => {
     if (account) {
       const signer = new ethers.providers.Web3Provider(
         window.ethereum
@@ -25,22 +28,17 @@ const BoxDepositBox = () => {
 
       if (prizePool) {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
+
         try {
-          setApprove(true)
-          const approveTx = await user.approveDeposits()
-          const approveReceipt = await approveTx.wait()
-          setApprove(false)
-          setDeposit(true)
-          const depositTx = await user.depositAndDelegate(
-            utils.parseUnits(BigNumber.from(amountToDonate).toString(), 6),
-            '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
+          setWithdrawing(true)
+          const withdrawTx = await user.withdraw(
+            utils.parseUnits(BigNumber.from(amountToUnstake).toString(), 6)
           )
-          await depositTx.wait()
-          setApprove(false)
-          setDeposit(false)
+          const withdrawReceipt = await withdrawTx.wait()
+
+          setWithdrawing(false)
         } catch (e) {
-          setApprove(false)
-          setDeposit(false)
+          setWithdrawing(false)
         }
       }
     } else {
@@ -50,10 +48,9 @@ const BoxDepositBox = () => {
 
   const determineText = () => {
     if (account) {
-      if (approve) return 'Approving...'
-      if (deposit) return 'Depositing...'
+      if (withdrawing) return 'Withdrawing...'
 
-      return 'Stake'
+      return 'Unstake'
     }
     return 'Connect'
   }
@@ -79,9 +76,9 @@ const BoxDepositBox = () => {
             border="none"
             focusBorderColor="none"
             type="number"
-            value={amountToDonate}
+            value={amountToUnstake}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setAmountToDonate(parseInt(e.target.value))
+              setAmountToUnstake(parseInt(e.target.value))
             }
             pl={0}
           />
@@ -100,11 +97,24 @@ const BoxDepositBox = () => {
         width="455px"
         height="80px"
         borderRadius="25px"
-        onClick={handleStaking}
-        disabled={approve || deposit}
+        onClick={handleUnStaking}
+        disabled={withdrawing}
       >
         <Text fontSize="3xl">{determineText()}</Text>
       </Button>
+      {/*<Button*/}
+      {/*  _hover={{ color: 'black', background: 'white' }}*/}
+      {/*  backgroundColor="#FFF"*/}
+      {/*  color="black"*/}
+      {/*  width="455px"*/}
+      {/*  height="80px"*/}
+      {/*  borderRadius="25px"*/}
+      {/*  mt={6}*/}
+      {/*>*/}
+      {/*  <Text fontSize="3xl" color="#000">*/}
+      {/*    Donate Principal*/}
+      {/*  </Text>*/}
+      {/*</Button>*/}
     </>
   )
 }

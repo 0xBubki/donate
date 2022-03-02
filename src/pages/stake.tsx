@@ -1,12 +1,12 @@
-import { Button } from '@chakra-ui/button'
 import { Flex, Text } from '@chakra-ui/layout'
 import { SimpleGrid } from '@chakra-ui/react'
 import { useState } from 'react'
-import YourStake from '../components/YourStake'
 import DepositDetails from '../components/DepositDetails'
 import DepositBox from '../components/DepositBox'
 import BoxDepositBox from '../components/BoxDepositBox'
+import BoxUnstakeBox from '../components/BoxUnstakeBox'
 import RedeemSwitch from '../components/RedeemSwitch'
+import Link from 'next/link'
 
 enum DepositMode {
   WITHDRAW,
@@ -39,48 +39,14 @@ export default function Deposit() {
       <Flex flexDirection="column" align="center" justify="center" width="50vw">
         <RedeemSwitch onChange={tabChanged} />
         <DepositBox mode={stakingMode}>
-          <BoxDepositBox />
           {stakingMode === DepositMode.DEPOSIT ? (
-            <>
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#06927b"
-                color="white"
-                width="455px"
-                height="80px"
-                borderRadius="25px"
-              >
-                <Text fontSize="3xl">Stake</Text>
-              </Button>
-            </>
+            <BoxDepositBox />
           ) : (
             <>
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#06927b"
-                color="white"
-                width="455px"
-                height="80px"
-              >
-                <Text fontSize="3xl">Unstake</Text>
-              </Button>
-
-              <Button
-                _hover={{ color: 'black', background: 'white' }}
-                backgroundColor="#FFF"
-                color="white"
-                width="455px"
-                height="80px"
-              >
-                <Text fontSize="3xl" color="#000">
-                  Donate Principal
-                </Text>
-              </Button>
+              <BoxUnstakeBox />
             </>
           )}
         </DepositBox>
-
-        <YourStake />
       </Flex>
       <Flex flexDirection="column" align="center" justify="center">
         <DepositDetails mode={stakingMode} />
@@ -89,11 +55,11 @@ export default function Deposit() {
       <Flex flexDirection="column" align="center" justify="center" />
       <Flex flexDirection="column" align="end">
         <Text color="white" fontSize="30px">
-          Looking to donate instead?
+          Looking an NFT instead?
         </Text>
 
         <Text color="white" fontSize="30px">
-          <a href="#">link to donate</a>
+          <Link href="/mint">Click here</Link>
         </Text>
       </Flex>
     </SimpleGrid>
