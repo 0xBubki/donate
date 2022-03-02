@@ -45,6 +45,29 @@ import LanguageMenu from './LanguageMenu'
 // @ts-ignore
 import { SocialIcon } from 'react-social-icons'
 
+const ConnectWallet = () => {
+  const { activateBrowserWallet, ens, account } = useWallet()
+  const translate = useTranslation(localisation)
+
+  return (
+    <NavButton onClick={activateBrowserWallet}>
+      {account ? (
+        <>
+          <Box>
+            <Davatar size={25} address={account} />
+          </Box>
+          <Text>{ens || shorten(account)}</Text>
+        </>
+      ) : (
+        <Box>
+          <Text className="capitalize">{translate('connect')}</Text>
+          <LoginIcon className="w-5 h-5" />
+        </Box>
+      )}
+    </NavButton>
+  )
+}
+
 export const Header = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure()
@@ -91,8 +114,8 @@ export const Header = () => {
           w={'full'}
           px={{ base: 0, lg: '2rem' }}
         >
+          {/* Bubki Flag Button */}
           <Box fontWeight="bold" fontSize={[20, 20, 20]}>
-            {/* Bubki Flag Button */}
             <NextLink href="/" passHref>
               <Link className="center flex gap-2">
                 <span>🇺🇦</span>
@@ -101,8 +124,8 @@ export const Header = () => {
             </NextLink>
           </Box>
 
+          {/* Desktop Links */}
           <HStack>
-            {/* Desktop Links */}
             <HStack
               px={[4, 4, 0]}
               display={['none', 'none', 'none', 'flex']}
@@ -117,26 +140,15 @@ export const Header = () => {
                 </NavItem>
               ))}
             </HStack>
+
             {/* Language Menu */}
             <Box display={{ base: 'none', lg: 'block' }}>
               <LanguageMenu />
             </Box>
+
             {/* Connect Wallet Button */}
-            <NavButton ml="30px" onClick={activateBrowserWallet}>
-              {account ? (
-                <>
-                  <Box>
-                    <Davatar size={25} address={account} />
-                  </Box>
-                  <Text>{ens || shorten(account)}</Text>
-                </>
-              ) : (
-                <>
-                  <Text className="capitalize">{translate('connect')}</Text>
-                  <LoginIcon className="w-5 h-5" />
-                </>
-              )}
-            </NavButton>
+            <ConnectWallet />
+
             {/* Drawer Toggle Button */}
             <Button
               backgroundColor="transparent"
@@ -186,24 +198,12 @@ export const Header = () => {
                   <span className="text-xl">Bubki</span>
                 </Link>
               </NextLink>
+
               {/* Wallet and Close Button Wrapper */}
               <Flex gap="0.5rem">
                 {/* Connect Wallet Button */}
-                <NavButton onClick={activateBrowserWallet}>
-                  {account ? (
-                    <>
-                      <Box>
-                        <Davatar size={25} address={account} />
-                      </Box>
-                      <Text>{ens || shorten(account)}</Text>
-                    </>
-                  ) : (
-                    <>
-                      <Text className="capitalize">{translate('connect')}</Text>
-                      <LoginIcon className="w-5 h-5" />
-                    </>
-                  )}
-                </NavButton>
+                <ConnectWallet />
+
                 {/* Close Icon */}
                 <Button
                   backgroundColor="transparent"
@@ -230,6 +230,7 @@ export const Header = () => {
                 </Flex>
               </NavDrawerItem>
             ))}
+
             {/* Twitter and Language Menu Wrapper */}
             <Flex
               width="100%"

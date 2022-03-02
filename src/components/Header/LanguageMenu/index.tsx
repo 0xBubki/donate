@@ -26,7 +26,6 @@ const localisation = {
 }
 const LanguageMenu = () => {
   const { locale } = useRouter()
-
   const translate = useTranslation(localisation)
 
   return (
