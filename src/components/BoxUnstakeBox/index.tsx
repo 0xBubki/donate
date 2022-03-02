@@ -16,6 +16,7 @@ declare let window: any
 
 const BoxDepositBox = () => {
   const [amountToUnstake, setAmountToUnstake] = useState(0)
+  const [withdrawing, setWithdrawing] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
@@ -28,13 +29,30 @@ const BoxDepositBox = () => {
       if (prizePool) {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
 
-        return user.withdraw(
-          ethers.utils.parseUnits(BigNumber.from(amountToUnstake).toString(), 6)
-        )
+        try {
+          setWithdrawing(true)
+          const withdrawTx = await user.withdraw(
+            utils.parseUnits(BigNumber.from(amountToUnstake).toString(), 6)
+          )
+          const withdrawReceipt = await withdrawTx.wait()
+
+          setWithdrawing(false)
+        } catch (e) {
+          setWithdrawing(false)
+        }
       }
     } else {
       activateBrowserWallet()
     }
+  }
+
+  const determineText = () => {
+    if (account) {
+      if (withdrawing) return 'Withdrawing...'
+
+      return 'Unstake'
+    }
+    return 'Connect'
   }
 
   return (
@@ -80,8 +98,9 @@ const BoxDepositBox = () => {
         height="80px"
         borderRadius="25px"
         onClick={handleUnStaking}
+        disabled={withdrawing}
       >
-        <Text fontSize="3xl">{account ? 'Unstake' : 'Connect'}</Text>
+        <Text fontSize="3xl">{determineText()}</Text>
       </Button>
       {/*<Button*/}
       {/*  _hover={{ color: 'black', background: 'white' }}*/}

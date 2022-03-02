@@ -12,6 +12,8 @@ declare let window: any
 
 const BoxDepositBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
+  const [approve, setApprove] = useState(false)
+  const [deposit, setDeposit] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
@@ -23,21 +25,37 @@ const BoxDepositBox = () => {
 
       if (prizePool) {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
-
-        return user.approveDeposits().then(() => {
-          user
-            .depositAndDelegate(
-              BigNumber.from(amountToDonate),
-              '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
-            )
-            .then((response) => {
-              console.log(response)
-            })
-        })
+        try {
+          setApprove(true)
+          const approveTx = await user.approveDeposits()
+          const approveReceipt = await approveTx.wait()
+          setApprove(false)
+          setDeposit(true)
+          const depositTx = await user.depositAndDelegate(
+            utils.parseUnits(BigNumber.from(amountToDonate).toString(), 6),
+            '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
+          )
+          await depositTx.wait()
+          setApprove(false)
+          setDeposit(false)
+        } catch (e) {
+          setApprove(false)
+          setDeposit(false)
+        }
       }
     } else {
       activateBrowserWallet()
     }
+  }
+
+  const determineText = () => {
+    if (account) {
+      if (approve) return 'Approving...'
+      if (deposit) return 'Depositing...'
+
+      return 'Stake'
+    }
+    return 'Connect'
   }
 
   return (
@@ -83,8 +101,9 @@ const BoxDepositBox = () => {
         height="80px"
         borderRadius="25px"
         onClick={handleStaking}
+        disabled={approve || deposit}
       >
-        <Text fontSize="3xl">{account ? 'Stake' : 'Connect'}</Text>
+        <Text fontSize="3xl">{determineText()}</Text>
       </Button>
     </>
   )
