@@ -1,7 +1,7 @@
 {
   "en": {
     "home": "Home",
-    "title": "S33DS",
+    "title": "Bubki",
     "stake": "Stake",
     "mint": "Mint NFTs",
     "donate": "Donate",
@@ -11,7 +11,8 @@
     "english": "English",
     "german": "German",
     "french": "French",
-    "spanish": "Spanish"
+    "spanish": "Spanish",
+    "ukrainian": "Ukrainian"
   },
   "es": {
     "home": "Inicio",
@@ -25,7 +26,8 @@
     "english": "Inglés",
     "german": "Alemán",
     "french": "Francés",
-    "spanish": "Español"
+    "spanish": "Español",
+    "ukrainian": "Ucranio"
   },
   "fr": {
     "home": "Page d'accueil",
@@ -39,7 +41,8 @@
     "english": "Anglais",
     "german": "Allemand",
     "french": "Français",
-    "spanish": "Espagnole"
+    "spanish": "Espagnole",
+    "ukrainian": "Ukrainien"
   },
   "de": {
     "home": "Startseite",
@@ -53,6 +56,22 @@
     "english": "Englisch",
     "german": "Deutsch",
     "french": "Französisch",
-    "spanish": "Spanisch"
-  }
+    "spanish": "Spanisch",
+    "ukrainian": "Ukrainisch"
+  },    
+  "ua": {
+    "home": "Головна",
+    "title": "Бубки",
+    "stake": "Стейкати",
+    "mint": "Замінтити NFT",
+    "donate": "Хочу допомогти",
+    "leaderboard": "Дошка пошани",
+    "about": "Про нас",
+    "connect": "Під’єднати гаманець",
+    "english": "Англійська",
+    "german": "Німецька",
+    "french": "Французька",
+    "spanish": "Іспанська",
+    "ukrainian": "Українська"
+  }  
 }

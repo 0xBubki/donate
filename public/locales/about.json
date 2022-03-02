@@ -38,5 +38,15 @@
     "paragraphTwoB": "Bubbki ermöglicht es Ihnen, Ihr Geld in einen zinsbringenden Pool zu investieren, der für besicherte Kredite verwendet wird. Dabei behalten Sie genau den Betrag, den Sie investiert haben und können ihn jederzeit zurückfordern. Wir nehmen die Renditen, die durch die Verwendung Ihres Vermögens erzielt werden, um die Verteidigungsanstrengungen der Ukraine zu unterstützen.",
     "headerThree": "Wo das Geld hingeht?",
     "paragraphThree": "Wir spenden alle erwirtschafteten Erträge an die Organisation Unchain.fund. Adresse des Vertrags: 0x10E1439455BD2624878b243819E31CfEE9eb721C"
-  }
+  },
+  "ua": {
+    "headerOne": "Чому це все важливо",
+    "paragraphOneA": "Якщо ви ще не знаєте: Росія напала на Україну. Доєднайтеся до допомоги Україні з нами разом! 💪",
+    "paragraphOneB": "Доєднуйтесь до нас та загальної криптоспільноти і зробіть свій внесок в гуманітарну DeFi-підтримку України.",
+    "headerTwo": "Як це працює",
+    "paragraphTwoA": "Делегуйте ваші статки для допомоги українцям в ці тяжкі часи.",
+    "paragraphTwoB": "Бубки інвестують ваші гроші в пул, генерує відсотки для позики під заставу. Вся інвестована вамі сума завжди буде вашою і ви можете повернути її в будь-який момент. Ми отримуємо прибутки від ваших активів як заставу для підтримки оборонних зусиль України.",
+    "headerThree": "Куди йдуть гроші",
+    "paragraphThree": "Ми жертвуємо весь отриманий прибуток організації Unchain.fund. Contract address: 0x10E1439455BD2624878b243819E31CfEE9eb721C"
+  }  
 }
