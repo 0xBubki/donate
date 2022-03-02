@@ -19,6 +19,7 @@ const BoxDepositBox = () => {
   const [withdrawing, setWithdrawing] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
+  const { chainId } = useEthers()
 
   const handleUnStaking = async () => {
     if (account) {
@@ -47,6 +48,9 @@ const BoxDepositBox = () => {
   }
 
   const determineText = () => {
+    if (chainId !== 1) {
+      return 'Change to ETH mainnet'
+    }
     if (account) {
       if (withdrawing) return 'Withdrawing...'
 
@@ -98,7 +102,7 @@ const BoxDepositBox = () => {
         height="80px"
         borderRadius="25px"
         onClick={handleUnStaking}
-        disabled={withdrawing}
+        disabled={withdrawing || chainId !== 1}
       >
         <Text fontSize="3xl">{determineText()}</Text>
       </Button>

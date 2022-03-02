@@ -17,6 +17,7 @@ const BoxDepositBox = () => {
   const [approve, setApprove] = useState(false)
   const [deposit, setDeposit] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
+  const { chainId } = useEthers()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
   const handleStaking = async () => {
@@ -53,6 +54,9 @@ const BoxDepositBox = () => {
   }
 
   const determineText = () => {
+    if (chainId !== 1) {
+      return 'Change to ETH mainnet'
+    }
     if (account) {
       if (approve) return 'Approving...'
       if (deposit) return 'Depositing...'
@@ -105,7 +109,7 @@ const BoxDepositBox = () => {
         height="80px"
         borderRadius="25px"
         onClick={handleStaking}
-        disabled={approve || deposit}
+        disabled={approve || deposit || chainId !== 1}
       >
         <Text fontSize="3xl">{determineText()}</Text>
       </Button>

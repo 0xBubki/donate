@@ -7,6 +7,7 @@ import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
 import { useWallet } from '../context/wallet-provider'
 import { BigNumber } from 'ethers'
+import { useEthers } from '@usedapp/core'
 
 const localisation = {
   en: {
@@ -31,6 +32,7 @@ const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 const MintPage: NextPage = () => {
   const translate = useTranslation(localisation)
   const toast = useToast()
+  const { chainId } = useEthers()
 
   // UI States
   const [mintCount, setMintCount] = useState(1)
@@ -52,7 +54,7 @@ const MintPage: NextPage = () => {
   }, [library, account])
 
   useEffect(() => {
-    if (account) {
+    if (account && chainId === 1) {
       contract?.isSaleActive()?.then((response) => {
         setIsSaleActive(!!response)
       })
@@ -165,7 +167,7 @@ const MintPage: NextPage = () => {
                   fontSize="20px"
                   display="inline-block"
                 >
-                  {!isSaleActive && 'Available from March 4th, 2022'}
+                  {!isSaleActive && 'Not Available Yet'}
 
                   {isSaleActive && (
                     <Text display="flex" alignItems="center" gap={2}>
@@ -217,9 +219,11 @@ const MintPage: NextPage = () => {
                             boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
                             borderRadius: '12px'
                           }}
-                          disabled={buttonDisabled}
+                          disabled={buttonDisabled || chainId !== 1}
                         >
-                          {translate('mintButton')}
+                          {chainId !== 1
+                            ? 'Change to ETH mainnet'
+                            : translate('mintButton')}
                         </Button>
                         <Text textAlign="center">Max 100 per transaction</Text>
                       </>
