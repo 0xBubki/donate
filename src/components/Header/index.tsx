@@ -41,6 +41,8 @@ import { shorten } from '../../utils/shorten'
 import { NavButton } from './NavButton'
 import { NavDrawerItem, NavItem } from './NavItem'
 import LanguageMenu from './LanguageMenu'
+
+// @ts-ignore
 import { SocialIcon } from 'react-social-icons'
 
 export const Header = () => {
@@ -89,7 +91,6 @@ export const Header = () => {
           w={'full'}
           px={{ base: 0, lg: '2rem' }}
         >
-
           <Box fontWeight="bold" fontSize={[20, 20, 20]}>
             {/* Bubki Flag Button */}
             <NextLink href="/" passHref>
@@ -99,7 +100,6 @@ export const Header = () => {
               </Link>
             </NextLink>
           </Box>
-
 
           <HStack>
             {/* Desktop Links */}
