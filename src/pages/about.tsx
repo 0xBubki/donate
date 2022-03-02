@@ -4,7 +4,6 @@ import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/react'
 
 import { useTranslation } from '../utils/use-translation'
-import { useEffect } from 'react'
 
 const germanTrans = require('../../public/locales/de/about.json')
 const englishTrans = require('../../public/locales/en/about.json')

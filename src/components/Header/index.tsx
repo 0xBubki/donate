@@ -69,7 +69,6 @@ const ConnectWallet = () => {
 }
 
 export const Header = () => {
-  const { activateBrowserWallet, ens, account } = useWallet()
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure()
 
   const translate = useTranslation(localisation)
