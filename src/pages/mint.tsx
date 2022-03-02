@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import type { NextPage } from 'next'
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
-import { Button, Image, VStack, useToast } from '@chakra-ui/react'
+import { Button, Image, VStack, useToast, AspectRatio } from '@chakra-ui/react'
 import { InputNumber } from '../components/InputNumber'
 import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
@@ -129,7 +129,13 @@ const MintPage: NextPage = () => {
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
-              <Image src="/example-nft-2.png" alt="Example NFT" />
+              <AspectRatio ratio={1 / 1}>
+                <Image
+                  src="/example-nft-2.png"
+                  alt="Example NFT"
+                  objectFit="cover"
+                />
+              </AspectRatio>
               <Flex justifyContent={'space-between'} p="4">
                 <Text textColor="black" fontWeight="semibold">
                   Bubki NFTs
@@ -141,6 +147,7 @@ const MintPage: NextPage = () => {
                   fontWeight="semibold"
                 >
                   <Text>0.05</Text>
+
                   <Image src="/eth.svg" height={5} width={5} alt="" />
                   <Text>each</Text>
                 </Flex>
