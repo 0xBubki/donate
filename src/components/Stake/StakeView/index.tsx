@@ -3,7 +3,7 @@ import { Input, Button } from '@chakra-ui/react'
 import { AssetMenu } from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils, ethers } from 'ethers'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
 import { usdcTokenAddress, prizePool } from '../../../utils/poolTogether'
 import { useWallet } from '../../../context/wallet-provider'
@@ -11,7 +11,16 @@ import { useWallet } from '../../../context/wallet-provider'
 declare let window: any
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-export const StakeView = () => {
+export enum StakeMode {
+  STAKE,
+  UNSTAKE
+}
+
+export interface StakeUnstakeBoxProps {
+  stakingMode: StakeMode
+}
+
+export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
   const [amountToUpdate, setAmountToUpdate] = useState(0)
   const [approving, setApproving] = useState(false)
   const [sending, setSending] = useState(false)
@@ -20,7 +29,7 @@ export const StakeView = () => {
   const { chainId } = useEthers()
   const tokenBalance = useTokenBalance(usdcTokenAddress, account)
 
-  const handleStaking = async () => {
+  const stakeOrUnstake = async () => {
     if (account) {
       const signer = new ethers.providers.Web3Provider(
         window.ethereum
@@ -31,20 +40,41 @@ export const StakeView = () => {
       } else {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
         try {
-          setApproving(true)
-          const approveTx = await user.approveDeposits()
-          const approveReceipt = await approveTx.wait()
-          setApproving(false)
-          setSending(true)
-          const depositTx = await user.depositAndDelegate(
-            utils.parseUnits(BigNumber.from(amountToUpdate).toString(), 6),
-            multiSigAddress
-          )
-          await depositTx.wait()
-          const ticketDelegate = await user.getTicketDelegate()
-          console.log(`delagated to ${ticketDelegate}`)
-          setApproving(false)
-          setSending(false)
+          switch (stakingMode) {
+            case StakeMode.STAKE:
+              setApproving(true)
+
+              const approveTx = await user.approveDeposits()
+              const approveReceipt = await approveTx.wait()
+
+              setApproving(false)
+              setSending(true)
+
+              const depositTx = await user.depositAndDelegate(
+                utils.parseUnits(BigNumber.from(amountToUpdate).toString(), 6),
+                multiSigAddress
+              )
+
+              const depositReceipt = await depositTx.wait()
+              const ticketDelegate = await user.getTicketDelegate()
+              console.log({ depositReceipt, ticketDelegate })
+
+              setApproving(false)
+              setSending(false)
+              break
+
+            case StakeMode.UNSTAKE:
+              setApproving(true)
+
+              const withdrawTx = await user.withdraw(
+                utils.parseUnits(BigNumber.from(amountToUpdate).toString(), 6)
+              )
+              const withdrawReceipt = await withdrawTx.wait()
+              console.log({ withdrawReceipt })
+
+              setApproving(false)
+              break
+          }
         } catch (e) {
           setApproving(false)
           setSending(false)
@@ -57,12 +87,14 @@ export const StakeView = () => {
     if (chainId !== 1) {
       return 'Connect to ETH mainnet'
     }
+
     if (account) {
       if (approving) return 'Approving...'
-      if (sending) return 'Depositing...'
+      if (sending) return 'Sending...'
 
-      return 'Stake'
+      return stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'
     }
+
     return 'Connect'
   }
 
@@ -109,7 +141,7 @@ export const StakeView = () => {
         width="100%"
         height="80px"
         borderRadius="25px"
-        onClick={handleStaking}
+        onClick={stakeOrUnstake}
         disabled={approving || sending || chainId !== 1}
       >
         <Text fontSize={['0.8rem', '1rem']}>{determineText()}</Text>
