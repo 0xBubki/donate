@@ -45,6 +45,12 @@ export const DepositDetails = (props: Props) => {
       gap={16}
       width="100%"
     >
+      <Heading textAlign="center">
+        {props.stakingMode === StakeMode.STAKE
+          ? `Deposit, yield, support`
+          : `Withdraw all deposited assets`}
+      </Heading>
+
       <Flex
         direction={['column', 'column', 'row', 'row']}
         justify="space-around"
@@ -84,12 +90,6 @@ export const DepositDetails = (props: Props) => {
           </Text>
         </Flex>
       </Flex>
-
-      <Heading textAlign="center">
-        {props.stakingMode === StakeMode.STAKE
-          ? `Deposit, yield, support`
-          : `Withdraw all deposited assets`}
-      </Heading>
     </Flex>
   )
 }
