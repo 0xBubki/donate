@@ -5,13 +5,17 @@ import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
 import { StakeMode } from '..'
 
+import { useTranslation } from '../../../utils/use-translation'
+const translations = require('../../../../public/locales/stake.json')
+
 interface Props {
   stakingMode: StakeMode
 }
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-export const DepositDetails = (props: Props) => {
+export const DepositDetails = ({ stakingMode }: Props) => {
+  const translate = useTranslation(translations)
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
   const tokenBalanceOrZero = tokenBalance || 0
@@ -47,9 +51,9 @@ export const DepositDetails = (props: Props) => {
       maxWidth={720}
     >
       <Heading textAlign="center">
-        {props.stakingMode === StakeMode.STAKE
-          ? `Deposit, yield, support`
-          : `Withdraw all deposited assets`}
+        {stakingMode === StakeMode.STAKE
+          ? translate('cta')
+          : translate('withdrawCta')}
       </Heading>
 
       <Flex
@@ -73,7 +77,7 @@ export const DepositDetails = (props: Props) => {
               ?.toString() || 0}
           </Heading>
           <Text color="white" fontSize="20px">
-            Your Staked Value
+            {translate('stakedValueLabel')}
           </Text>
         </Flex>
 
@@ -89,7 +93,7 @@ export const DepositDetails = (props: Props) => {
             ${totalYieldEarned}
           </Heading>
           <Text color="white" fontSize="20px">
-            Total Staked
+            {translate('totalStakedLabel')}
           </Text>
         </Flex>
       </Flex>

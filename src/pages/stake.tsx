@@ -5,7 +5,11 @@ import { DepositDetails } from '../components/Stake/DepositDetails'
 import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
 import { StakeMode, StakeView } from '../components/Stake'
 
+import { useTranslation } from '../utils/use-translation'
+const translations = require('../../public/locales/stake.json')
+
 export default function Deposit() {
+  const translate = useTranslation(translations)
   const [stakingMode, setStakingMode] = useState<StakeMode>(StakeMode.STAKE)
 
   function tabChanged() {
@@ -35,7 +39,9 @@ export default function Deposit() {
               color="white"
               fontSize={['2rem', '3rem']}
             >
-              {stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'}{' '}
+              {stakingMode === StakeMode.STAKE
+                ? translate('stake')
+                : translate('unstake')}
             </Text>
           </Box>
 
