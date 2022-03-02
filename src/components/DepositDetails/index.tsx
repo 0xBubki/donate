@@ -43,7 +43,13 @@ const DetailsBox = (props: Props) => {
   }, [])
 
   return (
-    <Flex flexDirection="column" align="left" justify="center" width="100%">
+    <Flex
+      flexDirection="column"
+      align="space-around"
+      justify="center"
+      gap={16}
+      width="100%"
+    >
       <Flex
         direction={['column', 'column', 'row', 'row']}
         justify="space-around"
@@ -86,6 +92,7 @@ const DetailsBox = (props: Props) => {
           </Text>
         </Flex>
       </Flex>
+
       <Text fontSize={headerSizingXs} textAlign="center">
         {props.mode === DepositMode.DEPOSIT
           ? `Join the movement: deposit, yield, support!`
