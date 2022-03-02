@@ -7,7 +7,7 @@ export const NavButton: FC<ButtonProps> = ({ children, onClick }) => {
       className="center flex-row gap-2"
       userSelect="none"
       boxShadow="none"
-      margin="0px !important"
+      style={{ margin: '0px' }}
       fontSize={['0.8rem', '1rem']}
       backgroundColor="#FFD500"
       color="black"

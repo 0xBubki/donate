@@ -32,6 +32,7 @@ import LanguageMenu from './LanguageMenu'
 
 // @ts-ignore
 import { SocialIcon } from 'react-social-icons'
+import { Logo } from '../Logo'
 
 const ConnectWallet = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
@@ -103,16 +104,7 @@ export const Header = () => {
           margin="0px !important"
         >
           {/* Bubki Flag Button */}
-          <Box fontWeight="bold" fontSize={[20, 20, 20]}>
-            <NextLink href="/" passHref>
-              <Link className="center flex p-2">
-                <span className="p-0 xs:p-2">🇺🇦</span>
-                <span className="hidden xs:block text-sm xs:text-md md:text-xl">
-                  Bubki
-                </span>
-              </Link>
-            </NextLink>
-          </Box>
+          <Logo />
 
           {/* Desktop Links */}
           <HStack
@@ -132,9 +124,9 @@ export const Header = () => {
 
           <Flex gap={4}>
             {/* Language Menu */}
-            <Box display={{ base: 'none', lg: 'block' }}>
+            <div className="hidden lg:flex lg:items-center">
               <LanguageMenu />
-            </Box>
+            </div>
 
             {/* Connect Wallet Button */}
             <ConnectWallet />
@@ -170,8 +162,8 @@ export const Header = () => {
           <DrawerBody background="#005BBB" padding={8}>
             <Flex direction="column" justify="space-around" height="100%">
               {/* Top Wrapper */}
-              <Flex justify="end">
-                {/* Close Icon */}
+              {/* Close Icon */}
+              <div className="flex justify-end">
                 <Button
                   backgroundColor="transparent"
                   color="white"
@@ -184,7 +176,7 @@ export const Header = () => {
                 >
                   <XIcon className="w-7 h-7" />
                 </Button>
-              </Flex>
+              </div>
 
               {/* Mapping through Links */}
               <Flex direction="column" gap={2}>

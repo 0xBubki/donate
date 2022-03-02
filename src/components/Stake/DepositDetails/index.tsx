@@ -1,6 +1,5 @@
-import { Flex, Text } from '@chakra-ui/layout'
+import { Flex, Heading, Text } from '@chakra-ui/layout'
 import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
-import { headerSizingSm } from '../../../utils/sizing'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
@@ -86,11 +85,11 @@ export const DepositDetails = (props: Props) => {
         </Flex>
       </Flex>
 
-      <Text fontSize={headerSizingSm} textAlign="center">
+      <Heading textAlign="center">
         {props.stakingMode === StakeMode.STAKE
-          ? `Join the movement: deposit, yield, support!`
+          ? `Deposit, yield, support`
           : `Withdraw all deposited assets`}
-      </Text>
+      </Heading>
     </Flex>
   )
 }

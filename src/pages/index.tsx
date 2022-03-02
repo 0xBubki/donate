@@ -94,7 +94,7 @@ const Home: NextPage = () => {
     >
       <Flex direction="column" alignItems="center" textAlign="center">
         <Flex direction="column" gap={4}>
-          <Heading fontSize={headerSizingSm}>
+          <Heading>
             {translate('homepage-title')}{' '}
             <Text display="inline" color="ukraineYellow">
               Ukraine
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
               </Text>
             )}
 
-            <Text fontSize={headerSizingSm}>{translate('donated')}</Text>
+            <Heading fontSize={headerSizingSm}>{translate('donated')}</Heading>
           </Flex>
 
           {currentEthValue === 0 ? (
