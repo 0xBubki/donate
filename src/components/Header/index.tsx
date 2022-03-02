@@ -122,31 +122,33 @@ export const Header = () => {
             ))}
           </HStack>
 
-          <Flex gap={4}>
-            {/* Language Menu */}
-            <div className="hidden lg:flex lg:items-center">
-              <LanguageMenu />
-            </div>
+          <Flex gap={2}>
+            <Flex gap={4}>
+              {/* Language Menu */}
+              <div className="hidden lg:flex lg:items-center">
+                <LanguageMenu />
+              </div>
 
-            {/* Connect Wallet Button */}
-            <ConnectWallet />
+              {/* Connect Wallet Button */}
+              <ConnectWallet />
+            </Flex>
+
+            {/* Drawer Toggle Button */}
+            <Button
+              backgroundColor="transparent"
+              display={['flex', 'flex', 'flex', 'none']}
+              color="white"
+              margin="0px !important"
+              padding="0px !important"
+              onClick={onOpen}
+            >
+              {isOpen ? (
+                <XIcon className="w-5 h-5" />
+              ) : (
+                <MenuIcon className="w-5 h-5" />
+              )}
+            </Button>
           </Flex>
-
-          {/* Drawer Toggle Button */}
-          <Button
-            backgroundColor="transparent"
-            display={['flex', 'flex', 'flex', 'none']}
-            color="white"
-            margin="0px !important"
-            padding="0px !important"
-            onClick={onOpen}
-          >
-            {isOpen ? (
-              <XIcon className="w-5 h-5" />
-            ) : (
-              <MenuIcon className="w-5 h-5" />
-            )}
-          </Button>
         </HStack>
       </Stack>
 
