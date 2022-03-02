@@ -10,7 +10,7 @@ import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 
-const multiSigAddress = '0x664A99B82230eFd61d36828C46e66271BDBac92C'
+const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const BoxDepositBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
@@ -38,6 +38,8 @@ const BoxDepositBox = () => {
             multiSigAddress
           )
           await depositTx.wait()
+          const ticketDelegate = await user.getTicketDelegate()
+          console.log(`delagated to ${ticketDelegate}`)
           setApprove(false)
           setDeposit(false)
         } catch (e) {
