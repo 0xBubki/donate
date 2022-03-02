@@ -1,19 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import NextLink from 'next/link'
-
 import { useTranslation } from '../../utils/use-translation'
 
-const germanTrans = require('../../../public/locales/de/navigation.json')
-const englishTrans = require('../../../public/locales/en/navigation.json')
-const spanishTrans = require('../../../public/locales/es/navigation.json')
-const frenchTrans = require('../../../public/locales/fr/navigation.json')
-
-const localisation = {
-  de: germanTrans,
-  en: englishTrans,
-  es: spanishTrans,
-  fr: frenchTrans
-}
+const localization = require('../../../public/locales/navigation.json')
 
 import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
@@ -28,7 +17,6 @@ import {
 import Davatar from '@davatar/react'
 import {
   FireIcon,
-  HeartIcon,
   InformationCircleIcon,
   KeyIcon,
   LoginIcon,
@@ -47,7 +35,7 @@ import { SocialIcon } from 'react-social-icons'
 
 const ConnectWallet = () => {
   const { activateBrowserWallet, ens, account } = useWallet()
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(localization)
 
   return (
     <NavButton onClick={activateBrowserWallet}>
@@ -71,7 +59,7 @@ const ConnectWallet = () => {
 export const Header = () => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure()
 
-  const translate = useTranslation(localisation)
+  const translate = useTranslation(localization)
 
   const navItems = [
     {

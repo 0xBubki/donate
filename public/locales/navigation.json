@@ -1,0 +1,58 @@
+{
+  "de": {
+    "home": "Startseite",
+    "title": "Saat",
+    "stake": "Stake",
+    "mint": "NFTs minten",
+    "donate": "Spenden",
+    "leaderboard": "Bestenliste",
+    "about": "Über",
+    "connect": "Mit Wallet verbinden",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch",
+    "spanish": "Spanisch"
+  },
+  "en": {
+    "home": "Home",
+    "title": "S33DS",
+    "stake": "Stake",
+    "mint": "Mint NFTs",
+    "donate": "Donate",
+    "leaderboard": "Leaderboard",
+    "about": "About",
+    "connect": "Connect wallet",
+    "english": "English",
+    "german": "German",
+    "french": "French",
+    "spanish": "Spanish"
+  },
+  "es": {
+    "home": "Inicio",
+    "title": "Semillas",
+    "stake": "Apostar",
+    "mint": "NFTs",
+    "donate": "Donar",
+    "leaderboard": "Clasificación",
+    "about": "Sobre",
+    "connect": "Conectar Billetera",
+    "english": "Inglés",
+    "german": "Alemán",
+    "french": "Francés",
+    "spanish": "Español"
+  },
+  "fr": {
+    "home": "Page d'accueil",
+    "title": "Des graines",
+    "stake": "Tuteurer",
+    "mint": "Monnayer NFTs",
+    "donate": "Faire un don",
+    "leaderboard": "Classement",
+    "about": "Sur",
+    "connect": "Relier",
+    "english": "Anglais",
+    "german": "Allemand",
+    "french": "Français",
+    "spanish": "Espagnole"
+  }
+}

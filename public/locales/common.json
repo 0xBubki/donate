@@ -1,0 +1,34 @@
+{
+  "de": {
+    "homepage-title": "Spenden Sie Ihren Staking-Reward",
+    "stake": "Stake",
+    "donate": "Spenden",
+    "donated": "gespendet",
+    "donations": "spenden",
+    "mint": "NFT kaufen"
+  },
+  "en": {
+    "homepage-title": "Donate your yield to help",
+    "stake": "Stake",
+    "donate": "Donate",
+    "donations": "donations",
+    "donated": "donated",
+    "mint": "mint NFT"
+  },
+  "es": {
+    "homepage-title": "Dona tu cosecha para ayudar",
+    "stake": "Apostar",
+    "donate": "Donar",
+    "donated": "donada",
+    "donations": "donaciones",
+    "mint": "Compra NFT"
+  },
+  "fr": {
+    "homepage-title": "Donnez votre rendement",
+    "stake": "Pieu",
+    "donate": "Faire un don",
+    "donated": "fait un don",
+    "donations": "des dons",
+    "mint": "Acheter NFT"
+  }
+}
