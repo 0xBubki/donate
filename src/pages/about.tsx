@@ -33,6 +33,7 @@ const About: NextPage = () => {
         src="/wewantyouryield.png"
         className="your-yield"
         alt="We want your yield"
+        objectFit="contain"
       />
     </Flex>
   )
