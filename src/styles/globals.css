@@ -47,12 +47,6 @@ a {
   box-sizing: border-box;
 }
 
-.nav-button {
-  @apply rounded-md;
-
-  font-size: 14px !important;
-}
-
 .your-yield {
   width: 100%;
 }
