@@ -145,7 +145,11 @@ const MintPage: NextPage = () => {
                   objectFit="cover"
                 />
               </AspectRatio>
-              <Flex justifyContent={'space-between'} p="4">
+              <Flex
+                justifyContent={'space-between'}
+                p="4"
+                className="text-xs xs:text-lg md:text-xl"
+              >
                 <Text textColor="black" fontWeight="semibold">
                   Bubki NFTs
                 </Text>
