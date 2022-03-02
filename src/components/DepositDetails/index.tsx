@@ -3,6 +3,7 @@ import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
+import { headerSizingXs } from '../../utils/sizing'
 
 interface Props {
   mode: DepositMode
