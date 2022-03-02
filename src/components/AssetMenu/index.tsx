@@ -3,9 +3,12 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
 import { Box, Text } from '@chakra-ui/layout'
 import { ChevronDownIcon } from '@heroicons/react/outline'
-import CoinList from '../../assets/tokenlist.json'
-
 import { CryptoIcon } from 'next-crypto-icons'
+
+// import CoinList from '../../assets/tokenlist.json'
+
+// const Tokens = CoinList.tokens
+// const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
 
 enum Assets {
   eth = 'WETH',
@@ -23,19 +26,8 @@ const eth_2_assets = {
   WBTC: { text: 'WBTC', symbol: './' }
 }
 
-const Tokens = CoinList.tokens
-const assetList = ['WETH', 'WBTC', 'USDC', 'USDT', 'DAI']
-
-const TokenSymbols = Tokens.reduceRight((prev: any, { symbol, logoURI }) => {
-  if (assetList.includes(symbol)) {
-    prev[symbol] = logoURI
-  }
-  return prev
-}, {})
-
 const AssetMenu = () => {
   const [selected, select] = useState<Assets>(Assets.eth)
-
   const assetName = selected.startsWith('W') ? selected.slice(1) : selected
 
   return (
@@ -63,11 +55,6 @@ const AssetMenu = () => {
               alignContent="center"
               alignItems="center"
             >
-              {/* <img
-                src={TokenSymbols[selected]}
-                alt={selected}
-                className="h-6 w-6"
-              /> */}
               <CryptoIcon
                 name={assetName.toLowerCase()}
                 style="white"
