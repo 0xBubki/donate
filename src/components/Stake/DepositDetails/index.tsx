@@ -1,9 +1,9 @@
 import { Flex, Text } from '@chakra-ui/layout'
-import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
+import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
+import { headerSizingSm } from '../../../utils/sizing'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
-import { headerSizingSm } from '../../utils/sizing'
 
 interface Props {
   mode: DepositMode

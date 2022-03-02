@@ -2,11 +2,11 @@ import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
-import { usdcTokenAddress, prizePool } from '../../utils/poolTogether'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
-import { useWallet } from '../../context/wallet-provider'
+import { usdcTokenAddress, prizePool } from '../../../utils/poolTogether'
+import { useWallet } from '../../../context/wallet-provider'
 
 declare let window: any
 

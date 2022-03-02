@@ -6,11 +6,11 @@ import {
   prizePool,
   ticketTokenAddress,
   usdcTokenAddress
-} from '../../utils/poolTogether'
+} from '../../../utils/poolTogether'
+import { useWallet } from '../../../context/wallet-provider'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
 import { User } from '@pooltogether/v4-client-js'
-import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 
