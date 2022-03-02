@@ -117,15 +117,13 @@ const Home: NextPage = () => {
           <Flex fontWeight="bold" alignItems="end" gap={3}>
             {currentEthValue === 0 ? (
               <Flex alignItems="center" justifyContent="center">
-                <Text fontSize={headerSizingLg}>₴</Text>
+                <Text fontSize={headerSizingLg}>$</Text>
                 <Skeleton height="120px" width="500px" />
               </Flex>
             ) : (
               <Text fontSize={headerSizingLg}>
-                ₴
                 {formatter // @ts-ignore
-                  .format(etherPriceOrFallBack * currentEthValue)
-                  .substring(1)}
+                  .format(etherPriceOrFallBack * currentEthValue)}
               </Text>
             )}
 
