@@ -186,7 +186,8 @@ const MintPage: NextPage = () => {
                 Blending folk art-inspired motifs in a generative NFT project of
                 10,000 editions, Bubki aims to harness the power of web3 to
                 rally material support for Ukrainian organizations at this
-                pivotal moment.
+                pivotal moment. 100% of the proceeds and royalties will be
+                donated to Unchain.fund.
               </Text>
 
               {/* Minting is active */}
