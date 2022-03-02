@@ -10,7 +10,7 @@ enum DepositMode {
   DEPOSIT
 }
 
-const DepositBox = ({ children, mode }: DepositBoxProps) => {
+export const DepositBox = ({ children, mode }: DepositBoxProps) => {
   return (
     <Flex
       direction="column"
@@ -30,5 +30,3 @@ const DepositBox = ({ children, mode }: DepositBoxProps) => {
     </Flex>
   )
 }
-
-export default DepositBox

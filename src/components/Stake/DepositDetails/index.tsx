@@ -16,7 +16,7 @@ enum DepositMode {
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-const DetailsBox = (props: Props) => {
+export const DepositDetails = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
   const tokenBalanceOrZero = tokenBalance || 0
@@ -98,5 +98,3 @@ const DetailsBox = (props: Props) => {
     </Flex>
   )
 }
-
-export default DetailsBox

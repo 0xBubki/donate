@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
-import AssetMenu from '../AssetMenu'
+import { AssetMenu } from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils, ethers } from 'ethers'
 import React, { useState } from 'react'
@@ -12,7 +12,7 @@ declare let window: any
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
-const StakeBox = () => {
+export const StakeBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
   const [approve, setApprove] = useState(false)
   const [deposit, setDeposit] = useState(false)
@@ -117,5 +117,3 @@ const StakeBox = () => {
     </Flex>
   )
 }
-
-export default StakeBox

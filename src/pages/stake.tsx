@@ -1,11 +1,12 @@
 import { Flex, Text } from '@chakra-ui/layout'
 import { useState } from 'react'
-
-import DepositDetails from '../components/Stake/DepositDetails'
-import DepositBox from '../components/Stake/DepositBox'
-import StakeBox from '../components/Stake/StakeBox'
-import BoxUnstakeBox from '../components/Stake/UnstakeBox'
-import RedeemSwitch from '../components/Stake/RedeemSwitch'
+import {
+  DepositBox,
+  DepositDetails,
+  RedeemSwitch,
+  StakeBox,
+  UnstakeBox
+} from '../components/Stake'
 
 enum DepositMode {
   WITHDRAW,
@@ -34,7 +35,7 @@ export default function Deposit() {
             <StakeBox />
           ) : (
             <>
-              <BoxUnstakeBox />
+              <UnstakeBox />
             </>
           )}
         </DepositBox>

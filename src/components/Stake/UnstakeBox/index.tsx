@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
-import AssetMenu from '../AssetMenu'
+import { AssetMenu } from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import {
   prizePool,
@@ -14,7 +14,7 @@ import { User } from '@pooltogether/v4-client-js'
 
 declare let window: any
 
-const UnstakeBox = () => {
+export const UnstakeBox = () => {
   const [amountToUnstake, setAmountToUnstake] = useState(0)
   const [withdrawing, setWithdrawing] = useState(false)
   const { activateBrowserWallet, account } = useWallet()
@@ -109,5 +109,3 @@ const UnstakeBox = () => {
     </>
   )
 }
-
-export default UnstakeBox
