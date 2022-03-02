@@ -17,11 +17,11 @@ export const RedeemSwitch = ({
     onChange={onChange}
   >
     <TabList>
-      <Tab width="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab width="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         {stake}{' '}
       </Tab>
-      <Tab maxWidth="100px" _selected={{ color: 'white', bg: '#027DFF' }}>
+      <Tab maxWidth="120px" _selected={{ color: 'white', bg: '#027DFF' }}>
         {' '}
         {unstake}{' '}
       </Tab>
