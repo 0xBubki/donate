@@ -3,6 +3,7 @@ import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useEffect, useState } from 'react'
+import { headerSizingXs } from '../../utils/sizing'
 
 interface Props {
   mode: DepositMode
@@ -42,7 +43,13 @@ const DetailsBox = (props: Props) => {
   }, [])
 
   return (
-    <Flex flexDirection="column" align="left" justify="center" width="100%">
+    <Flex
+      flexDirection="column"
+      align="space-around"
+      justify="center"
+      gap={16}
+      width="100%"
+    >
       <Flex
         direction={['column', 'column', 'row', 'row']}
         justify="space-around"
@@ -85,11 +92,12 @@ const DetailsBox = (props: Props) => {
           </Text>
         </Flex>
       </Flex>
-      {/* <Text fontSize={headerSizingXs} textAlign="center">
+
+      <Text fontSize={headerSizingXs} textAlign="center">
         {props.mode === DepositMode.DEPOSIT
-          ? `[DEPOSIT COPY]`
-          : `Withdraw the exact amount of assets that you deposited`}
-      </Text> */}
+          ? `Join the movement: deposit, yield, support!`
+          : `Withdraw all deposited assets`}
+      </Text>
     </Flex>
   )
 }
