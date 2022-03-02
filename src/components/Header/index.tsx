@@ -61,11 +61,11 @@ export const Header = () => {
       href: '/stake',
       icon: <KeyIcon className="h-6 w-6" />
     },
-    {
-      text: translate('donate'),
-      href: '/donate',
-      icon: <HeartIcon className="h-6 w-6" />
-    },
+    // {
+    //   text: translate('donate'),
+    //   href: '/donate',
+    //   icon: <HeartIcon className="h-6 w-6" />
+    // },
     {
       text: translate('mint'),
       href: '/mint',
