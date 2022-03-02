@@ -1,18 +1,4 @@
 {
-  "de": {
-    "home": "Startseite",
-    "title": "Saat",
-    "stake": "Stake",
-    "mint": "NFTs minten",
-    "donate": "Spenden",
-    "leaderboard": "Bestenliste",
-    "about": "Über",
-    "connect": "Mit Wallet verbinden",
-    "english": "Englisch",
-    "german": "Deutsch",
-    "french": "Französisch",
-    "spanish": "Spanisch"
-  },
   "en": {
     "home": "Home",
     "title": "S33DS",
@@ -54,5 +40,19 @@
     "german": "Allemand",
     "french": "Français",
     "spanish": "Espagnole"
+  },
+  "de": {
+    "home": "Startseite",
+    "title": "Saat",
+    "stake": "Stake",
+    "mint": "NFTs minten",
+    "donate": "Spenden",
+    "leaderboard": "Bestenliste",
+    "about": "Über",
+    "connect": "Mit Wallet verbinden",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch",
+    "spanish": "Spanisch"
   }
 }

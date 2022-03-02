@@ -1,7 +1,4 @@
 {
-  "de": {
-    "title": "🇩🇪 Leaderhausen"
-  },
   "en": {
     "title": "Leaderboard"
   },
@@ -10,5 +7,8 @@
   },
   "fr": {
     "title": "Classement"
+  },
+  "de": {
+    "title": "🇩🇪 Leaderhausen"
   }
 }

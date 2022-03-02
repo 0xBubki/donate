@@ -1,14 +1,4 @@
 {
-  "de": {
-    "headerOne": "Warum Sie das interessieren sollte",
-    "paragraphOneA": "Falls Sie es noch nicht gehört haben: Die Ukraine wird von Russland angegriffen. Helfen Sie uns, unseren Teil dazu beizutragen! 💪",
-    "paragraphOneB": "Schließen Sie sich uns und der gesamten Krypto-Community an und leisten Sie humanitäre DeFi-Hilfe für die Ukraine.",
-    "headerTwo": "So funktioniert’s",
-    "paragraphTwoA": "Delegieren Sie Ihr Geld, um den Ukrainern in dieser schweren Zeit zu helfen.",
-    "paragraphTwoB": "Projekt Sunflower ermöglicht es Ihnen, Ihr Geld in einen zinsbringenden Pool zu investieren, der für besicherte Kredite verwendet wird. Dabei behalten Sie genau den Betrag, den Sie investiert haben und können ihn jederzeit zurückfordern. Wir nehmen die Renditen, die durch die Verwendung Ihres Vermögens erzielt werden, um die Verteidigungsanstrengungen der Ukraine zu unterstützen.",
-    "headerThree": "Wo das Geld hingeht",
-    "paragraphThree": "Wir spenden alle erwirtschafteten Erträge an die Organisation Unchain.fund. Adresse des Vertrags: 0x10E1439455BD2624878b243819E31CfEE9eb721C"
-  },
   "en": {
     "headerOne": "Why you should care",
     "paragraphOneA": "If you haven’t heard already, Ukraine is under attack by Russia. Help us in doing our part! 💪",
@@ -38,5 +28,15 @@
     "paragraphTwoB": "Le project Sunflower vous permet d’investir vos fonds dans un pool de liquidité générant des intérêts et utilisé dans le cadre de prêts garantis. Vos fonds continuent de vous appartenir et vous pouvez les récupérer à tout moment. Nous prélevons seulement les rendements générés par vos fonds afin d’aider l’Ukraine à se defendre.",
     "headerThree": "Où va l’argent généré par le rendement de mes fonds",
     "paragraphThree": "Nous donnons l’intégralité des rendements générés à l'organisation Unchain.fund. Adresse du contrat: 0x10E1439455BD2624878b243819E31CfEE9eb721C"
+  },
+  "de": {
+    "headerOne": "Warum Sie das interessieren sollte",
+    "paragraphOneA": "Falls Sie es noch nicht gehört haben: Die Ukraine wird von Russland angegriffen. Helfen Sie uns, unseren Teil dazu beizutragen! 💪",
+    "paragraphOneB": "Schließen Sie sich uns und der gesamten Krypto-Community an und leisten Sie humanitäre DeFi-Hilfe für die Ukraine.",
+    "headerTwo": "So funktioniert’s",
+    "paragraphTwoA": "Delegieren Sie Ihr Geld, um den Ukrainern in dieser schweren Zeit zu helfen.",
+    "paragraphTwoB": "Projekt Sunflower ermöglicht es Ihnen, Ihr Geld in einen zinsbringenden Pool zu investieren, der für besicherte Kredite verwendet wird. Dabei behalten Sie genau den Betrag, den Sie investiert haben und können ihn jederzeit zurückfordern. Wir nehmen die Renditen, die durch die Verwendung Ihres Vermögens erzielt werden, um die Verteidigungsanstrengungen der Ukraine zu unterstützen.",
+    "headerThree": "Wo das Geld hingeht",
+    "paragraphThree": "Wir spenden alle erwirtschafteten Erträge an die Organisation Unchain.fund. Adresse des Vertrags: 0x10E1439455BD2624878b243819E31CfEE9eb721C"
   }
 }
