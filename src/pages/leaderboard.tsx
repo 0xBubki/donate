@@ -161,7 +161,7 @@ const Leaderboard: NextPage = () => {
                         <StatNumber fontSize={['xs', 'sm', 'md']}>
                           Ξ{data?.value.toFixed(2)}
                         </StatNumber>
-                        <div className="hidden xs:block">
+                        <div className="hidden sm:block">
                           <StatHelpText fontSize={['xs', 'sm']}>
                             Donated
                           </StatHelpText>
