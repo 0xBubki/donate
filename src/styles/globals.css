@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Poppins:wght@400;600;700&family=Fredoka:wght@500&family=Montserrat:wght@700&family=Nunito:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@400;600;700&family=Fredoka:wght@500&family=Montserrat:wght@700&family=Nunito:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,11 +22,9 @@ main,
 
 main {
   @apply w-full h-full;
-  @apply flex flex-col justify-center items-stretch !important;
+  @apply flex flex-col justify-center items-center !important;
   /* Room for header. */
   @apply pt-24;
-  /* Side padding. */
-  @apply px-4;
 }
 
 header {
@@ -37,7 +35,7 @@ header {
 html,
 body {
   @apply p-0 m-0;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 header {
@@ -53,28 +51,13 @@ a {
   box-sizing: border-box;
 }
 
-.center {
-  @apply flex justify-center items-center text-center;
-}
-
 .nav-button {
   @apply rounded-md;
+
+  height: 56px !important;
   font-size: 14px !important;
 }
 
 .your-yield {
   width: 100%;
-}
-
-.chakra-select {
-  height: 100% !important;
-}
-
-.chakra-select__wrapper {
-  height: 50% !important;
-}
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
 }

@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import type { NextPage } from 'next'
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
-import { Button, Image, VStack, useToast } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { Button, Image, VStack, useToast, AspectRatio } from '@chakra-ui/react'
 import { InputNumber } from '../components/InputNumber'
 import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
@@ -23,72 +22,106 @@ const localisation = {
 
 type BlockchainError = { message: string }
 
-type MintState = 'inactive' | 'active' | 'finished'
+const tokenAddress =
+  process.env.NEXT_PUBLIC_NFT_MINT_CONTRACT_ADDRESS ||
+  '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+
+const successUrl = (id: string = '1') => {
+  return `https://testnets.opensea.io/assets/${tokenAddress}/${id}`
+}
 
 const MintPage: NextPage = () => {
-  const router = useRouter()
-  const [mintState, setMintState] = useState<MintState>()
-  const [buttonDisabled, setButtonDisabled] = useState(false)
-  const [walletConnected, setWalletConnected] = useState(true)
-  const [totalSupply, setTotalSupply] = useState(0)
-  const [mintCount, setMintCount] = useState(1)
   const translate = useTranslation(localisation)
-  const { activateBrowserWallet, account, library } = useWallet()
   const toast = useToast()
 
-  // @dev set 'mintState' based on url params
-  // @todo - update to being based on contract state
+  // UI States
+  const [mintCount, setMintCount] = useState(1)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+
+  // Contract States
+  const { activateBrowserWallet, account, library } = useWallet()
+  const [totalSupply, setTotalSupply] = useState(0)
+  const [maxSupply, setMaxSupply] = useState(5000)
+  const [isSaleActive, setIsSaleActive] = useState<boolean | null>(null)
+  const [walletConnected, setWalletConnected] = useState(true)
+
+  const isSoldOut = useMemo(() => {
+    return totalSupply >= maxSupply
+  }, [maxSupply, totalSupply])
+
+  const contract = useMemo(() => {
+    return new ERC721Service(library, tokenAddress, account)
+  }, [library, account])
 
   useEffect(() => {
-    const contract = new ERC721Service(
-      library,
-      '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf',
-      account
-    )
-
-    contract.totalSupply().then((response) => {
-      setTotalSupply(BigNumber.from(response).toNumber())
-    })
-  }, [])
-
-  useEffect(() => {
-    setMintState(
-      router.query?.mintState === 'inactive'
-        ? 'inactive'
-        : router.query?.mintState === 'finished'
-        ? 'finished'
-        : 'active'
-    )
-  }, [router.query?.mintState])
+    if (account) {
+      contract?.isSaleActive()?.then((response) => {
+        setIsSaleActive(!!response)
+      })
+      contract?.totalSupply()?.then((response) => {
+        setTotalSupply(BigNumber.from(response).toNumber())
+      })
+      contract?.maxSupply()?.then((response) => {
+        setMaxSupply(BigNumber.from(response).toNumber())
+      })
+    }
+  }, [account, library, contract])
 
   useEffect(() => {
     setWalletConnected(!!account)
   }, [account])
 
-  const handleMint = async () => {
-    // @todo - pass actual tokenAddress once added
-    const tokenAddress = '0xFdfFB8f724322dAdb0FeC710c081E7fc3537DBAf'
+  const handleMint = useCallback(async () => {
+    setButtonDisabled(true)
 
     try {
-      setButtonDisabled(true)
-      const response = await new ERC721Service(
-        library,
-        tokenAddress,
-        account
-      ).mint(mintCount)
+      const res = await contract.resMint(mintCount)
+
+      console.log({ res })
+
       // @todo - handle response. Show toast with link to tx? Or redirect to new view?
+
+      toast({
+        position: 'bottom-right',
+        containerStyle: {
+          marginRight: '2rem',
+          marginBottom: '2rem'
+        },
+        render: () => (
+          <Box color="white" p={5} rounded="2xl" bg="green.400">
+            <Text fontSize="lg" fontWeight="bold">
+              Success
+            </Text>
+            <a
+              style={{
+                textDecoration: 'underline'
+              }}
+              href={successUrl('2')}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View on OpenSea
+            </a>
+          </Box>
+        )
+      })
     } catch (err) {
       setButtonDisabled(false)
-      console.error(err)
       toast({
         title: 'Uh oh.',
-        // description: err.message,
-        description: 'too tired to fix this shit',
+        description: "The transaction didn't go through, try again.",
         status: 'error',
-        isClosable: true
+        isClosable: true,
+        position: 'bottom-right',
+        containerStyle: {
+          marginRight: '2rem',
+          marginBottom: '2rem'
+        }
       })
+    } finally {
+      setButtonDisabled(false)
     }
-  }
+  }, [contract, mintCount, toast])
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
@@ -96,7 +129,13 @@ const MintPage: NextPage = () => {
         <div className="grid md:gap-8 md:grid-cols-12">
           <div className="md:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
-              <Image src="/example-nft-2.png" alt="Example NFT" />
+              <AspectRatio ratio={1 / 1}>
+                <Image
+                  src="/example-nft-2.png"
+                  alt="Example NFT"
+                  objectFit="cover"
+                />
+              </AspectRatio>
               <Flex justifyContent={'space-between'} p="4">
                 <Text textColor="black" fontWeight="semibold">
                   Bubki NFTs
@@ -108,7 +147,8 @@ const MintPage: NextPage = () => {
                   fontWeight="semibold"
                 >
                   <Text>0.05</Text>
-                  <Image src="/eth.svg" height={5} width={5} />
+
+                  <Image src="/eth.svg" height={5} width={5} alt="" />
                   <Text>each</Text>
                 </Flex>
               </Flex>
@@ -127,16 +167,11 @@ const MintPage: NextPage = () => {
                   fontSize="20px"
                   display="inline-block"
                 >
-                  {mintState === 'active' && (
+                  {!isSaleActive && 'Available from March 4th, 2022'}
+
+                  {isSaleActive && (
                     <Text display="flex" alignItems="center" gap={2}>
                       <Text fontWeight="black">{totalSupply} / 10,000</Text>
-                      <Text>minted</Text>
-                    </Text>
-                  )}
-                  {mintState === 'inactive' && 'Available from March 4th, 2022'}
-                  {mintState === 'finished' && (
-                    <Text display="flex" alignItems="center" gap={2}>
-                      <Text fontWeight="black">10000 / 10000</Text>
                       <Text>minted</Text>
                     </Text>
                   )}
@@ -155,7 +190,7 @@ const MintPage: NextPage = () => {
               </Text>
 
               {/* Minting is active */}
-              {mintState === 'active' && (
+              {isSaleActive && (
                 <VStack spacing={8} align="stretch">
                   {walletConnected && (
                     <Flex alignItems={'center'} gap="6">
@@ -208,13 +243,13 @@ const MintPage: NextPage = () => {
                 </VStack>
               )}
 
-              {/* Minting has not started yet & wallet not connected */}
-              {mintState === 'inactive' && !walletConnected && (
+              {/* Not sold out, Minting not active, wallet not connected */}
+              {!isSoldOut && !isSaleActive && !walletConnected && (
                 <VStack spacing={4} align="stretch" maxWidth="300px">
                   <Button
                     width="100%"
                     // @todo - connect wallet
-                    onClick={() => alert('Connect Wallet')}
+                    onClick={activateBrowserWallet}
                     fontSize="24px"
                     py="27px"
                     colorScheme="yellow"
@@ -228,8 +263,8 @@ const MintPage: NextPage = () => {
                 </VStack>
               )}
 
-              {/* Minting has not started yet & wallet connected */}
-              {mintState === 'inactive' && walletConnected && (
+              {/* Minting not active, wallet is connected */}
+              {isSaleActive === false && walletConnected && (
                 <Box>
                   <Button
                     as="a"
@@ -247,7 +282,7 @@ const MintPage: NextPage = () => {
               )}
 
               {/* Minting has finished */}
-              {mintState === 'finished' && (
+              {isSoldOut && (
                 <Box>
                   <Button
                     as="a"
