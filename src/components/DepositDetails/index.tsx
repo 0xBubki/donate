@@ -1,8 +1,8 @@
-import { Box, Flex, Text } from '@chakra-ui/layout'
+import { Flex, Text } from '@chakra-ui/layout'
 import { prizePool, ticketTokenAddress } from '../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
-import { headerSizingXs } from '../../utils/sizing'
+import { useEffect, useState } from 'react'
 
 interface Props {
   mode: DepositMode
@@ -13,11 +13,33 @@ enum DepositMode {
   DEPOSIT
 }
 
+const multiSigAddress = '0x664A99B82230eFd61d36828C46e66271BDBac92C'
+
 const DetailsBox = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
-
   const tokenBalanceOrZero = tokenBalance || 0
+  const [totalYieldEarned, setTotalYieldEarned] = useState(0)
+
+  useEffect(() => {
+    const getPrizePool = async () => {
+      if (prizePool) {
+        const secondsSinceEpoch = Math.round(Date.now() / 1000)
+
+        const ticketContract = await prizePool.getTicketContract()
+        const amount = await ticketContract.getBalanceAt(
+          multiSigAddress,
+          secondsSinceEpoch
+        )
+        const convertedAmount =
+          utils.formatUnits(BigNumber.from(amount), 6)?.toString() || 0
+        // @ts-ignore
+        setTotalYieldEarned(convertedAmount)
+      }
+    }
+
+    getPrizePool()
+  }, [])
 
   return (
     <Flex flexDirection="column" align="left" justify="center" width="100%">
@@ -52,10 +74,10 @@ const DetailsBox = (props: Props) => {
           alignItems="center"
         >
           <Text color="white" fontSize="50px">
-            $6.55m
+            ${totalYieldEarned}
           </Text>
           <Text color="white" fontSize="20px">
-            Total Staked
+            Total Yield Earned
           </Text>
         </Flex>
       </Flex>

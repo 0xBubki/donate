@@ -112,7 +112,7 @@ const Home: NextPage = () => {
             </Text>
           </Heading>
 
-          <Flex fontWeight="bold" alignItems="end" gap={3}>
+          <Flex fontWeight="bold" alignItems="center" gap={3}>
             {currentEthValue === 0 ? (
               <Flex alignItems="center" justifyContent="center">
                 <Text fontSize={headerSizingLg}>$</Text>
@@ -125,10 +125,7 @@ const Home: NextPage = () => {
               </Text>
             )}
 
-            <Text fontSize={headerSizingSm} paddingBottom="0.5rem">
-              {' '}
-              {translate('donated')}
-            </Text>
+            <Text fontSize={headerSizingSm}> {translate('donated')}</Text>
           </Flex>
 
           {currentEthValue === 0 ? (
@@ -171,7 +168,7 @@ const Home: NextPage = () => {
           </Button>
         </NextLink>
 
-        <NextLink href="/donate" passHref>
+        <NextLink href="/mint" passHref>
           <Button
             mt="2vh"
             color="black"

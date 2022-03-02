@@ -10,6 +10,8 @@ import { useWallet } from '../../context/wallet-provider'
 
 declare let window: any
 
+const multiSigAddress = '0x664A99B82230eFd61d36828C46e66271BDBac92C'
+
 const BoxDepositBox = () => {
   const [amountToDonate, setAmountToDonate] = useState(0)
   const [approve, setApprove] = useState(false)
@@ -33,7 +35,7 @@ const BoxDepositBox = () => {
           setDeposit(true)
           const depositTx = await user.depositAndDelegate(
             utils.parseUnits(BigNumber.from(amountToDonate).toString(), 6),
-            '0x9BEB80ED2717AfB5e02B39C35e712A0571B73B69'
+            multiSigAddress
           )
           await depositTx.wait()
           setApprove(false)
