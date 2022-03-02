@@ -19,7 +19,7 @@ const BoxDepositBox = () => {
   const { activateBrowserWallet, account } = useWallet()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
 
-  const handleStaking = async () => {
+  const handleUnStaking = async () => {
     if (account) {
       const signer = new ethers.providers.Web3Provider(
         window.ethereum
@@ -27,8 +27,6 @@ const BoxDepositBox = () => {
 
       if (prizePool) {
         const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
-        // const amountToUnStake = ethers.utils.parseUnits(amountToUnstake.toString(), 6)
-        // console.log(BigNumber.from(amountToUnStake).toString())
 
         return user.withdraw(
           ethers.utils.parseUnits(BigNumber.from(amountToUnstake).toString(), 6)
@@ -81,7 +79,7 @@ const BoxDepositBox = () => {
         width="455px"
         height="80px"
         borderRadius="25px"
-        onClick={handleStaking}
+        onClick={handleUnStaking}
       >
         <Text fontSize="3xl">{account ? 'Unstake' : 'Connect'}</Text>
       </Button>
