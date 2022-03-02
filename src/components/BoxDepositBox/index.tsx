@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/layout'
+import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Input, Button } from '@chakra-ui/react'
 import AssetMenu from '../AssetMenu'
 import { useEthers, useTokenBalance } from '@usedapp/core'
@@ -67,21 +67,20 @@ const BoxDepositBox = () => {
   }
 
   return (
-    <>
-      <Box
+    <Flex direction="column" gap={8}>
+      <Flex
         backgroundColor="rgba(255,255,255,0.2)"
         width="100%"
         borderRadius="25px"
         display="flex"
         paddingX="25px"
         paddingY="20px"
-        mb="28px"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
+        direction="column"
+        align="center"
       >
-        <Box color="white">
+        <Flex color="white" direction="column">
           <Input
+            width="100%"
             fontSize="36px"
             fontWeight="bold"
             border="none"
@@ -96,11 +95,13 @@ const BoxDepositBox = () => {
           <Text color="#DADADA">
             Balance: {tokenBalance ? utils.formatUnits(tokenBalance, 6) : 0.0}
           </Text>
-        </Box>
+        </Flex>
+
         <Box color="white">
           <AssetMenu />
         </Box>
-      </Box>
+      </Flex>
+
       <Button
         _hover={{ color: 'black', background: 'white' }}
         backgroundColor="ukraineYellow"
@@ -113,7 +114,7 @@ const BoxDepositBox = () => {
       >
         <Text>{determineText()}</Text>
       </Button>
-    </>
+    </Flex>
   )
 }
 

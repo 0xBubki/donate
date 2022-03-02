@@ -24,7 +24,7 @@ main {
   @apply w-full h-full;
   @apply flex flex-col justify-center items-center !important;
   /* Room for header. */
-  @apply py-24 px-4;
+  @apply py-32 px-4;
 }
 
 header {

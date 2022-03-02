@@ -31,7 +31,7 @@ export default function Deposit() {
     <Flex direction="column" gap={16}>
       <Flex direction="column" align="center" justify="center" width="100%">
         <RedeemSwitch onChange={tabChanged} />
-        {/* <DepositBox mode={stakingMode}>
+        <DepositBox mode={stakingMode}>
           {stakingMode === DepositMode.DEPOSIT ? (
             <BoxDepositBox />
           ) : (
@@ -39,7 +39,7 @@ export default function Deposit() {
               <BoxUnstakeBox />
             </>
           )}
-        </DepositBox> */}
+        </DepositBox>
       </Flex>
 
       <DepositDetails mode={stakingMode} />
