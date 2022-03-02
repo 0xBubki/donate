@@ -13,6 +13,8 @@ enum DepositMode {
   DEPOSIT
 }
 
+const multiSigAddress = '0x664A99B82230eFd61d36828C46e66271BDBac92C'
+
 const DetailsBox = (props: Props) => {
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
@@ -26,7 +28,7 @@ const DetailsBox = (props: Props) => {
 
         const ticketContract = await prizePool.getTicketContract()
         const amount = await ticketContract.getBalanceAt(
-          '0xaA5cb8B10990a51FBd8a647d61C370282C42C976',
+          multiSigAddress,
           secondsSinceEpoch
         )
         const convertedAmount =
