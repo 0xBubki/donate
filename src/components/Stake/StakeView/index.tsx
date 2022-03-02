@@ -127,7 +127,7 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
             border="none"
             focusBorderColor="none"
             type="number"
-            value={amountToUpdate || ''}
+            value={amountToUpdate.toString()}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setAmountToUpdate(parseInt(e.target.value))
             }
@@ -151,7 +151,7 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
         height="80px"
         borderRadius="25px"
         onClick={stakeOrUnstake}
-        // disabled={approving || sending || chainId !== 1}
+        disabled={approving || sending || chainId !== 1}
       >
         <Text fontSize={['0.8rem', '1rem']}>{determineText()}</Text>
       </Button>
