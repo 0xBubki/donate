@@ -1,10 +1,14 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import NextLink from 'next/link'
-
-import { useEffect } from 'react'
-
+import { Skeleton } from '@chakra-ui/react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { useTranslation } from '../utils/use-translation'
+import { Button } from '@chakra-ui/button'
+import { Heading, Flex, Text } from '@chakra-ui/layout'
+import { confetti, blastConfetti } from '../utils/confetti'
+import axios from 'axios'
+import { useCoingeckoPrice } from '@usedapp/coingecko'
 
 const germanTrans = require('../../public/locales/de/common.json')
 const englishTrans = require('../../public/locales/en/common.json')
@@ -18,16 +22,56 @@ const localisation = {
   fr: frenchTrans
 }
 
-import { Button } from '@chakra-ui/button'
-import { Heading, Flex, Text } from '@chakra-ui/layout'
-import { confetti, blastConfetti } from '../utils/confetti'
-
 const headerSizing = [1, 1.25, 1.5, 2.5]
 const headerSizingSm = headerSizing.map((x) => `${x}em`)
 const headerSizingLg = headerSizing.map((x) => `${x * 2}em`)
+const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const Home: NextPage = () => {
+  const [currentEthValue, setCurrentEthValue] = useState(0)
   const translate = useTranslation(localisation)
+  const etherPrice = useCoingeckoPrice('ethereum', 'usd')
+  const etherPriceOrFallBack = etherPrice || 3000
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  })
+
+  useEffect(() => {
+    axios
+      .post(
+        'https://eth-mainnet.alchemyapi.io/v2/06iuz9tXgQRzmTQ1B28oqPnz5lQDQ-YO',
+        {
+          jsonrpc: '2.0',
+          id: 0,
+          method: 'alchemy_getAssetTransfers',
+          params: [
+            {
+              fromBlock: '0x0',
+              toBlock: 'latest',
+              toAddress: RECEIVER_WALLET,
+              excludeZeroValue: true,
+              category: ['external']
+            }
+          ]
+        }
+      )
+      .then((response) => {
+        filterTransactionsLowToHigh(response?.data?.result?.transfers)
+      })
+  }, [])
+
+  const filterTransactionsLowToHigh = (arrayOfTransactions: {
+    forEach(param: (tx: { value: number }) => void): void
+  }) => {
+    let sum = 0
+    arrayOfTransactions.forEach((tx: { value: number }) => {
+      sum += tx.value
+    })
+
+    setCurrentEthValue(sum)
+  }
 
   useEffect(() => {
     /**
@@ -71,20 +115,47 @@ const Home: NextPage = () => {
           </Heading>
 
           <Flex fontWeight="bold" alignItems="end" gap={3}>
-            <Text fontSize={headerSizingLg}>₴1,234,567.00</Text>
+            {currentEthValue === 0 ? (
+              <Flex alignItems="center" justifyContent="center">
+                <Text fontSize={headerSizingLg}>₴</Text>
+                <Skeleton height="120px" width="500px" />
+              </Flex>
+            ) : (
+              // @ts-ignore
+              <Text fontSize={headerSizingLg}>
+                ₴
+                {formatter
+                  .format(etherPriceOrFallBack * currentEthValue)
+                  .substring(1)}
+              </Text>
+            )}
+
             <Text fontSize={headerSizingSm} paddingBottom="0.5em">
               {' '}
               {translate('donated')}
             </Text>
           </Flex>
 
-          <Text
-            color="rgba(255, 255, 255, 0.88)"
-            fontWeight="bold"
-            fontSize={headerSizingSm}
-          >
-            Ξ123,456.00
-          </Text>
+          {currentEthValue === 0 ? (
+            <Flex alignItems="center" justifyContent="center">
+              <Text
+                color="rgba(255, 255, 255, 0.88)"
+                fontWeight="bold"
+                fontSize={headerSizingSm}
+              >
+                Ξ
+              </Text>
+              <Skeleton height="30px" width="200px" />
+            </Flex>
+          ) : (
+            <Text
+              color="rgba(255, 255, 255, 0.88)"
+              fontWeight="bold"
+              fontSize={headerSizingSm}
+            >
+              Ξ{currentEthValue.toFixed(2)}
+            </Text>
+          )}
         </Flex>
 
         <NextLink href="/stake" passHref>
