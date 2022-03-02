@@ -153,7 +153,7 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
         onClick={stakeOrUnstake}
         disabled={approving || sending || chainId !== 1}
       >
-        <Text>{determineText()}</Text>
+        <Text fontSize={['xs', 'lg']}>{determineText()}</Text>
       </Button>
     </Flex>
   )

@@ -29,7 +29,12 @@ export default function Deposit() {
           padding={6}
         >
           <Box width="100%">
-            <Text mb="20px" fontWeight="bold" color="white" fontSize="3rem">
+            <Text
+              mb="20px"
+              fontWeight="bold"
+              color="white"
+              fontSize={['2rem', '3rem']}
+            >
               {stakingMode === StakeMode.STAKE ? 'Stake' : 'Unstake'}{' '}
             </Text>
           </Box>
