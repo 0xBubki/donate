@@ -16,7 +16,7 @@ const BoxDepositBox = () => {
   const handleStaking = async () => {
     if (account) {
       const signer = new ethers.providers.Web3Provider(
-        window.ethereum
+        window?.ethereum
       ).getSigner()
       const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
 
