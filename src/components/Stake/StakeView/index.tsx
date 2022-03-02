@@ -120,7 +120,7 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
             type="number"
             value={amountToUpdate}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setAmountToUpdate(parseInt(e.target.value))
+              setAmountToUpdate(parseInt(e.target.value) || 0)
             }
             pl={0}
           />
