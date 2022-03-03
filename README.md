@@ -1,6 +1,7 @@
 <div align="center">
-  <h1>Bubki 🇺🇦</h1>
+  <h1>Bubki 🇺🌻</h1>
   <h3>NFTs and Staking for Ukraine</h3>
+  <p>Donate yield and mint NFTs to help Ukraine</p>
 </div>
 
 &nbsp;

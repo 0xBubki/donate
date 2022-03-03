@@ -14,7 +14,6 @@ export const Page: FC = ({ children }) => {
         <title>{DEFAULT_TITLE}</title>
         <meta name="description" content={DEFAULT_DESCRIPTION} />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="/favicon.ico" />
 
         <meta property="og:title" content={DEFAULT_TITLE} />
         <meta property="og:description" content={DEFAULT_DESCRIPTION} />
@@ -22,6 +21,25 @@ export const Page: FC = ({ children }) => {
 
         <meta name="twitter:title" content={DEFAULT_TITLE} />
         <meta name="twitter:image" content={OG_IMAGE} />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
 
       <Flex direction="column" backgroundColor="#005BBB">
