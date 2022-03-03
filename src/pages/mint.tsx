@@ -179,7 +179,7 @@ const MintPage: NextPage = () => {
                     bg="whiteAlpha.400"
                     rounded="xl"
                     fontWeight="semibold"
-                    fontSize="20px"
+                    fontSize={['lg', '2xl']}
                     display="inline-block"
                   >
                     <Text display="flex" alignItems="center" gap={2}>
@@ -201,24 +201,30 @@ const MintPage: NextPage = () => {
 
               {/* Minting is active */}
               {isSaleActive && (
-                <VStack spacing={8} align="stretch">
+                <VStack spacing={8} align="stretch" justify="center">
                   {walletConnected && (
-                    <Flex alignItems={'center'} gap="6">
+                    <Flex alignItems={'center'} className="gap-2 xs:gap-4">
                       <InputNumber
                         isDisabled={buttonDisabled}
                         onChange={(value) => setMintCount(value)}
                       />
                       <Text
-                        fontSize="24px"
+                        display="flex"
+                        className="text-xs flex-col xs:flex-row xs:text-lg"
+                        // fontSize={["xs", "lg"]}
+                        // flexDirection={['column', 'row']}
                         fontWeight="semibold"
                         whiteSpace="nowrap"
+                        alignItems="stretch"
+                        gap={2}
                       >
-                        {Math.round(mintCount * 0.05 * 100) / 100} ETH
+                        <span>{Math.round(mintCount * 0.05 * 100) / 100}</span>
+                        <span>ETH</span>
                       </Text>
                     </Flex>
                   )}
 
-                  <VStack spacing={4} align="stretch" maxWidth="320px">
+                  <VStack spacing={8} align="stretch" maxWidth="320px">
                     {walletConnected ? (
                       <>
                         <Button
@@ -239,7 +245,13 @@ const MintPage: NextPage = () => {
                             ? 'Change to ETH mainnet'
                             : translate('mintButton')}
                         </Button>
-                        <Text textAlign="center">Max 100 per transaction</Text>
+                        <Text
+                          color="gray.400"
+                          textAlign="center"
+                          fontWeight="bolder"
+                        >
+                          Max 100 per transaction
+                        </Text>
                       </>
                     ) : (
                       <Button
