@@ -196,24 +196,27 @@ export const Header = () => {
               </Flex>
 
               {/* Twitter and Language Menu Wrapper */}
-              <Flex justify="space-between" align="center" paddingX="1.5rem">
-                {/* Twitter Link - URL SHOULD BE UPDATED */}
-                <a href="https://twitter.com/0xBubki">
-                  <img
-                    src={'/icons/bubki-t.png'}
-                    alt="Twitter Link"
-                    width="50"
-                    height="50"
-                  />
-                </a>
-                <a href="https://opensea.io/collection/bubki-nfts">
-                  <img
-                    src={'/icons/bubki-os_2.png'}
-                    alt="OpenSea Link"
-                    width="50"
-                    height="50"
-                  />
-                </a>
+              <Flex gap={4} justify="space-around" align="center">
+                <Flex gap={4}>
+                  {/* Twitter Link - URL SHOULD BE UPDATED */}
+                  <a href="https://twitter.com/0xBubki">
+                    <img
+                      src={'/icons/bubki-t.png'}
+                      alt="Twitter Link"
+                      width="50"
+                      height="50"
+                    />
+                  </a>
+                  <a href="https://opensea.io/collection/bubki-nfts">
+                    <img
+                      src={'/icons/bubki-os_2.png'}
+                      alt="OpenSea Link"
+                      width="50"
+                      height="50"
+                    />
+                  </a>
+                </Flex>
+
                 {/* Language Menu */}
                 <LanguageMenu />
               </Flex>
