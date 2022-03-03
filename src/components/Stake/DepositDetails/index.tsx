@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { StakeMode } from '..'
 
 import { useTranslation } from '../../../utils/use-translation'
+
 const translations = require('../../../../public/locales/stake.json')
 
 interface Props {
@@ -76,8 +77,8 @@ export const DepositDetails = ({ stakingMode }: Props) => {
           minWidth={240}
         >
           <Heading color="white" fontSize="50px">
-            {/*// @ts-ignore*/}
             {formatter.format(
+              // @ts-ignore
               utils
                 .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
                 ?.toString() || 0
