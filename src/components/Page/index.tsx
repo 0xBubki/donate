@@ -42,7 +42,7 @@ export const Page: FC = ({ children }) => {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
 
-      <Flex direction="column" backgroundColor="#005BBB">
+      <Flex direction="column">
         <Header />
         <main>{children}</main>
         <Footer />

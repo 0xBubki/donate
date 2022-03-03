@@ -18,6 +18,8 @@ main,
   @apply w-full min-h-screen;
   /* Prevent text from breaking viewport. */
   word-break: break-word;
+  /* Background color. */
+  background-color: #005bbb;
 }
 
 main {
@@ -29,6 +31,16 @@ main {
 
 header {
   @apply absolute w-full;
+}
+
+body,
+main {
+  z-index: 1;
+}
+
+header,
+footer {
+  z-index: 2;
 }
 /* purgecss end ignore */
 
