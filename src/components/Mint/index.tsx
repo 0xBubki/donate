@@ -2,7 +2,7 @@ import { AspectRatio, Box, Flex, Image, Text } from '@chakra-ui/react'
 
 export const NFTPreview = () => {
   return (
-    <Box rounded="3xl" bg="white" overflow={'hidden'}>
+    <Box rounded="3xl" bg="white" overflow={'hidden'} className="shadow-2xl">
       <AspectRatio ratio={1 / 1}>
         <Image src="/example-nft-2.png" alt="Example NFT" objectFit="cover" />
       </AspectRatio>
