@@ -50,22 +50,38 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
       if (!prizePool) {
         activateBrowserWallet()
       } else {
-        const user = new User(prizePool.prizePoolMetadata, signer, prizePool)
+        const user: User = new User(
+          prizePool.prizePoolMetadata,
+          signer,
+          prizePool
+        )
         try {
           switch (stakingMode) {
             case StakeMode.STAKE:
-              setApproving(true)
+              const amountToUpdateUnformatted = utils.parseUnits(
+                BigNumber.from(amountToUpdate).toString(),
+                6
+              )
+              const allowance = await user.getDepositAllowance()
 
-              const approveTx = await user.approveDeposits()
-              const approveReceipt = await approveTx.wait()
+              // Only ask for approval if necessary
+              if (
+                allowance.allowanceUnformatted.lt(amountToUpdateUnformatted)
+              ) {
+                setApproving(true)
 
-              console.log({ approveReceipt })
+                const approveTx = await user.approveDeposits()
+                const approveReceipt = await approveTx.wait()
 
-              setApproving(false)
+                console.log({ approveReceipt })
+
+                setApproving(false)
+              }
+
               setSending(true)
 
               const depositTx = await user.depositAndDelegate(
-                utils.parseUnits(BigNumber.from(amountToUpdate).toString(), 6),
+                amountToUpdateUnformatted,
                 multiSigAddress
               )
 
