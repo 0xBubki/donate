@@ -10,12 +10,18 @@ export const Page: FC = ({ children }) => {
         <title>{'Bubki | NFTs & Staking for Ukraine'}</title>
         <meta name="description" content="Donate your yield to help Ukraine" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bubki - Donate. Stake. Mint." />
+        <meta
+          name="twitter:title"
+          content="Bubki | NFTs & Staking for Ukraine"
+        />
         <meta
           name="twitter:image"
           content="https://www.bubki.xyz/og_image.png"
         />
-        <meta property="og:title" content="Bubki - Donate. Stake. Mint." />
+        <meta
+          property="og:title"
+          content="Bubki | NFTs & Staking for Ukraine"
+        />
         <meta
           property="og:description"
           content="Using the power of Web3 to help Ukraine"
