@@ -135,9 +135,9 @@ const MintPage: NextPage = () => {
 
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
-      <div className="mx-auto p-3 md:p-8">
-        <div className="grid md:gap-8 md:grid-cols-12">
-          <div className="md:col-span-5 mb-8">
+      <div className="mx-auto p-3 sm:p-8">
+        <div className="grid sm:gap-8 sm:grid-cols-12">
+          <div className="sm:col-span-5 mb-8">
             <Box rounded="3xl" bg="white" overflow={'hidden'}>
               <AspectRatio ratio={1 / 1}>
                 <Image
@@ -149,27 +149,32 @@ const MintPage: NextPage = () => {
               <Flex
                 justifyContent={'space-between'}
                 p="4"
-                className="text-xs xs:text-lg md:text-xl"
+                className="gap-2 text-xs xs:text-lg sm:text-xl"
               >
-                <Text textColor="black" fontWeight="semibold">
+                <Text
+                  textColor="black"
+                  fontWeight="bold"
+                  fontSize={['xs', 'sm', 'lg']}
+                >
                   Bubki NFTs
                 </Text>
                 <Flex
                   alignItems="center"
-                  gap={2}
+                  gap={1}
                   textColor="black"
                   fontWeight="semibold"
+                  fontSize={['xs', '0.82rem', 'md']}
                 >
                   <Text>0.05</Text>
-
                   <Image src="/eth.svg" height={5} width={5} alt="" />
                   <Text>each</Text>
                 </Flex>
               </Flex>
             </Box>
           </div>
-          <div className="md:col-start-7 md:col-span-5">
-            <div className="flex flex-col items-center md:items-start gap-6">
+
+          <div className="sm:col-start-7 sm:col-span-5">
+            <div className="flex flex-col items-center sm:items-start gap-6">
               {isSaleActive && (
                 <Box>
                   <Text
