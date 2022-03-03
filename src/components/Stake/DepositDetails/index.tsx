@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { StakeMode } from '..'
 
 import { useTranslation } from '../../../utils/use-translation'
+
 const translations = require('../../../../public/locales/stake.json')
 
 interface Props {
@@ -20,6 +21,11 @@ export const DepositDetails = ({ stakingMode }: Props) => {
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
   const tokenBalanceOrZero = tokenBalance || 0
   const [totalYieldEarned, setTotalYieldEarned] = useState(0)
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  })
 
   useEffect(() => {
     const getPrizePool = async () => {
@@ -71,10 +77,12 @@ export const DepositDetails = ({ stakingMode }: Props) => {
           minWidth={240}
         >
           <Heading color="white" fontSize="50px">
-            $
-            {utils
-              .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
-              ?.toString() || 0}
+            {formatter.format(
+              // @ts-ignore
+              utils
+                .formatUnits(BigNumber.from(tokenBalanceOrZero), 6)
+                ?.toString() || 0
+            )}
           </Heading>
           <Text color="white" fontSize="20px">
             {translate('stakedValueLabel')}
@@ -90,7 +98,7 @@ export const DepositDetails = ({ stakingMode }: Props) => {
           minWidth={240}
         >
           <Heading color="white" fontSize="50px">
-            ${totalYieldEarned}
+            {formatter.format(totalYieldEarned)}
           </Heading>
           <Text color="white" fontSize="20px">
             {translate('totalStakedLabel')}
