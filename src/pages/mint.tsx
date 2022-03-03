@@ -169,7 +169,7 @@ const MintPage: NextPage = () => {
             </Box>
           </div>
           <div className="md:col-start-7 md:col-span-5">
-            <VStack spacing={6} align="stretch">
+            <div className="flex flex-col items-center md:items-start gap-6">
               {isSaleActive && (
                 <Box>
                   <Text
@@ -260,6 +260,7 @@ const MintPage: NextPage = () => {
                         fontSize="24px"
                         disabled={buttonConnecting}
                         py="27px"
+                        px="24px"
                         colorScheme="yellow"
                         style={{
                           boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
@@ -267,9 +268,6 @@ const MintPage: NextPage = () => {
                         }}
                       >
                         {translate('connectWallet')}
-                        {/* {buttonConnecting
-                          ? 'Open wallet...'
-                          : translate('connectWallet')} */}
                       </Button>
                     )}
                   </VStack>
@@ -286,6 +284,7 @@ const MintPage: NextPage = () => {
                     fontSize="24px"
                     disabled={buttonConnecting}
                     py="27px"
+                    px="24px"
                     colorScheme="yellow"
                     style={{
                       boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
@@ -293,9 +292,6 @@ const MintPage: NextPage = () => {
                     }}
                   >
                     {translate('connectWallet')}
-                    {/* {buttonConnecting
-                      ? 'Open wallet...'
-                      : translate('connectWallet')} */}
                   </Button>
                 </VStack>
               )}
@@ -343,7 +339,7 @@ const MintPage: NextPage = () => {
                   </Button>
                 </Box>
               )}
-            </VStack>
+            </div>
           </div>
         </div>
       </div>
