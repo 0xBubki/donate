@@ -6,7 +6,7 @@
     "donations": "donations",
     "donated": "donated",
     "mint": "Mint NFT"
-  },  
+  },
   "es": {
     "homepage-title": "Dona tu cosecha para ayudar",
     "stake": "Apostar",
@@ -31,12 +31,12 @@
     "donations": "spenden",
     "mint": "NFT kaufen"
   },
-  "ua": {
+  "uk": {
     "homepage-title": "Переведіть свій прибутковий врожай на допомогу Україні",
     "stake": "Стекати",
     "donate": "Хочу допомогти",
     "donations": "внески",
     "donated": "внесено",
     "mint": "Замінтити NFT"
-  }  
+  }
 }

@@ -69,7 +69,7 @@ const LanguageMenu = () => {
             <Text className="capitalize">{translate('spanish')}</Text>
           </MenuItem>
         </LocaleLink>
-        <LocaleLink locale="ua">
+        <LocaleLink locale="uk">
           <MenuItem>
             <Text className="capitalize">{translate('ukrainian')}</Text>
           </MenuItem>

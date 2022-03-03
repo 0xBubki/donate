@@ -18,7 +18,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@ethersproject/units": "^5.5.0",
-    "@heroicons/react": "^1.0.5",
+    "@heroicons/react": "^1.0.6",
     "@pooltogether/v4-client-js": "^0.11.0",
     "@pooltogether/v4-pool-data": "^1.6.0",
     "@pooltogether/v4-testnet": "https://github.com/pooltogether/v4-testnet.git",
