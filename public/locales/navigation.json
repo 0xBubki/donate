@@ -58,8 +58,8 @@
     "french": "Französisch",
     "spanish": "Spanisch",
     "ukrainian": "Ukrainisch"
-  },    
-  "ua": {
+  },
+  "uk": {
     "home": "Головна",
     "title": "Бубки",
     "stake": "Стейкати",
@@ -73,5 +73,5 @@
     "french": "Французька",
     "spanish": "Іспанська",
     "ukrainian": "Українська"
-  }  
+  }
 }
