@@ -138,7 +138,9 @@ const MintPage: NextPage = () => {
     <Flex direction="row" width="100%" height="100%" pb={10}>
       <div className="mx-auto p-3 sm:p-8">
         <div className="grid sm:gap-8 sm:grid-cols-12">
-          <NFTPreview />
+          <div className="sm:col-span-5 pb-8">
+            <NFTPreview />
+          </div>
 
           <div className="sm:col-start-7 sm:col-span-5">
             <div className="flex flex-col items-center sm:items-start gap-6">
