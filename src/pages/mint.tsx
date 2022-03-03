@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import type { NextPage } from 'next'
 import { Heading, Flex, Text, Box } from '@chakra-ui/layout'
-import { Button, Image, VStack, useToast, AspectRatio } from '@chakra-ui/react'
+import { Button, Image, VStack, useToast } from '@chakra-ui/react'
 import { InputNumber } from '../components/InputNumber'
 import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
@@ -9,6 +9,7 @@ import { useWallet } from '../context/wallet-provider'
 import { BigNumber } from 'ethers'
 import { useEthers } from '@usedapp/core'
 import { TranslatedParagraph } from '../components/TranslatedParagraph'
+import { NFTPreview } from '../components/Mint'
 
 const translations = require('../../public/locales/mint.json')
 
@@ -137,40 +138,8 @@ const MintPage: NextPage = () => {
     <Flex direction="row" width="100%" height="100%" pb={10}>
       <div className="mx-auto p-3 sm:p-8">
         <div className="grid sm:gap-8 sm:grid-cols-12">
-          <div className="sm:col-span-5 mb-8">
-            <Box rounded="3xl" bg="white" overflow={'hidden'}>
-              <AspectRatio ratio={1 / 1}>
-                <Image
-                  src="/example-nft-2.png"
-                  alt="Example NFT"
-                  objectFit="cover"
-                />
-              </AspectRatio>
-              <Flex
-                justifyContent={'space-between'}
-                p="4"
-                className="gap-2 text-xs xs:text-lg sm:text-xl"
-              >
-                <Text
-                  textColor="black"
-                  fontWeight="bold"
-                  fontSize={['xs', 'sm', 'lg']}
-                >
-                  Bubki NFTs
-                </Text>
-                <Flex
-                  alignItems="center"
-                  gap={1}
-                  textColor="black"
-                  fontWeight="semibold"
-                  fontSize={['xs', '0.82rem', 'md']}
-                >
-                  <Text>0.05</Text>
-                  <Image src="/eth.svg" height={5} width={5} alt="" />
-                  <Text>each</Text>
-                </Flex>
-              </Flex>
-            </Box>
+          <div className="sm:col-span-5 pb-8">
+            <NFTPreview />
           </div>
 
           <div className="sm:col-start-7 sm:col-span-5">
@@ -216,8 +185,6 @@ const MintPage: NextPage = () => {
                       <Text
                         display="flex"
                         className="text-xs flex-col xs:flex-row xs:text-lg"
-                        // fontSize={["xs", "lg"]}
-                        // flexDirection={['column', 'row']}
                         fontWeight="semibold"
                         whiteSpace="nowrap"
                         alignItems="stretch"
