@@ -7,7 +7,7 @@ export const Page: FC = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Donate | Help Ukraine</title>
+        <title>{'Bubki | NFTs & Staking for Ukraine'}</title>
         <meta name="description" content="Donate your yield to help Ukraine" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Bubki - Donate. Stake. Mint." />
