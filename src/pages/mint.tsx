@@ -51,9 +51,16 @@ const MintPage: NextPage = () => {
   }, [chainId])
 
   const contract = useMemo(() => {
-    const ethereumProvider = ethers.getDefaultProvider('homestead')
-    return new ERC721Service(ethereumProvider, tokenAddress, account)
-  }, [library, account])
+    if (typeof window !== 'undefined') {
+      // @ts-ignore
+      const WEB3 = window?.ethereum || window?.web3
+      if (!WEB3) return
+
+      const provider = new ethers.providers.Web3Provider(WEB3, 'homestead')
+
+      return new ERC721Service(provider, tokenAddress, account)
+    }
+  }, [account])
 
   const handleConnectWallet = () => {
     setButtonConnecting(true)
@@ -86,7 +93,7 @@ const MintPage: NextPage = () => {
     setButtonDisabled(true)
 
     try {
-      await contract.resMint(mintCount)
+      await contract?.resMint(mintCount)
 
       toast({
         position: 'bottom-right',
