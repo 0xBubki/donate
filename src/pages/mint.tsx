@@ -141,7 +141,6 @@ const MintPage: NextPage = () => {
 
           <div className="sm:col-start-7 sm:col-span-5">
             <div className="flex flex-col items-center sm:items-start gap-6">
-              {/*{isSaleActive && (*/}
               <Box>
                 <Text
                   as="span"
@@ -159,7 +158,6 @@ const MintPage: NextPage = () => {
                   </Text>
                 </Text>
               </Box>
-              {/*)}*/}
 
               <Heading fontSize={48} lineHeight={1.33}>
                 Bubki NFTs
