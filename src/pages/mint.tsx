@@ -6,7 +6,7 @@ import { InputNumber } from '../components/InputNumber'
 import { ERC721Service } from '../services/ERC721Service'
 import { useTranslation } from '../utils/use-translation'
 import { useWallet } from '../context/wallet-provider'
-import { BigNumber } from 'ethers'
+import { BigNumber, ethers } from 'ethers'
 import { useEthers } from '@usedapp/core'
 import { TranslatedParagraph } from '../components/TranslatedParagraph'
 import { NFTPreview } from '../components/Mint'
@@ -38,7 +38,7 @@ const MintPage: NextPage = () => {
   // Contract States
   const { activateBrowserWallet, account, library } = useWallet()
   const [totalSupply, setTotalSupply] = useState(0)
-  const [maxSupply, setMaxSupply] = useState(5000)
+  const [maxSupply, setMaxSupply] = useState(10000)
   const [isSaleActive, setIsSaleActive] = useState<boolean | null>(null)
   const [walletConnected, setWalletConnected] = useState(true)
 
@@ -51,7 +51,8 @@ const MintPage: NextPage = () => {
   }, [chainId])
 
   const contract = useMemo(() => {
-    return new ERC721Service(library, tokenAddress, account)
+    const ethereumProvider = ethers.getDefaultProvider('homestead')
+    return new ERC721Service(ethereumProvider, tokenAddress, account)
   }, [library, account])
 
   const handleConnectWallet = () => {
@@ -63,17 +64,15 @@ const MintPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (account && isCorrectChainId) {
-      contract?.isSaleActive()?.then((response) => {
-        setIsSaleActive(!!response)
-      })
-      contract?.totalSupply()?.then((response) => {
-        setTotalSupply(BigNumber.from(response).toNumber())
-      })
-      contract?.maxSupply()?.then((response) => {
-        setMaxSupply(BigNumber.from(response).toNumber())
-      })
-    }
+    contract?.isSaleActive()?.then((response) => {
+      setIsSaleActive(!!response)
+    })
+    contract?.totalSupply()?.then((response) => {
+      setTotalSupply(BigNumber.from(response).toNumber())
+    })
+    contract?.maxSupply()?.then((response) => {
+      setMaxSupply(BigNumber.from(response).toNumber())
+    })
   }, [account, library, contract, chainId, isCorrectChainId])
 
   useEffect(() => {
@@ -88,8 +87,6 @@ const MintPage: NextPage = () => {
 
     try {
       await contract.resMint(mintCount)
-
-      // @todo - handle response. Show toast with link to tx? Or redirect to new view?
 
       toast({
         position: 'bottom-right',
@@ -144,25 +141,23 @@ const MintPage: NextPage = () => {
 
           <div className="sm:col-start-7 sm:col-span-5">
             <div className="flex flex-col items-center sm:items-start gap-6">
-              {isSaleActive && (
-                <Box>
-                  <Text
-                    as="span"
-                    px={4}
-                    py="5px"
-                    bg="whiteAlpha.400"
-                    rounded="xl"
-                    fontWeight="semibold"
-                    fontSize={['lg', '2xl']}
-                    display="inline-block"
-                  >
-                    <Text display="flex" alignItems="center" gap={2}>
-                      <Text fontWeight="black">{totalSupply} / 10,000</Text>
-                      <Text>minted</Text>
-                    </Text>
+              <Box>
+                <Text
+                  as="span"
+                  px={4}
+                  py="5px"
+                  bg="whiteAlpha.400"
+                  rounded="xl"
+                  fontWeight="semibold"
+                  fontSize={['lg', '2xl']}
+                  display="inline-block"
+                >
+                  <Text display="flex" alignItems="center" gap={2}>
+                    <Text fontWeight="black">{totalSupply} / 10,000</Text>
+                    <Text>minted</Text>
                   </Text>
-                </Box>
-              )}
+                </Text>
+              </Box>
 
               <Heading fontSize={48} lineHeight={1.33}>
                 Bubki NFTs
