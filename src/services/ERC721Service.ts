@@ -7,17 +7,17 @@ import {
 import Erc721Abi from './abis/Erc721Abi.json'
 
 class ERC721Service {
-  provider: any
+  provider: ethers.providers.Web3Provider
   contract: Contract
 
   constructor(
-    provider: any,
+    provider: ethers.providers.Web3Provider,
     tokenAddress: string,
     signerAddress?: string | null
   ) {
     this.provider = provider
     if (signerAddress) {
-      const signer: Wallet = provider.getSigner()
+      const signer = provider.getSigner()
       this.contract = new ethers.Contract(
         tokenAddress,
         Erc721Abi,

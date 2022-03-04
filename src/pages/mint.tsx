@@ -10,6 +10,8 @@ import { BigNumber, ethers } from 'ethers'
 import { useEthers } from '@usedapp/core'
 import { TranslatedParagraph } from '../components/TranslatedParagraph'
 import { NFTPreview } from '../components/Mint'
+import { useWeb3Provider } from '../hooks/useWeb3Provider'
+import { useContract } from '../hooks/useContract'
 
 const translations = require('../../public/locales/mint.json')
 
@@ -26,9 +28,10 @@ const networkChainId = 1
 const collectionUrl = `https://opensea.io/collection/bubki-nfts`
 
 const MintPage: NextPage = () => {
+  const { chainId } = useEthers()
+  const contract = useContract(tokenAddress)
   const translate = useTranslation(translations)
   const toast = useToast()
-  const { chainId } = useEthers()
 
   // UI States
   const [mintCount, setMintCount] = useState(1)
@@ -49,11 +52,6 @@ const MintPage: NextPage = () => {
   const isCorrectChainId = useMemo(() => {
     return chainId === networkChainId
   }, [chainId])
-
-  const contract = useMemo(() => {
-    const ethereumProvider = ethers.getDefaultProvider('homestead')
-    return new ERC721Service(ethereumProvider, tokenAddress, account)
-  }, [library, account])
 
   const handleConnectWallet = () => {
     setButtonConnecting(true)
@@ -86,7 +84,7 @@ const MintPage: NextPage = () => {
     setButtonDisabled(true)
 
     try {
-      await contract.resMint(mintCount)
+      await contract?.resMint(mintCount)
 
       toast({
         position: 'bottom-right',

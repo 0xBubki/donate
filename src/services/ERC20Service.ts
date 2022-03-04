@@ -5,7 +5,7 @@ import Erc20Abi from './abis/Erc20Abi.json'
 import { isAddress, isContract } from '../utils/tools'
 
 class ERC20Service {
-  provider: any
+  provider: ethers.providers.Web3Provider
   contract: Contract
 
   constructor(provider: any, tokenAddress: string, signerAddress?: string) {
