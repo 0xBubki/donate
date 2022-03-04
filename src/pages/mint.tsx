@@ -168,7 +168,12 @@ const MintPage: NextPage = () => {
 
               {/* Minting is active */}
               {isSaleActive && (
-                <VStack spacing={8} align="stretch" justify="center">
+                <VStack
+                  spacing={8}
+                  align="stretch"
+                  justify="center"
+                  width="100%"
+                >
                   {walletConnected && (
                     <Flex alignItems={'center'} className="gap-2 xs:gap-4">
                       <InputNumber
