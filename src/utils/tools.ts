@@ -1,4 +1,4 @@
-import { utils } from 'ethers'
+import { ethers, utils } from 'ethers'
 
 export const isAddress = (address: string): boolean => {
   try {
@@ -10,9 +10,9 @@ export const isAddress = (address: string): boolean => {
 }
 
 export const isContract = async (
-  provider: any,
+  provider: ethers.providers.Web3Provider,
   address: string
 ): Promise<boolean> => {
   const code = await provider.getCode(address)
-  return code && code !== '0x'
+  return code === '0x'
 }

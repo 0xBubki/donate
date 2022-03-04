@@ -7,7 +7,7 @@ import {
 import Erc721Abi from './abis/Erc721Abi.json'
 
 class ERC721Service {
-  provider: any
+  provider: ethers.providers.Web3Provider
   contract: Contract
 
   constructor(
