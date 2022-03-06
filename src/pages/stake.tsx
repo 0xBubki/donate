@@ -1,5 +1,5 @@
 import { Flex, Text } from '@chakra-ui/layout'
-import { Box } from '@chakra-ui/react'
+import { Box, Heading } from '@chakra-ui/react'
 import { useState } from 'react'
 import { DepositDetails } from '../components/Stake/DepositDetails'
 import { RedeemSwitch } from '../components/Stake/RedeemSwitch'
@@ -49,7 +49,12 @@ export default function Deposit() {
         </Flex>
       </Flex>
 
-      <DepositDetails stakingMode={stakingMode} />
+      <Heading textAlign="center">
+        {stakingMode === StakeMode.STAKE
+          ? translate('cta')
+          : translate('withdrawCta')}
+      </Heading>
+      <DepositDetails />
     </Flex>
   )
 }

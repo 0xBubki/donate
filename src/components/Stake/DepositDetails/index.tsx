@@ -3,35 +3,25 @@ import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { FC, useEffect, useState } from 'react'
-import { StakeMode } from '..'
-
 import { useTranslation } from '../../../utils/use-translation'
 
 const translations = require('../../../../public/locales/stake.json')
-
-interface Props {
-  stakingMode: StakeMode
-}
-
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 
 const TotalStakedBox: FC = ({ children }) => {
   return (
     <Flex
       direction="column"
-      align="center"
-      width="100%"
-      padding={8}
+      className="w-full max-w-xs p-8 center"
       borderRadius="25px"
       background="rgba(0, 0, 0, 0.2)"
-      minWidth={240}
     >
       {children}
     </Flex>
   )
 }
 
-export const DepositDetails = ({ stakingMode }: Props) => {
+export const DepositDetails = () => {
   const translate = useTranslation(translations)
   const { account } = useEthers()
   const tokenBalance = useTokenBalance(ticketTokenAddress, account)
@@ -64,25 +54,10 @@ export const DepositDetails = ({ stakingMode }: Props) => {
   }, [])
 
   return (
-    <Flex
-      flexDirection="column"
-      align="space-around"
-      justify="center"
-      gap={16}
-      width="100%"
-      maxWidth={720}
-    >
-      <Heading textAlign="center">
-        {stakingMode === StakeMode.STAKE
-          ? translate('cta')
-          : translate('withdrawCta')}
-      </Heading>
-
+    <Flex className="w-full max-w-3xl flex-col items-around justify-center gap-16">
       <Flex
         direction={['column', 'column', 'row', 'row']}
-        justify="space-around"
-        align="center"
-        gap={4}
+        className="justify-around items-center gap-4"
       >
         <TotalStakedBox>
           <Heading color="white" className="text-4xl">
