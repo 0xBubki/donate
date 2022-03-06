@@ -62,15 +62,17 @@ const MintPage: NextPage = () => {
   }
 
   useEffect(() => {
-    contract?.isSaleActive()?.then((response) => {
-      setIsSaleActive(!!response)
-    })
-    contract?.totalSupply()?.then((response) => {
-      setTotalSupply(BigNumber.from(response).toNumber())
-    })
-    contract?.maxSupply()?.then((response) => {
-      setMaxSupply(BigNumber.from(response).toNumber())
-    })
+    if (isCorrectChainId) {
+      contract?.isSaleActive()?.then((response) => {
+        setIsSaleActive(!!response)
+      })
+      contract?.totalSupply()?.then((response) => {
+        setTotalSupply(BigNumber.from(response).toNumber())
+      })
+      contract?.maxSupply()?.then((response) => {
+        setMaxSupply(BigNumber.from(response).toNumber())
+      })
+    }
   }, [account, library, contract, chainId, isCorrectChainId])
 
   useEffect(() => {
@@ -167,7 +169,7 @@ const MintPage: NextPage = () => {
               />
 
               {/* Minting is active */}
-              {isSaleActive && (
+              {(isSaleActive || !isCorrectChainId) && (
                 <VStack
                   spacing={8}
                   align="stretch"
@@ -244,27 +246,30 @@ const MintPage: NextPage = () => {
                 </VStack>
               )}
 
-              {/* Not sold out, Minting not active, wallet not connected */}
-              {!isSoldOut && !isSaleActive && !walletConnected && (
-                <VStack spacing={4} align="stretch" maxWidth="300px">
-                  <Button
-                    width="100%"
-                    // @todo - connect wallet
-                    onClick={handleConnectWallet}
-                    fontSize="24px"
-                    disabled={buttonConnecting}
-                    py="27px"
-                    px="24px"
-                    colorScheme="yellow"
-                    style={{
-                      boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
-                      borderRadius: '12px'
-                    }}
-                  >
-                    {translate('connectWallet')}
-                  </Button>
-                </VStack>
-              )}
+              {/* Not sold out, Minting not active, wallet not connected, on mainnet */}
+              {!isSoldOut &&
+                !isSaleActive &&
+                !walletConnected &&
+                isCorrectChainId && (
+                  <VStack spacing={4} align="stretch" maxWidth="300px">
+                    <Button
+                      width="100%"
+                      // @todo - connect wallet
+                      onClick={handleConnectWallet}
+                      fontSize="24px"
+                      disabled={buttonConnecting}
+                      py="27px"
+                      px="24px"
+                      colorScheme="yellow"
+                      style={{
+                        boxShadow: '0 0 0 8px rgba(255, 213, 0, 0.2)',
+                        borderRadius: '12px'
+                      }}
+                    >
+                      {translate('connectWallet')}
+                    </Button>
+                  </VStack>
+                )}
 
               {/* Minting not active, wallet is connected */}
               {isSaleActive === false && walletConnected && (
