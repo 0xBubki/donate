@@ -2,7 +2,7 @@ import { Flex, Heading, Text } from '@chakra-ui/layout'
 import { prizePool, ticketTokenAddress } from '../../../utils/poolTogether'
 import { useEthers, useTokenBalance } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { StakeMode } from '..'
 
 import { useTranslation } from '../../../utils/use-translation'
@@ -14,6 +14,22 @@ interface Props {
 }
 
 const multiSigAddress = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
+
+const TotalStakedBox: FC = ({ children }) => {
+  return (
+    <Flex
+      direction="column"
+      align="center"
+      width="100%"
+      padding={8}
+      borderRadius="25px"
+      background="rgba(0, 0, 0, 0.2)"
+      minWidth={240}
+    >
+      {children}
+    </Flex>
+  )
+}
 
 export const DepositDetails = ({ stakingMode }: Props) => {
   const translate = useTranslation(translations)
@@ -68,15 +84,8 @@ export const DepositDetails = ({ stakingMode }: Props) => {
         align="center"
         gap={4}
       >
-        <Flex
-          direction="column"
-          align="center"
-          padding={8}
-          borderRadius="25px"
-          background="rgba(0, 0, 0, 0.2)"
-          minWidth={240}
-        >
-          <Heading color="white" fontSize="50px">
+        <TotalStakedBox>
+          <Heading color="white" className="text-4xl">
             {formatter.format(
               // @ts-ignore
               utils
@@ -84,26 +93,19 @@ export const DepositDetails = ({ stakingMode }: Props) => {
                 ?.toString() || 0
             )}
           </Heading>
-          <Text color="white" fontSize="20px">
+          <Text color="white" className="text-2xl">
             {translate('stakedValueLabel')}
           </Text>
-        </Flex>
+        </TotalStakedBox>
 
-        <Flex
-          direction="column"
-          align="center"
-          padding={8}
-          borderRadius="25px"
-          background="rgba(0, 0, 0, 0.2)"
-          minWidth={240}
-        >
-          <Heading color="white" fontSize="50px">
+        <TotalStakedBox>
+          <Heading color="white" className="text-4xl">
             {formatter.format(totalYieldEarned)}
           </Heading>
-          <Text color="white" fontSize="20px">
+          <Text color="white" className="text-2xl">
             {translate('totalStakedLabel')}
           </Text>
-        </Flex>
+        </TotalStakedBox>
       </Flex>
     </Flex>
   )
