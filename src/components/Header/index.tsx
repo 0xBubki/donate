@@ -1,18 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import NextLink from 'next/link'
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 import { useTranslation } from '../../utils/use-translation'
 
 const localization = require('../../../public/locales/navigation.json')
 
-import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
+import { Flex, HStack, Stack, Text } from '@chakra-ui/layout'
 import {
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
   useDisclosure,
-  Button,
-  Link
+  Button
 } from '@chakra-ui/react'
 import Davatar from '@davatar/react'
 import {
@@ -35,25 +34,53 @@ import { SocialIcon } from 'react-social-icons'
 import { Logo } from '../Logo'
 
 const ConnectWallet = () => {
-  const { activateBrowserWallet, ens, account } = useWallet()
+  const { activateBrowserWallet, ens, account, deactivate } = useWallet()
   const translate = useTranslation(localization)
 
   return (
-    <NavButton onClick={activateBrowserWallet}>
+    <>
       {account ? (
-        <>
-          <Box>
-            <Davatar size={25} address={account} />
-          </Box>
-          <Text>{ens || shorten(account)}</Text>
-        </>
+        <Menu>
+          <MenuButton
+            as={Button}
+            bg="ukraineYellow"
+            color="black"
+            _hover={{
+              bg: 'darkYellow'
+            }}
+            _active={{
+              bg: 'darkYellow'
+            }}
+            rounded="full"
+            py="3"
+          >
+            <Flex alignItems="center">
+              <Davatar size={25} address={account} />
+              <Text style={{ marginLeft: 5 }}>{ens || shorten(account)}</Text>
+            </Flex>
+          </MenuButton>
+          <MenuList bg="ukraineYellow" color="black">
+            <MenuItem onClick={deactivate}>
+              <Text className="capitalize">{translate('disconnect')}</Text>
+            </MenuItem>
+          </MenuList>
+        </Menu>
       ) : (
-        <Flex className="center" gap={2}>
-          <Text className="capitalize">{translate('connect')}</Text>
-          <LoginIcon className="w-4 h-4" />
-        </Flex>
+        <NavButton onClick={activateBrowserWallet}>
+          <>
+            <Flex alignItems="center">
+              <Text
+                style={{ marginLeft: 4, marginRight: 4 }}
+                className="capitalize"
+              >
+                {translate('connect')}
+              </Text>
+              <LoginIcon className="w-4 h-4" />
+            </Flex>
+          </>
+        </NavButton>
       )}
-    </NavButton>
+    </>
   )
 }
 
