@@ -93,7 +93,7 @@ const Home: NextPage = () => {
       }}
     >
       <Flex direction="column" alignItems="center" textAlign="center">
-        <Flex direction="column" gap={16} align="center">
+        <Flex direction="column" className="space-y-16" align="center">
           <Heading>
             {translate('homepage-title')}{' '}
             <Text display="inline" color="ukraineYellow">
@@ -101,13 +101,17 @@ const Home: NextPage = () => {
             </Text>
           </Heading>
 
-          <Flex direction="column" gap={2}>
+          <Flex direction="column" className="space-y-2">
             <Flex
-              className="center flex-col xs:flex-row xs:gap-2"
+              className="center flex-col xs:flex-row xs:space-x-2"
               fontWeight="bold"
             >
               {currentEthValue === 0 ? (
-                <Flex alignItems="center" justifyContent="center" gap={2}>
+                <Flex
+                  alignItems="center"
+                  justifyContent="center"
+                  className="space-x-2"
+                >
                   <Text fontSize={headerSizingLg}>$</Text>
                   <Skeleton height="48px" width={['120px', '320px']} />
                 </Flex>
@@ -128,7 +132,11 @@ const Home: NextPage = () => {
               fontWeight="bold"
               fontSize={headerSizingSm}
             >
-              <Flex alignItems="center" justifyContent="center" gap={2}>
+              <Flex
+                alignItems="center"
+                justifyContent="center"
+                className="space-x-2"
+              >
                 <span>Ξ</span>
                 {currentEthValue === 0 ? (
                   <Skeleton height="30px" width="200px" />
@@ -141,7 +149,7 @@ const Home: NextPage = () => {
 
           <Flex
             direction="column"
-            gap={4}
+            className="space-y-4"
             align="center"
             width="100%"
             maxWidth="200px"

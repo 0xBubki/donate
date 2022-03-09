@@ -23,7 +23,7 @@ export const TranslatedParagraph: FC<LocalizedParagraphProps> = ({
         </Heading>
       )}
 
-      <Flex direction="column" gap={3} className="text-xl">
+      <Flex direction="column" className="space-y-3 text-xl">
         {paragraphs.map((paragraph) => (
           <p key={paragraph}>{translate(paragraph)}</p>
         ))}

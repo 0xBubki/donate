@@ -134,13 +134,13 @@ const MintPage: NextPage = () => {
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
       <div className="mx-auto p-3 sm:p-8">
-        <div className="grid sm:gap-8 sm:grid-cols-12">
+        <div className="grid sm:space-y-8 sm:grid-cols-12">
           <div className="sm:col-span-5 pb-8">
             <NFTPreview />
           </div>
 
           <div className="sm:col-start-7 sm:col-span-5">
-            <div className="flex flex-col items-center sm:items-start gap-6">
+            <div className="flex flex-col items-center sm:items-start space-y-6">
               <Box>
                 <Text
                   as="span"
@@ -152,7 +152,11 @@ const MintPage: NextPage = () => {
                   fontSize={['lg', '2xl']}
                   display="inline-block"
                 >
-                  <Text display="flex" alignItems="center" gap={2}>
+                  <Text
+                    display="flex"
+                    alignItems="center"
+                    className="space-x-2"
+                  >
                     <Text fontWeight="black">{totalSupply} / 10,000</Text>
                     <Text>minted</Text>
                   </Text>
@@ -172,23 +176,25 @@ const MintPage: NextPage = () => {
               {(isSaleActive || !isCorrectChainId) && (
                 <VStack
                   spacing={8}
-                  align="stretch"
-                  justify="center"
+                  className="items-center sm:!items-start"
                   width="100%"
                 >
                   {walletConnected && (
-                    <Flex alignItems={'center'} className="gap-2 xs:gap-4">
+                    <Flex
+                      alignItems={'center'}
+                      className="space-x-2 xs:space-x-4"
+                    >
+                      <div className="w-full"></div>
                       <InputNumber
                         isDisabled={buttonDisabled}
                         onChange={(value) => setMintCount(value)}
                       />
                       <Text
                         display="flex"
-                        className="text-xs flex-col xs:flex-row xs:text-lg"
+                        className="w-full text-xs flex-col xs:flex-row xs:space-x-2 xs:text-lg"
                         fontWeight="semibold"
                         whiteSpace="nowrap"
                         alignItems="stretch"
-                        gap={2}
                       >
                         <span>{Math.round(mintCount * 0.05 * 100) / 100}</span>
                         <span>ETH</span>
@@ -196,7 +202,12 @@ const MintPage: NextPage = () => {
                     </Flex>
                   )}
 
-                  <VStack spacing={8} align="stretch" maxWidth="320px">
+                  <VStack
+                    spacing={8}
+                    align="stretch"
+                    maxWidth="320px"
+                    width="100%"
+                  >
                     {walletConnected ? (
                       <>
                         <Button

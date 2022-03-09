@@ -135,13 +135,13 @@ export const StakeView: FC<StakeUnstakeBoxProps> = ({ stakingMode }) => {
   }
 
   return (
-    <Flex direction="column" gap={8}>
+    <Flex direction="column" className="space-y-8">
       <Flex
         direction={['column', 'row']}
         align="center"
         justify="space-around"
         padding={4}
-        gap={4}
+        className="space-x-4 space-y-4"
         backgroundColor="rgba(255,255,255,0.2)"
         borderRadius="25px"
       >
