@@ -31,7 +31,7 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
 
   return (
     <HStack
-      width="195px"
+      width="186px"
       background="whiteAlpha.400"
       p="12px"
       style={{ borderRadius: 16 }}
@@ -55,6 +55,7 @@ export const InputNumber = ({ onChange, isDisabled }: Props) => {
         border={0}
         bg="transparent"
         fontWeight="bold"
+        margin="0px !important"
         textAlign="center"
         fontSize="24px"
       />

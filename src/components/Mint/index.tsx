@@ -9,7 +9,7 @@ export const NFTPreview = () => {
       <Flex
         justifyContent={'space-between'}
         p="4"
-        className="gap-2 text-xs xs:text-lg sm:text-xl"
+        className="space-x-2 text-xs xs:text-lg sm:text-xl"
       >
         <Text textColor="black" fontWeight="bold" fontSize={['xs', 'sm', 'lg']}>
           Bubki NFTs
