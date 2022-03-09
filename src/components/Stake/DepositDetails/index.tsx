@@ -54,10 +54,10 @@ export const DepositDetails = () => {
   }, [])
 
   return (
-    <Flex className="w-full max-w-3xl flex-col items-around justify-center gap-16">
+    <Flex className="w-full max-w-3xl flex-col items-around justify-center space-y-16">
       <Flex
         direction={['column', 'column', 'row', 'row']}
-        className="justify-around items-center gap-4"
+        className="justify-around items-center space-y-4"
       >
         <TotalStakedBox>
           <Heading color="white" className="text-4xl">

@@ -28,7 +28,7 @@ export default function Home() {
         ) : (
           <Button
             size="lg"
-            gap={2}
+            className="space-x-2"
             display="flex"
             alignItems="center"
             onClick={() => activateBrowserWallet()}

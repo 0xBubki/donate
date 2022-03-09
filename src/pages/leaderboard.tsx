@@ -42,7 +42,7 @@ const AddressField: FC<{ address: string }> = ({ address }) => {
           })
         }}
       >
-        <Flex alignItems="center" gap={1} cursor="pointer">
+        <Flex alignItems="center" className="space-x-1" cursor="pointer">
           <Tag
             fontSize={['xs', 'md', 'lg']}
             colorScheme="whiteAlpha"
