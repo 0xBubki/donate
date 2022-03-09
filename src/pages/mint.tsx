@@ -182,9 +182,8 @@ const MintPage: NextPage = () => {
                   {walletConnected && (
                     <Flex
                       alignItems={'center'}
-                      className="space-x-2 xs:space-x-4"
+                      className="w-full space-x-2 xs:space-x-4"
                     >
-                      <div className="w-full"></div>
                       <InputNumber
                         isDisabled={buttonDisabled}
                         onChange={(value) => setMintCount(value)}
