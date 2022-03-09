@@ -152,7 +152,11 @@ const MintPage: NextPage = () => {
                   fontSize={['lg', '2xl']}
                   display="inline-block"
                 >
-                  <Text display="flex" alignItems="center" gap={2}>
+                  <Text
+                    display="flex"
+                    alignItems="center"
+                    className="space-x-2"
+                  >
                     <Text fontWeight="black">{totalSupply} / 10,000</Text>
                     <Text>minted</Text>
                   </Text>

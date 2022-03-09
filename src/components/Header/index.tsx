@@ -38,7 +38,7 @@ const ConnectWallet = () => {
   const translate = useTranslation(localization)
 
   return (
-    <>
+    <div>
       {account ? (
         <Menu>
           <MenuButton
@@ -80,7 +80,7 @@ const ConnectWallet = () => {
           </>
         </NavButton>
       )}
-    </>
+    </div>
   )
 }
 
@@ -137,7 +137,7 @@ export const Header = () => {
           <HStack
             px={[4, 4, 0]}
             display={['none', 'none', 'none', 'flex']}
-            gap={{ lg: '0.4rem', xl: '1.5rem' }}
+            className="space-x-4 xl:space-x-8"
             // width="fit-content"
             mr={4}
             // width="auto"
@@ -149,8 +149,8 @@ export const Header = () => {
             ))}
           </HStack>
 
-          <Flex gap={2}>
-            <Flex gap={4}>
+          <Flex className="space-x-2">
+            <Flex className="space-x-2">
               {/* Language Menu */}
               <div className="hidden lg:flex lg:items-center">
                 <LanguageMenu />
@@ -189,7 +189,12 @@ export const Header = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody background="#005BBB" padding={8}>
-            <Flex direction="column" justify="space-around" height="100%">
+            <Flex
+              paddingBottom={8}
+              direction="column"
+              justify="space-around"
+              height="100%"
+            >
               {/* Top Wrapper */}
               {/* Close Icon */}
               <div className="flex justify-end">
@@ -208,7 +213,7 @@ export const Header = () => {
               </div>
 
               {/* Mapping through Links */}
-              <Flex direction="column" gap={2}>
+              <Flex direction="column" className="space-y-2">
                 {navItems.map((navItem, index) => (
                   <NavDrawerItem
                     onClick={onToggle}
@@ -223,8 +228,8 @@ export const Header = () => {
               </Flex>
 
               {/* Twitter and Language Menu Wrapper */}
-              <Flex gap={4} justify="space-around" align="center">
-                <Flex gap={4}>
+              <Flex className="space-x-4" justify="space-around" align="center">
+                <Flex className="space-x-4">
                   {/* Twitter Link - URL SHOULD BE UPDATED */}
                   <a href="https://twitter.com/0xBubki">
                     <img

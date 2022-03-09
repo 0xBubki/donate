@@ -16,7 +16,7 @@ export const NFTPreview = () => {
         </Text>
         <Flex
           alignItems="center"
-          gap={1}
+          className="space-x-1"
           textColor="black"
           fontWeight="semibold"
           fontSize={['xs', '0.82rem', 'md']}
