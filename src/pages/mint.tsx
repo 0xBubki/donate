@@ -134,13 +134,13 @@ const MintPage: NextPage = () => {
   return (
     <Flex direction="row" width="100%" height="100%" pb={10}>
       <div className="mx-auto p-3 sm:p-8">
-        <div className="grid sm:gap-8 sm:grid-cols-12">
+        <div className="grid sm:space-y-8 sm:grid-cols-12">
           <div className="sm:col-span-5 pb-8">
             <NFTPreview />
           </div>
 
           <div className="sm:col-start-7 sm:col-span-5">
-            <div className="flex flex-col items-center sm:items-start gap-6">
+            <div className="flex flex-col items-center sm:items-start space-y-6">
               <Box>
                 <Text
                   as="span"
@@ -176,8 +176,7 @@ const MintPage: NextPage = () => {
               {(isSaleActive || !isCorrectChainId) && (
                 <VStack
                   spacing={8}
-                  align="stretch"
-                  justify="center"
+                  className="items-center sm:!items-start"
                   width="100%"
                 >
                   {walletConnected && (
