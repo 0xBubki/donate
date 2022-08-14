@@ -23,7 +23,7 @@
     "@pooltogether/v4-pool-data": "^1.6.0",
     "@pooltogether/v4-testnet": "^1.5.5",
     "@uniswap/token-lists": "^1.0.0-beta.27",
-    "@usedapp/coingecko": "^0.4.3",
+    "@usedapp/coingecko": "^1.1.5",
     "@usedapp/core": "^0.11.0",
     "axios": "^0.26.0",
     "canvas-confetti": "^1.5.1",
