@@ -21,6 +21,7 @@ import axios from 'axios'
 import { shorten } from '../utils/shorten'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { DuplicateIcon } from '@heroicons/react/outline'
+import { ALCHEMY_MAINNET_URL } from '../utils/constants'
 
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 const localization = require('../../public/locales/leaderboard.json')
@@ -64,23 +65,20 @@ const Leaderboard: NextPage = () => {
 
   useEffect(() => {
     axios
-      .post(
-        'https://eth-mainnet.alchemyapi.io/v2/06iuz9tXgQRzmTQ1B28oqPnz5lQDQ-YO',
-        {
-          jsonrpc: '2.0',
-          id: 0,
-          method: 'alchemy_getAssetTransfers',
-          params: [
-            {
-              fromBlock: '0x0',
-              toBlock: 'latest',
-              toAddress: RECEIVER_WALLET,
-              excludeZeroValue: true,
-              category: ['external']
-            }
-          ]
-        }
-      )
+      .post(ALCHEMY_MAINNET_URL, {
+        jsonrpc: '2.0',
+        id: 0,
+        method: 'alchemy_getAssetTransfers',
+        params: [
+          {
+            fromBlock: '0x0',
+            toBlock: 'latest',
+            toAddress: RECEIVER_WALLET,
+            excludeZeroValue: true,
+            category: ['external']
+          }
+        ]
+      })
       .then((response) => {
         filterTransactionsLowToHigh(response?.data?.result?.transfers)
         setLoading(false)
@@ -104,6 +102,7 @@ const Leaderboard: NextPage = () => {
     <Flex
       direction="row"
       width="100%"
+      maxWidth="768px"
       height="100%"
       alignItems="center"
       justifyContent="center"
