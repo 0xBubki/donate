@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
+import { debugLog } from './debugLog'
 
 export type LanguageID = string
 export type Untranslated = string
@@ -25,21 +26,21 @@ export function useTranslation(dictionary: Translations) {
             // @ts-ignore
             return dictionary[locale][text]
           } else {
-            console.log('text not found in locale dictionary ', {
+            debugLog('text not found in locale dictionary ', {
               locale,
               text,
               dictionary
             })
           }
         } else {
-          console.log('local not found in dictionary ', {
+          debugLog('local not found in dictionary ', {
             locale,
             text,
             dictionary
           })
         }
       } else {
-        console.log('locale not found for route ', { locale, pathname })
+        debugLog('locale not found for route ', { locale, pathname })
       }
 
       if (defaultLocale) {
@@ -49,19 +50,19 @@ export function useTranslation(dictionary: Translations) {
             // @ts-ignore
             return dictionary[defaultLocale][text]
           } else {
-            console.log('text not found in defaultLocale dictionary ', {
+            debugLog('text not found in defaultLocale dictionary ', {
               defaultLocale,
               dictionary
             })
           }
         } else {
-          console.log('defaultLocale not found in dictionary ', {
+          debugLog('defaultLocale not found in dictionary ', {
             defaultLocale,
             dictionary
           })
         }
       } else {
-        console.log('defaultLocale not found for route ', {
+        debugLog('defaultLocale not found for route ', {
           defaultLocale,
           pathname
         })
