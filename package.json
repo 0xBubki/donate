@@ -27,7 +27,7 @@
     "@usedapp/core": "^0.11.0",
     "axios": "^0.26.0",
     "canvas-confetti": "^1.5.1",
-    "ethers": "^5.5.4",
+    "ethers": "^5.6.9",
     "framer-motion": "^6",
     "next": "12.1.0",
     "next-crypto-icons": "^0.1.0",
