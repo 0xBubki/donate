@@ -4,14 +4,13 @@ import {
 } from '@pooltogether/v4-client-js'
 import { testnet, mainnet } from '@pooltogether/v4-pool-data'
 import { ethers } from 'ethers'
+import { ALCHEMY_RINKBY_URL } from './constants'
 
 const providers = {
   // Mainnet Ethereum
   1: ethers.getDefaultProvider(1),
   // Rinkeby
-  4: ethers.getDefaultProvider(
-    'https://eth-rinkeby.alchemyapi.io/v2/URMQnJWJ0om6yAOnDGlFMZEQfPJo4VCZ'
-  )
+  4: ethers.getDefaultProvider(ALCHEMY_RINKBY_URL)
   // Polygon
   // 137: new ethers.providers.JsonRpcProvider(137, 'https://polygon-rpc.com'),
   // // Avalanche

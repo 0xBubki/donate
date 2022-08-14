@@ -10,6 +10,7 @@ import { confetti, blastConfetti } from '../utils/confetti'
 import axios from 'axios'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { headerSizingLg, headerSizingSm } from '../utils/sizing'
+import { ALCHEMY_MAINNET_URL } from '../utils/constants'
 
 const RECEIVER_WALLET = '0x10E1439455BD2624878b243819E31CfEE9eb721C'
 const localization = require('../../public/locales/common.json')
@@ -27,23 +28,20 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     axios
-      .post(
-        'https://eth-mainnet.alchemyapi.io/v2/06iuz9tXgQRzmTQ1B28oqPnz5lQDQ-YO',
-        {
-          jsonrpc: '2.0',
-          id: 0,
-          method: 'alchemy_getAssetTransfers',
-          params: [
-            {
-              fromBlock: '0x0',
-              toBlock: 'latest',
-              toAddress: RECEIVER_WALLET,
-              excludeZeroValue: true,
-              category: ['external']
-            }
-          ]
-        }
-      )
+      .post(ALCHEMY_MAINNET_URL, {
+        jsonrpc: '2.0',
+        id: 0,
+        method: 'alchemy_getAssetTransfers',
+        params: [
+          {
+            fromBlock: '0x0',
+            toBlock: 'latest',
+            toAddress: RECEIVER_WALLET,
+            excludeZeroValue: true,
+            category: ['external']
+          }
+        ]
+      })
       .then((response) => {
         filterTransactionsLowToHigh(response?.data?.result?.transfers)
       })
