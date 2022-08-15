@@ -30,7 +30,7 @@
     "ethers": "^5.6.9",
     "framer-motion": "^6",
     "next": "12.2.5",
-    "next-crypto-icons": "^0.1.0",
+    "next-crypto-icons": "^1.0.5",
     "react": "^17",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^17",
