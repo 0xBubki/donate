@@ -21,7 +21,7 @@
     "@heroicons/react": "^1.0.6",
     "@pooltogether/v4-client-js": "^0.14.2",
     "@pooltogether/v4-pool-data": "^1.8.1",
-    "@pooltogether/v4-testnet": "^1.5.5",
+    "@pooltogether/v4-testnet": "^1.7.0",
     "@uniswap/token-lists": "^1.0.0-beta.30",
     "@usedapp/coingecko": "^1.1.5",
     "@usedapp/core": "^0.11.0",
