@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.4.3",
-    "@types/node": "18.7.3",
+    "@types/node": "18.14.5",
     "@types/react": "^17",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "^17",
